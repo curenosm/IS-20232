@@ -52,7 +52,7 @@
   (def row-index (get-index k-letter))
   (if (= (- (count matrix) 1) cur-index)
     cur-index
-    (if (= (str (get-char row-index cur-index)) (str e-letter)) 
+    (if (= (str (get-char cur-index row-index)) (str e-letter)) 
       cur-index
       (find-col k-letter e-letter (+ cur-index 1))
     )))
@@ -62,11 +62,11 @@
   (if (= msg "")
     ""
     (str ; Concatenate
-        (get-char (get-index (first msg)) (get-index (first keyword)) ) ; The first encoded letter
-        (encode-msg ; And the rest of the encoded message
-          (subs msg 1)
-          (subs keyword 1)
-        )
+      (get-char (get-index (first msg)) (get-index (first keyword)) ) ; The first encoded letter
+      (encode-msg ; And the rest of the encoded message
+        (subs keyword 1)
+        (subs msg 1)
+      )
     )))
 
 ;; Decode the first letter, and then the rest of the message
