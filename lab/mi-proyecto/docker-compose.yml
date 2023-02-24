@@ -1,0 +1,24 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:14.0
+    command: postgres -c log_statement=all -c timezone='America/Mexico_City'
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=ppasword
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres-init-scripts:/docker-entrypoint-initdb.d
+    networks:
+      - project-network
+  backend:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "3000:3000"
+
+networks:
+  project-network:
