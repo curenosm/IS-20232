@@ -1,0 +1,222 @@
+[
+{
+    "model": "mainApp.estudiante",
+    "fields": {
+        "id": 1,
+        "numCta": 31407,
+        "nombres": "César",
+        "apellidos": "Jardines",
+        "edad": 24,
+        "grupo_id": 2
+    }
+},
+{
+    "model": "mainApp.estudiante",
+    "fields": {
+        "id": 2,
+        "numCta": 31417,
+        "nombres": "Luis",
+        "apellidos": "Mendoza",
+        "edad": 22,
+        "grupo_id": 1
+    }
+},
+{
+    "model": "mainApp.estudiante",
+    "fields": {
+        "id": 3,
+        "numCta": 31412,
+        "nombres": "Frida",
+        "apellidos": "Landaverde",
+        "edad": 22,
+        "grupo_id": 3
+    }
+},
+{
+    "model": "mainApp.estudiante",
+    "fields": {
+        "id": 4,
+        "numCta": 31412,
+        "nombres": "Daniela",
+        "apellidos": "Garces",
+        "edad": 22,
+        "grupo_id": 3
+    }
+},
+{
+    "model": "mainApp.estudiante",
+    "fields": {
+        "id": 5,
+        "numCta": 45412,
+        "nombres": "Andrea",
+        "apellidos": "Cano",
+        "edad": 24,
+        "grupo_id": 1
+    }
+},
+{
+    "model": "mainApp.estudiante",
+    "fields": {
+        "id": 6,
+        "numCta": 45612,
+        "nombres": "Emiliano",
+        "apellidos": "Galeana",
+        "edad": 24,
+        "grupo_id": 4
+    }
+},
+{
+    "model": "mainApp.estudiante",
+    "fields": {
+        "id": 7,
+        "numCta": 84209,
+        "nombres": "Cristian",
+        "apellidos": "Alonso",
+        "edad": 20,
+        "grupo_id": 3
+    }
+},
+{
+    "model": "mainApp.estudiante",
+    "fields": {
+        "id": 8,
+        "numCta": 29659,
+        "nombres": "Alma Rosa",
+        "apellidos": "Gómez",
+        "edad": 22,
+        "grupo_id": 3
+    }
+},
+{
+    "model": "mainApp.estudiante",
+    "fields": {
+        "id": 9,
+        "numCta": 34740,
+        "nombres": "Jonathan",
+        "apellidos": "Gómez",
+        "edad": 21,
+        "grupo_id": 4
+    }
+},
+{
+    "model": "mainApp.estudiante",
+    "fields": {
+        "id": 10,
+        "numCta": 31412,
+        "nombres": "Frida",
+        "apellidos": "Gómez",
+        "edad": 22,
+        "grupo_id": 3
+    }
+},
+{
+    "model": "mainApp.estudiante",
+    "fields": {
+        "id": 11,
+        "numCta": 31765,
+        "nombres": "Ximena",
+        "apellidos": "Garces",
+        "edad": 23,
+        "grupo_id": 5
+    }
+},
+{
+    "model": "mainApp.estudiante",
+    "fields": {
+        "id": 12,
+        "numCta": 31712,
+        "nombres": "Alex",
+        "apellidos": "Landaverde",
+        "edad": 25,
+        "grupo_id": 1
+    }
+},
+{
+    "model": "mainApp.estudiante",
+    "fields": {
+        "id": 13,
+        "numCta": 94187,
+        "nombres": "Rosalia",
+        "apellidos": "Mendoza",
+        "edad": 22,
+        "grupo_id": 3
+    }
+},
+{
+    "model": "mainApp.estudiante",
+    "fields": {
+        "id": 14,
+        "numCta": 29564,
+        "nombres": "Daniel",
+        "apellidos": "Nuñes",
+        "edad": 25,
+        "grupo_id": 4
+    }
+},
+{
+    "model": "mainApp.estudiante",
+    "fields": {
+        "id": 15,
+        "numCta": 30976,
+        "nombres": "Miguel",
+        "apellidos": "Mendoza",
+        "edad": 21,
+        "grupo_id": 4
+    }
+},
+{
+    "model": "mainApp.estudiante",
+    "fields": {
+        "id": 16,
+        "numCta": 86194,
+        "nombres": "Alejandra",
+        "apellidos": "Landaverde",
+        "edad": 23,
+        "grupo_id": 1
+    }
+},
+{
+    "model": "mainApp.estudiante",
+    "fields": {
+        "id": 17,
+        "numCta": 82345,
+        "nombres": "Javier",
+        "apellidos": "Vázquez",
+        "edad": 20,
+        "grupo_id": 2
+    }
+},
+{
+    "model": "mainApp.estudiante",
+    "fields": {
+        "id": 18,
+        "numCta": 31812,
+        "nombres": "Eduardo",
+        "apellidos": "Mendoza",
+        "edad": 21,
+        "grupo_id": 3
+    }
+},
+{
+    "model": "mainApp.estudiante",
+    "fields": {
+        "id": 19,
+        "numCta": 21987,
+        "nombres": "Alexis",
+        "apellidos": "Villafuente",
+        "edad": 22,
+        "grupo_id": 1
+    }
+},
+{
+    "model": "mainApp.estudiante",
+    "fields": {
+        "id": 20,
+        "numCta": 31412,
+        "nombres": "Valeria",
+        "apellidos": "Enri",
+        "edad": 19,
+        "grupo_id": 4
+    }
+}
+]
