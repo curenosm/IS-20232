@@ -1,0 +1,23 @@
+version: '3.7'
+
+services:
+  web:
+    build: ./50Amigos
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./50Amigos/:/usr/src/app/
+    ports:
+      - 8000:8000
+    env_file:
+      - ./.env.dev
+  db:
+    image: postgres:14.0-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=50amigos
+      - POSTGRES_PASSWORD=50amigos
+      - POSTGRES_DB=50amigos
+
+volumes:
+  postgres_data:

@@ -16,21 +16,20 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-STATICFILES_DIRS=(
+STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-e32#2b!jd7^3r!c5nern-8d33s6n4)vf(*oy6+z7$gi3d)6_1p'
+
+SECRET_KEY = os.environ.get("SECRET_KEY", "substitute_this")
+
+ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", "*").split(" ")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
-ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -74,20 +73,27 @@ TEMPLATES = [
 
 WSGI_APPLICATION = '50Amigos.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': os.environ.get('SQL_ENGINE', 'django.db.backends.sqlite3'),
+        'NAME': os.environ.get('SQL_DATABASE', os.path.join(BASE_DIR, 'db.sqlite3')),
+        'USER': os.environ.get('SQL_USER', None),
+        'PASSWORD': os.environ.get("SQL_PASSWORD", None),
+        'HOST': os.environ.get('SQL_HOST', 'localhost'),
+        'PORT': os.environ.get('SQL_PORT', '5432'),
     }
 }
+##################################################################
 
 
-# Password validation
-# https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
+AUTH_USER_MODEL = 'mainApp.User'
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -95,6 +101,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'OPTIONS': {
+            'min_length': 9,
+        },
     },
     {
         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
@@ -104,25 +113,37 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+LOGIN_REDIRECT_URL = '/'
 
-# Internationalization
-# https://docs.djangoproject.com/en/4.1/topics/i18n/
+################################################################
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Mexico_City'
 
 USE_I18N = True
 
+USE_L10N = True
+
 USE_TZ = True
 
+################################################################
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.1/howto/static-files/
+STATIC_URL = "/static/"
 
-STATIC_URL = 'static/'
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "upload")
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
+################################################################
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+################################################################
+
+# Here you must put all the models from which you will dump/load
+# fixtures data (NOTE: ORDER IS IMPORTANT!!!!!!!)
+# E.g: 'my_app.Model1'
+FIXTURE_MODELS = [
+    'mainApp.User',
+    'app_that_does_not_exists.Model_that_neither',
+]

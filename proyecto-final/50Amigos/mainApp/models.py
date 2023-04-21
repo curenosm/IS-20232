@@ -1,18 +1,31 @@
 from django.db import models
 
-
-# Create your models here.
-class Grupo(models.Model):
-    id_grupo = models.AutoField(primary_key=True)
+from django.contrib.auth.models import AbstractUser, Group
+from django.db import models
 
 
-class Estudiante(models.Model):
-    numCta = models.IntegerField(default=0, max_length=9)
-    nombres = models.CharField(max_length=200)
-    apellidos = models.CharField(max_length=200)
-    edad = models.IntegerField(default=0, max_length=3)
-    # Cada estudiante guarda el grupo en el que está inscrito
-    grupo = models.ForeignKey(Grupo, on_delete=models.SET_NULL, null=True)
+class User(AbstractUser):
+    email = models.EmailField(unique=True, null=False, blank=False)
+
+    class Meta:
+        verbose_name = 'User'
+        verbose_name_plural = 'Users'
 
     def __str__(self):
-        return f'{self.apellidos} {self.nombres}, ' + f'No. de cuenta: {self.numCta}, ' + f'Edad: {self.edad}, ' + f'Grupo: {self.grupo.id_grupo}'
+        return f'{self.username} | {self.first_name} | {self.last_name} | {self.email}'
+
+
+class Categoria(models.Model):
+    id = models.AutoField(primary_key=True)
+    nombre = models.CharField(max_length=100)
+
+
+class Platillo(models.Model):
+    id = models.AutoField(primary_key=True)
+    nombre = models.CharField(max_length=100)
+    imagen = models.CharField(max_length=1000)
+    categoria = models.ForeignKey(Categoria, on_delete=models.SET_NULL, null=True)
+    precio = models.DecimalField(max_digits=10, decimal_places=2)
+
+    def __str__(self):
+        return f'{self.nombre}'
