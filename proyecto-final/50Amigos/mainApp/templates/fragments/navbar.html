@@ -48,5 +48,12 @@
                 </div>
             </li>
         </ul>
+        <form class="d-flex" role="search">
+            {% if request.user.is_authenticated %}
+            <a class="btn btn-outline-danger" type="submit" href="{% url 'logout' %}">
+                Logout
+            </a>
+            {% endif %}
+        </form>
     </div>
 </nav>
