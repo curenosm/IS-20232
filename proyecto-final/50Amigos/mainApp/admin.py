@@ -21,8 +21,11 @@ class CustomUserAdmin(UserAdmin):
     )
 
 
-admin.site.register(User, CustomUserAdmin)
-
 # Register your models here.
-admin.site.register(Platillo)
+admin.site.register(User, CustomUserAdmin)
 admin.site.register(Categoria)
+admin.site.register(Orden)
+admin.site.register(Pedido)
+admin.site.register(Platillo)
+admin.site.register(Role)
+admin.site.register(Subcategoria)

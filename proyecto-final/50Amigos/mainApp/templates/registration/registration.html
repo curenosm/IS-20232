@@ -1,0 +1,41 @@
+{% extends 'fragments/base.html' %}
+
+{% block title %} Registro {% endblock %}
+
+{% block content %}
+{%load crispy_forms_tags %}
+	<div class = "container"> 
+		<br>
+		<br>
+		<br>
+		<div class="row">
+			<div class="col-12 col-md-6 offset-md-3">
+				<div class="card">
+					<div class="card-body">
+						<h2>Registro de usuario</h2>
+						<hr>
+
+						<form action="" method="post">
+
+							{% csrf_token %}
+							{{form | crispy}}
+							<br>
+							<a href="{% url 'mainApp:inicio' %}">Ir a página principal</a>
+							<br>
+
+							<input type="submit" name="Registrar" class="btn btn-success float-right">
+						</form>
+                        
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+
+</script>
+{% endblock %}
