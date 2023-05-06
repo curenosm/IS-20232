@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 if [ "$DATABASE" = "postgres" ]
 then
@@ -11,12 +11,16 @@ then
     echo "PostgreSQL started"
 fi
 
-python manage.py flush --no-input
-python manage.py makemigrations
-python manage.py migrate
-python manage.py collectstatic --no-input --clear
 
-# Create a superuser by default
-echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.create_superuser('admin', 'admin@hello_django.com', 'password')" | python manage.py shell
+echo "ejecutando makemigrations..."
+python3 manage.py makemigrations
+
+echo "ejecutando migrate..."
+python3 manage.py migrate mainApp
+
+echo "ejecutando collect-static..."
+python3 manage.py collectstatic --no-input --clear
+
+python3 manage.py migrate
 
 exec "$@"
