@@ -1,9 +1,22 @@
 {% extends 'fragments/base.html' %}
 
-{% block title %} Login {% endblock %}
+{% block title %} Inicio {% endblock %}
 
 {% block content %}
-    <div class="container">Inicio</div>
+    <div class="container">
+        <br>
+        <br>
+        <h1>Bienvenido a 50Amigos! <span class="badge bg-secondary">{{ user.username }}</span></h1>
+        <br>
+        Si gustas puedes <a href="{% url 'mainApp:carrito' %}">Verificar el estado de tu carrito</a> o bien
+        ver el <a href="{% url 'mainApp:menu' %}">Menú</a>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+    </div>
 {% endblock %}
 
 {% block scripts %}

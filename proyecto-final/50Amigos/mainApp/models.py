@@ -20,7 +20,7 @@ class Categoria(models.Model):
     nombre = models.CharField(max_length=100)
 
     def __str__(self):
-        return f'Id: {self.id}, Nombre: {self.nombre}, Categoria: {self.categoria}'
+        return f'Id: {self.id}, Nombre: {self.nombre}'
 
 
 class Subcategoria(models.Model):
@@ -62,6 +62,10 @@ class Orden(models.Model):
     fecha = models.DateTimeField(auto_now_add=True)
     total = models.DecimalField(decimal_places=2, max_digits=100)
     comentarios = models.TextField(blank=True, max_length=500)
+
+    class Meta:
+        verbose_name = 'Orden'
+        verbose_name_plural = 'Ordenes'
 
     def __str__(self):
         return f'Id: {self.id}, Usuario: {self.usuario}, Fecha: {self.fecha}'

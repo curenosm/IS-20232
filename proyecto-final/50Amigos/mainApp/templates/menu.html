@@ -1,10 +1,54 @@
 {% extends 'fragments/base.html' %}
 
-{% block title %} Login {% endblock %}
+{% block title %} Menú {% endblock %}
 
 {% block content %}
-    <div class="container">Menú</div>
+    <br/>
+    <br/>
+    {% for categoria in categorias %}
+        <h1>{{categoria.nombre}}</h1>
+        <hr>
+        {% for subcategoria in categoria.subcategorias %}
+        <h2>{{subcategoria.nombre}}</h2>
+        <hr>
+            {% for platillo in subcategoria.platillos %}
+                <hr>
+                
+                <div class="container">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{ platillo.imagen }}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ platillo.nombre }}</h5>
+                            <p class="card-text">{{ platillo.descripcion }}</p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            {% for ingrediente in platillo.ingredientes %}
+                                <li class="list-group-item">{{ ingrediente.nombre }}</li>
+                            {% endfor %}
+                        </ul>
+                        <div class="card-body">
+                            <a href="#" class="card-link">Agregar al carrito</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endfor %}
+    {% endfor %}
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+          <li class="page-item disabled">
+            <a class="page-link">Previous</a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#">Next</a>
+          </li>
+        </ul>
+      </nav>
 {% endblock %}
+
 
 {% block scripts %}
 <script>

@@ -42,9 +42,68 @@ def inicio_comensal(request):
 
 @login_required
 def menu(request):
-    return render(request, 'menu.html')
+
+    data = {
+        'categorias': [
+            {
+                "nombre":"Platos fuertes",
+                "subcategorias" : [
+                    {
+                        "nombre": "Pollos",
+                        "platillos": [
+                            {   
+                                "id": 1,
+                                "nombre": "Pollo kfc",
+                                "imagen": "https://recetinas.com/wp-content/uploads/2018/04/pollo-kentucky.jpg",
+                                "descripcion": "Descripcion generica 1",
+                                "ingredientes": [
+                                    {
+                                        "id": 1,
+                                        "nombre": "queso"
+                                    },
+                                    {
+                                        "id": 2,
+                                        "nombre": "tomate"
+                                    }
+                                ]
+                            },
+                            {
+                                "id": 2,
+                                "nombre": "Pollo adobado",
+                                "imagen": "https://storage.googleapis.com/avena-recipes/2019/10/1571782331514.jpeg",
+                                "descripcion": "Pollo azado y sazonado con salsa picante",
+                                "ingredientes": [
+                                    {
+                                        "id": 1,
+                                        "nombre": "pollo"
+                                    },
+                                    {
+                                        "id": 2,
+                                        "nombre": "salsa ultra picante"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+
+    if request.method == 'GET':
+        return render(request, 'menu.html', context=data)
 
 
 @login_required
 def carrito(request):
-    return render(request, 'carrito.html')
+
+    if request.method == 'GET':
+        return render(request, 'carrito.html')
+    elif request.method == 'POST':
+
+        # Se esta haciendo una inserción de orden en el carrito
+
+        
+
+        return 
+

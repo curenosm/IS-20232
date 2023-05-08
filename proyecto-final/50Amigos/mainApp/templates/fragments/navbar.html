@@ -1,59 +1,68 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<div class="container-fluid">
+    <a class="navbar-brand" href="#">50Amigos</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
     </button>
+    <div class="collapse navbar-collapse" id="navbarScroll">
+    <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
 
-    <div id="navbarSupportedContent" class="collapse navbar-collapse ">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="{% url 'mainApp:inicio' %}">
-                    Home <span class="sr-only">(current)</span>
-                </a>
-            </li>
+        <li class="nav-item active">
+            <a class="nav-link" href="{% url 'mainApp:inicio' %}">
+                Home
+            </a>
+        </li>
+
+        {% if not request.user.is_authenticated %}
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'mainApp:registro' %}">
                     Registro
                 </a>
             </li>
+            
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'login' %}">
                     Login
                 </a>
             </li>
+        {% endif %}
+
+        {% if request.user.is_authenticated %}
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'mainApp:menu' %}">
-                    Menu
+                    Menú
                 </a>
             </li>
+
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'mainApp:carrito' %}">
-                    Carrito
+                    Ordenes
                 </a>
             </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" 
-                    id="navbarDropdown" 
-                    role="button"
-                    data-toggle="dropdown" 
-                    aria-haspopup="true" 
-                    aria-expanded="false">
-                    <i class="bi bi-list"></i>
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Cerrar sesión</a>
-                </div>
-            </li>
+        {% endif %}
+
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Link
+        </a>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
         </ul>
-        <form class="d-flex" role="search">
-            {% if request.user.is_authenticated %}
+        </li>
+        <li class="nav-item">
+        <a class="nav-link disabled">Link</a>
+        </li>
+    </ul>
+    <form class="d-flex" role="search">
+        {% if request.user.is_authenticated %}
             <a class="btn btn-outline-danger" type="submit" href="{% url 'logout' %}">
                 Logout
             </a>
-            {% endif %}
-        </form>
+        {% endif %}
+    </form>
     </div>
+</div>
 </nav>
