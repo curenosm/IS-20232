@@ -21,13 +21,21 @@
                         {% csrf_token %}
                         {{form | crispy}}
                         <br>
-                        <a href="{% url 'mainApp:inicio' %}">Ir a página principal</a>
+                        <a href="{% url 'mainApp:inicio' %}">¿Olvidaste la contraseña?</a>
                         <br>
-                        <input type="submit" name="Ingresar" class="btn btn-success float-right" >
+                        <a href="/admin">¿Eres un administrador?</a>
+                        <br>
+                        <br>
+                        <input type="submit" name="Ingresar" class="btn btn-outline-success float-right" >
                     </form>
                 </div>
             </div>
-            
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
         </div>
     </div>
 </div>

@@ -76,6 +76,7 @@ class Pedido(models.Model):
     orden = models.ForeignKey(Orden, on_delete=models.SET_NULL, null=True)
     platillo = models.ForeignKey(
         Platillo, on_delete=models.SET_NULL, null=True)
+    cantidad = models.IntegerField(default=1)
 
     def __str__(self):
         return f'Id: {self.id}, Orden: {self.orden}, Platillo: {self.platillo}'

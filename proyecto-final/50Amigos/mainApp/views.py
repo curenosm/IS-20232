@@ -12,9 +12,24 @@ User = get_user_model()
 
 logger = logging.getLogger(__name__)
 
-
+# Password de los comensales (mesa1, mesa2, mesa3): restaurante123
 def index(request):
     return render(request, 'index.html')
+
+
+def contacto(request):
+    if request.method == 'GET':
+        return render(request, 'contacto.html')
+    elif request.method == 'POST':
+        # Se envío el formulario de suscripción a nuestras noticas
+        pass
+
+
+def votacion(request):
+    if request.method == 'POST':
+        print(request)
+    elif request.method == 'GET':
+        return render(request, 'votacion.html')
 
 
 def registro(request):
