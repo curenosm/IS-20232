@@ -18,13 +18,17 @@
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Persona 1</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <h5 class="modal-title" id="titulo_modal">Persona 1</h5>
+                        <button 
+                            type="button" 
+                            class="btn-close" 
+                            data-bs-dismiss="modal" 
+                            aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <img src="https://img.freepik.com/vector-gratis/coleccion-helados-planos_23-2148982427.jpg?w=2000" alt="helado" width="100%">
                         <p>¿Qué helado vota por servir al final?</p>
-                        <select class="form-select" id ="helado">
+                        <select class="form-select" id ="helado_select">
                             <option value="1">Chocolate</option>
                             <option value="2">Vainilla</option>
                             <option value="3">Fresa</option>
@@ -32,8 +36,15 @@
                         </select>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                        <button type="button" class="btn btn-primary">Siguiente participante</button>
+                        <button 
+                            onclick="finalizarVotacion()"
+                            type="button" 
+                            class="btn btn-secondary" 
+                            data-bs-dismiss="modal">Finalizar votación</button>
+                        <button 
+                            onclick="agregarParticipante()"
+                            type="button" 
+                            class="btn btn-primary">Siguiente participante</button>
                     </div>
                 </div>
             </div>
@@ -52,23 +63,42 @@
 {% block scripts %}
 <script>
 let helados = [];
-let votos = {};
+let votos = [];
+let curVotante = 1;
 
+function agregarParticipante() {
+    $('#helado_select').html();
+
+    $('')
+}
+
+function finalizarVotacion() {
+    $.ajax("{% url 'mainApp:votacion' %}", {
+        method: 'POST',
+        success: function (res) {
+            console.log(res);
+        },
+        error: function (err) {
+            console.error(err);
+        }
+    });
+}
 
 $(document).ready(function () {
-    $.get({% url 'lista-helados' %}, {
+    $('#titulo_modal').html('Persona ' + curVotante);
+    $.ajax("{% url 'mainApp:lista_helados' %}", {
         method: 'GET',
-        error: function (err) {
-            console.log(err);
-        }
         success: function(res) {
-            console.log(res);
+            helados = res;
+        },
+        error: function (err) {
+            console.error(err);
         }
-    })
+    });
 })
 
 function addComensal(nombre, helado) {
-    votos.push([nombre, ])
+    votos.push(helado);
 }
 </script>
 {% endblock %}

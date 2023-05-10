@@ -26,36 +26,56 @@
                                 <li class="list-group-item">{{ ingrediente.nombre }}</li>
                             {% endfor %}
                         </ul>
+                        <div class="card-body">
+                            <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                <button type="button" class="btn btn-outline-primary">
+                                    <i class="bi bi-cart-dash"></i>
+                                </button>
+                                <button 
+                                    id="counter{{platillo.id}}"
+                                    type="button" 
+                                    disabled 
+                                    class="btn btn-outline-primary">1</button>
+                                <button type="button" class="btn btn-outline-primary">
+                                    <i class="bi bi-cart-plus"></i>
+                                </button><br>
+                            </div><br><br>
+                            <div class="d-grid gap-2">
+                                <button 
+                                    class="btn btn-outline-success"
+                                    onclick="agregarAlCarrito({{ platillo.id }})" 
+                                    class="card-link">Agregar al carrito</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <br>
                 {% endfor %}
+                
+                <br>
             </div>
+            
+            <br>
         </div>
+        
         {% endfor %}
-    {% endfor %}
+        {% endfor %}
+        <br>
+        <br>
+        <br>
+        <br>
 
-    <!-- En caso de que se implemente paginación -->
-    <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-center">
-            <li class="page-item disabled">
-                <a class="page-link">Previous</a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-                <a class="page-link" href="#">Next</a>
-            </li>
-        </ul>
-    </nav>
 {% endblock %}
 
 
 {% block scripts %}
 <script>
-$(document).ready(function () {
-    console.log('Hola mundo');
-})
+
+
+
+function agregarAlCarrito(id) {
+    console.log(id);
+}
+
 </script>
 {% endblock %}

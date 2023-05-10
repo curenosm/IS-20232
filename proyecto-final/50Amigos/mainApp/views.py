@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.contrib.auth import get_user_model, authenticate, login
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse
 
 from .models import *
 from .forms import *
@@ -69,6 +70,7 @@ def votacion(request):
     Página donde se puede realizar la votación por el sabor de helado 
     que se servirá al final de la comida.
     """
+
     if request.method == 'POST':
         print(request)
 
@@ -90,8 +92,9 @@ def get_lista_helados(request):
     de entre los cuales se puede escoger
     """
     if request.method == 'GET':
-        helados = Platillo.objects.filter(string__icontains='helado')
-        return helados
+        helados = Platillo.objects.filter(nombre__icontains='helado')
+        print(helados)
+        return JsonResponse(list(helados), safe=False)
 
 
 @login_required
@@ -215,6 +218,8 @@ def carrito(request):
             orden.usuario = request.user
             orden.save()
             print(orden)
+        else:
+            orden = Orden.objects.filter(usuario=request.user, active=True).first()
         
         data = {orden: orden}
         return render(request, 'carrito.html', context=data)

@@ -85,7 +85,7 @@ class Orden(models.Model):
     id = models.AutoField(primary_key=True)
     usuario = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     fecha = models.DateTimeField(auto_now_add=True)
-    total = models.DecimalField(decimal_places=2, max_digits=100)
+    total = models.DecimalField(decimal_places=2, max_digits=100, null=True)
     comentarios = models.TextField(blank=True, max_length=500)
     active = models.BooleanField(default=True)
     helado_escogido = models.ForeignKey(Platillo, on_delete=models.SET_NULL, null=True)

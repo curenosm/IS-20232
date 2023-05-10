@@ -8,19 +8,6 @@
     <br>
     <br>
     <h1>Carrito</h1><hr>
-
-    Sobre nosotros {% lorem 1 b random %}   
-    {% lorem 1 b random %}   
-
-    <br>
-    <br>
-    {% lorem 1 b random %}   
-
-    <br>
-    <br>
-    {% lorem 1 b random %}   
-
-    <br>
     <br>
     <h1>Historial de ordenes</h1>
     <hr>
@@ -36,18 +23,14 @@
         </tr>
       </thead>
       <tbody>
+        {% for pedido in orden.pedidos %}
         <tr>
-          <th scope="row">1</th>
-          <td>Pollo asado</td>
-          <td>$ 100.00 </td>
-          <td>2</td>
+          <th scope="row">{{ pedido.platillo.id }}</th>
+          <td>{{ pedido.platillo.nombre }}</td>
+          <td{{ pedido.platillo.precio }}</td>
+          <td>{{ pedido.cantidad }}</td>
         </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Pollo kfc</td>
-          <td>$ 150.00 </td>
-          <td>1</td>
-        </tr>
+        {% endfor %}
       </tbody>
     </table>
     <br>
