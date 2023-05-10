@@ -4,7 +4,9 @@ from django.contrib import messages
 from django.contrib.auth import get_user_model, authenticate, login
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth.decorators import login_required
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
+from django.core.mail import send_mail
+from django.contrib import messages #import messages
 
 from .models import *
 from .forms import *
@@ -144,6 +146,12 @@ def inicio_comensal(request):
         # Carga los anuncios de terceros que quieran aparecer en el sitio web
         "anuncios": Anuncio.objects.filter(active=True)
     }
+
+    messages.debug(request, '%s SQL statements were executed.')
+    messages.info(request, 'Three credits remain in your account.')
+    messages.success(request, 'Profile details updated.')
+    messages.warning(request, 'Your account expires in three days.')
+    messages.error(request, 'Document deleted.')
 
     return render(request, 'inicio.html', context=data)
 
