@@ -13,23 +13,23 @@ User = get_user_model()
 logger = logging.getLogger(__name__)
 
 # Password de los comensales (mesa1, mesa2, mesa3): restaurante123
+
+def get_current_orden(user):
+    """
+    Función que obtiene la orden actual para el usuario indicado
+    """
+    orden = Orden.objects.filter(usuario=user, active=True) \
+        .order_by('-fecha') \
+        .first()
+
+    return orden
+
+
 def index(request):
+    """
+    Pagina de inicio 
+    """
     return render(request, 'index.html')
-
-
-def contacto(request):
-    if request.method == 'GET':
-        return render(request, 'contacto.html')
-    elif request.method == 'POST':
-        # Se envío el formulario de suscripción a nuestras noticas
-        pass
-
-
-def votacion(request):
-    if request.method == 'POST':
-        print(request)
-    elif request.method == 'GET':
-        return render(request, 'votacion.html')
 
 
 def registro(request):
@@ -50,9 +50,79 @@ def registro(request):
     return render(request, 'registration/registration.html', data)
 
 
+def contacto(request):
+    """
+    Página de contacto, muestra un formulario para suscribirse
+    a nuestras noticias via email.
+    """
+
+    if request.method == 'GET':
+        return render(request, 'contacto.html')
+    elif request.method == 'POST':
+        # Se envío el formulario de suscripción a nuestras noticas
+        pass
+
+
+@login_required
+def votacion(request):
+    """
+    Página donde se puede realizar la votación por el sabor de helado 
+    que se servirá al final de la comida.
+    """
+    if request.method == 'POST':
+        print(request)
+
+        # Obten el resultado de la votacion y asigna el sabor de helado de la orden activa
+        orden = get_current_orden()
+        orden.helado = Platillo.objects.filter(id=request.data['helado'])
+        orden.save()
+
+        return render(request, 'votacion.html', context={orden: orden})
+
+    elif request.method == 'GET':
+        return render(request, 'votacion.html')
+
+
+@login_required
+def get_lista_helados(request):
+    if request.method == 'GET':
+        helados = Platillo.objects.filter(string__icontains='helado')
+        return helados
+
+
+@login_required
+def agregar_pedido_a_orden(request):
+    if request.method == 'POST':
+        print(request)
+
+        # Todo lo que esté en el carrito actualmente va a pasar a una orden
+        # que se irá a la cocina para ser preparada
+        pedido = Pedido()
+
+        return render(request, 'carrito.html')
+
+
+@login_required
+def solicitar_cuenta(request):
+    if request.method == 'GET':
+        return render(request, 'resumen-ordenes.html')
+    elif request.method == 'POST':
+        # TODO: Cierra la cuenta actual, genera el ticket y muestra el resumen
+        # de la cuenta, incluyendo IVA etc.
+        return render(request, 'resumen-ordenes.html')
+
+
 @login_required
 def inicio_comensal(request):
-    return render(request, 'inicio.html')
+    
+    data = {
+        # Carga en el contexto las promociones actuales del restaurante
+        "promociones": Promocion.objects.filter(active = True),
+        # Carga los anuncios de terceros que quieran aparecer en el sitio web
+        "anuncios": Anuncio.objects.filter(active=True)
+    }
+
+    return render(request, 'inicio.html', context=data)
 
 
 @login_required
@@ -113,12 +183,28 @@ def menu(request):
 def carrito(request):
 
     if request.method == 'GET':
-        return render(request, 'carrito.html')
+        if len(Orden.objects.filter(usuario=request.user, active=True)) == 0:
+            orden = Orden()
+            orden.usuario = request.user
+            orden.save()
+            print(orden)
+        
+        data = {orden: orden}
+        return render(request, 'carrito.html', context=data)
     elif request.method == 'POST':
 
-        # Se esta haciendo una inserción de orden en el carrito
+        # TODO: Cierra la cuenta actual, genera el ticket y muestra el resumen
+        # de la cuenta, incluyendo IVA etc.
 
-        
+        orden = get_current_orden(request.user)
 
-        return 
+        return render(request, 'resumen-ordenes.html', context={orden: orden})
+    elif request.method == 'PUT':
+        # TODO: Estamos agregando un pedido a la orden (cuenta)
+        # hay que obtenerlo del cuerpo de la peticion y cuardarlo asociarlo 
+        # a la orden actual, para despues guardarlo
+
+        orden = get_current_orden(request.user)
+
+        return render(request, 'resumen-ordenes.html', context={orden: orden})
 

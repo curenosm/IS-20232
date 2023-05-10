@@ -29,23 +29,23 @@ class TestViews(TestCase):
     def setUp(self):
         self.factory = APIRequestFactory()
         self.client = APIClient()
-        self.admin_password = 'qwerty123'
+        self.admin_password = 'admin'
         self.admin = User.objects.create_user(username='admin', password=self.admin_password)
 
     def test_login_and_logout_views(self):
-        url = reverse('login_url')
+        url = reverse('login')
         data = {
             "username": self.admin.username,
             "password": self.admin_password
         }
         response = self.client.post(url, data)
         assert response.status_code == 200
-        url = reverse('logout_url')
+        url = reverse('logout')
         response = self.client.get(url)
         assert response.status_code == 200
 
     def test_logout_fails_if_not_logged(self):
-        url = reverse('logout_url')
+        url = reverse('logout')
         response = self.client.get(url)
         assert response.status_code == 400
 

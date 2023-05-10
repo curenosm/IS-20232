@@ -3,38 +3,61 @@
 {% block title %} Tus órdenes {% endblock %}
 
 {% block content %}
-    <div class="container">
-        
-        <br>
-        <br>
-        <h1>Carrito</h1><hr>
+  <div class="container">
+    
+    <br>
+    <br>
+    <h1>Carrito</h1><hr>
 
-        Sobre nosotros {% lorem 1 b random %}   
-        {% lorem 1 b random %}   
+    Sobre nosotros {% lorem 1 b random %}   
+    {% lorem 1 b random %}   
 
-        <br>
-        <br>
-        {% lorem 1 b random %}   
+    <br>
+    <br>
+    {% lorem 1 b random %}   
 
-        <br>
-        <br>
-        {% lorem 1 b random %}   
+    <br>
+    <br>
+    {% lorem 1 b random %}   
 
-        <br>
-        <br>
-        <h1>Historial de ordenes</h1>
-        <hr>
-        {% lorem 1 b random %}   
-
-        <br>
-        <br>
-        {% lorem 1 b random %}   
-        
-        <br>
-        <br>
-        <br>
-        <br>
-    </div>
+    <br>
+    <br>
+    <h1>Historial de ordenes</h1>
+    <hr>
+    <br>
+    <br> 
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Producto</th>
+          <th scope="col">Precio</th>
+          <th scope="col">Cantidad</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Pollo asado</td>
+          <td>$ 100.00 </td>
+          <td>2</td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>Pollo kfc</td>
+          <td>$ 150.00 </td>
+          <td>1</td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <form method="POST" action="{% url 'mainApp:carrito' %}">
+      <input type="submit" class="btn btn-primary" value="Solicitar cuenta"/>
+    </form>
+    <br>
+    <br>
+    <br>
+  </div>
 {% endblock %}
 
 {% block scripts %}

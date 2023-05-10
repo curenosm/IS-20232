@@ -10,13 +10,13 @@ class TestUrls(TestCase):
         pass
 
     def test_login_url(self):
-        url = reverse('login_url')
+        url = reverse('login')
         res = resolve(url)
 
         assert res.func.__name__ == login_view.__name__
 
     def test_logout_url(self):
-        url = reverse('logout_url')
+        url = reverse('logout')
         res = resolve(url)
 
         assert res.func.__name__ == logout_view.__name__

@@ -47,3 +47,28 @@
 
     </div>
 {% endblock %}
+
+
+{% block scripts %}
+<script>
+let helados = [];
+let votos = {};
+
+
+$(document).ready(function () {
+    $.get({% url 'lista-helados' %}, {
+        method: 'GET',
+        error: function (err) {
+            console.log(err);
+        }
+        success: function(res) {
+            console.log(res);
+        }
+    })
+})
+
+function addComensal(nombre, helado) {
+    votos.push([nombre, ])
+}
+</script>
+{% endblock %}

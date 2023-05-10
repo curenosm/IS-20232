@@ -6,7 +6,6 @@ from django.db import models
 
 class User(AbstractUser):
     email = models.EmailField(unique=True, null=False, blank=False)
-
     class Meta:
         verbose_name = 'User'
         verbose_name_plural = 'Users'
@@ -62,6 +61,8 @@ class Orden(models.Model):
     fecha = models.DateTimeField(auto_now_add=True)
     total = models.DecimalField(decimal_places=2, max_digits=100)
     comentarios = models.TextField(blank=True, max_length=500)
+    active = models.BooleanField(default=True)
+    helado_escogido = models.ForeignKey(Platillo, on_delete=models.SET_NULL, null=True)
 
     class Meta:
         verbose_name = 'Orden'
@@ -80,3 +81,43 @@ class Pedido(models.Model):
 
     def __str__(self):
         return f'Id: {self.id}, Orden: {self.orden}, Platillo: {self.platillo}'
+
+
+class Promocion(models.Model):
+    id = models.AutoField(primary_key=True)
+    codigo = models.UUIDField(unique=True, auto_created=True)
+    platillo = models.ForeignKey(Platillo, on_delete=models.CASCADE, null=False)
+    imagen = models.TextField(max_length=500, null=False, blank=False)
+    valido_hasta = models.DateTimeField(auto_now_add=False)
+    active = models.BooleanField(default=True, null=False)
+
+    class Meta:
+        verbose_name = 'Promocion'
+        verbose_name_plural = 'Promociones'
+
+    def __str__(self):
+        return f'Id: {self.id}, Platillo: {self.platillo}, Expiracion: {self.valido_hasta}'
+
+
+class Cupon(models.Model):
+    id = models.AutoField(primary_key=True)
+    codigo = models.UUIDField(unique=True, auto_created=True)
+    promocion = models.ForeignKey(Promocion, on_delete=models.CASCADE, null=False)
+
+    class Meta:
+        verbose_name = 'Cupon'
+        verbose_name_plural = 'Cupones'
+    
+    def __str__(self):
+        return f'Id: {self.id}, Codigo: {self.codigo}, Promocion: {self.promocion.id}'
+
+
+class Anuncio(models.Model):
+    id = models.AutoField(primary_key=True)
+    nombre = models.TextField(max_length=200, null=False, blank=False)
+    anunciante = models.TextField(max_length=200, null=False, blank=False)
+    valido_hasta = models.DateTimeField(auto_now_add=False)
+    active = models.BooleanField(default=True, null=False)
+
+    def __str__(self):
+        return f'Id: {self.id}, Anunciante: {self.id}, Nombre: {self.nombre}'
