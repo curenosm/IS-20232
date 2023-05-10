@@ -85,6 +85,10 @@ def votacion(request):
 
 @login_required
 def get_lista_helados(request):
+    """
+    Funcion que nos sirve para mostrar todos los sabores de helado disponibles
+    de entre los cuales se puede escoger
+    """
     if request.method == 'GET':
         helados = Platillo.objects.filter(string__icontains='helado')
         return helados
@@ -92,6 +96,11 @@ def get_lista_helados(request):
 
 @login_required
 def agregar_pedido_a_orden(request):
+    """
+    Funcion que obtiene la orden actual del usuario, para posteriormente 
+    agregar el pedido a la misma
+    """
+
     if request.method == 'POST':
         print(request)
 
@@ -104,6 +113,11 @@ def agregar_pedido_a_orden(request):
 
 @login_required
 def solicitar_cuenta(request):
+    """
+    Funcion que cierra la orden actual, obtiene todos los pedidos asociados
+    a la misma durante la merienda y calcula el total a pagar.
+    """
+
     if request.method == 'GET':
         return render(request, 'resumen-ordenes.html')
     elif request.method == 'POST':
@@ -114,6 +128,12 @@ def solicitar_cuenta(request):
 
 @login_required
 def inicio_comensal(request):
+    """
+    Vista que maneja el template que se muestra una vez iniciada la sesión,
+    el inicio mostrará un carrusel de imagenes con promociones actuales
+    que se tengan en exhibición. Y otro carrusel para mostrar los anuncios
+    pagados por terceros para ser exhibidos en las tabletas. 
+    """
     
     data = {
         # Carga en el contexto las promociones actuales del restaurante
@@ -127,6 +147,9 @@ def inicio_comensal(request):
 
 @login_required
 def menu(request):
+    """
+    Devuelve el template con los platillos disponibles en el menú
+    """
 
     data = {
         'categorias': [
@@ -181,6 +204,10 @@ def menu(request):
 
 @login_required
 def carrito(request):
+    """
+    Vista que se encarga de manejar los procesos relacionados al carrito
+    de compras: ordenes, pedidos, total.
+    """
 
     if request.method == 'GET':
         if len(Orden.objects.filter(usuario=request.user, active=True)) == 0:

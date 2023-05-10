@@ -5,6 +5,10 @@ from django.db import models
 
 
 class User(AbstractUser):
+    """
+    Modelo personalizado para los usuarios de 50Amigos.
+    """
+
     email = models.EmailField(unique=True, null=False, blank=False)
     class Meta:
         verbose_name = 'User'
@@ -15,6 +19,10 @@ class User(AbstractUser):
 
 
 class Categoria(models.Model):
+    """
+    Modelo que representa una categoría en el menu del restaurante.
+    """
+
     id = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=100)
 
@@ -23,6 +31,11 @@ class Categoria(models.Model):
 
 
 class Subcategoria(models.Model):
+    """
+    Modelo que representa un tipo de platillo dentro de una categoria. P.e.
+    Una subcategoria de la categoria "Antojitos" es "Vegetarianos"
+    """
+
     id = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=100)
     categoria = models.ForeignKey(
@@ -33,6 +46,10 @@ class Subcategoria(models.Model):
 
 
 class Platillo(models.Model):
+    """
+    Modelo que representa un producto disponible en el menú.
+    """
+
     id = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=100)
     imagen = models.CharField(max_length=1000)
@@ -47,6 +64,10 @@ class Platillo(models.Model):
 
 
 class Role(models.Model):
+    """
+    Modelo creado para manejar permisos de los usuarios
+    """
+
     id = models.AutoField(primary_key=True)
     usuario = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     grupo = models.ForeignKey(Group, on_delete=models.SET_NULL, null=True)
@@ -56,6 +77,11 @@ class Role(models.Model):
 
 
 class Orden(models.Model):
+    """
+    Modelo que representa la cuenta del comensal, la misma cuenta con una asociacion
+    para que cada orden pueda estar vinculada a varios pedidos.
+    """
+
     id = models.AutoField(primary_key=True)
     usuario = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     fecha = models.DateTimeField(auto_now_add=True)
@@ -73,6 +99,12 @@ class Orden(models.Model):
 
 
 class Pedido(models.Model):
+    """
+    Modelo que representa un pedido de la orden indicada. Un pedido es una
+    abstraccion para poder indicar la cantidad de platillos de un mismo
+    tipo a pedir para la cuenta.
+    """
+
     id = models.AutoField(primary_key=True)
     orden = models.ForeignKey(Orden, on_delete=models.SET_NULL, null=True)
     platillo = models.ForeignKey(
@@ -84,6 +116,11 @@ class Pedido(models.Model):
 
 
 class Promocion(models.Model):
+    """
+    Modelo que representa una promoción que se puede aplicar a un platillo
+    determinado en la cuenta.
+    """
+
     id = models.AutoField(primary_key=True)
     codigo = models.UUIDField(unique=True, auto_created=True)
     platillo = models.ForeignKey(Platillo, on_delete=models.CASCADE, null=False)
@@ -100,6 +137,10 @@ class Promocion(models.Model):
 
 
 class Cupon(models.Model):
+    """
+    Modelo que facilita el manejo de las promociones dentro del restaurante.
+    """
+
     id = models.AutoField(primary_key=True)
     codigo = models.UUIDField(unique=True, auto_created=True)
     promocion = models.ForeignKey(Promocion, on_delete=models.CASCADE, null=False)
@@ -113,6 +154,11 @@ class Cupon(models.Model):
 
 
 class Anuncio(models.Model):
+    """
+    Anuncio a ser mostrado en el feed principal una vez que el responsable
+    de tabletas inicia la sesión del comensal.
+    """
+
     id = models.AutoField(primary_key=True)
     nombre = models.TextField(max_length=200, null=False, blank=False)
     anunciante = models.TextField(max_length=200, null=False, blank=False)
