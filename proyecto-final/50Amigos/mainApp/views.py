@@ -6,7 +6,7 @@ from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse, HttpResponse, QueryDict
 from django.core.mail import send_mail
-from django.contrib import messages #import messages
+from django.contrib import messages
 
 from .models import *
 from .forms import *
@@ -36,18 +36,27 @@ def index(request):
 
 
 def registro(request):
+    """
+    Vista encargada de manejar el registro de nuevos usuarios
+    """
+
     data = {'form': CustomUserCreationForm()}
 
     if request.method == 'POST':
+        
         formulario = CustomUserCreationForm(data=request.POST)
+        
         if formulario.is_valid():
             usuario = formulario.save()
             usuario.save()
             user = authenticate(username=formulario.cleaned_data['username'],
                                 password=formulario.cleaned_data['password1'])
             login(request, user)
+
             messages.success(request, 'Registro exitoso, iniciar sesión')
-            return redirect(to="mainApp:inicio")
+
+            return redirect(to="login")
+        
         data['form'] = formulario
 
     return render(request, 'registration/registration.html', data)
@@ -59,11 +68,14 @@ def contacto(request):
     a nuestras noticias via email.
     """
 
-    if request.method == 'GET':
-        return render(request, 'contacto.html')
-    elif request.method == 'POST':
+    if request.method == 'POST':
         # Se envío el formulario de suscripción a nuestras noticas
+        
+        messages.info(request, 'The has suscrito exitosamente a nuestras noticicas.')
+
         pass
+    
+    return render(request, 'contacto.html')
 
 
 @login_required
@@ -81,9 +93,14 @@ def votacion(request):
         orden.helado = Platillo.objects.filter(id=request.POST.get('helado', 1))
         orden.save()
 
+        messages.success(request, 'La votación concluyó exitosamente!')
+
         return render(request, 'votacion.html', context={orden: orden})
 
     elif request.method == 'GET':
+        
+        messages.warning(request, 'Recuerda que en caso de empate elegiremos nosotros.')
+
         return render(request, 'votacion.html')
 
 
@@ -95,7 +112,6 @@ def get_lista_helados(request):
     """
     if request.method == 'GET':
         helados = Platillo.objects.filter(nombre__icontains='helado')
-        print(helados)
         return JsonResponse(list(helados), safe=False)
 
 
@@ -116,10 +132,6 @@ def inicio_comensal(request):
     }
 
     messages.info(request, 'Bienvenido a 50Amigos, no olvide hacer la votación por el sabor de helado')
-    messages.debug(request, '%s SQL statements were executed.')
-    messages.success(request, 'Profile details updated.')
-    messages.warning(request, 'Your account expires in three days.')
-    messages.error(request, 'Document deleted.')
 
     return render(request, 'inicio.html', context=data)
 
@@ -157,7 +169,6 @@ def carrito(request):
         print(orden.pedidos.all())
         return render(request, 'carrito.html', context=data)
     elif request.method == 'POST':
-        print('Se hizo un post')
         # TODO: Cierra la cuenta actual, genera el ticket y muestra el resumen
         # de la cuenta, incluyendo IVA etc.
 
@@ -165,7 +176,6 @@ def carrito(request):
 
         orden.active = False
         messages.success(request, 'La orden fue cerrada, la cuenta puede ser consultada')
-
 
         return render(request, 'carrito.html', context={orden: orden})
     elif request.method == 'PUT':
@@ -175,7 +185,6 @@ def carrito(request):
 
         orden = get_current_orden(request.user)
 
-        print('Se hizo un put')
         data = QueryDict(request.body)
         pedido = Pedido()
         pedido.platillo = Platillo.objects.get(id=data.get('platillo'))

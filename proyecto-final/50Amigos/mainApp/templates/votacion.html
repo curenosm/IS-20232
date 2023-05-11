@@ -16,7 +16,7 @@
         </nav>
 
         <br>
-        <h1>Helado</h1>
+        <h1 class="animate__animated animate__fadeInLeft">Helado</h1>
         <hr>
         <h2>Inicia la votación para el sabor de helado!</h2>
         <br>
@@ -24,13 +24,20 @@
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
             Votar!
         </button>
+        <br>
+        <br>
+
+        
+        <div>
+            <canvas id="myChart"></canvas>
+        </div>
 
         <!-- Vertically centered scrollable modal -->
         <div class="modal" tabindex="-1" id="exampleModal">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="titulo_modal">Persona 1</h5>
+                        <h5 class="modal-title animate__animated animate__headShake" id="titulo_modal">Persona 1</h5>
                         <button 
                             type="button" 
                             class="btn-close" 
@@ -38,7 +45,12 @@
                             aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <img src="https://img.freepik.com/vector-gratis/coleccion-helados-planos_23-2148982427.jpg?w=2000" alt="helado" width="100%">
+                        <img
+                            id="helado_img"
+                            class="animate__animated animate__headShake text-center" 
+                            src="https://img.freepik.com/vector-gratis/coleccion-helados-planos_23-2148982427.jpg?w=2000" 
+                            alt="helado" 
+                            width="100%">
                         <p>¿Qué helado vota por servir al final?</p>
                         <select class="form-select" id ="helado_select">
                             <option value="1">Chocolate</option>
@@ -46,7 +58,7 @@
                             <option value="3">Fresa</option>
                             <option value="4">Limón</option>
                         </select>
-                    </div>
+                    </&div>
                     <div class="modal-footer">
                         <button 
                             onclick="finalizarVotacion()"
@@ -77,18 +89,72 @@
 
 
 {% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
+(function () {
+    'use strict';
 let helados = [1, 2, 3, 4];
 let votos = [];
 let curVotante = 1;
 
+const ctx = document.getElementById('myChart');
+
+new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Chocolate', 'Vainilla', 'Fresa', 'Limón'],
+        datasets: [{
+            label: '# de votos',
+            data: [3, 2, 0, 1],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+                'rgba(255, 205, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+            ],
+            borderColor: [
+                'rgb(255, 99, 132)',
+                'rgb(255, 159, 64)',
+                'rgb(255, 205, 86)',
+                'rgb(75, 192, 192)'
+            ],
+            borderWidth: 2
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+$(document).ready(function () {
+    $('#titulo_modal').html('Persona ' + curVotante);
+    /*
+    $.ajax("{% url 'mainApp:lista_helados' %}", {
+        method: 'GET',
+        success: function(res) {
+            helados = res;
+        },
+        error: function (err) {
+            console.error(err);
+        }
+    });
+    */
+})
+
 function agregarParticipante() {
 
     let votoActual = $('#helado_select').val();
+    $('#helado_select').toggleClass('animate__headShake');
     console.log(votoActual);
     votos.push(votoActual)
     console.log($('#helado_select'));
     $('#titulo_modal').html("Persona " + (++curVotante));
+    $('#titulo_modal').toggleClass('animate__tada');
+    $('#helado_img').toggleClass('animate__tada');
 }
 
 function finalizarVotacion() {
@@ -137,21 +203,10 @@ function finalizarVotacion() {
     });
 }
 
-$(document).ready(function () {
-    $('#titulo_modal').html('Persona ' + curVotante);
-    $.ajax("{% url 'mainApp:lista_helados' %}", {
-        method: 'GET',
-        success: function(res) {
-            helados = res;
-        },
-        error: function (err) {
-            console.error(err);
-        }
-    });
-})
-
 function addComensal(nombre, helado) {
     votos.push(helado);
 }
+
+} ());
 </script>
 {% endblock %}

@@ -121,7 +121,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = 'mainApp:inicio'
 LOGOUT_REDIRECT_URL = 'mainApp:index'
 
 ################################################################
