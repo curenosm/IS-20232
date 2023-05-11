@@ -8,25 +8,30 @@
 <div class = "container"> 
     <br>
     <br>
-    <br>
     <div class="row">
         <div class="col-12 col-md-6 offset-md-3">
 
             <div class="card">
                 <div class="card-body">
-                    <h2>Ingresa tus datos</h2>
+                    <h3>Ingresa tus datos</h3>
                     <hr>
                     <form action="" method="post">
 
                         {% csrf_token %}
                         {{form | crispy}}
                         <br>
-                        <a href="{% url 'mainApp:inicio' %}">¿Olvidaste la contraseña?</a>
+                        <small>
+                            <a href="{% url 'mainApp:inicio' %}">¿Olvidaste la contraseña?</a>
+                        </small>
                         <br>
+                        <small>
                         <a href="{% url 'admin:index' %}">¿Eres un administrador?</a>
+                        </small>
                         <br>
                         <br>
-                        <input type="submit" name="Ingresar" class="btn btn-outline-success float-right" >
+                        <div class="d-grid gap-2">
+                        <input type="submit" name="Ingresar" class="btn btn-outline-success float-end" >
+                        </div>
                     </form>
                 </div>
             </div>

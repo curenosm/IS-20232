@@ -8,8 +8,8 @@ class User(AbstractUser):
     """
     Modelo personalizado para los usuarios de 50Amigos.
     """
-
     email = models.EmailField(unique=True, null=False, blank=False)
+
     class Meta:
         verbose_name = 'User'
         verbose_name_plural = 'Users'
@@ -39,7 +39,7 @@ class Subcategoria(models.Model):
     id = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=100)
     categoria = models.ForeignKey(
-        Categoria, on_delete=models.SET_NULL, null=True)
+        Categoria, on_delete=models.SET_NULL, null=True, related_name='subcategorias')
 
     def __str__(self):
         return f'Id: {self.id}, Nombre: {self.nombre}, Categoria: {self.categoria}'
@@ -54,9 +54,9 @@ class Platillo(models.Model):
     nombre = models.CharField(max_length=100)
     imagen = models.CharField(max_length=1000)
     categoria = models.ForeignKey(
-        Categoria, on_delete=models.SET_NULL, null=True)
+        Categoria, on_delete=models.SET_NULL, null=True, related_name='platillos')
     subcategoria = models.ForeignKey(
-        Subcategoria, on_delete=models.SET_NULL, null=True)
+        Subcategoria, on_delete=models.SET_NULL, null=True, related_name='platillos')
     precio = models.DecimalField(max_digits=10, decimal_places=2)
 
     def __str__(self):
@@ -83,7 +83,7 @@ class Orden(models.Model):
     """
 
     id = models.AutoField(primary_key=True)
-    usuario = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    usuario = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name='orders')
     fecha = models.DateTimeField(auto_now_add=True)
     total = models.DecimalField(decimal_places=2, max_digits=100, null=True)
     comentarios = models.TextField(blank=True, max_length=500)
@@ -106,9 +106,9 @@ class Pedido(models.Model):
     """
 
     id = models.AutoField(primary_key=True)
-    orden = models.ForeignKey(Orden, on_delete=models.SET_NULL, null=True)
+    orden = models.ForeignKey(Orden, on_delete=models.SET_NULL, null=True, related_name='pedidos')
     platillo = models.ForeignKey(
-        Platillo, on_delete=models.SET_NULL, null=True)
+        Platillo, on_delete=models.SET_NULL, null=True, related_name='pedidos')
     cantidad = models.IntegerField(default=1)
 
     def __str__(self):
@@ -143,7 +143,7 @@ class Cupon(models.Model):
 
     id = models.AutoField(primary_key=True)
     codigo = models.UUIDField(unique=True, auto_created=True)
-    promocion = models.ForeignKey(Promocion, on_delete=models.CASCADE, null=False)
+    promocion = models.ForeignKey(Promocion, on_delete=models.CASCADE, null=False, related_name='cupones')
 
     class Meta:
         verbose_name = 'Cupon'

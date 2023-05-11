@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.contrib.auth import get_user_model, authenticate, login
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth.decorators import login_required
-from django.http import JsonResponse, HttpResponse
+from django.http import JsonResponse, HttpResponse, QueryDict
 from django.core.mail import send_mail
 from django.contrib import messages #import messages
 
@@ -77,8 +77,8 @@ def votacion(request):
         print(request)
 
         # Obten el resultado de la votacion y asigna el sabor de helado de la orden activa
-        orden = get_current_orden()
-        orden.helado = Platillo.objects.filter(id=request.data['helado'])
+        orden = get_current_orden(request.user)
+        orden.helado = Platillo.objects.filter(id=request.POST.get('helado', 1))
         orden.save()
 
         return render(request, 'votacion.html', context={orden: orden})
@@ -100,38 +100,6 @@ def get_lista_helados(request):
 
 
 @login_required
-def agregar_pedido_a_orden(request):
-    """
-    Funcion que obtiene la orden actual del usuario, para posteriormente 
-    agregar el pedido a la misma
-    """
-
-    if request.method == 'POST':
-        print(request)
-
-        # Todo lo que esté en el carrito actualmente va a pasar a una orden
-        # que se irá a la cocina para ser preparada
-        pedido = Pedido()
-
-        return render(request, 'carrito.html')
-
-
-@login_required
-def solicitar_cuenta(request):
-    """
-    Funcion que cierra la orden actual, obtiene todos los pedidos asociados
-    a la misma durante la merienda y calcula el total a pagar.
-    """
-
-    if request.method == 'GET':
-        return render(request, 'resumen-ordenes.html')
-    elif request.method == 'POST':
-        # TODO: Cierra la cuenta actual, genera el ticket y muestra el resumen
-        # de la cuenta, incluyendo IVA etc.
-        return render(request, 'resumen-ordenes.html')
-
-
-@login_required
 def inicio_comensal(request):
     """
     Vista que maneja el template que se muestra una vez iniciada la sesión,
@@ -147,8 +115,8 @@ def inicio_comensal(request):
         "anuncios": Anuncio.objects.filter(active=True)
     }
 
+    messages.info(request, 'Bienvenido a 50Amigos, no olvide hacer la votación por el sabor de helado')
     messages.debug(request, '%s SQL statements were executed.')
-    messages.info(request, 'Three credits remain in your account.')
     messages.success(request, 'Profile details updated.')
     messages.warning(request, 'Your account expires in three days.')
     messages.error(request, 'Document deleted.')
@@ -162,55 +130,13 @@ def menu(request):
     Devuelve el template con los platillos disponibles en el menú
     """
 
-    data = {
-        'categorias': [
-            {
-                "nombre":"Platos fuertes",
-                "subcategorias" : [
-                    {
-                        "nombre": "Pollos",
-                        "platillos": [
-                            {   
-                                "id": 1,
-                                "nombre": "Pollo kfc",
-                                "imagen": "https://recetinas.com/wp-content/uploads/2018/04/pollo-kentucky.jpg",
-                                "descripcion": "Descripcion generica 1",
-                                "ingredientes": [
-                                    {
-                                        "id": 1,
-                                        "nombre": "queso"
-                                    },
-                                    {
-                                        "id": 2,
-                                        "nombre": "tomate"
-                                    }
-                                ]
-                            },
-                            {
-                                "id": 2,
-                                "nombre": "Pollo adobado",
-                                "imagen": "https://storage.googleapis.com/avena-recipes/2019/10/1571782331514.jpeg",
-                                "descripcion": "Pollo azado y sazonado con salsa picante",
-                                "ingredientes": [
-                                    {
-                                        "id": 1,
-                                        "nombre": "pollo"
-                                    },
-                                    {
-                                        "id": 2,
-                                        "nombre": "salsa ultra picante"
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ]
-            }
-        ]
-    }
-
     if request.method == 'GET':
-        return render(request, 'menu.html', context=data)
+
+        categorias = Categoria.objects.all()
+
+        return render(request, 'menu.html', context={
+            "categorias": categorias
+        })
 
 
 @login_required
@@ -221,24 +147,27 @@ def carrito(request):
     """
 
     if request.method == 'GET':
-        if len(Orden.objects.filter(usuario=request.user, active=True)) == 0:
-            orden = Orden()
-            orden.usuario = request.user
-            orden.save()
-            print(orden)
-        else:
-            orden = Orden.objects.filter(usuario=request.user, active=True).first()
-        
-        data = {orden: orden}
+        orden = get_current_orden(request.user)
+        data = {
+            "orden": orden,
+            "carrito": orden
+        }
+        print('Imprimiendo orden actual')
+        print(orden)
+        print(orden.pedidos.all())
         return render(request, 'carrito.html', context=data)
     elif request.method == 'POST':
-
+        print('Se hizo un post')
         # TODO: Cierra la cuenta actual, genera el ticket y muestra el resumen
         # de la cuenta, incluyendo IVA etc.
 
         orden = get_current_orden(request.user)
 
-        return render(request, 'resumen-ordenes.html', context={orden: orden})
+        orden.active = False
+        messages.success(request, 'La orden fue cerrada, la cuenta puede ser consultada')
+
+
+        return render(request, 'carrito.html', context={orden: orden})
     elif request.method == 'PUT':
         # TODO: Estamos agregando un pedido a la orden (cuenta)
         # hay que obtenerlo del cuerpo de la peticion y cuardarlo asociarlo 
@@ -246,5 +175,15 @@ def carrito(request):
 
         orden = get_current_orden(request.user)
 
-        return render(request, 'resumen-ordenes.html', context={orden: orden})
+        print('Se hizo un put')
+        data = QueryDict(request.body)
+        pedido = Pedido()
+        pedido.platillo = Platillo.objects.get(id=data.get('platillo'))
+        pedido.cantidad = data.get('cantidad')
+        pedido.orden = orden
+        pedido.save()
+        print(pedido)
+
+        messages.success(request, 'El pedido fue agregado a tu orden')
+        return HttpResponse('Success')
 

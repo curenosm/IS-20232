@@ -35,6 +35,7 @@ class Command(BaseCommand):
         pass
 
     def handle(self, *args, **kwargs):
+        settings.configure()
         # name = kwargs.get('name', '123')
         output_dir = os.path.join(settings.BASE_DIR, 'fixtures')
         self.stdout.write(

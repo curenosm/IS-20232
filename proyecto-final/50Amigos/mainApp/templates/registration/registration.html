@@ -7,24 +7,28 @@
 	<div class = "container"> 
 		<br>
 		<br>
-		<br>
 		<div class="row">
 			<div class="col-12 col-md-6 offset-md-3">
 				<div class="card">
 					<div class="card-body">
-						<h2>Registro de usuario</h2>
+						<h3>Ingresa tus datos</h3>
 						<hr>
 
 						<form action="" method="post">
 
+							<br>
 							{% csrf_token %}
 							{{form | crispy}}
 							<br>
-							¿Ya tienes una cuenta? <a href="{% url 'login' %}">Inicia sesión</a>
+							<small>
+								¿Ya tienes una cuenta? <a href="{% url 'login' %}">Inicia sesión</a>
+							</small>
 							<br>
 							<br>
 							<br>
-							<input type="submit" value="Registrar" class="btn btn-success float-right">
+							<div class="d-grid gap-2">
+								<input type="submit" name="Registrar" class="btn btn-outline-success float-end" >
+							</div>
 						</form>
                         
 					</div>

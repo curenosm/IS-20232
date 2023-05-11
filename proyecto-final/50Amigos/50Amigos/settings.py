@@ -138,7 +138,10 @@ USE_TZ = True
 
 ################################################################
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+#STATIC_ROOT = 
+
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
 STATIC_URL = "/static/"
 
 MEDIA_URL = "/media/"
@@ -155,7 +158,15 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # E.g: 'my_app.Model1'
 FIXTURE_MODELS = [
     'mainApp.User',
-    'app_that_does_not_exists.Model_that_neither',
+    'mainApp.Categoria',
+    'mainApp.Subcategoria',
+    'mainApp.Platillo',
+    'mainApp.Role',
+    'mainApp.Orden',
+    'mainApp.Pedido',
+    'mainApp.Promocion',
+    'mainApp.Cupon',
+    'mainApp.Anuncio',
 ]
 
 

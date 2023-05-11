@@ -6,13 +6,27 @@
   <div class="container">
     
     <br>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="{% url 'mainApp:inicio' %}">Inicio</a>
+          </li>
+        <li class="breadcrumb-item">
+          <a href="{% url 'mainApp:menu' %}">Menu</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">Carrito</li>
+      </ol>
+    </nav>
+
     <br>
-    <h1>Carrito</h1><hr>
-    <br>
-    <h1>Historial de ordenes</h1>
+    <h1>Carrito</h1>
     <hr>
+
     <br>
-    <br> 
+    Estos productos se encuentran actualmente en tu carrito, puedes editarlos
+    aún o removerlos antes de hacer el pedido apretando el botón "Hacer pedido".
+    <br>
+    <br>
     <table class="table table-striped">
       <thead>
         <tr>
@@ -20,33 +34,92 @@
           <th scope="col">Producto</th>
           <th scope="col">Precio</th>
           <th scope="col">Cantidad</th>
+          <th scope="col">
+            <i class="bi bi-dash"></i>
+          </th>
+          <th scope="col">
+            <i class="bi bi-plus"></i>
+          </th>
+          <th scope="col">Eliminar</th>
         </tr>
       </thead>
       <tbody>
-        {% for pedido in orden.pedidos %}
+        {% for pedido in carrito.all %}
         <tr>
           <th scope="row">{{ pedido.platillo.id }}</th>
           <td>{{ pedido.platillo.nombre }}</td>
-          <td{{ pedido.platillo.precio }}</td>
+          <td>{{ pedido.platillo.precio }}</td>
+          <td>{{ pedido.cantidad }}</td>
+          
+          <td>
+            <button type="button" class="btn btn-danger-outline">
+              <i class="bi bi-close"></i>
+            </button>
+          </td>
+          <td>
+            <button type="button" class="btn btn-danger-outline">
+              <i class="bi bi-close"></i>
+            </button>
+          </td>
+          <td>
+            <button type="button" class="btn btn-danger-outline">
+              <i class="bi bi-close"></i>
+            </button>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <br>
+    <form method="POST" action="{% url 'mainApp:carrito' %}" >
+      <button type="submit" class="btn btn-primary float-end">
+        <i class="bi bi-cart"></i> Hacer pedido
+      </button>
+    </form>
+    <br>
+    <br>
+    <br>
+    <h1>Historial de pedidos</h1>
+    <hr>
+    <br>
+    Estos son los pedidos que se han hecho durante su estadía en el restaurante,
+    las tarifas con impuestos se muestran al final. Se agradece su propina.
+    <br>
+    <br>
+
+    {% for pedido in orden.pedidos.all %}
+
+    {% endfor %}
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col"># Id</th>
+          <th scope="col">Producto</th>
+          <th scope="col">Precio</th>
+          <th scope="col">Cantidad</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for pedido in pedido.platillo.all %}
+        <tr>
+          <th scope="row">{{ pedido.platillo.id }}</th>
+          <td>{{ pedido.platillo.nombre }}</td>
+          <td>{{ pedido.platillo.precio }}</td>
           <td>{{ pedido.cantidad }}</td>
         </tr>
         {% endfor %}
       </tbody>
     </table>
     <br>
-    <form method="POST" action="{% url 'mainApp:carrito' %}">
-      <input type="submit" class="btn btn-primary" value="Solicitar cuenta"/>
+    <form method="POST" action="{% url 'mainApp:carrito' %}" >
+      <button type="submit" class="btn btn-success float-end">
+        <i class="bi bi-currency-dollar"></i> Solicitar cuenta
+      </button>
     </form>
     <br>
     <br>
     <br>
+    <br>
   </div>
-{% endblock %}
-
-{% block scripts %}
-<script>
-$(document).ready(function () {
-    console.log('Hola mundo');
-})
-</script>
 {% endblock %}

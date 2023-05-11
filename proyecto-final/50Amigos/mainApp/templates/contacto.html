@@ -4,15 +4,22 @@
 
 {% block content %}
     <div class="container">
+        
         <br>
+        <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+            <a href="{% url 'mainApp:inicio' %}">Inicio</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">Contacto</li>
+        </ol>
+        </nav>
+
         <br>
         <h1>Contacto</h1>
         <br>
         Toda nuestra información empresarial y de contacto estará listada muy pronto
         aquí!
-
-        {% lorem 200 b random %}
-
         <br>
         <br>
         <br>
