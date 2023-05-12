@@ -2,98 +2,98 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
-    <meta charset="UTF-8" />
-    
-    <title>{% block title %}Inicio{% endblock %}</title>
+  
+  <meta charset="UTF-8" />
+  
+  <title>{% block title %}Inicio{% endblock %}</title>
 
-    <meta charset="utf-8" />
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-    <meta name="description" content="" />
-    <meta name="author" content="" />
+  <meta charset="utf-8" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+  <meta name="description" content="" />
+  <meta name="author" content="" />
 
-    <link
-        rel="icon"
-        type="image/x-icon"
-        href="{% static 'assets/favicon.ico' %}"/>
+  <link
+    rel="icon"
+    type="image/x-icon"
+    href="{% static 'assets/favicon.ico' %}"/>
 
-    <!-- Core theme CSS (includes Bootstrap)-->
-    <link 
-        href="{% static 'css/bootstrap.min.css' %}"
-        rel="stylesheet">
-    
-    <!-- Bootstrap Icons -->
-    <link 
-        rel="stylesheet" 
-        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css" 
-        integrity="sha384-b6lVK+yci+bfDmaY1u0zE8YYJt0TZxLEAFyYSLHId4xoVvsrQu3INevFKo+Xir8e" 
-        crossorigin="anonymous">
+  <!-- Core theme CSS (includes Bootstrap)-->
+  <link 
+    href="{% static 'css/bootstrap.min.css' %}"
+    rel="stylesheet"/>
+  
+  <!-- Bootstrap Icons -->
+  <link 
+    rel="stylesheet" 
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css" 
+    integrity="sha384-b6lVK+yci+bfDmaY1u0zE8YYJt0TZxLEAFyYSLHId4xoVvsrQu3INevFKo+Xir8e" 
+    crossorigin="anonymous" />
 
-    <!-- Animate.CSS -->
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    
-        
-    <!-- ChartJS -->
-    <script 
-        src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.3.0/chart.js" 
-        integrity="sha512-L6yov5P1r9QnZX2ZRiq+XBLsm1GQ38zfSDJ6gy3pKmPCqkWvK2nz8Ojlju9q36+zOsMmMB+hYgGrJtJWo4Gy/w==" 
-        crossorigin="anonymous" 
-        referrerpolicy="no-referrer"></script>
-        
-    <!--link 
-        rel="stylesheet" 
-        href="{% static 'css/bootstrap-icons.css' %}"-->
+  <!-- Animate.CSS -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  
+      
+  <!-- ChartJS -->
+  <script 
+    src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.3.0/chart.js" 
+    integrity="sha512-L6yov5P1r9QnZX2ZRiq+XBLsm1GQ38zfSDJ6gy3pKmPCqkWvK2nz8Ojlju9q36+zOsMmMB+hYgGrJtJWo4Gy/w==" 
+    crossorigin="anonymous" 
+    referrerpolicy="no-referrer"></script>
+  
+  <!--link 
+    rel="stylesheet" 
+    href="{% static 'css/bootstrap-icons.css' %}"-->
 
-    {% block styles %}{% endblock %}
+  {% block styles %}{% endblock %}
 
 </head>
 <body class="container-fluid">
     
-    <!-- Django messages (Alertas de bootstrap) -->
-    {% for message in messages %}
-        <div class="container-fluid p-0">
-            <div class="alert {{ message.tags }} alert-dismissible fade show" 
-                role="alert">
-                {{ message }}
-                <button 
-                    type="button" 
-                    class="btn-close" 
-                    data-bs-dismiss="alert" 
-                    aria-label="Close"></button>
-            </div>
-        </div>
-    {% endfor %}
-
-    <!-- Barra de navegacion -->
-    {% include 'fragments/navbar.html' %}
-
-    <!-- Contenido -->
-    <div class="container" id="content">
-        {% block content %}{% endblock %}
+  <!-- Django messages (Alertas de bootstrap) -->
+  {% for message in messages %}
+    <div class="container-fluid p-0">
+      <div class="alert {{ message.tags }} alert-dismissible fade show" 
+        role="alert">
+        {{ message }}
+        <button 
+          type="button" 
+          class="btn-close" 
+          data-bs-dismiss="alert" 
+          aria-label="Close"></button>
+      </div>
     </div>
+  {% endfor %}
 
-    <!-- Footer-->
-    <footer class="py-5 bg-dark">
-        <div class="container px-4">
-        <p class="m-0 text-center text-white">
-            Copyright 50Amigos &copy; All rights reserved. 2023
-        </p>
-        </div>
-    </footer>
+  <!-- Barra de navegacion -->
+  {% include 'fragments/navbar.html' %}
 
-    <!-- JQuery -->
-    <script src="{% static 'js/jquery-3.6.4.js' %}"></script>
-    
-    <!--  CSRF Token -->
-    <script src="{% static 'js/csrf.js' %}" ></script>
+  <!-- Contenido -->
+  <div class="container" id="content">
+    {% block content %}{% endblock %}
+  </div>
 
-    <!-- Bootstrap core JS-->
-    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+  <!-- Footer-->
+  <footer class="py-5 bg-dark">
+    <div class="container px-4">
+      <p class="m-0 text-center text-white">
+        Copyright 50Amigos &copy; All rights reserved. 2023
+      </p>
+    </div>
+  </footer>
 
-    {% block scripts %}{% endblock %}
+  <!-- JQuery -->
+  <script src="{% static 'js/jquery-3.6.4.js' %}"></script>
+  
+  <!--  CSRF Token -->
+  <script src="{% static 'js/csrf.js' %}" ></script>
+
+  <!-- Bootstrap core JS-->
+  <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+
+  {% block scripts %}{% endblock %}
 
 </body>
 </html>

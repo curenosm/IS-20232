@@ -10,12 +10,14 @@ from django.contrib import messages
 
 from .models import *
 from .forms import *
+from .decorators import anonymous_required
 
 User = get_user_model()
 
 logger = logging.getLogger(__name__)
 
 # Password de los comensales (mesa1, mesa2, mesa3): restaurante123
+
 
 def get_current_orden(user):
     """
@@ -28,6 +30,7 @@ def get_current_orden(user):
     return orden
 
 
+@anonymous_required
 def index(request):
     """
     Pagina de inicio 
@@ -35,6 +38,7 @@ def index(request):
     return render(request, 'index.html')
 
 
+@anonymous_required
 def registro(request):
     """
     Vista encargada de manejar el registro de nuevos usuarios
@@ -43,9 +47,9 @@ def registro(request):
     data = {'form': CustomUserCreationForm()}
 
     if request.method == 'POST':
-        
+
         formulario = CustomUserCreationForm(data=request.POST)
-        
+
         if formulario.is_valid():
             usuario = formulario.save()
             usuario.save()
@@ -56,7 +60,7 @@ def registro(request):
             messages.success(request, 'Registro exitoso, iniciar sesión')
 
             return redirect(to="login")
-        
+
         data['form'] = formulario
 
     return render(request, 'registration/registration.html', data)
@@ -70,11 +74,12 @@ def contacto(request):
 
     if request.method == 'POST':
         # Se envío el formulario de suscripción a nuestras noticas
-        
-        messages.info(request, 'The has suscrito exitosamente a nuestras noticicas.')
+
+        messages.info(
+            request, 'The has suscrito exitosamente a nuestras noticicas.')
 
         pass
-    
+
     return render(request, 'contacto.html')
 
 
@@ -90,7 +95,8 @@ def votacion(request):
 
         # Obten el resultado de la votacion y asigna el sabor de helado de la orden activa
         orden = get_current_orden(request.user)
-        orden.helado = Platillo.objects.filter(id=request.POST.get('helado', 1))
+        orden.helado = Platillo.objects.filter(
+            id=request.POST.get('helado', 1))
         orden.save()
 
         messages.success(request, 'La votación concluyó exitosamente!')
@@ -98,8 +104,9 @@ def votacion(request):
         return render(request, 'votacion.html', context={orden: orden})
 
     elif request.method == 'GET':
-        
-        messages.warning(request, 'Recuerda que en caso de empate elegiremos nosotros.')
+
+        messages.warning(
+            request, 'Recuerda que en caso de empate elegiremos nosotros.')
 
         return render(request, 'votacion.html')
 
@@ -123,15 +130,16 @@ def inicio_comensal(request):
     que se tengan en exhibición. Y otro carrusel para mostrar los anuncios
     pagados por terceros para ser exhibidos en las tabletas. 
     """
-    
+
     data = {
         # Carga en el contexto las promociones actuales del restaurante
-        "promociones": Promocion.objects.filter(active = True),
+        "promociones": Promocion.objects.filter(active=True),
         # Carga los anuncios de terceros que quieran aparecer en el sitio web
         "anuncios": Anuncio.objects.filter(active=True)
     }
 
-    messages.info(request, 'Bienvenido a 50Amigos, no olvide hacer la votación por el sabor de helado')
+    messages.info(
+        request, 'Bienvenido a 50Amigos, no olvide hacer la votación por el sabor de helado')
 
     return render(request, 'inicio.html', context=data)
 
@@ -175,12 +183,13 @@ def carrito(request):
         orden = get_current_orden(request.user)
 
         orden.active = False
-        messages.success(request, 'La orden fue cerrada, la cuenta puede ser consultada')
+        messages.success(
+            request, 'La orden fue cerrada, la cuenta puede ser consultada')
 
         return render(request, 'carrito.html', context={orden: orden})
     elif request.method == 'PUT':
         # TODO: Estamos agregando un pedido a la orden (cuenta)
-        # hay que obtenerlo del cuerpo de la peticion y cuardarlo asociarlo 
+        # hay que obtenerlo del cuerpo de la peticion y cuardarlo asociarlo
         # a la orden actual, para despues guardarlo
 
         orden = get_current_orden(request.user)
@@ -195,4 +204,3 @@ def carrito(request):
 
         messages.success(request, 'El pedido fue agregado a tu orden')
         return HttpResponse('Success')
-

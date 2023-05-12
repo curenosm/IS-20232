@@ -12,6 +12,7 @@ def group_required(*group_names):
     """
     Requires user membership in at least one of the groups passed in.
     """
+
     def in_groups(u):
         if u.is_authenticated():
             if bool(u.groups.filter(name__in=group_names)) | u.is_superuser:
@@ -25,23 +26,23 @@ def anonymous_required(function=None, redirect_url=None):
     """
     Opposite of login_required
     """
+
     if not redirect_url:
         redirect_url = settings.LOGIN_REDIRECT_URL
 
-    actual_decorator = user_passes_test(
-        lambda u: u.is_anonymous(),
-        login_url=redirect_url
-    )
+    def wrapper(request, *args, **kwargs):
+        if not request.user.is_anonymous:
+            raise PermissionDenied
+        return function(request, *args, **kwargs)
 
-    if function:
-        return actual_decorator(function)
-    return actual_decorator
+    return wrapper
 
 
 def superuser_only(function):
     """
     Limit view to superusers only.
     """
+
     def wrapper(request, *args, **kwargs):
         if not request.user.is_superuser:
             raise PermissionDenied
@@ -51,6 +52,10 @@ def superuser_only(function):
 
 
 def ajax_required(function):
+    """
+    Decorator to ensure a view is only called through Ajax
+    """
+
     def wrapper(request, *args, **kwargs):
         if not request.is_ajax():
             return HttpResponseBadRequest()
@@ -65,6 +70,7 @@ def timeit(function):
     """
     This is util to time it takes to a function to execute
     """
+
     def timed(*args, **kwargs):
         ts = time.time()
         result = function(*args, **kwargs)

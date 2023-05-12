@@ -1,75 +1,76 @@
 {% extends 'fragments/base.html' %} 
-{% block title %} Inicio {% endblock %}
+
+{% block title %} Index {% endblock %}
 
 
 {% block styles %}
 <style>
-    .carousel-inner > .item > img {
-        width:640px;
-        height:360px;
-    }
+  .carousel-inner > .item > img {
+    width:640px;
+    height:360px;
+  }
 </style>
 {% endblock %}
 
 {% block content %}
 <div class="container">
 
-    <br>
-    <br>
-    <h1>50 Amigos</h1>
-    <br>
+  <br>
+  <br>
+  <h1>50 Amigos</h1>
+  <br>
 
-    50Amigos surge como una empresa en 2023, motivados por la necesidad 
-    de optimizar el proceso de atención, además lo que más nos caracteriza
-    es el hecho de que el helado es gratis! Lo único que hay que hacer
-    es que todos los comensales voten por su sabor favorito y el ganador
-    será el sabor servido al final de la comida, yummy!
-    
-    <br>
-    <br>
-    <div id="carouselExample" class="carousel slide">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="https://www.unileverfoodsolutions.com.mx/dam/global-ufs/mcos/NOLA/calcmenu/recipes/MX-recipes/In-Development/FULL-SAND.png" class="d-block w-100" alt="..."  height="30%" >
-            </div>
-            <div class="carousel-item">
-                <img src="https://media-cdn.tripadvisor.com/media/photo-s/17/34/39/98/try-our-quesadillas-with.jpg"  width="400" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="https://www.clarin.com/img/2021/06/17/LC25eDtCT_1200x630__1.jpg" class="d-block w-100" height="30%" alt="...">
-            </div>
-        </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-            </button>
+  50Amigos surge como una empresa en 2023, motivados por la necesidad 
+  de optimizar el proceso de atención, además lo que más nos caracteriza
+  es el hecho de que el helado es gratis! Lo único que hay que hacer
+  es que todos los comensales voten por su sabor favorito y el ganador
+  será el sabor servido al final de la comida, yummy!
+  
+  <br>
+  <br>
+  <div id="carouselExample" class="carousel slide">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+          <img src="https://www.unileverfoodsolutions.com.mx/dam/global-ufs/mcos/NOLA/calcmenu/recipes/MX-recipes/In-Development/FULL-SAND.png" class="d-block w-100" alt="..."  height="30%" >
+      </div>
+      <div class="carousel-item">
+          <img src="https://media-cdn.tripadvisor.com/media/photo-s/17/34/39/98/try-our-quesadillas-with.jpg"  width="400" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+          <img src="https://www.clarin.com/img/2021/06/17/LC25eDtCT_1200x630__1.jpg" class="d-block w-100" height="30%" alt="...">
+      </div>
     </div>
-    <br>
-    <br>
-    <br>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  <br>
+  <br>
+  <br>
 
-    <h2>Nuestros anunciantes</h2>
-    <br>
-    <div id="carouselExample2" class="carousel slide">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="https://applediario.com/wp-content/uploads/2012/02/tu-anuncio-aqui.png" class="d-block w-100" alt="..."  height="100" >
-            </div>
-        </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample2" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample2" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-            </button>
+  <h2>Nuestros anunciantes</h2>
+  <br>
+  <div id="carouselExample2" class="carousel slide">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="https://applediario.com/wp-content/uploads/2012/02/tu-anuncio-aqui.png" class="d-block w-100" alt="..."  height="100" >
+      </div>
     </div>
-    <br>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample2" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample2" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  <br>
 
 </div>
 {% endblock %} 

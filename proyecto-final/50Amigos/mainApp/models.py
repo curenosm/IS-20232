@@ -83,12 +83,14 @@ class Orden(models.Model):
     """
 
     id = models.AutoField(primary_key=True)
-    usuario = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name='orders')
+    usuario = models.ForeignKey(
+        User, on_delete=models.SET_NULL, null=True, related_name='orders')
     fecha = models.DateTimeField(auto_now_add=True)
     total = models.DecimalField(decimal_places=2, max_digits=100, null=True)
     comentarios = models.TextField(blank=True, max_length=500)
     active = models.BooleanField(default=True)
-    helado_escogido = models.ForeignKey(Platillo, on_delete=models.SET_NULL, null=True)
+    helado_escogido = models.ForeignKey(
+        Platillo, on_delete=models.SET_NULL, null=True)
 
     class Meta:
         verbose_name = 'Orden'
@@ -106,7 +108,8 @@ class Pedido(models.Model):
     """
 
     id = models.AutoField(primary_key=True)
-    orden = models.ForeignKey(Orden, on_delete=models.SET_NULL, null=True, related_name='pedidos')
+    orden = models.ForeignKey(
+        Orden, on_delete=models.SET_NULL, null=True, related_name='pedidos')
     platillo = models.ForeignKey(
         Platillo, on_delete=models.SET_NULL, null=True, related_name='pedidos')
     cantidad = models.IntegerField(default=1)
@@ -123,7 +126,8 @@ class Promocion(models.Model):
 
     id = models.AutoField(primary_key=True)
     codigo = models.UUIDField(unique=True, auto_created=True)
-    platillo = models.ForeignKey(Platillo, on_delete=models.CASCADE, null=False)
+    platillo = models.ForeignKey(
+        Platillo, on_delete=models.CASCADE, null=False)
     imagen = models.TextField(max_length=500, null=False, blank=False)
     valido_hasta = models.DateTimeField(auto_now_add=False)
     active = models.BooleanField(default=True, null=False)
@@ -143,12 +147,13 @@ class Cupon(models.Model):
 
     id = models.AutoField(primary_key=True)
     codigo = models.UUIDField(unique=True, auto_created=True)
-    promocion = models.ForeignKey(Promocion, on_delete=models.CASCADE, null=False, related_name='cupones')
+    promocion = models.ForeignKey(
+        Promocion, on_delete=models.CASCADE, null=False, related_name='cupones')
 
     class Meta:
         verbose_name = 'Cupon'
         verbose_name_plural = 'Cupones'
-    
+
     def __str__(self):
         return f'Id: {self.id}, Codigo: {self.codigo}, Promocion: {self.promocion.id}'
 
@@ -163,6 +168,7 @@ class Anuncio(models.Model):
     nombre = models.TextField(max_length=200, null=False, blank=False)
     anunciante = models.TextField(max_length=200, null=False, blank=False)
     valido_hasta = models.DateTimeField(auto_now_add=False)
+    imagen = models.TextField(max_length=500, null=False, blank=False)
     active = models.BooleanField(default=True, null=False)
 
     def __str__(self):

@@ -4,94 +4,94 @@
 
 {% block content %}
 
-    <br>
-    <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-            <a href="{% url 'mainApp:inicio' %}">Inicio</a>
-        </li>
-        <li class="breadcrumb-item active" aria-current="page">Menú</li>
-    </ol>
-    </nav>
+<br>
+<nav aria-label="breadcrumb">
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <a href="{% url 'mainApp:inicio' %}">Inicio</a>
+  </li>
+  <li class="breadcrumb-item active" aria-current="page">Menú</li>
+</ol>
+</nav>
 
-    <br>
-    <h1 class="animate__animated animate__fadeInLeft">Menú</h1>
-    <br/>
-    <br/>
-    {% for categoria in categorias %}
-        <h2>{{categoria.nombre}}</h2>
-        <hr>
-        <br>
-        {% for subcategoria in categoria.subcategorias.all %}
-        <h3>{{subcategoria.nombre}}</h3>
-        <hr>
-        
-        <br>
-        <div class="container">
-            <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
-                {% for platillo in subcategoria.platillos.all %}
-                <div class="col text-center">
-                    <div class="card" style="width: 18rem;">
-                        <img src="{{ platillo.imagen }}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ platillo.nombre }}</h5>
-                            <p class="card-text">{{ platillo.descripcion }}</p>
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            {% for ingrediente in platillo.ingredientes %}
-                                <li class="list-group-item">{{ ingrediente.nombre }}</li>
-                            {% endfor %}
-                        </ul>
-                        <div class="card-body">
-                            <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                <button 
-                                    onclick="decrementCount({{ platillo.id }})"
-                                    type="button" 
-                                    class="btn btn-outline-primary">
-                                    <i class="bi bi-dash"></i>
-                                </button>
-                                <button
-                                    type="button" 
-                                    class="btn btn-outline-primary"
-                                    id="counter{{platillo.id}}"
-                                    disabled 
-                                    />1</button>
-                                <button 
-                                    onclick="incrementCount({{ platillo.id }})"
-                                    type="button" 
-                                    class="btn btn-outline-primary">
-                                    <i class="bi bi-plus"></i>
-                                </button>
-                            </div>
-                            <div class="d-grid gap-2">
-                                <br>
-                                <button 
-                                    class="btn btn-outline-success"
-                                    onclick="agregarAlCarrito({{ platillo.id }})" 
-                                    class="card-link">
-                                    <i class="bi bi-cart-plus"></i>&nbsp;
-                                    Agregar al carrito
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <br>
-                {% endfor %}
-                
-                <br>
+<br>
+<h1 class="animate__animated animate__fadeInLeft">Menú</h1>
+<br/>
+<br/>
+{% for categoria in categorias %}
+  <h2>{{categoria.nombre}}</h2>
+  <hr>
+  <br>
+  {% for subcategoria in categoria.subcategorias.all %}
+  <h3>{{subcategoria.nombre}}</h3>
+  <hr>
+  
+  <br>
+  <div class="container">
+    <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
+      {% for platillo in subcategoria.platillos.all %}
+      <div class="col text-center">
+        <div class="card" style="width: 18rem;">
+          <img src="{{ platillo.imagen }}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{ platillo.nombre }}</h5>
+            <p class="card-text">{{ platillo.descripcion }}</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            {% for ingrediente in platillo.ingredientes %}
+              <li class="list-group-item">{{ ingrediente.nombre }}</li>
+            {% endfor %}
+          </ul>
+          <div class="card-body">
+            <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+              <button 
+                onclick="decrementCount({{ platillo.id }})"
+                type="button" 
+                class="btn btn-outline-primary">
+                <i class="bi bi-dash"></i>
+              </button>
+              <button
+                type="button" 
+                class="btn btn-outline-primary"
+                id="counter{{platillo.id}}"
+                disabled 
+                />1</button>
+              <button 
+                onclick="incrementCount({{ platillo.id }})"
+                type="button" 
+                class="btn btn-outline-primary">
+                <i class="bi bi-plus"></i>
+              </button>
             </div>
-            
-            <br>
+            <div class="d-grid gap-2">
+              <br>
+              <button 
+                class="btn btn-outline-success"
+                onclick="agregarAlCarrito({{ platillo.id }})" 
+                class="card-link">
+                <i class="bi bi-cart-plus"></i>&nbsp;
+                Agregar al carrito
+              </button>
+            </div>
+          </div>
         </div>
-        <br>
-        <br>
-        {% endfor %}
-    {% endfor %}
+      </div>
+      <br>
+      {% endfor %}
+      
+      <br>
+    </div>
+    
     <br>
-    <br>
-    <br>
-    <br>
+  </div>
+  <br>
+  <br>
+  {% endfor %}
+{% endfor %}
+<br>
+<br>
+<br>
+<br>
 
 {% endblock %}
 
@@ -100,33 +100,33 @@
 <script>
 
 function incrementCount(platilloId) {
-    let count = parseInt($('#counter' + platilloId).text());
-    $('#counter' + platilloId).text(count + 1);
+  let count = parseInt($('#counter' + platilloId).text());
+  $('#counter' + platilloId).text(count + 1);
 }
 
 function decrementCount(platilloId) {
-    let count = parseInt($('#counter' + platilloId).text());
-    if (count > 1)
-        $('#counter' + platilloId).text(count - 1);
+  let count = parseInt($('#counter' + platilloId).text());
+  if (count > 1)
+    $('#counter' + platilloId).text(count - 1);
 }
 
 function agregarAlCarrito(platilloId) {
-    console.log('Se hace peticion put');
-    $.ajax("{% url 'mainApp:carrito' %}",{
-        method: 'PUT',
-        data: {
-            platillo: platilloId,
-            cantidad: parseInt($('#counter' + platilloId).text())
-        },
-        success: function(res) {
-            console.log('success');
-            console.log(res);
-            window.location.href = '{% url 'mainApp:carrito' %}'
-        },
-        error: function(err) {
-            console.error(err);
-        }
-    });
+  console.log('Se hace peticion put');
+  $.ajax("{% url 'mainApp:carrito' %}",{
+    method: 'PUT',
+    data: {
+      platillo: platilloId,
+      cantidad: parseInt($('#counter' + platilloId).text())
+    },
+    success: function(res) {
+      console.log('success');
+      console.log(res);
+      window.location.href = '{% url 'mainApp:carrito' %}'
+    },
+    error: function(err) {
+      console.error(err);
+    }
+  });
 }
 
 </script>
