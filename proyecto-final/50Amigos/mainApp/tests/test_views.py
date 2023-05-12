@@ -6,17 +6,16 @@ from django.test import TestCase
 from django.contrib.auth import get_user_model
 from django.urls import (
     reverse,
-    resolve
 )
 
-from mixer.backend.django import mixer
 from rest_framework import status
 from rest_framework.test import (
     APIRequestFactory,
-    APIClient,
-    force_authenticate,
-    RequestsClient,
 )
+from django.test import Client
+
+from django.contrib.auth.hashers import make_password
+
 
 from ..views import *
 
@@ -27,92 +26,190 @@ User = get_user_model()
 class TestViews(TestCase):
 
     def setUp(self):
-        self.factory = APIRequestFactory()
-        self.client = APIClient()
-        self.admin_password = 'password'
-        self.admin = User.objects.create_user(
-            username='admin', password=self.admin_password)
+        self.REDIRECT_LOGIN_URL = '/accounts/login/?next='
+        self.username = 'prueba'
+        self.password = 'prueba'
+        self.email = 'prueba@prueba.com'
 
-    def test_login_and_logout_views(self):
+        self.user = User.objects.create(
+            username=self.username,
+            password=make_password(self.password)
+        )
+
+        self.factory = APIRequestFactory()
+        self.client = Client()
+
+    def test_logout_POST_no_login(self):
+        url = reverse('login')
+        response = self.client.post(url, {})
+        assert response.status_code == status.HTTP_200_OK
+
+    def test_login_POST_no_login(self):
         url = reverse('login')
         data = {
-            "username": self.admin.username,
-            "password": self.admin_password
-        }
-
-        res = self.client.login(username=self.admin.username, password=self.admin_password)
-        self.assertTrue(res)
-
-        response = self.client.post(url, data)
-        assert response.status_code == 302
-        self.assertRedirects(response, '/inicio')
+            "username": "admin",
+            "password": "admin"}
+        response = self.client.post(url, data=data)
+        assert response.status_code == status.HTTP_200_OK
 
     def test_login_not_valid_data(self):
-        res = self.client.login(username=self.admin.username, password="wrong_password")
+        res = self.client.login(
+            username='administrador',
+            password="wrong_password")
         self.assertFalse(res)
-    
+
     def test_logout_not_logged_in(self):
         url = reverse('logout')
         response = self.client.get(url)
-        assert response.status_code == 302
+        assert response.status_code == status.HTTP_302_FOUND
         self.assertRedirects(response, '/')
 
     def test_logout_fails_if_not_logged(self):
         url = reverse('logout')
         response = self.client.get(url)
-        assert response.status_code == 302
+        assert response.status_code == status.HTTP_302_FOUND
         self.assertRedirects(response, '/')
 
-    def test_contacto_GET(self):
+    def test_contacto_GET_no_login(self):
         url = reverse('mainApp:contacto')
         response = self.client.get(url)
-        assert response.status_code == 200
+        assert response.status_code == status.HTTP_200_OK
         self.assertTemplateUsed(response, 'contacto.html')
 
-    def test_index_GET(self):
+    def test_contacto_POST_no_login(self):
+        url = reverse('mainApp:contacto')
+        data = {}
+        response = self.client.post(url, data=data)
+        assert response.status_code == status.HTTP_200_OK
+        self.assertTemplateUsed(response, 'contacto.html')
+
+    def test_index_GET_no_login(self):
         url = reverse('mainApp:index')
         response = self.client.get(url)
-        assert response.status_code == 200
+        assert response.status_code == status.HTTP_200_OK
         self.assertTemplateUsed(response, 'index.html')
 
-    def test_login_GET(self):
+    def test_login_GET_no_login(self):
         url = reverse('login')
         response = self.client.get(url)
-        assert response.status_code == 200
-        self.assertTemplateUsed(response, 'registration/login.html')
+        assert response.status_code == status.HTTP_200_OK
 
-    def test_registro_GET(self):
+    def test_registro_GET_no_login(self):
         url = reverse('mainApp:registro')
         response = self.client.get(url)
-        assert response.status_code == 200
+        assert response.status_code == status.HTTP_200_OK
         self.assertTemplateUsed(response, 'registration/registration.html')
+
+    def test_registro_POST_no_login(self):
+        url = reverse('mainApp:registro')
+        data = {
+            'username': self.username,
+            'password1': self.password,
+            'password2': self.password,
+            'email': self.email
+        }
+        response = self.client.post(url, data)
+        assert response.status_code == status.HTTP_200_OK
 
     def test_votacion_GET_no_login(self):
         url = reverse('mainApp:votacion')
         response = self.client.get(url)
-        assert response.status_code == 302
-        self.assertRedirects(response, '/accounts/login/?next=/votacion')
+        assert response.status_code == status.HTTP_302_FOUND
+        self.assertRedirects(
+            response, self.REDIRECT_LOGIN_URL + reverse('mainApp:votacion'))
+
+    def test_votacion_POST_no_login(self):
+        url = reverse('mainApp:votacion')
+        data = {}
+        response = self.client.post(url, data=data)
+        assert response.status_code == status.HTTP_302_FOUND
+        self.assertRedirects(
+            response, self.REDIRECT_LOGIN_URL + reverse('mainApp:votacion'))
 
     def test_get_lista_helados_GET_no_login(self):
         url = reverse('mainApp:lista_helados')
         response = self.client.get(url)
-        assert response.status_code == 302
-        self.assertRedirects(response, '/accounts/login/?next=/helados')
-
-    def test_menu_GET_no_login(self):
-        url = reverse('mainApp:menu')
-        response = self.client.get(url)
-        assert response.status_code == 302
-        self.assertRedirects(response, '/accounts/login/?next=/menu')
+        assert response.status_code == status.HTTP_302_FOUND
+        self.assertRedirects(
+            response, self.REDIRECT_LOGIN_URL + reverse('mainApp:lista_helados'))
 
     def test_carrito_GET_no_login(self):
         url = reverse('mainApp:carrito')
         response = self.client.get(url)
-        assert response.status_code == 302
-        self.assertRedirects(response, '/accounts/login/?next=/carrito')
+        assert response.status_code == status.HTTP_302_FOUND
+        self.assertRedirects(
+            response, self.REDIRECT_LOGIN_URL + reverse('mainApp:carrito'))
 
     def test_inicio_comensal_GET_no_login(self):
         url = reverse('mainApp:inicio')
         response = self.client.get(url)
-        assert response.status_code == 302
-        self.assertRedirects(response, '/accounts/login/?next=/inicio')
+        assert response.status_code == status.HTTP_302_FOUND
+        self.assertRedirects(
+            response, self.REDIRECT_LOGIN_URL + reverse('mainApp:inicio'))
+
+    def test_get_lista_helados_GET_no_login(self):
+        url = reverse('mainApp:lista_helados')
+        response = self.client.get(url)
+        assert response.status_code == status.HTTP_302_FOUND
+
+    # PRUEBAS QUE REQUIEREN AUTENTICACION
+    def test_registro_GET_login(self):
+
+        self.client.force_login(user=self.user)
+
+        url = reverse('mainApp:registro')
+        response = self.client.get(url)
+        assert response.status_code == status.HTTP_403_FORBIDDEN
+
+    def test_registro_POST_login(self):
+
+        self.client.force_login(user=self.user)
+
+        url = reverse('mainApp:registro')
+        response = self.client.post(url, data={})
+        assert response.status_code == status.HTTP_403_FORBIDDEN
+
+    def test_carrito_GET_login(self):
+
+        self.client.force_login(user=self.user)
+
+        url = reverse('mainApp:carrito')
+        response = self.client.get(url)
+        assert response.status_code == status.HTTP_200_OK
+        self.assertTemplateUsed(response, 'carrito.html')
+
+    def test_inicio_comensal_GET_login(self):
+
+        self.client.force_login(user=self.user)
+
+        url = reverse('mainApp:inicio')
+        response = self.client.get(url)
+        assert response.status_code == status.HTTP_200_OK
+        self.assertTemplateUsed(response, 'inicio.html')
+
+    def test_votacion_GET_login(self):
+
+        self.client.force_login(user=self.user)
+
+        url = reverse('mainApp:votacion')
+        response = self.client.get(url)
+        assert response.status_code == status.HTTP_200_OK
+        self.assertTemplateUsed(response, 'votacion.html')
+
+    def test_votacion_POST_login(self):
+
+        self.client.force_login(user=self.user)
+
+        url = reverse('mainApp:votacion')
+        response = self.client.post(url, data={})
+        assert response.status_code == status.HTTP_200_OK
+        self.assertTemplateUsed(response, 'votacion.html')
+
+    def test_menu_GET_login(self):
+
+        self.client.force_login(user=self.user)
+
+        url = reverse('mainApp:menu')
+        response = self.client.get(url)
+        assert response.status_code == status.HTTP_200_OK
+        self.assertTemplateUsed(response, 'menu.html')

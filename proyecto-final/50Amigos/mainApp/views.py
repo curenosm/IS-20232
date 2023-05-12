@@ -26,11 +26,13 @@ def get_current_orden(user):
     orden = Orden.objects.filter(usuario=user, active=True) \
         .order_by('-fecha') \
         .first()
+    
+    if not orden:
+        orden = Orden.objects.create(usuario=user, active=True)
 
     return orden
 
 
-@anonymous_required
 def index(request):
     """
     Pagina de inicio 
@@ -91,7 +93,6 @@ def votacion(request):
     """
 
     if request.method == 'POST':
-        print(request)
 
         # Obten el resultado de la votacion y asigna el sabor de helado de la orden activa
         orden = get_current_orden(request.user)
@@ -172,9 +173,6 @@ def carrito(request):
             "orden": orden,
             "carrito": orden
         }
-        print('Imprimiendo orden actual')
-        print(orden)
-        print(orden.pedidos.all())
         return render(request, 'carrito.html', context=data)
     elif request.method == 'POST':
         # TODO: Cierra la cuenta actual, genera el ticket y muestra el resumen
@@ -200,7 +198,6 @@ def carrito(request):
         pedido.cantidad = data.get('cantidad')
         pedido.orden = orden
         pedido.save()
-        print(pedido)
 
         messages.success(request, 'El pedido fue agregado a tu orden')
         return HttpResponse('Success')
