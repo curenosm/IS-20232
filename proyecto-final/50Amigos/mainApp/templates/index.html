@@ -13,8 +13,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="container">
-
+<div>
   <br>
   <br>
   <h1>50 Amigos</h1>
@@ -48,11 +47,18 @@
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </button>
+    <div class="carousel-caption d-none d-md-block">
+      <h5 class="text-light">
+        ¿Ya probaste nuestra selección de antojitos? Aplica restricciones
+      </h5>
+    </div>
   </div>
   <br>
   <br>
   <br>
-
+  <br>
+  <br>
+  <br>
   <h2>Nuestros anunciantes</h2>
   <br>
   <div id="carouselExample2" class="carousel slide">
@@ -71,13 +77,13 @@
     </button>
   </div>
   <br>
-
+  <br>
 </div>
 {% endblock %} 
 {% block scripts %}
 <script>
-  $(document).ready(function () {
-    console.log("Hola mundo");
-  });
+$(document).ready(function () {
+  console.log("Hola mundo");
+});
 </script>
 {% endblock %}

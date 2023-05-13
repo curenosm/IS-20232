@@ -12,6 +12,7 @@ from rest_framework import status
 
 from .models import *
 from .forms import *
+from .serializers import *
 from .decorators import anonymous_required
 
 User = get_user_model()
@@ -21,7 +22,7 @@ logger = logging.getLogger(__name__)
 # Password de los comensales (mesa1, mesa2, mesa3): restaurante123
 
 
-def get_current_orden(user):
+def get_current_carrito(user):
     """
     Función que obtiene la orden actual para el usuario indicado
     """
@@ -54,20 +55,19 @@ def registro(request):
         form = CustomUserCreationForm(data=request.POST)
 
         if form.is_valid():
-            
             usuario = form.save()
             usuario.save()
-            user = authenticate(username=form.cleaned_data['username'],
-                                password=form.cleaned_data['password1'])
+            user = authenticate(
+                username=form.cleaned_data['username'],
+                password=form.cleaned_data['password1']
+            )
             login(request, user)
 
             messages.success(request, 'Registro exitoso, iniciar sesión')
-
             return redirect(to="login")
         else:
             if not form.cleaned_data.get('username', False):
                 return HttpResponse(status=status.HTTP_400_BAD_REQUEST)
-
         data['form'] = form
 
     return render(request, 'registration/registration.html', data)
@@ -80,13 +80,8 @@ def contacto(request):
     """
 
     if request.method == 'POST':
-        # Se envío el formulario de suscripción a nuestras noticas
-
-        messages.info(
-            request, 'The has suscrito exitosamente a nuestras noticicas.')
-
-        pass
-
+        messages.info(request, 'The has suscrito exitosamente a nuestras noticicas.')
+    
     return render(request, 'contacto.html')
 
 
@@ -98,22 +93,17 @@ def votacion(request):
     """
 
     if request.method == 'POST':
-
         # Obten el resultado de la votacion y asigna el sabor de helado de la orden activa
-        orden = get_current_orden(request.user)
-        orden.helado = Platillo.objects.filter(
-            id=request.POST.get('helado', 1))
+        orden = get_current_carrito(request.user)
+        orden.helado = Platillo.objects.filter(id=request.POST.get('helado', 1))
         orden.save()
 
         messages.success(request, 'La votación concluyó exitosamente!')
-
         return render(request, 'votacion.html', context={orden: orden})
 
     elif request.method == 'GET':
 
-        messages.warning(
-            request, 'Recuerda que en caso de empate elegiremos nosotros.')
-
+        messages.warning(request, 'Recuerda que en caso de empate elegiremos nosotros.')
         return render(request, 'votacion.html')
 
 
@@ -123,9 +113,16 @@ def get_lista_helados(request):
     Funcion que nos sirve para mostrar todos los sabores de helado disponibles
     de entre los cuales se puede escoger
     """
+
     if request.method == 'GET':
-        helados = Platillo.objects.filter(nombre__icontains='helado')
-        return JsonResponse(list(helados), safe=False)
+
+        platillos = Platillo.objects.filter(nombre__icontains='helado')
+        platilloSerializer = PlatilloSerializer(platillos, many=True)
+
+        return JsonResponse(
+            platilloSerializer.data,
+            safe=False
+        )
 
 
 @login_required
@@ -145,7 +142,9 @@ def inicio_comensal(request):
     }
 
     messages.info(
-        request, 'Bienvenido a 50Amigos, no olvide hacer la votación por el sabor de helado')
+        request, 
+        'Bienvenido a 50Amigos, no olvide hacer la votación por el sabor de helado'
+    )
 
     return render(request, 'inicio.html', context=data)
 
@@ -157,11 +156,8 @@ def menu(request):
     """
 
     if request.method == 'GET':
-
-        categorias = Categoria.objects.all()
-
         return render(request, 'menu.html', context={
-            "categorias": categorias
+            "categorias": Categoria.objects.all()
         })
 
 
@@ -173,38 +169,61 @@ def carrito(request):
     """
 
     if request.method == 'GET':
-        orden = get_current_orden(request.user)
+        carrito = get_current_carrito(request.user)
         data = {
-            "orden": orden,
-            "carrito": orden
+            "orden": carrito,
+            "carrito": carrito
         }
+
         return render(request, 'carrito.html', context=data)
     elif request.method == 'POST':
-        # TODO: Cierra la cuenta actual, genera el ticket y muestra el resumen
+        # Cierra la cuenta actual, genera el ticket y muestra el resumen
         # de la cuenta, incluyendo IVA etc.
 
-        orden = get_current_orden(request.user)
+        carrito = get_current_carrito(request.user)
+        carrito.active = False
 
-        orden.active = False
         messages.success(
-            request, 'La orden fue cerrada, la cuenta puede ser consultada')
-
-        return render(request, 'carrito.html', context={orden: orden})
+            request, 
+            'La orden fue cerrada, la cuenta puede ser consultada')
+        return render(request, 'carrito.html', context={carrito: carrito})
     elif request.method == 'PUT':
-        # TODO: Estamos agregando un pedido a la orden (cuenta)
-        # hay que obtenerlo del cuerpo de la peticion y cuardarlo asociarlo
+        # Estamos agregando un pedido al carrito
+
+        # Todavía no pasa a la orden que es de donde extraemos la cuenta
         # a la orden actual, para despues guardarlo
+        carrito = get_current_carrito(request.user)
+        data = QueryDict(request.body)
+        pedido = None
 
-        orden = get_current_orden(request.user)
+        # Intenta encontrar un pedido que tenga el mismo platillo
+        for p in carrito.pedidos.all():
+            if int(p.platillo.id) == int(data.get('platillo')):
+                pedido = p
 
-        body = request.body.decode('utf-8').replace("'", '"')
-        data = json.loads(body)
+        if pedido == None:
+            pedido = Pedido()
+            pedido.platillo = get_object_or_404(Platillo, id=data.get('platillo'))
+            pedido.cantidad = data.get('cantidad')
+            pedido.orden = carrito
+        else:
+            pedido.cantidad = int(data.get('cantidad'))
         
-        pedido = Pedido()
-        pedido.platillo = get_object_or_404(Platillo, id=data['platillo'])
-        pedido.cantidad = data['cantidad']
-        pedido.orden = orden
         pedido.save()
 
-        messages.success(request, 'El pedido fue agregado a tu orden')
+        messages.success(request, 'Tu carrito fue actualizado')
         return HttpResponse('Success')
+    
+    elif request.method == 'DELETE':
+        # El pedido indicado va a ser elininado del carrito de compras
+        carrito = get_current_carrito(request.user)
+        data = QueryDict(request.body)
+
+        for p in carrito.pedidos.all():
+            if int(data.get('platillo')) == int(p.platillo.id):
+                print('si entro')
+                p.orden = None
+                p.save()
+        
+        messages.warning(request, 'El elemento fue retirado de su carrito')
+        return HttpResponse('Deleted', status=status.HTTP_202_ACCEPTED)

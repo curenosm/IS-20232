@@ -1,3 +1,6 @@
+import re
+import json
+
 from django.db import models
 
 from django.contrib.auth.models import AbstractUser, Group
@@ -58,6 +61,37 @@ class Platillo(models.Model):
     subcategoria = models.ForeignKey(
         Subcategoria, on_delete=models.SET_NULL, null=True, related_name='platillos')
     precio = models.DecimalField(max_digits=10, decimal_places=2)
+    ingredientes=models.TextField(max_length=1000, null=True, blank=True)
+
+    def toJSON(self):
+        return json.dumps(
+            self,
+            default=lambda o: o.__dict__,
+            sort_keys=True,
+            indent=4
+        )
+
+    def get_ingredientes_list(self):
+
+        if self.ingredientes is None or self.ingredientes.strip() == '':
+            return []
+
+        ingredientes = []
+        for ingrediente in self.ingredientes.split(','):
+            ingredientes.append(ingrediente)
+        
+        return ingredientes
+
+    def disabled_if_helado(self):
+        """
+        Funcion para deshabilitar los botones en el menu convenientemente
+        si se trata de un helado, puesto que el helado es servido de manera
+        gratis en el restaurante y por lo tanto no debería ser posible
+        agregarlos al carrito.
+        """
+        if re.search('helado', self.nombre, re.IGNORECASE):
+            return 'disabled'
+        return ''
 
     def __str__(self):
         return f'Id: {self.id}, Nombre: {self.nombre}, Categoria: {self.categoria}'
@@ -100,6 +134,19 @@ class Orden(models.Model):
         return f'Id: {self.id}, Usuario: {self.usuario}, Fecha: {self.fecha}'
 
 
+class Carrito(models.Model):
+    """
+    Modelo que representa el carrito de compras, donde se iran acumulando los pedidos
+    hasta que se mande a cocina
+    """
+    id = models.AutoField(primary_key=True)
+    orden = models.OneToOneField(
+        Orden, on_delete=models.SET_NULL, null=True, related_name='carrito')
+
+    def __str__(self):
+        return f'Id: {self.id}, Orden: {self.orden.id}'
+
+
 class Pedido(models.Model):
     """
     Modelo que representa un pedido de la orden indicada. Un pedido es una
@@ -113,6 +160,10 @@ class Pedido(models.Model):
     platillo = models.ForeignKey(
         Platillo, on_delete=models.SET_NULL, null=True, related_name='pedidos')
     cantidad = models.IntegerField(default=1)
+    carrito = models.ManyToOneRel(to=Carrito, field_name='carrito', field="id", on_delete=models.SET_NULL, related_name='pedidos')
+
+    def get_subtotal(self):
+        return self.platillo.precio * self.cantidad
 
     def __str__(self):
         return f'Id: {self.id}, Orden: {self.orden}, Platillo: {self.platillo}'

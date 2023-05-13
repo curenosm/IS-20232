@@ -3,33 +3,71 @@
 {% block title %}Contacto{% endblock %}
 
 {% block content %}
-<div class="container">
-
+<div>
   <br>
   <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-      <li class="breadcrumb-item">
+    <li class="breadcrumb-item">
       <a href="{% url 'mainApp:inicio' %}">Inicio</a>
-      </li>
-      <li class="breadcrumb-item active" aria-current="page">Contacto</li>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">Contacto</li>
   </ol>
   </nav>
 
   <br>
   <h1 class="animate__animated animate__fadeInLeft">Contacto</h1>
   <br>
-  Toda nuestra información empresarial y de contacto estará listada muy pronto
-  aquí!
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
+  
+  <div class="jumbotron">
+    <h1 class="display-4">Hola, 50amigo!</h1>
+    <p class="lead">
+      Toda nuestra información empresarial y de contacto estará listada muy pronto
+      aquí!
+    </p>
+    <hr class="my-4">
+    <ul>
+      <li>
+        <b>Numero de teléfono:</b> (+52) 55 1122 3344
+      </li>
+      <li>
+        <b>Equipo de desarrollo:</b> Orion
+      </li>
+      <li>
+        <b>Dirección:</b> Investigación Científica, C.U., Coyoacán, 04510 Ciudad de México, CDMX
+      </li>
+    </ul>
+    <br>
+    <br>
+    <hr>
+    <br>
+    <br>
+    <div class="card">
+      <div class="card-body">
+        <form method="post" class="mt-4">
+          <div style="display:none">
+            <input 
+            type="hidden"
+            name="csrfmiddlewaretoken"
+            value="{{ csrf_token }}" />
+          </div>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input
+              class="form-control mt-3"
+              id="email"
+              type="text"
+              placeholder="Introduzca su correo electrónico para suscribirte a nuestras promociones!"/>
+            <br>
+          </div>
+          <div class="d-grid gap-2">
+            <button
+              type="submit"
+              class="btn btn-outline-primary float-end"
+              role="button">Suscribirme</button>
+          </div>
+        </form>
+      </div>
+    </div>
   <br>
   <br>
   <br>

@@ -3,7 +3,7 @@
 {% block title %}Carrito{% endblock %}
 
 {% block content %}
-<div class="container">
+<div>
   <br>
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
@@ -16,53 +16,72 @@
       <li class="breadcrumb-item active" aria-current="page">Carrito</li>
     </ol>
   </nav>
-
   <br>
   <h1 class="animate__animated animate__fadeInLeft">Carrito</h1>
   <hr>
-
-  <br>
-  Estos productos se encuentran actualmente en tu carrito, puedes editarlos
-  aún o removerlos antes de hacer el pedido apretando el botón "Hacer pedido".
-  <br>
-  <br>
-  <table class="table table-striped">
+  <p class="my-3">
+    Estos productos se encuentran actualmente en tu carrito, puedes editarlos
+    aún o removerlos antes de hacer el pedido apretando el botón <b>Hacer pedido</b>.
+  </p>
+  <table class="table table-striped my-5">
     <thead>
       <tr>
-        <th scope="col">#</th>
-        <th scope="col">Producto</th>
-        <th scope="col">Precio</th>
-        <th scope="col">Cantidad</th>
-        <th scope="col">
+        <th scope="col" class="text-center">#</th>
+        <th scope="col" class="text-center">Producto</th>
+        <th scope="col" class="text-center">Cantidad</th>
+        <th scope="col" class="text-center">Precio</th>
+        <th scope="col" class="text-center">Subtotal</th>
+        <th scope="col" class="text-center">
           <i class="bi bi-dash"></i>
         </th>
-        <th scope="col">
+        <th scope="col" class="text-center">
           <i class="bi bi-plus"></i>
         </th>
-        <th scope="col">Eliminar</th>
+        <th scope="col" class="text-center">Eliminar</th>
       </tr>
     </thead>
     <tbody>
-      {% for pedido in carrito.all %}
+      {% for pedido in carrito.pedidos.all %}
       <tr>
-        <th scope="row">{{ pedido.platillo.id }}</th>
-        <td>{{ pedido.platillo.nombre }}</td>
-        <td>{{ pedido.platillo.precio }}</td>
-        <td>{{ pedido.cantidad }}</td>
-        
-        <td>
-          <button type="button" class="btn btn-danger-outline">
-            <i class="bi bi-close"></i>
+        <th scope="row" class="text-center">
+          {{ pedido.platillo.id }}
+        </th>
+        <td class="text-center">
+          {{ pedido.platillo.nombre }}
+        </td>
+        <td class="text-center" id="counter{{pedido.platillo.id}}">
+          {{ pedido.cantidad }}
+        </td>
+        <td class="text-center">
+          $ {{ pedido.platillo.precio }}
+        </td>
+        <td class="text-center">
+          <b>
+            $ {{ pedido.get_subtotal }}
+          </b>
+        </td>
+        <td class="text-center">
+          <button 
+            type="button" 
+            onclick="disminuirCantidad({{ pedido.platillo.id }})"
+            class="btn btn-outline-secondary">
+            <i class="bi bi-dash"></i>
           </button>
         </td>
-        <td>
-          <button type="button" class="btn btn-danger-outline">
-            <i class="bi bi-close"></i>
+        <td class="text-center">
+          <button 
+            type="button" 
+            onclick="aumentarCantidad({{ pedido.platillo.id }})"
+            class="btn btn-outline-primary">
+            <i class="bi bi-plus"></i>
           </button>
         </td>
-        <td>
-          <button type="button" class="btn btn-danger-outline">
-            <i class="bi bi-close"></i>
+        <td class="text-center">
+          <button 
+            type="button" 
+            onclick="eliminarPlatillo({{ pedido.platillo.id }})"
+            class="btn btn-outline-danger">
+            <i class="bi bi-trash"></i>
           </button>
         </td>
       </tr>
@@ -70,8 +89,17 @@
     </tbody>
   </table>
   <br>
-  <form method="POST" action="{% url 'mainApp:carrito' %}" >
-    <button type="submit" class="btn btn-primary float-end">
+  <form method="POST" action="{% url 'mainApp:carrito' %}">
+    <div style="display:none">
+      <input 
+        type="hidden" 
+        name="csrfmiddlewaretoken" 
+        value="{{ csrf_token }}" />
+    </div>
+    <button 
+      type="submit" 
+      onclick="hacerPedido()"
+      class="btn btn-primary float-end">
       <i class="bi bi-cart"></i> Hacer pedido
     </button>
   </form>
@@ -80,23 +108,19 @@
   <br>
   <h1 class="animate__animated animate__fadeInLeft">Historial de pedidos</h1>
   <hr>
-  <br>
+  <p class="my-3">
   Estos son los pedidos que se han hecho durante su estadía en el restaurante,
   las tarifas con impuestos se muestran al final. Se agradece su propina.
-  <br>
-  <br>
-
+  </p>
   {% for pedido in orden.pedidos.all %}
-
-  {% endfor %}
-
-  <table class="table table-striped">
+  <table class="table table-striped my-5">
     <thead>
       <tr>
         <th scope="col"># Id</th>
         <th scope="col">Producto</th>
-        <th scope="col">Precio</th>
         <th scope="col">Cantidad</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Subtotal</th>
       </tr>
     </thead>
     <tbody>
@@ -104,15 +128,26 @@
       <tr>
         <th scope="row">{{ pedido.platillo.id }}</th>
         <td>{{ pedido.platillo.nombre }}</td>
-        <td>{{ pedido.platillo.precio }}</td>
         <td>{{ pedido.cantidad }}</td>
+        <td>$ {{ pedido.platillo.precio }}</td>
+        <td>$ {{ pedido.get_subtotal }}</td>
       </tr>
       {% endfor %}
     </tbody>
   </table>
   <br>
+  {% endfor %}
   <form method="POST" action="{% url 'mainApp:carrito' %}" >
-    <button type="submit" class="btn btn-success float-end">
+    <div style="display:none">
+      <input 
+        type="hidden" 
+        name="csrfmiddlewaretoken" 
+        value="{{ csrf_token }}" />
+    </div>
+    <button 
+      type="submit" 
+      onclick="cerrarCuenta()"
+      class="btn btn-success float-end">
       <i class="bi bi-currency-dollar"></i> Solicitar cuenta
     </button>
   </form>
@@ -120,5 +155,103 @@
   <br>
   <br>
   <br>
+  <br>
+  <br>
+  <br>
+  <br>
 </div>
+
+
+{% endblock %}
+
+
+{% block scripts %}
+<script type="text/javascript">
+
+function disminuirCantidad(platilloId) {
+  let count = parseInt($('#counter' + platilloId).text());
+  if (count > 1) {
+    $.ajax("{% url 'mainApp:carrito' %}", {
+      type: 'PUT',
+      data: {
+        platillo: parseInt(platilloId),
+        cantidad: count - 1
+      },
+      success: function (res) {
+        console.log(res);
+        location.reload();
+      },
+      error: function (err) {
+        console.error(err);
+      }
+    });
+  }
+}
+
+function aumentarCantidad(platilloId) {
+  let count = parseInt($('#counter' + platilloId).text());
+  $.ajax("{% url 'mainApp:carrito' %}", {
+    type: 'PUT',
+    data: {
+      platillo: parseInt(platilloId),
+      cantidad: count + 1
+    },
+    success: function (res) {
+      console.log(res);
+      location.reload();
+    },
+    error: function (err) {
+      console.error(err);
+    }
+  });
+}
+
+function eliminarPlatillo(platilloId) {
+  $.ajax("{% url 'mainApp:carrito' %}", {
+    type: 'DELETE',
+    data: {
+      platillo: parseInt(platilloId)
+    },
+    success: function (res) {
+      console.log(res);
+      location.reload();
+    },
+    error: function (err) {
+      console.error(err);
+    }
+  });
+}
+
+function hacerPedido() {
+  $.ajax("{% url 'mainApp:carrito' %}", {
+    type: 'POST',
+    data: {
+      platillo: parseInt(platilloId)
+    },
+    success: function (res) {
+      console.log(res);
+      location.reload();
+    },
+    error: function (err) {
+      console.error(err);
+    }
+  });
+}
+
+function cerrarCuenta() {
+  $.ajax("{% url 'mainApp:carrito' %}", {
+    type: 'POST',
+    data: {},
+    success: function (res) {
+      console.log(res);
+      location.reload();
+    },
+    error: function (err) {
+      console.error(err);
+    }
+  });
+}
+
+
+</script>
 {% endblock %}

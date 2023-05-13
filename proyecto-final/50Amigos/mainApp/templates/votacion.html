@@ -3,96 +3,106 @@
 {% block title %} Votación {% endblock %}
 
 {% block content %}
-    <div class="container">
-        
-        <br>
-        <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-                <a href="{% url 'mainApp:inicio' %}">Inicio</a>
-                </li>
-            <li class="breadcrumb-item active" aria-current="page">Helado</li>
-        </ol>
-        </nav>
+<div class="container">
+  
+  <br>
+  <nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+          <a href="{% url 'mainApp:inicio' %}">Inicio</a>
+          </li>
+      <li class="breadcrumb-item active" aria-current="page">Helado</li>
+  </ol>
+  </nav>
 
-        <br>
-        <h1 class="animate__animated animate__fadeInLeft">Helado</h1>
-        <hr>
-        <h2>Inicia la votación para el sabor de helado!</h2>
-        <br>
-        
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Votar!
-        </button>
-        <br>
-        <br>
+  <br>
+  <h1 class="animate__animated animate__fadeInLeft">Helado</h1>
+  <hr>
+  <p>Inicia la votación para el sabor de helado!</p>
+  <br>
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Votar!
+  </button>
+  <br>
+  <br>
+  <div id="resultados" class="text-center" style="display: none;">
+      <canvas id="myChart"></canvas>
+  </div>
 
-        
-        <div>
-            <canvas id="myChart"></canvas>
+  <!-- Vertically centered scrollable modal -->
+  <div class="modal" tabindex="-1" id="exampleModal">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 
+            class="modal-title animate__animated animate__headShake" 
+            id="titulo_modal">
+            Persona 1
+          </h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"></button>
         </div>
-
-        <!-- Vertically centered scrollable modal -->
-        <div class="modal" tabindex="-1" id="exampleModal">
-            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title animate__animated animate__headShake" id="titulo_modal">Persona 1</h5>
-                        <button 
-                            type="button" 
-                            class="btn-close" 
-                            data-bs-dismiss="modal" 
-                            aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <img
-                            id="helado_img"
-                            class="animate__animated animate__headShake text-center" 
-                            src="https://img.freepik.com/vector-gratis/coleccion-helados-planos_23-2148982427.jpg?w=2000" 
-                            alt="helado" 
-                            width="100%">
-                        <p>¿Qué helado vota por servir al final?</p>
-                        <select class="form-select" id ="helado_select">
-                            <option value="1">Chocolate</option>
-                            <option value="2">Vainilla</option>
-                            <option value="3">Fresa</option>
-                            <option value="4">Limón</option>
-                        </select>
-                    </div>
-                    <div class="modal-footer">
-                        <button 
-                            onclick="finalizarVotacion()"
-                            type="button" 
-                            class="btn btn-secondary" 
-                            data-bs-dismiss="modal">Finalizar votación</button>
-                        <button 
-                            onclick="agregarParticipante()"
-                            type="button" 
-                            class="btn btn-primary">Agregar otro participante</button>
-                    </div>
-                </div>
-            </div>
+        <div class="modal-body">
+          <img
+            id="helado_img"
+            class="animate__animated animate__headShake text-center" 
+            src="https://img.freepik.com/vector-gratis/coleccion-helados-planos_23-2148982427.jpg?w=2000" 
+            alt="helado"
+            width="100%">
+          <div class="form-group">
+            <label for="nombre_input">¿Cuál es su nombre?</label>
+            <input
+              id="nombre_input"
+              onkeyup="actualizarNombreModal()"
+              type="text"
+              class="form-control"
+              placeholder="Juan"/>
+          </div>
+          <br>
+          <div class="form-group">
+            <label for="helado_select">
+              ¿Qué helado vota por servir al final?
+            </label>
+            <select class="form-select" id ="helado_select">
+              <option value="1">Chocolate</option>
+              <option value="2">Vainilla</option>
+              <option value="3">Fresa</option>
+              <option value="4">Limón</option>
+            </select>
+          </div>
         </div>
-
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        
-        <div style="display:none">
-            <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+        <div class="modal-footer">
+          <button 
+            onclick="finalizarVotacion()"
+            type="button" 
+            class="btn btn-secondary"
+            data-bs-dismiss="modal">Finalizar votación</button>
+          <button 
+            onclick="agregarParticipante()"
+            type="button" 
+            class="btn btn-primary">Agregar otro participante</button>
         </div>
-        
+      </div>
     </div>
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <div style="display:none">
+    <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+  </div>
+</div>
 {% endblock %}
 
 
 {% block scripts %}
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-(function () {
-    'use strict';
 let helados = [1, 2, 3, 4];
 let votos = [];
 let curVotante = 1;
@@ -100,113 +110,119 @@ let curVotante = 1;
 const ctx = document.getElementById('myChart');
 
 new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ['Chocolate', 'Vainilla', 'Fresa', 'Limón'],
-        datasets: [{
-            label: '# de votos',
-            data: [3, 2, 0, 1],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(255, 159, 64, 0.2)',
-                'rgba(255, 205, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-            ],
-            borderColor: [
-                'rgb(255, 99, 132)',
-                'rgb(255, 159, 64)',
-                'rgb(255, 205, 86)',
-                'rgb(75, 192, 192)'
-            ],
-            borderWidth: 2
-        }]
-    },
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        }
+  type: 'bar',
+  data: {
+    labels: ['Chocolate', 'Vainilla', 'Fresa', 'Limón'],
+    datasets: [{
+      label: '# de votos',
+      data: [3, 2, 0, 1],
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(255, 159, 64, 0.2)',
+        'rgba(255, 205, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+      ],
+      borderColor: [
+        'rgb(255, 99, 132)',
+        'rgb(255, 159, 64)',
+        'rgb(255, 205, 86)',
+        'rgb(75, 192, 192)'
+      ],
+      borderWidth: 2
+    }]
+  },
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true
+      }
     }
+  }
 });
 
 $(document).ready(function () {
-    $('#titulo_modal').html('Persona ' + curVotante);
-    /*
-    $.ajax("{% url 'mainApp:lista_helados' %}", {
-        method: 'GET',
-        success: function(res) {
-            helados = res;
-        },
-        error: function (err) {
-            console.error(err);
-        }
-    });
-    */
-})
+  $('#titulo_modal').html('Persona ' + curVotante);
+  // $('#resultados').toggle(); // No se muestran al prinicipio
+
+  $.ajax("{% url 'mainApp:lista_helados' %}", {
+    method: 'GET',
+    success: function(res) {
+      cargarDatosHelados(res);
+    },
+    error: function (err) {
+      console.error(err);
+    }
+  });
+});
+
+function cargarDatosHelados(helados) {
+  let res = '';
+
+  for (let i = 0; i < helados.length; i++) {
+    res += `<option value="${helados[i].id}">${helados[i].nombre}</option>`;
+  }
+
+  $('#helado_select').html(res);
+}
+
+function actualizarNombreModal() {
+  let val = $('#nombre_input').val();
+  $('#titulo_modal').html(val);
+}
 
 function agregarParticipante() {
 
-    let votoActual = $('#helado_select').val();
-    $('#helado_select').toggleClass('animate__headShake');
-    console.log(votoActual);
-    votos.push(votoActual)
-    console.log($('#helado_select'));
-    $('#titulo_modal').html("Persona " + (++curVotante));
-    $('#titulo_modal').toggleClass('animate__tada');
-    $('#helado_img').toggleClass('animate__tada');
+  let votoActual = $('#helado_select').val();
+  $('#helado_select').toggleClass('animate__headShake');
+  console.log(votoActual);
+  votos.push(votoActual)
+  $('#titulo_modal').html("Persona " + (++curVotante));
+  $('#nombre_input').val("");
+  $('#titulo_modal').toggleClass('animate__tada');
+  $('#helado_img').toggleClass('animate__tada');
 }
 
 function finalizarVotacion() {
-    console.log('votos', votos);
+  console.log('votos', votos);
+  $('#resultados').toggle();
 
-    // const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
-    // console.log(csrftoken);
+  let heladoEscogido = -1;
+  let helados = [];
+  let freq = {};
 
-    let heladoEscogido = -1;
-    let helados = [];
-    let freq = {};
-
-    // Cuenta la ocurrencia de cada id
-    for (let i = 0; i < helados.length; i++) {
-        console.log(helados[i]);
-        if (!freq[helados[i]]) {
-            freq[helados[i]] = 1;
-        } else {
-            freq[helados[i]]++;
-        }
+  // Cuenta la ocurrencia de cada id
+  for (let i = 0; i < helados.length; i++) {
+    if (!freq[helados[i]]) {
+      freq[helados[i]] = 1;
+    } else {
+      freq[helados[i]]++;
     }
+  }
 
-    console.log(freq);
-
-    for (let i = 0; i < helados.length; i++) {
-        if (freq[helados[i]] > heladoEscogido) {
-            heladoEscogido = helados[i];
-        }
+  // Escoge el primero que tenga el mayor numero de votaciones
+  for (let i = 0; i < helados.length; i++) {
+    if (freq[helados[i]] > heladoEscogido) {
+      heladoEscogido = helados[i];
     }
+  }
 
-    $.ajax("{% url 'mainApp:votacion' %}", {
-        method: 'POST',
-        headers: {
-            'X-CSRFToken': csrftoken
-        },
-        contentType: 'application/json',
-        data: {
-            helado: heladoEscogido
-        },
-        success: function (res) {
-            console.log(res);
-        },
-        error: function (err) {
-            console.error(err);
-        }
-    });
+  $.ajax("{% url 'mainApp:votacion' %}", {
+    method: 'POST',
+    contentType: 'application/json',
+    data: {
+      helado: heladoEscogido
+    },
+    success: function (res) {
+      console.log(res);
+    },
+    error: function (err) {
+      console.error(err);
+    }
+  });
 }
 
 function addComensal(nombre, helado) {
-    votos.push(helado);
+  votos.push(helado);
 }
-
-} ());
 </script>
 {% endblock %}

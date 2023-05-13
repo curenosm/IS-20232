@@ -16,14 +16,14 @@
 
 <br>
 <h1 class="animate__animated animate__fadeInLeft">Menú</h1>
-<br/>
-<br/>
+<br>
+<br>
 {% for categoria in categorias %}
   <h2>{{categoria.nombre}}</h2>
   <hr>
   <br>
   {% for subcategoria in categoria.subcategorias.all %}
-  <h3>{{subcategoria.nombre}}</h3>
+  <h4>{{subcategoria.nombre}}</h4>
   <hr>
   
   <br>
@@ -31,41 +31,54 @@
     <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
       {% for platillo in subcategoria.platillos.all %}
       <div class="col text-center">
-        <div class="card" style="width: 18rem;">
+        <div class="card py-2" style="width: 18rem;">
+          <div class="card-header">
+            <h5>{{ platillo.nombre }}</h5>
+          </div>
           <img src="{{ platillo.imagen }}" class="card-img-top" alt="...">
           <div class="card-body">
-            <h5 class="card-title">{{ platillo.nombre }}</h5>
+            <h5 class="card-title pricing-card-title text-muted">
+              ${{ platillo.precio }}
+            </h5>
             <p class="card-text">{{ platillo.descripcion }}</p>
           </div>
+          {% if platillo.get_ingredientes_list %}
           <ul class="list-group list-group-flush">
-            {% for ingrediente in platillo.ingredientes %}
-              <li class="list-group-item">{{ ingrediente.nombre }}</li>
+            {% for ingrediente in platillo.get_ingredientes_list %}
+              <li class="list-group-item text-muted">{{ ingrediente }}</li>
             {% endfor %}
           </ul>
+          {% endif %}
           <div class="card-body">
-            <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-              <button 
-                onclick="decrementCount({{ platillo.id }})"
-                type="button" 
-                class="btn btn-outline-primary">
-                <i class="bi bi-dash"></i>
-              </button>
-              <button
-                type="button" 
-                class="btn btn-outline-primary"
-                id="counter{{platillo.id}}"
-                disabled 
-                />1</button>
-              <button 
-                onclick="incrementCount({{ platillo.id }})"
-                type="button" 
-                class="btn btn-outline-primary">
-                <i class="bi bi-plus"></i>
-              </button>
-            </div>
             <div class="d-grid gap-2">
-              <br>
+              <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                <button 
+                  {{ platillo.disabled_if_helado }}
+                  onclick="decrementCount({{ platillo.id }})"
+                  type="button" 
+                  class="btn btn-outline-secondary">
+                  <i class="bi bi-dash"></i>
+                </button>
+                <button
+                  type="button" 
+                  class="btn btn-outline-secondary"
+                  id="counter{{platillo.id}}"
+                  disabled 
+                  />1</button>
+                <button 
+                  {{ platillo.disabled_if_helado }}
+                  onclick="incrementCount({{ platillo.id }})"
+                  type="button"
+                  class="btn btn-outline-secondary">
+                  <i class="bi bi-plus"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer text-muted">
+            <div class="d-grid gap-2">
               <button 
+                {{ platillo.disabled_if_helado }}
                 class="btn btn-outline-success"
                 onclick="agregarAlCarrito({{ platillo.id }})" 
                 class="card-link">
@@ -75,6 +88,7 @@
             </div>
           </div>
         </div>
+        <br>
       </div>
       <br>
       {% endfor %}
@@ -113,9 +127,10 @@ function decrementCount(platilloId) {
 function agregarAlCarrito(platilloId) {
   console.log('Se hace peticion put');
   $.ajax("{% url 'mainApp:carrito' %}",{
-    method: 'PUT',
+    type: 'PUT',
+    contentType: 'application/json',
     data: {
-      platillo: platilloId,
+      platillo: parseInt(platilloId),
       cantidad: parseInt($('#counter' + platilloId).text())
     },
     success: function(res) {
