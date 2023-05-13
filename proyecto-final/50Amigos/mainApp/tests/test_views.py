@@ -65,18 +65,6 @@ class TestViews_GET(TestCase):
         res = self.client.login(username='error', password='error')
         self.assertFalse(res)
 
-    def test_logout_not_logged_in(self):
-        url = reverse('logout')
-        response = self.client.get(url)
-        assert response.status_code == status.HTTP_302_FOUND
-        self.assertRedirects(response, reverse('mainApp:index'))
-
-    def test_logout_fails_if_not_logged(self):
-        url = reverse('logout')
-        response = self.client.get(url)
-        assert response.status_code == status.HTTP_302_FOUND
-        self.assertRedirects(response, reverse('mainApp:index'))
-
     def test_contacto_no_login(self):
         url = reverse('mainApp:contacto')
         response = self.client.get(url)
@@ -197,6 +185,18 @@ class TestViews_POST(TestCase):
 
         self.factory = APIRequestFactory()
         self.client = Client()
+
+    def test_logout_not_logged_in(self):
+        url = reverse('logout')
+        response = self.client.post(url)
+        assert response.status_code == status.HTTP_302_FOUND
+        self.assertRedirects(response, reverse('mainApp:index'))
+
+    def test_logout_fails_if_not_logged(self):
+        url = reverse('logout')
+        response = self.client.post(url)
+        assert response.status_code == status.HTTP_302_FOUND
+        self.assertRedirects(response, reverse('mainApp:index'))
 
     def test_logout_no_login(self):
         url = reverse('login')
