@@ -11,18 +11,23 @@ then
     echo "PostgreSQL started"
 fi
 
-echo "creando superusuario"
-echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.create_superuser('admin', 'admin@50Amigos.com', 'password')" | python manage.py shell
-
 echo "ejecutando makemigrations..."
 python3 manage.py makemigrations
 
-echo "ejecutando migrate..."
+echo "ejecutando migrate mainApp..."
 python3 manage.py migrate mainApp
 
 echo "ejecutando collect-static..."
 python3 manage.py collectstatic --no-input --clear
 
+echo "ejecutando migrate..."
 python3 manage.py migrate
+
+echo "ejecutando loaddata..."
+python3 manage.py loaddata ./fixtures/db.json
+
+echo "ejecutando test..."
+python3 manage.py test
+
 
 exec "$@"

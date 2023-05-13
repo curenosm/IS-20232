@@ -168,7 +168,7 @@ class Anuncio(models.Model):
     nombre = models.TextField(max_length=200, null=False, blank=False)
     anunciante = models.TextField(max_length=200, null=False, blank=False)
     valido_hasta = models.DateTimeField(auto_now_add=False)
-    imagen = models.TextField(max_length=500, null=False, blank=False)
+    imagen = models.TextField(max_length=500, null=False, default="")
     active = models.BooleanField(default=True, null=False)
 
     def __str__(self):

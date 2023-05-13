@@ -1,12 +1,14 @@
-import logging
+import logging, json
 
 from django.contrib import messages
 from django.contrib.auth import get_user_model, authenticate, login
-from django.shortcuts import render, HttpResponse, redirect
+from django.shortcuts import render, HttpResponse, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse, HttpResponse, QueryDict
 from django.core.mail import send_mail
 from django.contrib import messages
+
+from rest_framework import status
 
 from .models import *
 from .forms import *
@@ -39,7 +41,6 @@ def index(request):
     """
     return render(request, 'index.html')
 
-
 @anonymous_required
 def registro(request):
     """
@@ -50,20 +51,24 @@ def registro(request):
 
     if request.method == 'POST':
 
-        formulario = CustomUserCreationForm(data=request.POST)
+        form = CustomUserCreationForm(data=request.POST)
 
-        if formulario.is_valid():
-            usuario = formulario.save()
+        if form.is_valid():
+            
+            usuario = form.save()
             usuario.save()
-            user = authenticate(username=formulario.cleaned_data['username'],
-                                password=formulario.cleaned_data['password1'])
+            user = authenticate(username=form.cleaned_data['username'],
+                                password=form.cleaned_data['password1'])
             login(request, user)
 
             messages.success(request, 'Registro exitoso, iniciar sesión')
 
             return redirect(to="login")
+        else:
+            if not form.cleaned_data.get('username', False):
+                return HttpResponse(status=status.HTTP_400_BAD_REQUEST)
 
-        data['form'] = formulario
+        data['form'] = form
 
     return render(request, 'registration/registration.html', data)
 
@@ -192,10 +197,12 @@ def carrito(request):
 
         orden = get_current_orden(request.user)
 
-        data = QueryDict(request.body)
+        body = request.body.decode('utf-8').replace("'", '"')
+        data = json.loads(body)
+        
         pedido = Pedido()
-        pedido.platillo = Platillo.objects.get(id=data.get('platillo'))
-        pedido.cantidad = data.get('cantidad')
+        pedido.platillo = get_object_or_404(Platillo, id=data['platillo'])
+        pedido.cantidad = data['cantidad']
         pedido.orden = orden
         pedido.save()
 
