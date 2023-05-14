@@ -18,19 +18,9 @@ from ..models import (
     Platillo
 )
 
+from .test_data import TEMPLATES
 
 User = get_user_model()
-
-TEMPLATES = {
-    "inicio": 'inicio.html',
-    "carrito": 'carrito.html',
-    "contacto": 'contacto.html',
-    "index": 'index.html',
-    "login": 'registration/login.html',
-    "menu": 'menu.html',
-    "registro": 'registration/registration.html',
-    "votacion": 'votacion.html',
-}
 
 
 @pytest.mark.django_db
@@ -41,7 +31,7 @@ class TestViews_GET(TestCase):
 
     def setUp(self):
         """
-        Funcion para configurar el estado del sistema antes de cualquier
+        Función para configurar el estado del sistema antes de cualquier
         prueba unitaria.
         """
 
@@ -70,7 +60,7 @@ class TestViews_GET(TestCase):
 
     def test_login_not_valid_data(self):
         """
-        Funcion para probar que el login no funcione si se utilizan
+        Función para probar que el login no funcione si se utilizan
         credenciales invalidas para iniciar sesión.
         """
 
@@ -79,7 +69,7 @@ class TestViews_GET(TestCase):
 
     def test_contacto_no_login(self):
         """
-        Funcion para probar que la página de contacto sea correctamente
+        Función para probar que la página de contacto sea correctamente
         accesible en caso de que no se haya iniciado sesión.
         """
 
@@ -90,7 +80,7 @@ class TestViews_GET(TestCase):
 
     def test_index_no_login(self):
         """
-        Funcion para probar que la página del index sea correctamente
+        Función para probar que la página del index sea correctamente
         accesible en caso de que no se haya iniciado sesión.
         """
 
@@ -101,7 +91,7 @@ class TestViews_GET(TestCase):
 
     def test_login_no_login(self):
         """
-        Funcion para probar que la página de login sea correctamente
+        Función para probar que la página de login sea correctamente
         accesible en caso de que no se haya iniciado sesión.
         """
 
@@ -112,7 +102,7 @@ class TestViews_GET(TestCase):
 
     def test_registro_no_login(self):
         """
-        Funcion para probar que la página de registro sea correctamente
+        Función para probar que la página de registro sea correctamente
         accesible en caso de que no se haya iniciado sesión.
         """
 
@@ -123,7 +113,7 @@ class TestViews_GET(TestCase):
 
     def test_votacion_no_login(self):
         """
-        Funcion para probar que la página de votacion no sea
+        Función para probar que la página de votacion no sea
         accesible en caso de que aún no se haya iniciado sesión.
         """
 
@@ -135,7 +125,7 @@ class TestViews_GET(TestCase):
 
     def test_lista_helados_no_login(self):
         """
-        Funcion para probar que el listado de helados no sea
+        Función para probar que el listado de helados no sea
         accesible en caso de que aún no se haya iniciado sesión.
         """
 
@@ -148,7 +138,7 @@ class TestViews_GET(TestCase):
 
     def test_carrito_no_login(self):
         """
-        Funcion para probar que la página del carrito no sea
+        Función para probar que la página del carrito no sea
         accesible en caso de que aún no se haya iniciado sesión.
         """
 
@@ -160,7 +150,7 @@ class TestViews_GET(TestCase):
 
     def test_inicio_comensal_no_login(self):
         """
-        Funcion para probar que la página del comensale no sea
+        Función para probar que la página del comensale no sea
         accesible en caso de que aún no se haya iniciado sesión.
         """
 
@@ -170,10 +160,23 @@ class TestViews_GET(TestCase):
         self.assertRedirects(
             response, self.REDIRECT_LOGIN_URL + reverse('mainApp:inicio'))
 
+    def test_orden_no_login_405(self):
+        """
+        Funcion para probar que el metodo no está permitido
+        en caso de solicitar una petición a la vista de las ordenes sin
+        haberse autenticado.
+        """
+
+        url = reverse('mainApp:orden')
+        response = self.client.get(url)
+        assert response.status_code == status.HTTP_302_FOUND
+        self.assertRedirects(
+            response, self.REDIRECT_LOGIN_URL + reverse('mainApp:orden'))
+
     # PRUEBAS QUE REQUIEREN AUTENTICACION
     def test_registro_login(self):
         """
-        Funcion para probar que la página de registro no sea
+        Función para probar que la página de registro no sea
         accesible en caso de que ya se haya iniciado sesión.
         """
 
@@ -185,7 +188,7 @@ class TestViews_GET(TestCase):
 
     def test_carrito_login(self):
         """
-        Funcion para probar que la página de carrito sea
+        Función para probar que la página de carrito sea
         accesible en caso de que ya se haya iniciado sesión.
         """
 
@@ -198,7 +201,7 @@ class TestViews_GET(TestCase):
 
     def test_inicio_comensal_login(self):
         """
-        Funcion para probar que la página de inicio sea correctamente
+        Función para probar que la página de inicio sea correctamente
         accesible en caso de que ya se haya iniciado sesión.
         """
 
@@ -211,7 +214,7 @@ class TestViews_GET(TestCase):
 
     def test_votacion_login(self):
         """
-        Funcion para probar que la página de votación sea correctamente
+        Función para probar que la página de votación sea correctamente
         accesible en caso de que ya se haya iniciado sesión.
         """
 
@@ -224,7 +227,7 @@ class TestViews_GET(TestCase):
 
     def test_menu_login(self):
         """
-        Funcion para probar que la página de menú sea correctamente
+        Función para probar que la página de menú sea correctamente
         accesible en caso de que ya se haya iniciado sesión.
         """
 
@@ -235,6 +238,18 @@ class TestViews_GET(TestCase):
         assert response.status_code == status.HTTP_200_OK
         self.assertTemplateUsed(response, TEMPLATES['menu'])
 
+    def test_orden_login_405(self):
+        """
+        Funcion para probar que el metodo no está permitido
+        en caso de solicitar una petición a la vista de las ordenes.
+        """
+
+        self.client.force_login(user=self.user)
+
+        url = reverse('mainApp:orden')
+        response = self.client.get(url)
+        assert response.status_code == status.HTTP_405_METHOD_NOT_ALLOWED
+
 
 @pytest.mark.django_db
 class TestViews_POST(TestCase):
@@ -244,7 +259,7 @@ class TestViews_POST(TestCase):
 
     def setUp(self):
         """
-        Funcion para configurar el estado del sistema antes de cualquier
+        Función para configurar el estado del sistema antes de cualquier
         prueba unitaria.
         """
 
@@ -349,6 +364,19 @@ class TestViews_POST(TestCase):
         self.assertRedirects(
             response, self.REDIRECT_LOGIN_URL + reverse('mainApp:votacion'))
 
+    def test_orden_no_login_302(self):
+        """
+        Funcion para probar que el metodo no está permitido
+        en caso de solicitar una petición a la vista de las ordenes sin
+        haberse autenticado.
+        """
+
+        url = reverse('mainApp:orden')
+        response = self.client.post(url)
+        assert response.status_code == status.HTTP_302_FOUND
+        self.assertRedirects(
+            response, self.REDIRECT_LOGIN_URL + reverse('mainApp:orden'))
+
     def test_carrito_login(self):
         """
         Función para probar que no podamos agregar un pedido del carrito
@@ -387,6 +415,19 @@ class TestViews_POST(TestCase):
         response = self.client.post(url, data)
         assert response.status_code == status.HTTP_403_FORBIDDEN
 
+    def test_orden_login_202(self):
+        """
+        Funcion para probar que el metodo está permitido
+        en caso de solicitar una petición a la vista de las ordenes una
+        vez autenticados.
+        """
+
+        self.client.force_login(user=self.user)
+
+        url = reverse('mainApp:orden')
+        response = self.client.post(url)
+        assert response.status_code == status.HTTP_204_NO_CONTENT
+
 
 @pytest.mark.django_db
 class TestViews_PUT(TestCase):
@@ -396,7 +437,7 @@ class TestViews_PUT(TestCase):
 
     def setUp(self):
         """
-        Funcion para configurar el estado del sistema antes de cualquier
+        Función para configurar el estado del sistema antes de cualquier
         prueba unitaria.
         """
 
@@ -424,7 +465,7 @@ class TestViews_PUT(TestCase):
 
     def test_carrito_login(self):
         """
-        Funcion para probar que podemos agregar pedidos al carrito de compras
+        Función para probar que podemos agregar pedidos al carrito de compras
         correctamente una vez tengamos sesión iniciada.
         """
 
@@ -440,7 +481,7 @@ class TestViews_PUT(TestCase):
 
     def test_carrito_login_404(self):
         """
-        Funcion para probar que no podemos agregar pedidos al carrito de
+        Función para probar que no podemos agregar pedidos al carrito de
         compras si no tenemos un platillo indicado.
         """
 
@@ -453,6 +494,19 @@ class TestViews_PUT(TestCase):
             content_type='application/x-www-form-urlencoded')
         assert response.status_code == status.HTTP_404_NOT_FOUND
 
+    def test_orden_login_202(self):
+        """
+        Funcion para probar que el metodo no está permitido
+        en caso de solicitar una petición a la vista de las ordenes sin
+        haberse autenticado.
+        """
+
+        self.client.force_login(user=self.user)
+
+        url = reverse('mainApp:orden')
+        response = self.client.post(url)
+        assert response.status_code == status.HTTP_204_NO_CONTENT
+
 
 @pytest.mark.django_db
 class TestViews_DELETE(TestCase):
@@ -460,41 +514,79 @@ class TestViews_DELETE(TestCase):
     Clase para probar las llamadas a vistas con metodo DELETE.
     """
 
+    usuarios = [{
+        'id': 1,
+        'username': 'prueba',
+        'password': 'prueba',
+        'email': 'prueba@prueba.com',
+    }]
+
+    categorias = [{
+        'id': 1,
+        'nombre': 'Prueba',
+    }]
+
+    subcategorias = [{
+        'id': 1,
+        'nombre': 'Prueba',
+    }]
+
+    platillos = [{
+        'id': 1,
+        'nombre': 'Prueba',
+        'imagen': 'noimagen.jpg',
+        'precio': '100.00',
+        'ingredientes': '',
+    }]
+
     def setUp(self):
         """
-        Funcion para configurar el estado del sistema antes de cualquier
+        Función para configurar el estado del sistema antes de cualquier
         prueba unitaria.
         """
 
         self.REDIRECT_LOGIN_URL = '/accounts/login/?next='
-        self.USERNAME = 'prueba'
-        self.PASSWORD = 'prueba'
-        self.EMAIL = 'prueba@prueba.com'
-
-        self.user = User.objects.create(
-            username=self.USERNAME,
-            password=make_password(self.PASSWORD)
-        )
-        self.categoria = Categoria.objects.create(nombre="Prueba")
-        self.subcategoria = Subcategoria.objects.create(nombre="Prueba")
-
-        self.platillo = Platillo.objects.create(
-            id=1,
-            nombre='Prueba',
-            imagen='noimagen.jpg',
-            precio='100.00',
-            categoria=self.categoria,
-            subcategoria=self.subcategoria
-        )
         self.client = Client()
+
+        self.u = None
+        for usuario in self.usuarios:
+            self.u = User.objects.create(
+                id=usuario.get('id'),
+                username=usuario.get('username'),
+                password=make_password(usuario.get('password')),
+                email=usuario.get('email'))
+
+        self.c = None
+        for categoria in self.categorias:
+            self.c = Categoria.objects.create(
+                id=categoria.get('id'),
+                nombre=categoria.get('nombre'))
+
+        self.s = None
+        for subcategoria in self.subcategorias:
+            self.s = Subcategoria.objects.create(
+                id=subcategoria.get('id'),
+                nombre=subcategoria.get('nombre'))
+
+        self.p = None
+        for platillo in self.platillos:
+            self.p = Platillo.objects.create(
+                id=platillo.get('id'),
+                nombre=platillo.get('nombre'),
+                descripcion=platillo.get('descripcion'),
+                imagen=platillo.get('imagen'),
+                categoria=self.c,
+                subcategoria=self.s,
+                precio=platillo.get('precio'),
+                ingredientes=platillo.get('ingredientes'))
 
     def test_carrito_login(self):
         """
-        Funcion para probar que podamos eliminar un pedido del carrito antes
+        Función para probar que podamos eliminar un pedido del carrito antes
         de haberlo enviado a la orden.
         """
 
-        self.client.force_login(user=self.user)
+        self.client.force_login(user=self.u)
         data = {
             "platillo": 1
         }

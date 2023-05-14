@@ -64,6 +64,7 @@ class Platillo(models.Model):
 
     id = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=100)
+    descripcion = models.TextField(blank=True, null=True, max_length=1000)
     imagen = models.CharField(max_length=1000)
     categoria = models.ForeignKey(
         Categoria,
@@ -101,6 +102,7 @@ class Platillo(models.Model):
         gratis en el restaurante y por lo tanto no debería ser posible
         agregarlos al carrito.
         """
+
         if re.search('helado', self.nombre, re.IGNORECASE):
             return 'disabled'
         return ''

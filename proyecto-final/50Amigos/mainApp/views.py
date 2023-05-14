@@ -4,8 +4,9 @@ from django.contrib import messages
 from django.contrib.auth import get_user_model, authenticate, login
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 from django.http import JsonResponse, HttpResponse, QueryDict
-
+from django.views import View
 from rest_framework import status
 
 from .models import (
@@ -24,8 +25,6 @@ from .decorators import anonymous_required
 User = get_user_model()
 
 logger = logging.getLogger(__name__)
-
-# Password de los comensales (mesa1, mesa2, mesa3): restaurante123
 
 
 def get_current_carrito(user):
@@ -177,24 +176,57 @@ def menu(request):
         })
 
 
-@login_required
-def carrito(request):
+@method_decorator(login_required, name='dispatch')
+class OrdenView(View):
     """
-    Vista que se encarga de manejar los procesos relacionados al carrito
-    de compras: ordenes, pedidos, total.
+    Vista basada en clases para manejar las peticiones relacionadas
+    con el manejo de la orden de un comensal.
     """
 
-    if request.method == 'GET':
+    def post(self, request, *args, **kwargs):
+        """
+        Metodo para cerrar la orden y generar la cuenta durante la
+        estadía en el restaurante.
+        """
+
+        return HttpResponse(status=status.HTTP_204_NO_CONTENT)
+
+    def put(self, request, *args, **kwargs):
+        """
+        Método para agregar los pedidos del carrito actual a la orden.
+        """
+
+        return HttpResponse(status=status.HTTP_204_NO_CONTENT)
+
+    def delete(self, request, *args, **kwargs):
+        return HttpResponse(status=status.HTTP_405_METHOD_NOT_ALLOWED)
+
+
+@method_decorator(login_required, name='dispatch')
+class CarritoView(View):
+    """
+    Vista basada en clases para manejar las peticiones relacionadas
+    con el carrito de compras, incluye agregar pedidos al mismo, eliminarlos,
+    editarlos y consultar el estado del carrito.
+    """
+
+    def get(self, request, *args, **kwargs):
+        """
+        Devuelve el template con el carrito y la orden actual en el contexto
+        """
+
         carrito = get_current_carrito(request.user)
         data = {
             "orden": carrito,
             "carrito": carrito
         }
-
         return render(request, 'carrito.html', context=data)
-    elif request.method == 'POST':
-        # Cierra la cuenta actual, genera el ticket y muestra el resumen
-        # de la cuenta, incluyendo IVA etc.
+
+    def post(self, request, *args, **kwargs):
+        """
+        Cierra la cuenta actual, genera el ticket y muestra el resumen
+        de la cuenta, incluyendo IVA etc.
+        """
 
         carrito = get_current_carrito(request.user)
         carrito.active = False
@@ -203,8 +235,11 @@ def carrito(request):
             request,
             'La orden fue cerrada, la cuenta puede ser consultada')
         return render(request, 'carrito.html', context={carrito: carrito})
-    elif request.method == 'PUT':
-        # Estamos agregando un pedido al carrito
+
+    def put(self, request, *args, **kwargs):
+        """
+        Estamos agregando un pedido al carrito
+        """
 
         # Todavía no pasa a la orden que es de donde extraemos la cuenta
         # a la orden actual, para despues guardarlo
@@ -231,8 +266,11 @@ def carrito(request):
         messages.success(request, 'Tu carrito fue actualizado')
         return HttpResponse('Success')
 
-    elif request.method == 'DELETE':
-        # El pedido indicado va a ser elininado del carrito de compras
+    def delete(self, request, *args, **kwargs):
+        """
+        El pedido indicado va a ser elininado del carrito de compras
+        """
+
         carrito = get_current_carrito(request.user)
         data = QueryDict(request.body)
 

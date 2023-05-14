@@ -2,10 +2,11 @@ from django.test import TestCase
 from django.urls import reverse, resolve
 
 from ..views import (
+    CarritoView,
+    OrdenView,
     index,
     inicio_comensal,
     get_lista_helados,
-    carrito,
     contacto,
     menu,
     registro,
@@ -21,14 +22,14 @@ class TestUrls(TestCase):
 
     def setUp(self):
         """
-        Funcion para configurar el estado antes de cada prueba.
+        Función para configurar el estado antes de cada prueba.
         """
 
         pass
 
     def test_index_url(self):
         """
-        Funcion para probar que la url del index funcione correctamente.
+        Función para probar que la url del index funcione correctamente.
         """
 
         url = reverse('mainApp:index')
@@ -37,16 +38,25 @@ class TestUrls(TestCase):
 
     def test_carrito_url(self):
         """
-        Funcion para probar que la url del carrito funcione correctamente.
+        Función para probar que la url del carrito funcione correctamente.
         """
 
         url = reverse('mainApp:carrito')
         res = resolve(url)
-        assert res.func.__name__ == carrito.__name__
+        assert res.func.view_class == CarritoView
+
+    def test_orden_url(self):
+        """
+        Función para probar que la url del carrito funcione correctamente.
+        """
+
+        url = reverse('mainApp:orden')
+        res = resolve(url)
+        assert res.func.view_class == OrdenView
 
     def test_contacto_url(self):
         """
-        Funcion para probar que la url del contacto funcione correctamente.
+        Función para probar que la url del contacto funcione correctamente.
         """
 
         url = reverse('mainApp:contacto')
@@ -55,7 +65,7 @@ class TestUrls(TestCase):
 
     def test_helados_url(self):
         """
-        Funcion para probar que la url de la lista de helados
+        Función para probar que la url de la lista de helados
         funcione correctamente.
         """
 
@@ -65,7 +75,7 @@ class TestUrls(TestCase):
 
     def test_inicio_comensal_url(self):
         """
-        Funcion para probar que la url del inicio de los comensales
+        Función para probar que la url del inicio de los comensales
         funcione correctamente.
         """
 
@@ -75,7 +85,7 @@ class TestUrls(TestCase):
 
     def test_menu_url(self):
         """
-        Funcion para probar que la url del menú funcione correctamente.
+        Función para probar que la url del menú funcione correctamente.
         """
 
         url = reverse('mainApp:menu')
@@ -84,7 +94,7 @@ class TestUrls(TestCase):
 
     def test_registro_url(self):
         """
-        Funcion para probar que la url del registro funcione correctamente
+        Función para probar que la url del registro funcione correctamente
         """
 
         url = reverse('mainApp:registro')
@@ -93,7 +103,7 @@ class TestUrls(TestCase):
 
     def test_votacion_url(self):
         """
-        Funcion para probar que la url de la votación funcione correctamente
+        Función para probar que la url de la votación funcione correctamente
         """
 
         url = reverse('mainApp:votacion')

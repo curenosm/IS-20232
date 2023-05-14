@@ -50,3 +50,9 @@ Facultad de Ciencias, UNAM.
 
   NOTE:
     All documentation associated to this project can be found on the docs/ folder.
+
+## Credenciales
+
+---
+
+Password de los comensales (mesa1, mesa2, mesa3): **restaurante123**
