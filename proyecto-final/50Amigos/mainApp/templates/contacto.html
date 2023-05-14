@@ -3,22 +3,22 @@
 {% block title %}Contacto{% endblock %}
 
 {% block content %}
-<br>
 <nav aria-label="breadcrumb">
-<ol class="breadcrumb">
-  <li class="breadcrumb-item">
-    <a 
-      class="text-decoration-none" 
-      href="{% url 'mainApp:inicio' %}">Inicio</a>
-  </li>
-  <li class="breadcrumb-item active" aria-current="page">
-    Contacto
-  </li>
-</ol>
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a 
+        class="text-decoration-none" 
+        href="{% url 'mainApp:inicio' %}">Inicio</a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">
+      Contacto
+    </li>
+  </ol>
 </nav>
 
 <br>
 <h1>Contacto</h1>
+<hr>
 <br>
 
 <div class="jumbotron">
@@ -27,7 +27,7 @@
     Toda nuestra información empresarial y de contacto estará listada muy
     pronto aquí!
   </p>
-  <hr class="my-4">
+  <br>
   <ul>
     <li>
       <b>Numero de teléfono:</b> <i>(+52) 55 1122 3344</i>
@@ -40,40 +40,40 @@
       Ciudad de México, CDMX.</i>
     </li>
   </ul>
-  <br>
-  <br>
-  <hr>
-  <br>
-  <br>
-  <div class="card">
-    <div class="card-body">
-      <form method="post" class="mt-4">
-        <div style="display:none">
-          <input 
-          type="hidden"
-          name="csrfmiddlewaretoken"
-          value="{{ csrf_token }}" />
-        </div>
-        <div class="form-group">
-          <label for="email">Email:</label>
-          <input
-            class="form-control mt-3"
-            id="email"
-            type="text"
-            placeholder="Introduzca su correo electrónico para suscribirte a nuestras promociones!"/>
-          <br>
-        </div>
-        <div class="d-grid gap-2">
-          <button
-            type="submit"
-            class="btn btn-outline-primary float-end"
-            role="button">Suscribirme</button>
-        </div>
-      </form>
-    </div>
+</div>
+<br>
+<br>
+<hr>
+<br>
+<br>
+<div class="card">
+  <div class="card-body">
+    <form method="post" class="mt-4">
+      <div style="display:none">
+        <input 
+        type="hidden"
+        name="csrfmiddlewaretoken"
+        value="{{ csrf_token }}" />
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input
+          class="form-control mt-3"
+          id="email"
+          type="text"
+          placeholder="Introduzca su correo electrónico para suscribirte a nuestras promociones!"/>
+        <br>
+      </div>
+      <div class="d-grid gap-2">
+        <button
+          type="submit"
+          class="btn btn-outline-primary float-end"
+          role="button">Suscribirme</button>
+      </div>
+    </form>
   </div>
+</div>
 <br>
 <br>
 <br>
-
 {% endblock %}

@@ -3,8 +3,6 @@
 {% block title %} Menú {% endblock %}
 
 {% block content %}
-
-<br>
 <nav aria-label="breadcrumb">
 <ol class="breadcrumb">
   <li class="breadcrumb-item">
@@ -18,7 +16,7 @@
 
 <br>
 <h1>Menú</h1>
-<br>
+<hr>
 <br>
 {% for categoria in categorias %}
   <h2>{{categoria.nombre}}</h2>
@@ -26,14 +24,14 @@
   <br>
   {% for subcategoria in categoria.subcategorias.all %}
   <h4>{{subcategoria.nombre}}</h4>
-  <hr>
-  
   <br>
   <div class="container">
     <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
       {% for platillo in subcategoria.platillos.all %}
       <div class="col text-center">
-        <div class="card py-2" style="width: 18rem;">
+        <div
+          class="card py-2" 
+          style="width: 18rem;" >
           <div class="card-header">
             <h5>{{ platillo.nombre }}</h5>
           </div>
@@ -107,17 +105,11 @@
   <br>
   {% endfor %}
 {% endfor %}
-<br>
-<br>
-<br>
-<br>
-
 {% endblock %}
 
 
 {% block scripts %}
 <script>
-
 
 /**
  * Función que incrementa en uno la cantidad de elementos a agregar

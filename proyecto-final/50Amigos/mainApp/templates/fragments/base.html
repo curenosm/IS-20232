@@ -2,30 +2,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>{% block title %}Inicio{% endblock %}</title>
+
+  <title>
+    {% block title %}Inicio{% endblock %}
+  </title>
 
   <meta charset="utf-8"/>
   <meta name="viewport"
     content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-  <meta name="description" content="" />
-  <meta name="author" content="" />
+  <meta name="description" content=""/>
+  <meta name="author" content=""/>
 
   <link
     rel="icon"
     type="image/x-icon"
     href="{% static 'assets/favicon.ico' %}"/>
-
-  <!-- Core theme CSS (includes Bootstrap)-->
+  
   <link
     href="{% static 'css/bootstrap.min.css' %}"
     rel="stylesheet"/>
   
-  <!-- Bootstrap Icons -->
   <link
     rel="stylesheet"
     href="{% static 'css/bootstrap-icons.css' %}"/>
 
-  <!-- Animate.CSS -->
   <link
     rel="stylesheet"
     href="{% static 'css/animate.min.css' %}"/>
@@ -57,7 +57,7 @@
   <br>
 
   <!-- Contenido -->
-  <div 
+  <div
     id="content"
     class="container animate__animated animate__fadeInLeft">
     {% block content %}{% endblock %}
