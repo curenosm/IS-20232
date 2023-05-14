@@ -29,7 +29,10 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='orden',
             name='helado_escogido',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to='mainApp.platillo'),
+            field=models.ForeignKey(
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                to='mainApp.platillo'),
         ),
         migrations.CreateModel(
             name='Promocion',
@@ -39,7 +42,8 @@ class Migration(migrations.Migration):
                 ('imagen', models.TextField(max_length=500)),
                 ('valido_hasta', models.DateTimeField()),
                 ('active', models.BooleanField(default=True)),
-                ('platillo', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='mainApp.platillo')),
+                ('platillo', models.ForeignKey(
+                    on_delete=django.db.models.deletion.CASCADE, to='mainApp.platillo')),
             ],
             options={
                 'verbose_name': 'Promocion',
@@ -51,7 +55,8 @@ class Migration(migrations.Migration):
             fields=[
                 ('codigo', models.UUIDField(auto_created=True, unique=True)),
                 ('id', models.AutoField(primary_key=True, serialize=False)),
-                ('promocion', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='mainApp.promocion')),
+                ('promocion', models.ForeignKey(
+                    on_delete=django.db.models.deletion.CASCADE, to='mainApp.promocion')),
             ],
             options={
                 'verbose_name': 'Cupon',

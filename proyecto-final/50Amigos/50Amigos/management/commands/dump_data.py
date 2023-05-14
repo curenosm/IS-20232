@@ -1,9 +1,8 @@
 import os
-import time
 
 from io import StringIO
 
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import BaseCommand
 from django.core.management import call_command
 from django.conf import settings
 
@@ -56,7 +55,6 @@ class Command(BaseCommand):
         else:
             self.stdout.write(self.style.ERROR(output_dir + 'Does not exists'))
             os.makedirs(output_dir)
-
 
             # time.sleep(0.5)
             # if not counter%2:

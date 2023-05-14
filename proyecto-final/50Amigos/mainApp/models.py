@@ -1,10 +1,7 @@
 import re
-import json
-
 from django.db import models
 
 from django.contrib.auth.models import AbstractUser, Group
-from django.db import models
 
 
 class User(AbstractUser):
@@ -18,7 +15,12 @@ class User(AbstractUser):
         verbose_name_plural = 'Users'
 
     def __str__(self):
-        return f'{self.username} | {self.first_name} | {self.last_name} | {self.email}'
+        return f"""
+            Username: {self.username}
+            First name:{self.first_name}
+            Last name: {self.last_name}
+            Email: {self.email}
+            """
 
 
 class Categoria(models.Model):
@@ -42,10 +44,17 @@ class Subcategoria(models.Model):
     id = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=100)
     categoria = models.ForeignKey(
-        Categoria, on_delete=models.SET_NULL, null=True, related_name='subcategorias')
+        Categoria,
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name='subcategorias')
 
     def __str__(self):
-        return f'Id: {self.id}, Nombre: {self.nombre}, Categoria: {self.categoria}'
+        return f"""
+                Id: {self.id}
+                Nombre: {self.nombre}
+                Categoria: {self.categoria}
+                """
 
 
 class Platillo(models.Model):
@@ -57,21 +66,24 @@ class Platillo(models.Model):
     nombre = models.CharField(max_length=100)
     imagen = models.CharField(max_length=1000)
     categoria = models.ForeignKey(
-        Categoria, on_delete=models.SET_NULL, null=True, related_name='platillos')
+        Categoria,
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name='platillos')
     subcategoria = models.ForeignKey(
-        Subcategoria, on_delete=models.SET_NULL, null=True, related_name='platillos')
+        Subcategoria,
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name='platillos')
     precio = models.DecimalField(max_digits=10, decimal_places=2)
-    ingredientes=models.TextField(max_length=1000, null=True, blank=True)
-
-    def toJSON(self):
-        return json.dumps(
-            self,
-            default=lambda o: o.__dict__,
-            sort_keys=True,
-            indent=4
-        )
+    ingredientes = models.TextField(max_length=1000, null=True, blank=True)
 
     def get_ingredientes_list(self):
+        """
+        Metodo auxiliar para convertir los ingredientes del platillo
+        de una representación en string separados por comas, en una
+        lista de strings.
+        """
 
         if self.ingredientes is None or self.ingredientes.strip() == '':
             return []
@@ -79,7 +91,7 @@ class Platillo(models.Model):
         ingredientes = []
         for ingrediente in self.ingredientes.split(','):
             ingredientes.append(ingrediente)
-        
+
         return ingredientes
 
     def disabled_if_helado(self):
@@ -94,7 +106,11 @@ class Platillo(models.Model):
         return ''
 
     def __str__(self):
-        return f'Id: {self.id}, Nombre: {self.nombre}, Categoria: {self.categoria}'
+        return f"""
+                Id: {self.id}
+                Nombre: {self.nombre}
+                Categoria: {self.categoria}
+                """
 
 
 class Role(models.Model):
@@ -107,13 +123,17 @@ class Role(models.Model):
     grupo = models.ForeignKey(Group, on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
-        return f'Id: {self.id}, Usuario: {self.usuario}, Categoria: {self.grupo}'
+        return f"""
+                Id: {self.id}
+                Usuario: {self.usuario}
+                Categoria: {self.grupo}
+                """
 
 
 class Orden(models.Model):
     """
-    Modelo que representa la cuenta del comensal, la misma cuenta con una asociacion
-    para que cada orden pueda estar vinculada a varios pedidos.
+    Modelo que representa la cuenta del comensal, la misma cuenta con una
+    asociacion para que cada orden pueda estar vinculada a varios pedidos.
     """
 
     id = models.AutoField(primary_key=True)
@@ -136,8 +156,8 @@ class Orden(models.Model):
 
 class Carrito(models.Model):
     """
-    Modelo que representa el carrito de compras, donde se iran acumulando los pedidos
-    hasta que se mande a cocina
+    Modelo que representa el carrito de compras, donde se iran acumulando los
+    pedidos hasta que se mande a cocina
     """
     id = models.AutoField(primary_key=True)
     orden = models.OneToOneField(
@@ -160,9 +180,18 @@ class Pedido(models.Model):
     platillo = models.ForeignKey(
         Platillo, on_delete=models.SET_NULL, null=True, related_name='pedidos')
     cantidad = models.IntegerField(default=1)
-    carrito = models.ManyToOneRel(to=Carrito, field_name='carrito', field="id", on_delete=models.SET_NULL, related_name='pedidos')
+    carrito = models.ManyToOneRel(
+        to=Carrito,
+        field_name='carrito',
+        field="id",
+        on_delete=models.SET_NULL,
+        related_name='pedidos')
 
     def get_subtotal(self):
+        """
+        Metodo auxiliar para calcular el costo de todos los elementos del
+        pedido.
+        """
         return self.platillo.precio * self.cantidad
 
     def __str__(self):
@@ -188,7 +217,11 @@ class Promocion(models.Model):
         verbose_name_plural = 'Promociones'
 
     def __str__(self):
-        return f'Id: {self.id}, Platillo: {self.platillo}, Expiracion: {self.valido_hasta}'
+        return f"""
+                Id: {self.id}
+                Platillo: {self.platillo}
+                Expiracion: {self.valido_hasta}
+                """
 
 
 class Cupon(models.Model):
@@ -199,14 +232,21 @@ class Cupon(models.Model):
     id = models.AutoField(primary_key=True)
     codigo = models.UUIDField(unique=True, auto_created=True)
     promocion = models.ForeignKey(
-        Promocion, on_delete=models.CASCADE, null=False, related_name='cupones')
+        Promocion,
+        on_delete=models.CASCADE,
+        null=False,
+        related_name='cupones')
 
     class Meta:
         verbose_name = 'Cupon'
         verbose_name_plural = 'Cupones'
 
     def __str__(self):
-        return f'Id: {self.id}, Codigo: {self.codigo}, Promocion: {self.promocion.id}'
+        return f"""
+                Id: {self.id}
+                Codigo: {self.codigo}
+                Promocion: {self.promocion.id}
+                """
 
 
 class Anuncio(models.Model):

@@ -1,8 +1,4 @@
-from datetime import datetime
-
 from django.core.management import BaseCommand
-from django.conf import settings
-from django.utils import timezone
 
 
 class Command(BaseCommand):
@@ -53,4 +49,5 @@ class Command(BaseCommand):
 
         self.stdout.write('Example of establishment of roles:')
         self.stdout.write('export DJANGO_COLORS="role=fg/bg,option;role2=fg"')
-        self.stdout.write('export DJANGO_COLORS="error=yellow/blue,blink;notice=magenta"')
+        self.stdout.write(
+            'export DJANGO_COLORS="error=yellow/blue,blink;notice=magenta"')

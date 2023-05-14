@@ -1,7 +1,4 @@
-import os
-import sys
-
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import BaseCommand
 from django.core.management import call_command
 from django.conf import settings
 
@@ -38,7 +35,10 @@ class Command(BaseCommand):
         )
         for element in settings.FIXTURE_MODELS:
             try:
-                call_command('loaddata', f'fixtures/{element}.json', verbosity=0)
+                call_command(
+                    'loaddata',
+                    f'fixtures/{element}.json',
+                    verbosity=0)
                 self.stdout.write(self.style.SUCCESS(element))
             except Exception:
                 self.stdout.write(self.style.ERROR(f'!!! {element}'))

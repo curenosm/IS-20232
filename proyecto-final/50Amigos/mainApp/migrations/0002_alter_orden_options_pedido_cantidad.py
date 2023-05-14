@@ -12,7 +12,9 @@ class Migration(migrations.Migration):
     operations = [
         migrations.AlterModelOptions(
             name='orden',
-            options={'verbose_name': 'Orden', 'verbose_name_plural': 'Ordenes'},
+            options={
+                'verbose_name': 'Orden',
+                'verbose_name_plural': 'Ordenes'},
         ),
         migrations.AddField(
             model_name='pedido',

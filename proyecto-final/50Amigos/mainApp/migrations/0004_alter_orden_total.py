@@ -13,6 +13,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='orden',
             name='total',
-            field=models.DecimalField(decimal_places=2, max_digits=100, null=True),
+            field=models.DecimalField(
+                decimal_places=2, max_digits=100, null=True),
         ),
     ]

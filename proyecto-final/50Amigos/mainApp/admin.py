@@ -1,7 +1,18 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 
-from mainApp.models import *
+from mainApp.models import (
+    Categoria,
+    Subcategoria,
+    Platillo,
+    Orden,
+    Role,
+    Pedido,
+    Promocion,
+    Cupon,
+    Anuncio
+)
+
 from django.contrib.auth import get_user_model
 User = get_user_model()
 

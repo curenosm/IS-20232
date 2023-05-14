@@ -7,10 +7,17 @@
 <div>
   <br>
   <br>
-  <h1 class="animate__animated animate__fadeInLeft">Bienvenido a 50Amigos! <span class="badge bg-secondary">{{ user.username }}</span></h1>
+  <h1 class="animate__animated animate__fadeInLeft">
+    Bienvenido a 50Amigos! 
+    <span class="badge bg-secondary">{{ user.username }}</span>
+  </h1>
   <br>
-  Si gustas puedes <a href="{% url 'mainApp:carrito' %}">Verificar el estado de tu carrito</a> o bien
-  ver el <a href="{% url 'mainApp:menu' %}">Menú</a>
+  Si gustas puedes 
+  <a href="{% url 'mainApp:carrito' %}">
+    Verificar el estado de tu carrito
+  </a>
+  o bien ver el
+  <a href="{% url 'mainApp:menu' %}">Menú</a>
   <br>
   <a href="{% url 'mainApp:votacion' %}">Votacion</a> para el helado
   <br>
@@ -27,14 +34,10 @@
 {% endblock %}
 
 
-
-
 {% block scripts %}
 <script>
 
-$(document).ready(function () {
-  console.log('Hola mundo');
-})
+console.log('Hola mundo');
 
 </script>
 {% endblock %}

@@ -15,36 +15,63 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='cupon',
             name='promocion',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='cupones', to='mainApp.promocion'),
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name='cupones',
+                to='mainApp.promocion'),
         ),
         migrations.AlterField(
             model_name='orden',
             name='usuario',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='orders', to=settings.AUTH_USER_MODEL),
+            field=models.ForeignKey(
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name='orders',
+                to=settings.AUTH_USER_MODEL),
         ),
         migrations.AlterField(
             model_name='pedido',
             name='orden',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='pedidos', to='mainApp.orden'),
+            field=models.ForeignKey(
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name='pedidos',
+                to='mainApp.orden'),
         ),
         migrations.AlterField(
             model_name='pedido',
             name='platillo',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='pedidos', to='mainApp.platillo'),
+            field=models.ForeignKey(
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name='pedidos',
+                to='mainApp.platillo'),
         ),
         migrations.AlterField(
             model_name='platillo',
             name='categoria',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='platillos', to='mainApp.categoria'),
+            field=models.ForeignKey(
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name='platillos',
+                to='mainApp.categoria'),
         ),
         migrations.AlterField(
             model_name='platillo',
             name='subcategoria',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='platillos', to='mainApp.subcategoria'),
+            field=models.ForeignKey(
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name='platillos',
+                to='mainApp.subcategoria'),
         ),
         migrations.AlterField(
             model_name='subcategoria',
             name='categoria',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='subcategorias', to='mainApp.categoria'),
+            field=models.ForeignKey(
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name='subcategorias',
+                to='mainApp.categoria'),
         ),
     ]

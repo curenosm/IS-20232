@@ -51,7 +51,10 @@
           {% endif %}
           <div class="card-body">
             <div class="d-grid gap-2">
-              <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+              <div 
+                class="btn-group" 
+                role="group" 
+                aria-label="Basic mixed styles example">
                 <button 
                   {{ platillo.disabled_if_helado }}
                   onclick="decrementCount({{ platillo.id }})"
@@ -60,9 +63,9 @@
                   <i class="bi bi-dash"></i>
                 </button>
                 <button
+                  id="counter{{platillo.id}}"
                   type="button" 
                   class="btn btn-outline-secondary"
-                  id="counter{{platillo.id}}"
                   disabled 
                   />1</button>
                 <button 
@@ -113,17 +116,35 @@
 {% block scripts %}
 <script>
 
+
+/**
+ * Función que incrementa en uno la cantidad de elementos a agregar
+ * al carrito del platillo especificado.¨
+ *
+ * @param {number} identificador del platillo.
+*/
 function incrementCount(platilloId) {
   let count = parseInt($('#counter' + platilloId).text());
   $('#counter' + platilloId).text(count + 1);
 }
 
+/**
+ * Función que decrementa en uno la cantidad de elementos a agregar
+ * al carrito del platillo especificado, sólo si la cuenta es mayor que 1.
+ *
+ * @param {number} identificador del platillo.
+*/
 function decrementCount(platilloId) {
   let count = parseInt($('#counter' + platilloId).text());
   if (count > 1)
     $('#counter' + platilloId).text(count - 1);
 }
 
+/**
+ * Función que agrega un pedido al carrito.
+ *
+ * @param {number} identificador del platillo.
+*/
 function agregarAlCarrito(platilloId) {
   console.log('Se hace peticion put');
   $.ajax("{% url 'mainApp:carrito' %}",{

@@ -20,8 +20,12 @@
   <hr>
   <p>Inicia la votación para el sabor de helado!</p>
   <br>
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-      Votar!
+  <button 
+    type="button" 
+    class="btn btn-primary" 
+    data-bs-toggle="modal" 
+    data-bs-target="#exampleModal">
+    Votar!
   </button>
   <br>
   <br>
@@ -66,12 +70,7 @@
             <label for="helado_select">
               ¿Qué helado vota por servir al final?
             </label>
-            <select class="form-select" id ="helado_select">
-              <option value="1">Chocolate</option>
-              <option value="2">Vainilla</option>
-              <option value="3">Fresa</option>
-              <option value="4">Limón</option>
-            </select>
+            <select class="form-select" id ="helado_select"></select>
           </div>
         </div>
         <div class="modal-footer">
@@ -109,6 +108,7 @@ let curVotante = 1;
 
 const ctx = document.getElementById('myChart');
 
+// Definición de la gráfica de resultados de la votación
 new Chart(ctx, {
   type: 'bar',
   data: {
@@ -155,6 +155,10 @@ $(document).ready(function () {
   });
 });
 
+/**
+ * función que carga el listado de los helados en las opciones del
+ * dropdown de seleccion dentro de la ventana emergente.
+*/
 function cargarDatosHelados(helados) {
   let res = '';
 
@@ -165,11 +169,20 @@ function cargarDatosHelados(helados) {
   $('#helado_select').html(res);
 }
 
+/**
+ * Función que actualiza el titulo de la ventana emergente para que
+ * tenga el nombre de la persona escrita en el cuadro de texto.
+*/
 function actualizarNombreModal() {
   let val = $('#nombre_input').val();
   $('#titulo_modal').html(val);
 }
 
+/**
+ * Función que agrega el voto de un participante y actualiza
+ * el estado de la ventana emergente para cambiarle el titulo por la persona
+ * dada.
+*/
 function agregarParticipante() {
 
   let votoActual = $('#helado_select').val();
@@ -182,6 +195,10 @@ function agregarParticipante() {
   $('#helado_img').toggleClass('animate__tada');
 }
 
+/**
+ * Función que manda los resultados de la votación para asignar el sabor
+ * de helado a la orden actual del usuario.
+*/
 function finalizarVotacion() {
   console.log('votos', votos);
   $('#resultados').toggle();
@@ -221,6 +238,9 @@ function finalizarVotacion() {
   });
 }
 
+/**
+ * Función que contabiliza el voto de un comensal
+*/
 function addComensal(nombre, helado) {
   votos.push(helado);
 }

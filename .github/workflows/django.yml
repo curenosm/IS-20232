@@ -28,6 +28,12 @@ jobs:
         cd 50Amigos
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+    - name: Code style 
+      run: |
+        ls
+        cd proyecto-final
+        cd 50Amigos
+        flake8 --config flake8.ini
     - name: Run Tests
       run: |
         ls

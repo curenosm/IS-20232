@@ -15,7 +15,11 @@ class Migration(migrations.Migration):
             name='Carrito',
             fields=[
                 ('id', models.AutoField(primary_key=True, serialize=False)),
-                ('orden', models.OneToOneField(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='carrito', to='mainApp.orden')),
+                ('orden',
+                 models.OneToOneField(null=True,
+                                      on_delete=django.db.models.deletion.SET_NULL,
+                                      related_name='carrito',
+                                      to='mainApp.orden')),
             ],
         ),
     ]

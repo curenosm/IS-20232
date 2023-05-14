@@ -1,18 +1,24 @@
-import logging, json
+import logging
 
 from django.contrib import messages
 from django.contrib.auth import get_user_model, authenticate, login
-from django.shortcuts import render, HttpResponse, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse, HttpResponse, QueryDict
-from django.core.mail import send_mail
-from django.contrib import messages
 
 from rest_framework import status
 
-from .models import *
-from .forms import *
-from .serializers import *
+from .models import (
+    Categoria,
+    Platillo,
+    Pedido,
+    Orden,
+    Promocion,
+    Anuncio
+)
+
+from .forms import CustomUserCreationForm
+from .serializers import PlatilloSerializer
 from .decorators import anonymous_required
 
 User = get_user_model()
@@ -29,7 +35,7 @@ def get_current_carrito(user):
     orden = Orden.objects.filter(usuario=user, active=True) \
         .order_by('-fecha') \
         .first()
-    
+
     if not orden:
         orden = Orden.objects.create(usuario=user, active=True)
 
@@ -38,9 +44,10 @@ def get_current_carrito(user):
 
 def index(request):
     """
-    Pagina de inicio 
+    Pagina de inicio
     """
     return render(request, 'index.html')
+
 
 @anonymous_required
 def registro(request):
@@ -80,22 +87,26 @@ def contacto(request):
     """
 
     if request.method == 'POST':
-        messages.info(request, 'The has suscrito exitosamente a nuestras noticicas.')
-    
+        messages.info(
+            request,
+            'The has suscrito exitosamente a nuestras noticicas.')
+
     return render(request, 'contacto.html')
 
 
 @login_required
 def votacion(request):
     """
-    Página donde se puede realizar la votación por el sabor de helado 
+    Página donde se puede realizar la votación por el sabor de helado
     que se servirá al final de la comida.
     """
 
     if request.method == 'POST':
-        # Obten el resultado de la votacion y asigna el sabor de helado de la orden activa
+        # Obten el resultado de la votacion y asigna el sabor de helado de la
+        # orden activa
         orden = get_current_carrito(request.user)
-        orden.helado = Platillo.objects.filter(id=request.POST.get('helado', 1))
+        orden.helado = Platillo.objects.filter(
+            id=request.POST.get('helado', 1))
         orden.save()
 
         messages.success(request, 'La votación concluyó exitosamente!')
@@ -103,7 +114,9 @@ def votacion(request):
 
     elif request.method == 'GET':
 
-        messages.warning(request, 'Recuerda que en caso de empate elegiremos nosotros.')
+        messages.warning(
+            request,
+            'Recuerda que en caso de empate elegiremos nosotros.')
         return render(request, 'votacion.html')
 
 
@@ -131,7 +144,7 @@ def inicio_comensal(request):
     Vista que maneja el template que se muestra una vez iniciada la sesión,
     el inicio mostrará un carrusel de imagenes con promociones actuales
     que se tengan en exhibición. Y otro carrusel para mostrar los anuncios
-    pagados por terceros para ser exhibidos en las tabletas. 
+    pagados por terceros para ser exhibidos en las tabletas.
     """
 
     data = {
@@ -142,8 +155,11 @@ def inicio_comensal(request):
     }
 
     messages.info(
-        request, 
-        'Bienvenido a 50Amigos, no olvide hacer la votación por el sabor de helado'
+        request,
+        """
+        Bienvenido a 50Amigos, no olvide hacer la votación por el
+        sabor de helado.
+        """
     )
 
     return render(request, 'inicio.html', context=data)
@@ -184,7 +200,7 @@ def carrito(request):
         carrito.active = False
 
         messages.success(
-            request, 
+            request,
             'La orden fue cerrada, la cuenta puede ser consultada')
         return render(request, 'carrito.html', context={carrito: carrito})
     elif request.method == 'PUT':
@@ -201,19 +217,20 @@ def carrito(request):
             if int(p.platillo.id) == int(data.get('platillo')):
                 pedido = p
 
-        if pedido == None:
+        if pedido is None:
             pedido = Pedido()
-            pedido.platillo = get_object_or_404(Platillo, id=data.get('platillo'))
+            pedido.platillo = get_object_or_404(
+                Platillo, id=data.get('platillo'))
             pedido.cantidad = data.get('cantidad')
             pedido.orden = carrito
         else:
             pedido.cantidad = int(data.get('cantidad'))
-        
+
         pedido.save()
 
         messages.success(request, 'Tu carrito fue actualizado')
         return HttpResponse('Success')
-    
+
     elif request.method == 'DELETE':
         # El pedido indicado va a ser elininado del carrito de compras
         carrito = get_current_carrito(request.user)
@@ -224,6 +241,6 @@ def carrito(request):
                 print('si entro')
                 p.orden = None
                 p.save()
-        
+
         messages.warning(request, 'El elemento fue retirado de su carrito')
         return HttpResponse('Deleted', status=status.HTTP_202_ACCEPTED)

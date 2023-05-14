@@ -20,8 +20,9 @@
   <h1 class="animate__animated animate__fadeInLeft">Carrito</h1>
   <hr>
   <p class="my-3">
-    Estos productos se encuentran actualmente en tu carrito, puedes editarlos
-    aún o removerlos antes de hacer el pedido apretando el botón <b>Hacer pedido</b>.
+    Estos productos se encuentran actualmente en tu carrito, puedes 
+    editarlos aún o removerlos antes de hacer el pedido apretando el
+    botón <b>Hacer pedido</b>.
   </p>
   <table class="table table-striped my-5">
     <thead>
@@ -168,6 +169,12 @@
 {% block scripts %}
 <script type="text/javascript">
 
+/**
+ * Función que decrementa en uno la cantidad de elementos a agregar
+ * al carrito del platillo especificado.
+ *
+ * @param {number} identificador del platillo.
+*/
 function disminuirCantidad(platilloId) {
   let count = parseInt($('#counter' + platilloId).text());
   if (count > 1) {
@@ -188,6 +195,12 @@ function disminuirCantidad(platilloId) {
   }
 }
 
+/**
+ * Función que incrementa en uno la cantidad de elementos a agregar
+ * al carrito del platillo especificado.
+ *
+ * @param {number} identificador del platillo.
+*/
 function aumentarCantidad(platilloId) {
   let count = parseInt($('#counter' + platilloId).text());
   $.ajax("{% url 'mainApp:carrito' %}", {
@@ -206,6 +219,11 @@ function aumentarCantidad(platilloId) {
   });
 }
 
+/**
+ * Función que elimina todas las ocurrencias de un platillo del carrito.
+ *
+ * @param {number} identificador del platillo.
+*/
 function eliminarPlatillo(platilloId) {
   $.ajax("{% url 'mainApp:carrito' %}", {
     type: 'DELETE',
@@ -222,6 +240,10 @@ function eliminarPlatillo(platilloId) {
   });
 }
 
+/**
+ * Función que manda el pedido actual a la orden para que los pedidos
+ * sean preparados en la cocina.
+*/
 function hacerPedido() {
   $.ajax("{% url 'mainApp:carrito' %}", {
     type: 'POST',
@@ -238,6 +260,10 @@ function hacerPedido() {
   });
 }
 
+/**
+ * Función para indicar que la estadía en el restaurante ha terminado y el
+ * postre puede empezar a servirse.
+*/
 function cerrarCuenta() {
   $.ajax("{% url 'mainApp:carrito' %}", {
     type: 'POST',
