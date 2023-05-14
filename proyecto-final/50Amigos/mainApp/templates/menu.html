@@ -8,14 +8,16 @@
 <nav aria-label="breadcrumb">
 <ol class="breadcrumb">
   <li class="breadcrumb-item">
-    <a href="{% url 'mainApp:inicio' %}">Inicio</a>
+    <a
+      class="text-decoration-none"
+      href="{% url 'mainApp:inicio' %}">Inicio</a>
   </li>
   <li class="breadcrumb-item active" aria-current="page">Menú</li>
 </ol>
 </nav>
 
 <br>
-<h1 class="animate__animated animate__fadeInLeft">Menú</h1>
+<h1>Menú</h1>
 <br>
 <br>
 {% for categoria in categorias %}
@@ -146,7 +148,6 @@ function decrementCount(platilloId) {
  * @param {number} identificador del platillo.
 */
 function agregarAlCarrito(platilloId) {
-  console.log('Se hace peticion put');
   $.ajax("{% url 'mainApp:carrito' %}",{
     type: 'PUT',
     contentType: 'application/json',
@@ -155,8 +156,6 @@ function agregarAlCarrito(platilloId) {
       cantidad: parseInt($('#counter' + platilloId).text())
     },
     success: function(res) {
-      console.log('success');
-      console.log(res);
       window.location.href = '{% url 'mainApp:carrito' %}'
     },
     error: function(err) {

@@ -1,106 +1,105 @@
 {% extends 'fragments/base.html' %}
+{% load static %}
 
-{% block title %} Votación {% endblock %}
+{% block title %}Votación{% endblock %}
 
 {% block content %}
-<div class="container">
-  
-  <br>
-  <nav aria-label="breadcrumb">
+<nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-      <li class="breadcrumb-item">
-          <a href="{% url 'mainApp:inicio' %}">Inicio</a>
-          </li>
-      <li class="breadcrumb-item active" aria-current="page">Helado</li>
+    <li class="breadcrumb-item">
+      <a
+        class="text-decoration-none"
+        href="{% url 'mainApp:inicio' %}">Inicio</a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">Helado</li>
   </ol>
-  </nav>
+</nav>
 
-  <br>
-  <h1 class="animate__animated animate__fadeInLeft">Helado</h1>
-  <hr>
-  <p>Inicia la votación para el sabor de helado!</p>
-  <br>
-  <button 
-    type="button" 
-    class="btn btn-primary" 
-    data-bs-toggle="modal" 
-    data-bs-target="#exampleModal">
-    Votar!
-  </button>
-  <br>
-  <br>
-  <div id="resultados" class="text-center" style="display: none;">
-      <canvas id="myChart"></canvas>
-  </div>
+<br>
+<h1>Helado</h1>
+<hr>
+<p>Inicia la votación para el sabor de helado!</p>
+<br>
+<button 
+  type="button" 
+  class="btn btn-outline-primary" 
+  data-bs-toggle="modal" 
+  data-bs-target="#exampleModal">
+  Votar!
+</button>
+<br>
+<br>
+<div id="resultados" class="text-center" style="display: none;">
+    <canvas id="myChart"></canvas>
+</div>
 
-  <!-- Vertically centered scrollable modal -->
-  <div class="modal" tabindex="-1" id="exampleModal">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 
-            class="modal-title animate__animated animate__headShake" 
-            id="titulo_modal">
-            Persona 1
-          </h5>
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="modal"
-            aria-label="Close"></button>
+<!-- Vertically centered scrollable modal -->
+<div class="modal" tabindex="-1" id="exampleModal">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 
+          class="modal-title animate__animated animate__headShake" 
+          id="titulo_modal">
+          Persona 1
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img
+          id="helado_img"
+          class="animate__animated animate__headShake text-center" 
+          src="{% static 'img/helados.jpg' %}" 
+          alt="helado"
+          width="100%">
+        <div class="form-group">
+          <label for="nombre_input">¿Cuál es su nombre?</label>
+          <input
+            id="nombre_input"
+            onkeyup="actualizarNombreModal()"
+            type="text"
+            class="form-control"
+            placeholder="Juan"/>
         </div>
-        <div class="modal-body">
-          <img
-            id="helado_img"
-            class="animate__animated animate__headShake text-center" 
-            src="https://img.freepik.com/vector-gratis/coleccion-helados-planos_23-2148982427.jpg?w=2000" 
-            alt="helado"
-            width="100%">
-          <div class="form-group">
-            <label for="nombre_input">¿Cuál es su nombre?</label>
-            <input
-              id="nombre_input"
-              onkeyup="actualizarNombreModal()"
-              type="text"
-              class="form-control"
-              placeholder="Juan"/>
-          </div>
-          <br>
-          <div class="form-group">
-            <label for="helado_select">
-              ¿Qué helado vota por servir al final?
-            </label>
-            <select class="form-select" id ="helado_select"></select>
-          </div>
+        <br>
+        <div class="form-group">
+          <label for="helado_select">
+            ¿Qué helado vota por servir al final?
+          </label>
+          <select class="form-select" id ="helado_select"></select>
         </div>
-        <div class="modal-footer">
-          <button 
-            onclick="finalizarVotacion()"
-            type="button" 
-            class="btn btn-secondary"
-            data-bs-dismiss="modal">Finalizar votación</button>
-          <button 
-            onclick="agregarParticipante()"
-            type="button" 
-            class="btn btn-primary">Agregar otro participante</button>
-        </div>
+      </div>
+      <div class="modal-footer">
+        <button 
+          onclick="agregarParticipante()"
+          type="button" 
+          class="btn btn-outline-secondary">Agregar otro participante</button>
+        <button 
+          onclick="finalizarVotacion()"
+          type="button" 
+          class="btn btn-outline-primary"
+          data-bs-dismiss="modal">Finalizar votación</button>
       </div>
     </div>
   </div>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <div style="display:none">
-    <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
-  </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div style="display:none">
+  <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
 </div>
 {% endblock %}
 
 
 {% block scripts %}
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{% static 'js/chart.js' %}"></script>
 <script>
 let helados = [1, 2, 3, 4];
 let votos = [];
@@ -187,7 +186,6 @@ function agregarParticipante() {
 
   let votoActual = $('#helado_select').val();
   $('#helado_select').toggleClass('animate__headShake');
-  console.log(votoActual);
   votos.push(votoActual)
   $('#titulo_modal').html("Persona " + (++curVotante));
   $('#nombre_input').val("");
@@ -200,7 +198,6 @@ function agregarParticipante() {
  * de helado a la orden actual del usuario.
 */
 function finalizarVotacion() {
-  console.log('votos', votos);
   $('#resultados').toggle();
 
   let heladoEscogido = -1;
@@ -230,7 +227,7 @@ function finalizarVotacion() {
       helado: heladoEscogido
     },
     success: function (res) {
-      console.log(res);
+      location.reload();
     },
     error: function (err) {
       console.error(err);

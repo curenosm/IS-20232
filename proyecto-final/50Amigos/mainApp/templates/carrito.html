@@ -8,16 +8,20 @@
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
-        <a href="{% url 'mainApp:inicio' %}">Inicio</a>
+        <a 
+          class="text-decoration-none" 
+          href="{% url 'mainApp:inicio' %}">Inicio</a>
         </li>
       <li class="breadcrumb-item">
-        <a href="{% url 'mainApp:menu' %}">Menu</a>
+        <a 
+          class="text-decoration-none" 
+          href="{% url 'mainApp:menu' %}">Menu</a>
       </li>
       <li class="breadcrumb-item active" aria-current="page">Carrito</li>
     </ol>
   </nav>
   <br>
-  <h1 class="animate__animated animate__fadeInLeft">Carrito</h1>
+  <h1>Carrito</h1>
   <hr>
   <p class="my-3">
     Estos productos se encuentran actualmente en tu carrito, puedes 
@@ -185,7 +189,6 @@ function disminuirCantidad(platilloId) {
         cantidad: count - 1
       },
       success: function (res) {
-        console.log(res);
         location.reload();
       },
       error: function (err) {
@@ -210,7 +213,6 @@ function aumentarCantidad(platilloId) {
       cantidad: count + 1
     },
     success: function (res) {
-      console.log(res);
       location.reload();
     },
     error: function (err) {
@@ -231,7 +233,6 @@ function eliminarPlatillo(platilloId) {
       platillo: parseInt(platilloId)
     },
     success: function (res) {
-      console.log(res);
       location.reload();
     },
     error: function (err) {
@@ -251,7 +252,6 @@ function hacerPedido() {
       platillo: parseInt(platilloId)
     },
     success: function (res) {
-      console.log(res);
       location.reload();
     },
     error: function (err) {
@@ -269,7 +269,6 @@ function cerrarCuenta() {
     type: 'POST',
     data: {},
     success: function (res) {
-      console.log(res);
       location.reload();
     },
     error: function (err) {

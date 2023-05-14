@@ -4,40 +4,50 @@
 
 
 {% block content %}
-<div>
-  <br>
-  <br>
-  <h1 class="animate__animated animate__fadeInLeft">
-    Bienvenido a 50Amigos! 
-    <span class="badge bg-secondary">{{ user.username }}</span>
-  </h1>
-  <br>
-  Si gustas puedes 
-  <a href="{% url 'mainApp:carrito' %}">
-    Verificar el estado de tu carrito
-  </a>
-  o bien ver el
-  <a href="{% url 'mainApp:menu' %}">Menú</a>
-  <br>
-  <a href="{% url 'mainApp:votacion' %}">Votacion</a> para el helado
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-</div>
+<h1>
+  Bienvenido a 50Amigos! 
+  <span class="badge bg-secondary">{{ user.username }}</span>
+</h1>
+<br>
+Si gustas puedes:
+<br>
+<br>
+<ul>
+  <li>
+    Verificar el estado de tu 
+    <a
+      class="text-decoration-none"
+      href="{% url 'mainApp:carrito' %}">carrito</a>.
+  </li>
+  <li>
+    Ver el
+    <a
+      class="text-decoration-none"
+      href="{% url 'mainApp:menu' %}">menú</a>.
+  </li>
+  <li>
+    Votar por el 
+    <a
+      class="text-decoration-none"
+      href="{% url 'mainApp:votacion' %}">helado</a>.
+  </li>
+</ul>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 {% endblock %}
 
 
 {% block scripts %}
 <script>
 
-console.log('Hola mundo');
+
 
 </script>
 {% endblock %}

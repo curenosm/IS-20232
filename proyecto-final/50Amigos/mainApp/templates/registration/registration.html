@@ -13,19 +13,25 @@
         <div class="card-body">
           <h3>Ingresa tus datos</h3>
           <hr>
-          <form action="" method="post">
+          <form method="post">
             <br>
             {% csrf_token %}
             {{form | crispy}}
             <br>
             <small>
-              ¿Ya tienes una cuenta? <a href="{% url 'login' %}">Inicia sesión</a>
+              ¿Ya tienes una cuenta? 
+              <a
+                class="text-decoration-none"
+                href="{% url 'login' %}">Inicia sesión</a>
             </small>
             <br>
             <br>
             <br>
             <div class="d-grid gap-2">
-              <input type="submit" name="Registrar" class="btn btn-outline-success float-end" >
+              <input 
+                type="submit" 
+                name="Registrar" 
+                class="btn btn-outline-success float-end">
             </div>
           </form>
         </div>

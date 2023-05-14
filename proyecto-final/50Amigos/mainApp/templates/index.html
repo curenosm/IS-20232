@@ -1,6 +1,7 @@
 {% extends 'fragments/base.html' %} 
+{% load static %}
 
-{% block title %} Index {% endblock %}
+{% block title %}Index{% endblock %}
 
 
 {% block styles %}
@@ -15,28 +16,19 @@
 {% block content %}
 <div>
   <br>
-  <br>
-  <h1>50 Amigos</h1>
-  <br>
-
-  50Amigos surge como una empresa en 2023, motivados por la necesidad 
-  de optimizar el proceso de atención, además lo que más nos caracteriza
-  es el hecho de que el helado es gratis! Lo único que hay que hacer
-  es que todos los comensales voten por su sabor favorito y el ganador
-  será el sabor servido al final de la comida, yummy!
-  
+  <h1 class="myb-5">Inicio</h1>
   <br>
   <br>
   <div id="carouselExample" class="carousel slide">
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="https://www.unileverfoodsolutions.com.mx/dam/global-ufs/mcos/NOLA/calcmenu/recipes/MX-recipes/In-Development/FULL-SAND.png" class="d-block w-100" alt="..."  height="30%" >
+        <img src="{% static 'img/carousel1.png' %}" class="d-block w-100" alt="..."  height="30%" >
       </div>
       <div class="carousel-item">
-        <img src="https://media-cdn.tripadvisor.com/media/photo-s/17/34/39/98/try-our-quesadillas-with.jpg"  width="400" class="d-block w-100" alt="...">
+        <img src="{% static 'img/carousel2.png' %}" width="400" class="d-block w-100" alt="...">
       </div>
       <div class="carousel-item">
-        <img src="https://www.clarin.com/img/2021/06/17/LC25eDtCT_1200x630__1.jpg" class="d-block w-100" height="30%" alt="...">
+        <img src="{% static 'img/carousel3.jpg' %}" class="d-block w-100" height="30%" alt="...">
       </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
@@ -55,6 +47,45 @@
   </div>
   <br>
   <br>
+  <div class="container">
+    <figure class="text-left">
+      <blockquote class="blockquote">
+        <cite>"El helado de chocolate es mi favorito."</cite>
+      </blockquote>
+      <figcaption class="blockquote-footer">
+        <cite title="Source Title">Gabriel</cite>
+      </figcaption>
+    </figure>
+    <br>
+    <figure class="text-end">
+      <blockquote class="blockquote">
+        <cite>"Espero volver pronto, la comida estuvo grandiosa."</cite>
+      </blockquote>
+      <figcaption class="blockquote-footer">
+        <cite title="Source Title">Sara</cite>
+      </figcaption>
+    </figure>
+    <br>
+    <figure class="text-left">
+      <blockquote class="blockquote">
+        <cite>"Sin dudas una gran experiencia culinaria."</cite>
+      </blockquote>
+      <figcaption class="blockquote-footer">
+        <cite title="Source Title">Pedro</cite>
+      </figcaption>
+    </figure>
+  </div>
+  <br>
+  <br>
+
+  50Amigos surge como una empresa en 2023, motivados por la necesidad 
+  de optimizar el proceso de atención, además lo que más nos caracteriza
+  es el hecho de que el helado es gratis! Lo único que hay que hacer
+  es que todos los comensales voten por su sabor favorito y el ganador
+  será el sabor servido al final de la comida, yummy!
+  
+  <br>
+  <br>
   <br>
   <br>
   <br>
@@ -64,7 +95,7 @@
   <div id="carouselExample2" class="carousel slide">
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="https://applediario.com/wp-content/uploads/2012/02/tu-anuncio-aqui.png" class="d-block w-100" alt="..."  height="100" >
+        <img src="{% static 'img/tu-anuncio-aqui.png' %}" class="d-block w-100" alt="..."  height="100" >
       </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample2" data-bs-slide="prev">
@@ -83,8 +114,6 @@
 
 {% block scripts %}
 <script>
-
-console.log("Hola mundo");
 
 </script>
 {% endblock %}
