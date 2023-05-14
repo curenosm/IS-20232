@@ -8,7 +8,7 @@ Facultad de Ciencias, UNAM.
 | **Nombre**                  | **No. de cuenta**  | **Rol** |
 |:----------------------------|:------------------:|---------|
 | *Almanza Torres José Luis*  |         -          | *Responsable de colaboración* |
-| *Bernal Núñez Raúl*         |         -          | *Responsable de calidad* |
+| *Bernal Núñez Raúl*         |     318224187      | *Responsable de calidad* |
 | *Cureño Sánchez Misael*     |     418002485      | *Responsable técnico* |
 | *Hernández Montoya Ricardo* |         -          | *Responsable del equipo* |
 
