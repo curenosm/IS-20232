@@ -3,6 +3,68 @@
 
 {% block title %}Votación{% endblock %}
 
+
+
+
+
+{# Usando modal de manera global, para que empate con AnimateCSS #}
+{% block modal_header %}
+  <h5 
+    class="modal-title animate__animated animate__headShake" 
+    id="tituloModal">
+    Persona 1
+  </h5>
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="modal"
+    aria-label="Close"></button>
+{% endblock %}
+
+{% block modal_body %}
+  <img
+    id="heladoImg"
+    class="animate__animated animate__headShake text-center" 
+    src="{% static 'img/helados.jpg' %}" 
+    alt="helado"
+    width="100%">
+  <div class="form-group">
+    <label for="nombreInput">¿Cuál es su nombre?</label>
+    <input
+    id="nombreInput"
+    onkeyup="actualizarNombreModal()"
+    type="text"
+    class="form-control"
+    placeholder="Juan"/>
+    <br>
+  </div>
+  <div class="form-group">
+    <label for="heladoSelect">
+      ¿Qué helado vota por servir al final?
+    </label>
+    <select class="form-select" id ="heladoSelect"></select>
+  </div>
+{% endblock %}
+
+{% block modal_footer %}
+  <button 
+    onclick="agregarParticipante()"
+    type="button" 
+    class="btn btn-outline-secondary">Agregar otro participante</button>
+  <button 
+    onclick="finalizarVotacion()"
+    type="button" 
+    class="btn btn-outline-primary"
+    data-bs-dismiss="modal">Finalizar votación</button>
+{% endblock %}
+
+
+
+
+
+
+
+
 {% block content %}
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
@@ -19,72 +81,16 @@
 <hr>
 <p>Inicia la votación para el sabor de helado!</p>
 <br>
-<button 
-  type="button" 
-  class="btn btn-outline-primary" 
-  data-bs-toggle="modal" 
-  data-bs-target="#modal">
+<button
+  class="btn btn-outline-primary"
+  data-bs-toggle="modal"
+  data-bs-target="#globalModal">
   Votar!
 </button>
 <br>
 <br>
 <div id="resultados" class="text-center" style="display: none;">
     <canvas id="myChart"></canvas>
-</div>
-
-<!-- Vertically centered scrollable modal -->
-<div class="modal" tabindex="-1" id="modal">
-  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 
-          class="modal-title animate__animated animate__headShake" 
-          id="titulo_modal">
-          Persona 1
-        </h5>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <img
-          id="helado_img"
-          class="animate__animated animate__headShake text-center" 
-          src="{% static 'img/helados.jpg' %}" 
-          alt="helado"
-          width="100%">
-        <div class="form-group">
-          <label for="nombre_input">¿Cuál es su nombre?</label>
-          <input
-            id="nombre_input"
-            onkeyup="actualizarNombreModal()"
-            type="text"
-            class="form-control"
-            placeholder="Juan"/>
-        </div>
-        <br>
-        <div class="form-group">
-          <label for="helado_select">
-            ¿Qué helado vota por servir al final?
-          </label>
-          <select class="form-select" id ="helado_select"></select>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button 
-          onclick="agregarParticipante()"
-          type="button" 
-          class="btn btn-outline-secondary">Agregar otro participante</button>
-        <button 
-          onclick="finalizarVotacion()"
-          type="button" 
-          class="btn btn-outline-primary"
-          data-bs-dismiss="modal">Finalizar votación</button>
-      </div>
-    </div>
-  </div>
 </div>
 <br>
 <br>
@@ -97,12 +103,34 @@
 {% endblock %}
 
 
+
+
+
+
+
+
 {% block scripts %}
 <script src="{% static 'js/chart.js' %}"></script>
 <script>
+
 let helados = [1, 2, 3, 4];
 let votos = [];
 let curVotante = 1;
+
+$(document).ready(function () {
+  $('#tituloModal').html('Persona ' + curVotante);
+  // $('#resultados').toggle(); // No se muestran al prinicipio
+
+  $.ajax("{% url 'mainApp:lista_helados' %}", {
+    method: 'GET',
+    success: function(res) {
+      cargarDatosHelados(res);
+    },
+    error: function (err) {
+      console.error(err);
+    }
+  });
+});
 
 const ctx = document.getElementById('myChart');
 
@@ -138,25 +166,10 @@ new Chart(ctx, {
   }
 });
 
-$(document).ready(function () {
-  $('#titulo_modal').html('Persona ' + curVotante);
-  // $('#resultados').toggle(); // No se muestran al prinicipio
-
-  $.ajax("{% url 'mainApp:lista_helados' %}", {
-    method: 'GET',
-    success: function(res) {
-      cargarDatosHelados(res);
-    },
-    error: function (err) {
-      console.error(err);
-    }
-  });
-});
-
 /**
  * función que carga el listado de los helados en las opciones del
  * dropdown de seleccion dentro de la ventana emergente.
-*/
+ */
 function cargarDatosHelados(helados) {
   let res = '';
 
@@ -164,38 +177,38 @@ function cargarDatosHelados(helados) {
     res += `<option value="${helados[i].id}">${helados[i].nombre}</option>`;
   }
 
-  $('#helado_select').html(res);
+  $('#heladoSelect').html(res);
 }
 
 /**
  * Función que actualiza el titulo de la ventana emergente para que
  * tenga el nombre de la persona escrita en el cuadro de texto.
-*/
+ */
 function actualizarNombreModal() {
-  let val = $('#nombre_input').val();
-  $('#titulo_modal').html(val);
+  let val = $('#nombreInput').val();
+  $('#tituloModal').html(val);
 }
 
 /**
  * Función que agrega el voto de un participante y actualiza
  * el estado de la ventana emergente para cambiarle el titulo por la persona
  * dada.
-*/
+ */
 function agregarParticipante() {
 
-  let votoActual = $('#helado_select').val();
-  $('#helado_select').toggleClass('animate__headShake');
+  let votoActual = $('#heladoSelect').val();
+  $('#heladoSelect').toggleClass('animate__headShake');
   votos.push(votoActual)
-  $('#titulo_modal').html("Persona " + (++curVotante));
-  $('#nombre_input').val("");
-  $('#titulo_modal').toggleClass('animate__tada');
-  $('#helado_img').toggleClass('animate__tada');
+  $('#tituloModal').html("Persona " + (++curVotante));
+  $('#nombreInput').val("");
+  $('#tituloModal').toggleClass('animate__tada');
+  $('#heladoImg').toggleClass('animate__tada');
 }
 
 /**
  * Función que manda los resultados de la votación para asignar el sabor
  * de helado a la orden actual del usuario.
-*/
+ */
 function finalizarVotacion() {
   $('#resultados').toggle();
 
@@ -236,9 +249,10 @@ function finalizarVotacion() {
 
 /**
  * Función que contabiliza el voto de un comensal
-*/
+ */
 function addComensal(nombre, helado) {
   votos.push(helado);
 }
+
 </script>
 {% endblock %}

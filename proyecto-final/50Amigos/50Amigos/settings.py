@@ -48,7 +48,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'mainApp',
     'crispy_forms',
-    'crispy_bootstrap4'
+    'crispy_bootstrap4',
+    'coverage'
 ]
 
 MIDDLEWARE = [
@@ -149,25 +150,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "upload")
 ################################################################
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-
-################################################################
-
-# Here you must put all the models from which you will dump/load
-# fixtures data (NOTE: ORDER IS IMPORTANT!!!!!!!)
-# E.g: 'my_app.Model1'
-FIXTURE_MODELS = [
-    'mainApp.User',
-    'mainApp.Categoria',
-    'mainApp.Subcategoria',
-    'mainApp.Platillo',
-    'mainApp.Role',
-    'mainApp.Orden',
-    'mainApp.Pedido',
-    'mainApp.Promocion',
-    'mainApp.Cupon',
-    'mainApp.Anuncio',
-]
-
 
 ################################################################
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

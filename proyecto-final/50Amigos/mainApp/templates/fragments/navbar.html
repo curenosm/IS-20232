@@ -1,7 +1,8 @@
 <nav class="navbar navbar-expand-lg fixed-top bg-body-dark navbar-dark bg-dark text-light">
-
   <div class="container-fluid">
-    <a class="navbar-brand" href="{% url 'mainApp:inicio' %}">50Amigos</a>
+    <a class="navbar-brand" href="{% url 'mainApp:inicio' %}">
+      50Amigos
+    </a>
     <button 
       class="navbar-toggler" 
       type="button" 
@@ -18,30 +19,39 @@
       style="--bs-scroll-height: 200px;">
 
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'mainApp:index' %}">
+        <a
+          class="nav-link"
+          href="{% url 'mainApp:index' %}">
           Inicio
         </a>
       </li>
 
       <li class="nav-item active">
-        <a class="nav-link" href="{% url 'mainApp:contacto' %}">
+        <a class="nav-link"
+          href="{% url 'mainApp:contacto' %}">
           Contacto
         </a>
       </li>
 
       {% if request.user.is_authenticated %}
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'mainApp:carrito' %}">
+        <a 
+          class="nav-link" 
+          href="{% url 'mainApp:carrito' %}">
           Carrito
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'mainApp:votacion' %}">
+        <a 
+          class="nav-link" 
+          href="{% url 'mainApp:votacion' %}">
           Helado
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'mainApp:menu' %}">
+        <a 
+          class="nav-link" 
+          href="{% url 'mainApp:menu' %}">
           Menú
         </a>
       </li>

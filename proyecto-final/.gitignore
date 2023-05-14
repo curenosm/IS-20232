@@ -1,2 +1,9 @@
 50Amigos/mainApp/__pycache__
+50Amigos/htmlcov
+50Amigos/__pycache__
+50Amigos/.pytest_cache
+50Amigos/geckodriver.log
+50Amigos/.idea
+.coverage
 *.pyc
+.idea

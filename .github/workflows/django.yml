@@ -27,6 +27,7 @@ jobs:
         cd 50Amigos
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+        pip list
     - name: Code style 
       run: |
         cd proyecto-final
@@ -36,6 +37,11 @@ jobs:
       run: |
         cd proyecto-final
         cd 50Amigos
-        python -m pip install --upgrade pip
         python manage.py test
         py.test
+    - name: Run Coverage Report
+      run: |
+        cd proyecto-final
+        cd 50Amigos
+        coverage run manage.py test -v 2
+        coverage html

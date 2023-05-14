@@ -9,18 +9,68 @@ from django.urls import (
 from rest_framework import status
 from django.test import Client
 
-from django.contrib.auth.hashers import make_password
-
-
-from ..models import (
-    Subcategoria,
-    Categoria,
-    Platillo
+from .test_data import (
+    REDIRECT_LOGIN_URL,
+    TEST_EMAIL,
+    TEST_PASSWORD,
+    TEST_USERNAME,
+    TEMPLATES,
+    create_test_data
 )
 
-from .test_data import TEMPLATES
-
 User = get_user_model()
+
+
+@pytest.mark.django_db
+class TestAPIs_GET(TestCase):
+    """
+    Clase para probar las llamadas a vistas con metodo GET.
+    """
+
+    def setUp(self):
+        """
+        Función para configurar el estado del sistema antes de cualquier
+        prueba unitaria.
+        """
+        self.client = Client()
+
+        [
+            self.user,
+            self.categoria,
+            self.subcategoria,
+            self.platillo,
+            self.role,
+            self.orden,
+            self.pedido,
+            self.carrito,
+            self.promocion,
+            self.cupon,
+            self.anuncio
+        ] = create_test_data()
+
+        self.client = Client()
+
+    def test_get_lista_helados_no_login(self):
+        """
+        Función para probar que la api devuelva el listado de helados
+        correctamente.
+        """
+
+        url = reverse('mainApp:lista_helados')
+        response = self.client.get(url)
+        assert response.status_code == status.HTTP_302_FOUND
+        self.assertRedirects(response, REDIRECT_LOGIN_URL + url)
+
+    def test_get_lista_helados_login(self):
+        """
+        Función para probar que la api devuelva el listado de helados
+        correctamente.
+        """
+
+        self.client.force_login(user=self.user)
+        url = reverse('mainApp:lista_helados')
+        res = self.client.get(url)
+        assert res.status_code == status.HTTP_200_OK
 
 
 @pytest.mark.django_db
@@ -34,27 +84,21 @@ class TestViews_GET(TestCase):
         Función para configurar el estado del sistema antes de cualquier
         prueba unitaria.
         """
+        self.client = Client()
 
-        self.REDIRECT_LOGIN_URL = '/accounts/login/?next='
-        self.USERNAME = 'prueba'
-        self.PASSWORD = 'prueba'
-        self.EMAIL = 'prueba@prueba.com'
-
-        self.user = User.objects.create(
-            username=self.USERNAME,
-            password=make_password(self.PASSWORD)
-        )
-        self.categoria = Categoria.objects.create(nombre="Prueba")
-        self.subcategoria = Subcategoria.objects.create(nombre="Prueba")
-
-        self.platillo = Platillo.objects.create(
-            id=1,
-            nombre='Prueba',
-            imagen='noimagen.jpg',
-            precio='100.00',
-            categoria=self.categoria,
-            subcategoria=self.subcategoria
-        )
+        [
+            self.user,
+            self.categoria,
+            self.subcategoria,
+            self.platillo,
+            self.role,
+            self.orden,
+            self.pedido,
+            self.carrito,
+            self.promocion,
+            self.cupon,
+            self.anuncio
+        ] = create_test_data()
 
         self.client = Client()
 
@@ -121,7 +165,7 @@ class TestViews_GET(TestCase):
         response = self.client.get(url)
         assert response.status_code == status.HTTP_302_FOUND
         self.assertRedirects(
-            response, self.REDIRECT_LOGIN_URL + reverse('mainApp:votacion'))
+            response, REDIRECT_LOGIN_URL + url)
 
     def test_lista_helados_no_login(self):
         """
@@ -134,7 +178,7 @@ class TestViews_GET(TestCase):
         assert response.status_code == status.HTTP_302_FOUND
         self.assertRedirects(
             response,
-            self.REDIRECT_LOGIN_URL + reverse('mainApp:lista_helados'))
+            REDIRECT_LOGIN_URL + url)
 
     def test_carrito_no_login(self):
         """
@@ -146,7 +190,7 @@ class TestViews_GET(TestCase):
         response = self.client.get(url)
         assert response.status_code == status.HTTP_302_FOUND
         self.assertRedirects(
-            response, self.REDIRECT_LOGIN_URL + reverse('mainApp:carrito'))
+            response, REDIRECT_LOGIN_URL + url)
 
     def test_inicio_comensal_no_login(self):
         """
@@ -158,7 +202,7 @@ class TestViews_GET(TestCase):
         response = self.client.get(url)
         assert response.status_code == status.HTTP_302_FOUND
         self.assertRedirects(
-            response, self.REDIRECT_LOGIN_URL + reverse('mainApp:inicio'))
+            response, REDIRECT_LOGIN_URL + url)
 
     def test_orden_no_login_405(self):
         """
@@ -171,7 +215,7 @@ class TestViews_GET(TestCase):
         response = self.client.get(url)
         assert response.status_code == status.HTTP_302_FOUND
         self.assertRedirects(
-            response, self.REDIRECT_LOGIN_URL + reverse('mainApp:orden'))
+            response, REDIRECT_LOGIN_URL + url)
 
     # PRUEBAS QUE REQUIEREN AUTENTICACION
     def test_registro_login(self):
@@ -262,29 +306,21 @@ class TestViews_POST(TestCase):
         Función para configurar el estado del sistema antes de cualquier
         prueba unitaria.
         """
-
-        self.REDIRECT_LOGIN_URL = '/accounts/login/?next='
-        self.USERNAME = 'prueba'
-        self.PASSWORD = 'prueba'
-        self.EMAIL = 'prueba@prueba.com'
-
-        self.user = User.objects.create(
-            username=self.USERNAME,
-            password=make_password(self.PASSWORD)
-        )
-        self.categoria = Categoria.objects.create(nombre="Prueba")
-        self.subcategoria = Subcategoria.objects.create(nombre="Prueba")
-
-        self.platillo = Platillo.objects.create(
-            id=1,
-            nombre='Prueba',
-            imagen='noimagen.jpg',
-            precio='100.00',
-            categoria=self.categoria,
-            subcategoria=self.subcategoria
-        )
-
         self.client = Client()
+
+        [
+            self.user,
+            self.categoria,
+            self.subcategoria,
+            self.platillo,
+            self.role,
+            self.orden,
+            self.pedido,
+            self.carrito,
+            self.promocion,
+            self.cupon,
+            self.anuncio
+        ] = create_test_data()
 
     def test_logout_no_login(self):
         """
@@ -328,13 +364,14 @@ class TestViews_POST(TestCase):
 
         url = reverse('mainApp:registro')
         data = {
-            'username': 'new-user',
-            'password1': self.PASSWORD,
-            'password2': self.PASSWORD,
-            'email': 'new@50amigos.com'
+            'username': 'oiuyiuyqwiuey98798123',
+            'password1': 'm97612934kjnbvzkx',
+            'password2': 'm97612934kjnbvzkx',
+            'email': 'this_is_just@anexample.com'
         }
         response = self.client.post(url, data)
-        assert response.status_code == status.HTTP_200_OK
+        assert response.status_code == status.HTTP_302_FOUND
+        self.assertRedirects(response, reverse('login'))
 
     def test_registro_no_login_400(self):
         """
@@ -344,10 +381,10 @@ class TestViews_POST(TestCase):
 
         url = reverse('mainApp:registro')
         data = {
-            'username': self.USERNAME,
-            'password1': self.PASSWORD,
-            'password2': self.PASSWORD,
-            'email': self.EMAIL
+            'username': TEST_USERNAME,
+            'password1': TEST_PASSWORD,
+            'password2': TEST_PASSWORD,
+            'email': TEST_EMAIL
         }
         response = self.client.post(url, data)
         assert response.status_code == status.HTTP_400_BAD_REQUEST
@@ -362,7 +399,7 @@ class TestViews_POST(TestCase):
         response = self.client.post(url, data)
         assert response.status_code == status.HTTP_302_FOUND
         self.assertRedirects(
-            response, self.REDIRECT_LOGIN_URL + reverse('mainApp:votacion'))
+            response, REDIRECT_LOGIN_URL + url)
 
     def test_orden_no_login_302(self):
         """
@@ -375,7 +412,7 @@ class TestViews_POST(TestCase):
         response = self.client.post(url)
         assert response.status_code == status.HTTP_302_FOUND
         self.assertRedirects(
-            response, self.REDIRECT_LOGIN_URL + reverse('mainApp:orden'))
+            response, REDIRECT_LOGIN_URL + url)
 
     def test_carrito_login(self):
         """
@@ -440,28 +477,21 @@ class TestViews_PUT(TestCase):
         Función para configurar el estado del sistema antes de cualquier
         prueba unitaria.
         """
-
-        self.REDIRECT_LOGIN_URL = '/accounts/login/?next='
-        self.USERNAME = 'prueba'
-        self.PASSWORD = 'prueba'
-        self.EMAIL = 'prueba@prueba.com'
-
-        self.user = User.objects.create(
-            username=self.USERNAME,
-            password=make_password(self.PASSWORD)
-        )
-        self.categoria = Categoria.objects.create(nombre="Prueba")
-        self.subcategoria = Subcategoria.objects.create(nombre="Prueba")
-
-        self.platillo = Platillo.objects.create(
-            id=1,
-            nombre='Prueba',
-            imagen='noimagen.jpg',
-            precio='100.00',
-            categoria=self.categoria,
-            subcategoria=self.subcategoria
-        )
         self.client = Client()
+
+        [
+            self.user,
+            self.categoria,
+            self.subcategoria,
+            self.platillo,
+            self.role,
+            self.orden,
+            self.pedido,
+            self.carrito,
+            self.promocion,
+            self.cupon,
+            self.anuncio
+        ] = create_test_data()
 
     def test_carrito_login(self):
         """
@@ -514,71 +544,26 @@ class TestViews_DELETE(TestCase):
     Clase para probar las llamadas a vistas con metodo DELETE.
     """
 
-    usuarios = [{
-        'id': 1,
-        'username': 'prueba',
-        'password': 'prueba',
-        'email': 'prueba@prueba.com',
-    }]
-
-    categorias = [{
-        'id': 1,
-        'nombre': 'Prueba',
-    }]
-
-    subcategorias = [{
-        'id': 1,
-        'nombre': 'Prueba',
-    }]
-
-    platillos = [{
-        'id': 1,
-        'nombre': 'Prueba',
-        'imagen': 'noimagen.jpg',
-        'precio': '100.00',
-        'ingredientes': '',
-    }]
-
     def setUp(self):
         """
         Función para configurar el estado del sistema antes de cualquier
         prueba unitaria.
         """
-
-        self.REDIRECT_LOGIN_URL = '/accounts/login/?next='
         self.client = Client()
 
-        self.u = None
-        for usuario in self.usuarios:
-            self.u = User.objects.create(
-                id=usuario.get('id'),
-                username=usuario.get('username'),
-                password=make_password(usuario.get('password')),
-                email=usuario.get('email'))
-
-        self.c = None
-        for categoria in self.categorias:
-            self.c = Categoria.objects.create(
-                id=categoria.get('id'),
-                nombre=categoria.get('nombre'))
-
-        self.s = None
-        for subcategoria in self.subcategorias:
-            self.s = Subcategoria.objects.create(
-                id=subcategoria.get('id'),
-                nombre=subcategoria.get('nombre'))
-
-        self.p = None
-        for platillo in self.platillos:
-            self.p = Platillo.objects.create(
-                id=platillo.get('id'),
-                nombre=platillo.get('nombre'),
-                descripcion=platillo.get('descripcion'),
-                imagen=platillo.get('imagen'),
-                categoria=self.c,
-                subcategoria=self.s,
-                precio=platillo.get('precio'),
-                ingredientes=platillo.get('ingredientes'))
+        [
+            self.user,
+            self.categoria,
+            self.subcategoria,
+            self.platillo,
+            self.role,
+            self.orden,
+            self.pedido,
+            self.carrito,
+            self.promocion,
+            self.cupon,
+            self.anuncio
+        ] = create_test_data()
 
     def test_carrito_login(self):
         """
@@ -586,7 +571,7 @@ class TestViews_DELETE(TestCase):
         de haberlo enviado a la orden.
         """
 
-        self.client.force_login(user=self.u)
+        self.client.force_login(user=self.user)
         data = {
             "platillo": 1
         }

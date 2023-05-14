@@ -8,6 +8,7 @@ class User(AbstractUser):
     """
     Modelo personalizado para los usuarios de 50Amigos.
     """
+
     email = models.EmailField(unique=True, null=False, blank=False)
 
     class Meta:
@@ -161,6 +162,7 @@ class Carrito(models.Model):
     Modelo que representa el carrito de compras, donde se iran acumulando los
     pedidos hasta que se mande a cocina
     """
+
     id = models.AutoField(primary_key=True)
     orden = models.OneToOneField(
         Orden, on_delete=models.SET_NULL, null=True, related_name='carrito')

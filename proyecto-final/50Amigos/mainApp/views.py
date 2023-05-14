@@ -56,6 +56,7 @@ def registro(request):
 
     data = {'form': CustomUserCreationForm()}
 
+    status_response = status.HTTP_200_OK
     if request.method == 'POST':
 
         form = CustomUserCreationForm(data=request.POST)
@@ -65,18 +66,22 @@ def registro(request):
             usuario.save()
             user = authenticate(
                 username=form.cleaned_data['username'],
-                password=form.cleaned_data['password1']
-            )
-            login(request, user)
+                password=form.cleaned_data['password1'])
 
+            login(request, user)
             messages.success(request, 'Registro exitoso, iniciar sesión')
             return redirect(to="login")
         else:
-            if not form.cleaned_data.get('username', False):
-                return HttpResponse(status=status.HTTP_400_BAD_REQUEST)
+            if form.errors.get('username', True):
+                status_response = status.HTTP_400_BAD_REQUEST
+
         data['form'] = form
 
-    return render(request, 'registration/registration.html', data)
+    return render(
+        request,
+        'registration/registration.html',
+        data,
+        status=status_response)
 
 
 def contacto(request):
@@ -276,7 +281,7 @@ class CarritoView(View):
 
         for p in carrito.pedidos.all():
             if int(data.get('platillo')) == int(p.platillo.id):
-                print('si entro')
+                logger.debug('si entro')
                 p.orden = None
                 p.save()
 

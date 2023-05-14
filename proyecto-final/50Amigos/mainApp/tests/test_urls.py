@@ -20,13 +20,6 @@ class TestUrls(TestCase):
     las rutas funcionen como se esperaría.
     """
 
-    def setUp(self):
-        """
-        Función para configurar el estado antes de cada prueba.
-        """
-
-        pass
-
     def test_index_url(self):
         """
         Función para probar que la url del index funcione correctamente.

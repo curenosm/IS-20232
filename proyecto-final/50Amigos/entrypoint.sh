@@ -27,7 +27,10 @@ echo "ejecutando loaddata..."
 python3 manage.py loaddata ./fixtures/db.json
 
 echo "ejecutando test..."
-python3 manage.py test
+python3 manage.py test -v 2
 
+echo "ejecutando coverage..."
+coverage run manage.py test -v 2
+coverage html
 
 exec "$@"

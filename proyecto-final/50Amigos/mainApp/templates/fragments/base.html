@@ -35,7 +35,7 @@
 </head>
 <body>
     
-  <!-- Django messages (Alertas de bootstrap) -->
+  {# Django messages (Alertas de bootstrap) #}
   {% for message in messages %}
     <div class="container-fluid p-0">
       <div class="alert {{ message.tags }} alert-dismissible fade show"
@@ -50,20 +50,19 @@
     </div>
   {% endfor %}
 
-  <!-- Barra de navegacion -->
   {% include 'fragments/navbar.html' %}
   <br>
   <br>
   <br>
 
-  <!-- Contenido -->
+  {# Contenido #}
   <div
     id="content"
     class="container animate__animated animate__fadeInLeft">
     {% block content %}{% endblock %}
   </div>
 
-  <!-- Footer-->
+  {# Footer #}
   <footer class="py-5 bg-dark">
     <div class="container px-4">
       <p class="m-0 text-center text-white">
@@ -72,13 +71,70 @@
     </div>
   </footer>
 
-  <!-- JQuery -->
-  <script src="{% static 'js/jquery-3.6.4.js' %}"></script>
-  
-  <!--  CSRF Token -->
-  <script src="{% static 'js/csrf.js' %}" ></script>
+  {# Modal global #}
+  <div class="modal" tabindex="-1" id="globalModal">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          {% block modal_header %}
+            <h5 
+              class="modal-title animate__animated animate__headShake" 
+              id="tituloModal">
+              Persona 1
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"></button>
+          {% endblock %}
+        </div>
+        <div class="modal-body">
+          {% block modal_body %}
+            <img
+              id="heladoImg"
+              class="animate__animated animate__headShake text-center" 
+              src="{% static 'img/helados.jpg' %}" 
+              alt="helado"
+              width="100%">
+            <div class="form-group">
+              <label for="nombreInput">¿Cuál es su nombre?</label>
+              <input
+              id="nombreInput"
+              onkeyup="actualizarNombreModal()"
+              type="text"
+              class="form-control"
+              placeholder="Juan"/>
+              <br>
+            </div>
+            <div class="form-group">
+              <label for="heladoSelect">
+                ¿Qué helado vota por servir al final?
+              </label>
+              <select class="form-select" id ="heladoSelect"></select>
+            </div>
+          {% endblock %}
+        </div>
+        <div class="modal-footer">
+          {% block modal_footer %}
+            <button 
+              onclick="agregarParticipante()"
+              type="button" 
+              class="btn btn-outline-secondary">Agregar otro participante</button>
+            <button 
+              onclick="finalizarVotacion()"
+              type="button" 
+              class="btn btn-outline-primary"
+              data-bs-dismiss="modal">Finalizar votación</button>
+          {% endblock %}
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <!-- Bootstrap core JS-->
+  {# Scripts globales #}
+  <script src="{% static 'js/jquery-3.6.4.js' %}"></script>
+  <script src="{% static 'js/csrf.js' %}" ></script>
   <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 
   {% block scripts %}{% endblock %}

@@ -1,6 +1,11 @@
 {% extends 'fragments/base.html' %}
 
-{% block title %} Menú {% endblock %}
+{% block title %}Menú{% endblock %}
+
+
+
+
+
 
 {% block content %}
 <nav aria-label="breadcrumb">
@@ -40,7 +45,11 @@
             <h5 class="card-title pricing-card-title text-muted">
               ${{ platillo.precio }}
             </h5>
-            <p class="card-text">{{ platillo.descripcion }}</p>
+            {% if platillo.descripcion %}
+              <p class="card-text">
+                {{ platillo.descripcion }}
+              </p>
+            {% endif %}
           </div>
           {% if platillo.get_ingredientes_list %}
           <ul class="list-group list-group-flush">
@@ -106,6 +115,11 @@
   {% endfor %}
 {% endfor %}
 {% endblock %}
+
+
+
+
+
 
 
 {% block scripts %}
