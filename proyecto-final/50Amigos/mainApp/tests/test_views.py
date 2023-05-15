@@ -201,8 +201,7 @@ class TestViews_GET(TestCase):
         url = reverse('mainApp:inicio')
         response = self.client.get(url)
         assert response.status_code == status.HTTP_302_FOUND
-        self.assertRedirects(
-            response, REDIRECT_LOGIN_URL + url)
+        self.assertRedirects(response, REDIRECT_LOGIN_URL + url)
 
     def test_orden_no_login_405(self):
         """
@@ -524,7 +523,7 @@ class TestViews_PUT(TestCase):
             content_type='application/x-www-form-urlencoded')
         assert response.status_code == status.HTTP_404_NOT_FOUND
 
-    def test_orden_login_202(self):
+    def test_orden_login_204(self):
         """
         Funcion para probar que el metodo no está permitido
         en caso de solicitar una petición a la vista de las ordenes sin
@@ -534,8 +533,20 @@ class TestViews_PUT(TestCase):
         self.client.force_login(user=self.user)
 
         url = reverse('mainApp:orden')
-        response = self.client.post(url)
+        response = self.client.put(url)
         assert response.status_code == status.HTTP_204_NO_CONTENT
+
+    def test_orden_no_login_302(self):
+        """
+        Funcion para probar que el metodo no está permitido
+        en caso de solicitar una petición a la vista de las ordenes sin
+        haberse autenticado.
+        """
+
+        url = reverse('mainApp:orden')
+        response = self.client.put(url)
+        assert response.status_code == status.HTTP_302_FOUND
+        self.assertRedirects(response, REDIRECT_LOGIN_URL + url)
 
 
 @pytest.mark.django_db
@@ -578,3 +589,29 @@ class TestViews_DELETE(TestCase):
         url = reverse('mainApp:carrito')
         response = self.client.delete(url, data)
         assert response.status_code == status.HTTP_202_ACCEPTED
+
+    def test_orden_login_405(self):
+        """
+        Funcion para probar que el metodo no está permitido
+        en caso de solicitar una petición a la vista de las ordenes sin
+        haberse autenticado.
+        """
+
+        self.client.force_login(user=self.user)
+
+        url = reverse('mainApp:orden')
+        response = self.client.delete(url)
+        assert response.status_code == status.HTTP_405_METHOD_NOT_ALLOWED
+
+    def test_orden_no_login_302(self):
+        """
+        Funcion para probar que el metodo no está permitido
+        en caso de solicitar una petición a la vista de las ordenes sin
+        haberse autenticado.
+        """
+
+        url = reverse('mainApp:orden')
+        response = self.client.delete(url)
+        assert response.status_code == status.HTTP_302_FOUND
+        self.assertRedirects(
+            response, REDIRECT_LOGIN_URL + url)

@@ -70,10 +70,10 @@ PLATILLOS = [{
     'nombre': 'Prueba',
     'imagen': 'noimagen.jpg',
     'precio': '200.00',
-    'ingredientes': '',
+    'ingredientes': 'ingrediente1,ingrediente2',
 }, {
     'id': 9999,
-    'nombre': 'Prueba',
+    'nombre': 'Helado',
     'imagen': 'noimagen.jpg',
     'precio': '100.00',
     'ingredientes': '',

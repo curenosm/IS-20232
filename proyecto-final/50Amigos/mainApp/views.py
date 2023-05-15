@@ -204,6 +204,10 @@ class OrdenView(View):
         return HttpResponse(status=status.HTTP_204_NO_CONTENT)
 
     def delete(self, request, *args, **kwargs):
+        """
+        Método para eliminar un pedido de la orden.
+        """
+
         return HttpResponse(status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
 
@@ -243,11 +247,11 @@ class CarritoView(View):
 
     def put(self, request, *args, **kwargs):
         """
-        Estamos agregando un pedido al carrito
+        Estamos agregando un pedido al carrito, todavía no pasa a la
+        orden que es de donde extraemos la cuenta # a la orden actual,
+        para despues guardarlo.
         """
 
-        # Todavía no pasa a la orden que es de donde extraemos la cuenta
-        # a la orden actual, para despues guardarlo
         carrito = get_current_carrito(request.user)
         data = QueryDict(request.body)
         pedido = None

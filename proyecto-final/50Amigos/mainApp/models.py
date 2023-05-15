@@ -17,11 +17,11 @@ class User(AbstractUser):
 
     def __str__(self):
         return f"""
-            Username: {self.username}
-            First name:{self.first_name}
-            Last name: {self.last_name}
-            Email: {self.email}
-            """
+                Username: {self.username}
+                First name: {self.first_name}
+                Last name: {self.last_name}
+                Email: {self.email}
+                """
 
 
 class Categoria(models.Model):
@@ -33,7 +33,10 @@ class Categoria(models.Model):
     nombre = models.CharField(max_length=100)
 
     def __str__(self):
-        return f'Id: {self.id}, Nombre: {self.nombre}'
+        return f"""
+                Id: {self.id}
+                Nombre: {self.nombre}
+                """
 
 
 class Subcategoria(models.Model):
@@ -129,7 +132,7 @@ class Role(models.Model):
         return f"""
                 Id: {self.id}
                 Usuario: {self.usuario}
-                Categoria: {self.grupo}
+                Grupo: {self.grupo}
                 """
 
 
@@ -154,7 +157,11 @@ class Orden(models.Model):
         verbose_name_plural = 'Ordenes'
 
     def __str__(self):
-        return f'Id: {self.id}, Usuario: {self.usuario}, Fecha: {self.fecha}'
+        return f"""
+                Id: {self.id}
+                Usuario: {self.usuario}
+                Fecha: {self.fecha}
+                """
 
 
 class Carrito(models.Model):
@@ -168,7 +175,10 @@ class Carrito(models.Model):
         Orden, on_delete=models.SET_NULL, null=True, related_name='carrito')
 
     def __str__(self):
-        return f'Id: {self.id}, Orden: {self.orden.id}'
+        return f"""
+                Id: {self.id}
+                Orden: {self.orden.id}
+                """
 
 
 class Pedido(models.Model):
@@ -199,7 +209,11 @@ class Pedido(models.Model):
         return self.platillo.precio * self.cantidad
 
     def __str__(self):
-        return f'Id: {self.id}, Orden: {self.orden}, Platillo: {self.platillo}'
+        return f"""
+                Id: {self.id}
+                Orden: {self.orden}
+                Platillo: {self.platillo}
+                """
 
 
 class Promocion(models.Model):
