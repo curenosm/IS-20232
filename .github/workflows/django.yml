@@ -37,11 +37,11 @@ jobs:
       run: |
         cd proyecto-final
         cd 50Amigos
-        python manage.py test
-        py.test
+        python manage.py test --verbose 2 --parallel auto
+        py.test -n 2
     - name: Run Coverage Report
       run: |
         cd proyecto-final
         cd 50Amigos
-        coverage run manage.py test -v 2
+        coverage run manage.py test -v 2 --parallel auto
         coverage html
