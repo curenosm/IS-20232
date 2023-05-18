@@ -34,42 +34,46 @@
 
 </head>
 <body>
-    
-  {# Django messages (Alertas de bootstrap) #}
-  {% for message in messages %}
-    <div class="container-fluid p-0">
-      <div class="alert {{ message.tags }} alert-dismissible fade show"
-        role="alert">
-        {{ message }}
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="alert"
-          aria-label="Close"></button>
+  <main class="flex-shrink-0">
+
+    <br>
+
+    {# Django messages (Alertas de bootstrap) #}
+    {% for message in messages %}
+      <div class="container p-0 mt-5">
+        <div class="alert {{ message.tags }} alert-dismissible fade show"
+          role="alert">
+          {{ message }}
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="alert"
+            aria-label="Close"></button>
+        </div>
       </div>
+    {% endfor %}
+
+    {% include 'fragments/navbar.html' %}
+    <br>
+    <br>
+    <br>
+
+    {# Contenido #}
+    <div
+      id="content"
+      class="container animate__animated animate__fadeInLeft">
+      {% block content %}{% endblock %}
     </div>
-  {% endfor %}
 
-  {% include 'fragments/navbar.html' %}
-  <br>
-  <br>
-  <br>
-
-  {# Contenido #}
-  <div
-    id="content"
-    class="container animate__animated animate__fadeInLeft">
-    {% block content %}{% endblock %}
-  </div>
-
-  {# Footer #}
-  <footer class="py-5 bg-dark">
-    <div class="container px-4">
-      <p class="m-0 text-center text-white">
-        Copyright 50Amigos &copy; All rights reserved. 2023
-      </p>
-    </div>
-  </footer>
+    {# Footer #}
+    <footer class="footer mt-auto py-3 bg-dark">
+      <div class="container text-center">
+        <span class="text-white">
+          Copyright 50Amigos &copy; All rights reserved. 2023
+        </span>
+      </div>
+    </footer>
+  </main>
 
   {# Modal global #}
   <div class="modal" tabindex="-1" id="globalModal">

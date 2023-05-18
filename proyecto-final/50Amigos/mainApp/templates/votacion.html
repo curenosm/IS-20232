@@ -113,7 +113,7 @@
 <script src="{% static 'js/chart.js' %}"></script>
 <script>
 
-let helados = [1, 2, 3, 4];
+let helados = [];
 let votos = [];
 let curVotante = 1;
 
@@ -125,6 +125,7 @@ $(document).ready(function () {
     method: 'GET',
     success: function(res) {
       cargarDatosHelados(res);
+      helados = res;
     },
     error: function (err) {
       console.error(err);
@@ -133,38 +134,6 @@ $(document).ready(function () {
 });
 
 const ctx = document.getElementById('myChart');
-
-// Definición de la gráfica de resultados de la votación
-new Chart(ctx, {
-  type: 'bar',
-  data: {
-    labels: ['Chocolate', 'Vainilla', 'Fresa', 'Limón'],
-    datasets: [{
-      label: '# de votos',
-      data: [3, 2, 0, 1],
-      backgroundColor: [
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(255, 159, 64, 0.2)',
-        'rgba(255, 205, 86, 0.2)',
-        'rgba(75, 192, 192, 0.2)',
-      ],
-      borderColor: [
-        'rgb(255, 99, 132)',
-        'rgb(255, 159, 64)',
-        'rgb(255, 205, 86)',
-        'rgb(75, 192, 192)'
-      ],
-      borderWidth: 2
-    }]
-  },
-  options: {
-    scales: {
-      y: {
-        beginAtZero: true
-      }
-    }
-  }
-});
 
 /**
  * función que carga el listado de los helados en las opciones del
@@ -195,10 +164,11 @@ function actualizarNombreModal() {
  * dada.
  */
 function agregarParticipante() {
-
+  
   let votoActual = $('#heladoSelect').val();
   $('#heladoSelect').toggleClass('animate__headShake');
-  votos.push(votoActual)
+  votos.push(parseInt(votoActual));
+
   $('#tituloModal').html("Persona " + (++curVotante));
   $('#nombreInput').val("");
   $('#tituloModal').toggleClass('animate__tada');
@@ -213,23 +183,26 @@ function finalizarVotacion() {
   $('#resultados').toggle();
 
   let heladoEscogido = -1;
-  let helados = [];
+  let max = -1;
   let freq = {};
+  let data = [];
 
   // Cuenta la ocurrencia de cada id
-  for (let i = 0; i < helados.length; i++) {
-    if (!freq[helados[i]]) {
-      freq[helados[i]] = 1;
+  for (let i = 0; i < votos.length; i++) {
+    if (!freq[votos[i]]) {
+      freq[votos[i]] = 1;
     } else {
-      freq[helados[i]]++;
+      freq[votos[i]]++;
     }
   }
 
   // Escoge el primero que tenga el mayor numero de votaciones
   for (let i = 0; i < helados.length; i++) {
-    if (freq[helados[i]] > heladoEscogido) {
-      heladoEscogido = helados[i];
+    if (freq[helados[i].id] > max) {
+      max = freq[helados[i].id];
+      heladoEscogido = helados[i].id;
     }
+    data.push(freq[helados[i].id]);
   }
 
   $.ajax("{% url 'mainApp:votacion' %}", {
@@ -239,19 +212,45 @@ function finalizarVotacion() {
       helado: heladoEscogido
     },
     success: function (res) {
-      location.reload();
+
+      // Definición de la gráfica de resultados de la votación
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: helados.map(x => x.nombre),
+          datasets: [{
+            label: '# de votos',
+            data: data,
+            backgroundColor: [
+              'rgba(255, 99, 132, 0.2)',
+              'rgba(255, 159, 64, 0.2)',
+              'rgba(255, 205, 86, 0.2)',
+              'rgba(75, 192, 192, 0.2)',
+            ],
+            borderColor: [
+              'rgb(255, 99, 132)',
+              'rgb(255, 159, 64)',
+              'rgb(255, 205, 86)',
+              'rgb(75, 192, 192)'
+            ],
+            borderWidth: 3
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+
+      // location.reload();
     },
     error: function (err) {
       console.error(err);
     }
   });
-}
-
-/**
- * Función que contabiliza el voto de un comensal
- */
-function addComensal(nombre, helado) {
-  votos.push(helado);
 }
 
 </script>
