@@ -896,6 +896,10 @@
         <field name="app_label" type="CharField">mainApp</field>
         <field name="model" type="CharField">carrito</field>
     </object>
+    <object model="sessions.session" pk="8fwechehbwc3lxoy3hgmy40rno6qmmg1">
+        <field name="session_data" type="TextField">.eJxVjMEOwiAQBf-FsyFQYAGP3v0GsrAgVQNJaU_Gf9cmPej1zcx7sYDbWsM28hJmYmcm2el3i5geue2A7thunafe1mWOfFf4QQe_dsrPy-H-HVQc9Vsb4clasFpBkRCnJFFl4QiKU-hJGAIyVACyd05ENwlS2mqvpQDvErL3B8WzNv0:1py2Lg:yQYIvlHg22dlV9ebQnwnXHjmLc-OE3j7QywN2ObUYm0</field>
+        <field name="expire_date" type="DateTimeField">2023-05-28T03:24:40.346999+00:00</field>
+    </object>
     <object model="sessions.session" pk="aj25hhldre6872cu85lm2stngvmzi8bc">
         <field name="session_data" type="TextField">.eJxVjMEOwiAQBf-FsyFQYAGP3v0GsrAgVQNJaU_Gf9cmPej1zcx7sYDbWsM28hJmYmcm2el3i5geue2A7thunafe1mWOfFf4QQe_dsrPy-H-HVQc9Vsb4clasFpBkRCnJFFl4QiKU-hJGAIyVACyd05ENwlS2mqvpQDvErL3B8WzNv0:1pwnWy:diRV6M7-dsi3A5z6JywRFTn1hdVb9CHcr3Ka6MpO0Rc</field>
         <field name="expire_date" type="DateTimeField">2023-05-24T17:23:12.877000+00:00</field>
@@ -904,13 +908,13 @@
         <field name="session_data" type="TextField">.eJxVjMEOwiAQBf-FsyFQYAGP3v0GsrAgVQNJaU_Gf9cmPej1zcx7sYDbWsM28hJmYmcm2el3i5geue2A7thunafe1mWOfFf4QQe_dsrPy-H-HVQc9Vsb4clasFpBkRCnJFFl4QiKU-hJGAIyVACyd05ENwlS2mqvpQDvErL3B8WzNv0:1pvQh8:U_ncTZFPcCRanjECKy1-voYIUnWmUJwT8r8G4fRBW0I</field>
         <field name="expire_date" type="DateTimeField">2023-05-20T22:48:02.106000+00:00</field>
     </object>
-    <object model="sessions.session" pk="ha2khendazo5a97pocqv85cbotp0rzmb">
-        <field name="session_data" type="TextField">.eJxVjMEOwiAQBf-FsyFQYAGP3v0GsrAgVQNJaU_Gf9cmPej1zcx7sYDbWsM28hJmYmcm2el3i5geue2A7thunafe1mWOfFf4QQe_dsrPy-H-HVQc9Vsb4clasFpBkRCnJFFl4QiKU-hJGAIyVACyd05ENwlS2mqvpQDvErL3B8WzNv0:1pxxdm:AhACVxHHqxAmv0ElqaoKJLYJqEAYcXP5lu7fMlzIx-s</field>
-        <field name="expire_date" type="DateTimeField">2023-05-27T22:23:02.927768+00:00</field>
+    <object model="sessions.session" pk="pn346i7k0udwyyuj024739vbgcoko1gs">
+        <field name="session_data" type="TextField">.eJxVjMEOwiAQBf-FsyFQYAGP3v0GsrAgVQNJaU_Gf9cmPej1zcx7sYDbWsM28hJmYmcm2el3i5geue2A7thunafe1mWOfFf4QQe_dsrPy-H-HVQc9Vsb4clasFpBkRCnJFFl4QiKU-hJGAIyVACyd05ENwlS2mqvpQDvErL3B8WzNv0:1py1aX:cU-9e_tula2dR2Vw9Ida_oNYsGDxXJPcv2EbmRjVmLk</field>
+        <field name="expire_date" type="DateTimeField">2023-05-28T02:35:57.816330+00:00</field>
     </object>
     <object model="mainApp.user" pk="1">
         <field name="password" type="CharField">pbkdf2_sha256$390000$p1PfuMeRiVgUO1v1OGucT6$Y+VKrRfrvKhWRrjK5reSd5kuXh3WnZhTWP0cnJral8g=</field>
-        <field name="last_login" type="DateTimeField">2023-05-13T22:23:02.918686+00:00</field>
+        <field name="last_login" type="DateTimeField">2023-05-14T15:52:47.779573+00:00</field>
         <field name="is_superuser" type="BooleanField">True</field>
         <field name="username" type="CharField">admin</field>
         <field name="first_name" type="CharField"></field>
@@ -1068,6 +1072,7 @@
     </object>
     <object model="mainApp.platillo" pk="1">
         <field name="nombre" type="CharField">Flautas de pollo</field>
+        <field name="descripcion" type="TextField"><None></None></field>
         <field name="imagen" type="CharField">https://assets.unileversolutions.com/recipes-v2/239669.jpg</field>
         <field name="categoria" rel="ManyToOneRel" to="mainApp.categoria">1</field>
         <field name="subcategoria" rel="ManyToOneRel" to="mainApp.subcategoria">1</field>
@@ -1076,6 +1081,7 @@
     </object>
     <object model="mainApp.platillo" pk="2">
         <field name="nombre" type="CharField">Gordita de maciza</field>
+        <field name="descripcion" type="TextField"><None></None></field>
         <field name="imagen" type="CharField">https://images.squarespace-cdn.com/content/v1/58eeae76ff7c50fa313c951e/1496937485850-STK2BOJM5PNQKR86560A/gorditas-zacazonapan</field>
         <field name="categoria" rel="ManyToOneRel" to="mainApp.categoria">1</field>
         <field name="subcategoria" rel="ManyToOneRel" to="mainApp.subcategoria">1</field>
@@ -1084,6 +1090,7 @@
     </object>
     <object model="mainApp.platillo" pk="3">
         <field name="nombre" type="CharField">Botella de agua</field>
+        <field name="descripcion" type="TextField"><None></None></field>
         <field name="imagen" type="CharField">https://d1zc67o3u1epb0.cloudfront.net/media/catalog/product/cache/23527bda4807566b561286b47d9060f4/1/5/15576.jpg</field>
         <field name="categoria" rel="ManyToOneRel" to="mainApp.categoria">2</field>
         <field name="subcategoria" rel="ManyToOneRel" to="mainApp.subcategoria">2</field>
@@ -1092,6 +1099,7 @@
     </object>
     <object model="mainApp.platillo" pk="4">
         <field name="nombre" type="CharField">Coca-cola</field>
+        <field name="descripcion" type="TextField"><None></None></field>
         <field name="imagen" type="CharField">https://cdn.shopify.com/s/files/1/0279/8151/2798/products/RE0015_761x.jpg?v=1600970250</field>
         <field name="categoria" rel="ManyToOneRel" to="mainApp.categoria">2</field>
         <field name="subcategoria" rel="ManyToOneRel" to="mainApp.subcategoria">2</field>
@@ -1100,6 +1108,7 @@
     </object>
     <object model="mainApp.platillo" pk="5">
         <field name="nombre" type="CharField">Sidral</field>
+        <field name="descripcion" type="TextField"><None></None></field>
         <field name="imagen" type="CharField">https://www.super-deli.com.mx/161-thickbox_default/sidral-mundet-600-ml.jpg</field>
         <field name="categoria" rel="ManyToOneRel" to="mainApp.categoria">2</field>
         <field name="subcategoria" rel="ManyToOneRel" to="mainApp.subcategoria">2</field>
@@ -1108,6 +1117,7 @@
     </object>
     <object model="mainApp.platillo" pk="6">
         <field name="nombre" type="CharField">Boing mango</field>
+        <field name="descripcion" type="TextField"><None></None></field>
         <field name="imagen" type="CharField">https://mexgrocer.com.es/wp-content/uploads/2019/08/jugo-de-mango-237ml-boing-1.jpg</field>
         <field name="categoria" rel="ManyToOneRel" to="mainApp.categoria">2</field>
         <field name="subcategoria" rel="ManyToOneRel" to="mainApp.subcategoria">4</field>
@@ -1116,6 +1126,7 @@
     </object>
     <object model="mainApp.platillo" pk="7">
         <field name="nombre" type="CharField">Flan napolitano</field>
+        <field name="descripcion" type="TextField"><None></None></field>
         <field name="imagen" type="CharField">https://saboryestilo.com.mx/wp-content/uploads/2021/08/Receta-flan-napolitano.jpg</field>
         <field name="categoria" rel="ManyToOneRel" to="mainApp.categoria">3</field>
         <field name="subcategoria" rel="ManyToOneRel" to="mainApp.subcategoria">5</field>
@@ -1124,6 +1135,7 @@
     </object>
     <object model="mainApp.platillo" pk="8">
         <field name="nombre" type="CharField">Pastel de chocolate</field>
+        <field name="descripcion" type="TextField"><None></None></field>
         <field name="imagen" type="CharField">https://i.blogs.es/27bdbe/tarta-chocolate-vino1/840_560.jpg</field>
         <field name="categoria" rel="ManyToOneRel" to="mainApp.categoria">3</field>
         <field name="subcategoria" rel="ManyToOneRel" to="mainApp.subcategoria">5</field>
@@ -1132,6 +1144,7 @@
     </object>
     <object model="mainApp.platillo" pk="9">
         <field name="nombre" type="CharField">Arroz blanco con verduras</field>
+        <field name="descripcion" type="TextField"><None></None></field>
         <field name="imagen" type="CharField">https://cdn2.cocinadelirante.com/sites/default/files/styles/gallerie/public/images/2021/05/como-hacer-arroz-blanco-con-verduras-receta.jpg</field>
         <field name="categoria" rel="ManyToOneRel" to="mainApp.categoria">4</field>
         <field name="subcategoria" rel="ManyToOneRel" to="mainApp.subcategoria">6</field>
@@ -1140,6 +1153,7 @@
     </object>
     <object model="mainApp.platillo" pk="10">
         <field name="nombre" type="CharField">Sopa de letras</field>
+        <field name="descripcion" type="TextField"><None></None></field>
         <field name="imagen" type="CharField">https://www.gastrolabweb.com/u/fotografias/m/2021/10/8/f768x1-19902_20029_0.jpg</field>
         <field name="categoria" rel="ManyToOneRel" to="mainApp.categoria">4</field>
         <field name="subcategoria" rel="ManyToOneRel" to="mainApp.subcategoria">6</field>
@@ -1148,6 +1162,7 @@
     </object>
     <object model="mainApp.platillo" pk="11">
         <field name="nombre" type="CharField">Helado de chocolate</field>
+        <field name="descripcion" type="TextField"><None></None></field>
         <field name="imagen" type="CharField">https://wayumix.com/wp-content/uploads/2021/10/helado-de-chocolate-6-1.jpg</field>
         <field name="categoria" rel="ManyToOneRel" to="mainApp.categoria">6</field>
         <field name="subcategoria" rel="ManyToOneRel" to="mainApp.subcategoria">7</field>
@@ -1156,6 +1171,7 @@
     </object>
     <object model="mainApp.platillo" pk="12">
         <field name="nombre" type="CharField">Helado de fresa</field>
+        <field name="descripcion" type="TextField"><None></None></field>
         <field name="imagen" type="CharField">https://editorialtelevisa.brightspotcdn.com/wp-content/uploads/2022/01/helado-de-fresa.jpg</field>
         <field name="categoria" rel="ManyToOneRel" to="mainApp.categoria">6</field>
         <field name="subcategoria" rel="ManyToOneRel" to="mainApp.subcategoria">7</field>
@@ -1164,6 +1180,7 @@
     </object>
     <object model="mainApp.platillo" pk="13">
         <field name="nombre" type="CharField">Helado de vainilla</field>
+        <field name="descripcion" type="TextField"><None></None></field>
         <field name="imagen" type="CharField">https://www.comedera.com/wp-content/uploads/2022/05/Helado-de-vainilla-sin-azucar.jpg</field>
         <field name="categoria" rel="ManyToOneRel" to="mainApp.categoria">6</field>
         <field name="subcategoria" rel="ManyToOneRel" to="mainApp.subcategoria">7</field>
@@ -1172,6 +1189,7 @@
     </object>
     <object model="mainApp.platillo" pk="14">
         <field name="nombre" type="CharField">Helado de lim├│n</field>
+        <field name="descripcion" type="TextField"><None></None></field>
         <field name="imagen" type="CharField">https://i.ytimg.com/vi/SjXhrY1gqxY/maxresdefault.jpg</field>
         <field name="categoria" rel="ManyToOneRel" to="mainApp.categoria">6</field>
         <field name="subcategoria" rel="ManyToOneRel" to="mainApp.subcategoria">7</field>
@@ -1325,5 +1343,15 @@
         <field name="orden" rel="ManyToOneRel" to="mainApp.orden"><None></None></field>
         <field name="platillo" rel="ManyToOneRel" to="mainApp.platillo">1</field>
         <field name="cantidad" type="IntegerField">1</field>
+    </object>
+    <object model="mainApp.pedido" pk="29">
+        <field name="orden" rel="ManyToOneRel" to="mainApp.orden"><None></None></field>
+        <field name="platillo" rel="ManyToOneRel" to="mainApp.platillo">10</field>
+        <field name="cantidad" type="IntegerField">4</field>
+    </object>
+    <object model="mainApp.pedido" pk="30">
+        <field name="orden" rel="ManyToOneRel" to="mainApp.orden">1</field>
+        <field name="platillo" rel="ManyToOneRel" to="mainApp.platillo">4</field>
+        <field name="cantidad" type="IntegerField">5</field>
     </object>
 </django-objects>

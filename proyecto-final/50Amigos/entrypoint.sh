@@ -14,23 +14,13 @@ fi
 echo "ejecutando makemigrations..."
 python3 manage.py makemigrations
 
-echo "ejecutando migrate mainApp..."
-python3 manage.py migrate mainApp
-
-echo "ejecutando collect-static..."
-python3 manage.py collectstatic --no-input --clear
-
 echo "ejecutando migrate..."
 python3 manage.py migrate
 
+echo "ejecutando collect-static..."
+python3 manage.py collectstatic --no-input
+
 echo "ejecutando loaddata..."
-python3 manage.py loaddata ./fixtures/db.json
-
-echo "ejecutando test..."
-python3 manage.py test -v 2
-
-echo "ejecutando coverage..."
-coverage run manage.py test -v 2
-coverage html
+python3 manage.py loaddata --exclude auth.permission --exclude contenttypes ./fixtures/db.xml
 
 exec "$@"

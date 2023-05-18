@@ -1,4 +1,4 @@
-version: '3.7'
+version: "3.9"
 
 services:
   web:
@@ -16,10 +16,12 @@ services:
     image: postgres:12.0-alpine
     volumes:
       - postgres_data:/var/lib/postgresql/data/
+    ports:
+      - "5432:5432"
     environment:
-      - POSTGRES_USER=50amigos
-      - POSTGRES_PASSWORD=50amigos
-      - POSTGRES_DB=50amigos
+      POSTGRES_DB: 50amigos
+      POSTGRES_PASSWORD: 50amigos
+      POSTGRES_USER: 50amigos
 
 volumes:
   postgres_data:
