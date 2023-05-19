@@ -27,10 +27,6 @@
     rel="stylesheet"
     href="{% static 'css/bootstrap-icons.css' %}"/>
 
-  <link
-    rel="stylesheet"
-    href="{% static 'css/animate.min.css' %}"/>
-
   {% block styles %}{% endblock %}
 
 </head>
@@ -47,7 +43,7 @@
           {{ message }}
           <button
             type="button"
-            class="btn-close"
+            class="float-end btn-close"
             data-bs-dismiss="alert"
             aria-label="Close"></button>
         </div>
@@ -67,13 +63,8 @@
     </div>
 
     {# Footer #}
-    <footer class="footer mt-auto py-3 bg-dark">
-      <div class="container text-center">
-        <span class="text-white">
-          Copyright 50Amigos &copy; All rights reserved. 2023
-        </span>
-      </div>
-    </footer>
+    {% include 'fragments/footer.html' %}
+
   </main>
 
   {# Modal global #}
@@ -82,60 +73,40 @@
       <div class="modal-content">
         <div class="modal-header">
           {% block modal_header %}
-            <h5 
-              class="modal-title animate__animated animate__headShake" 
-              id="tituloModal">
-              Persona 1
-            </h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"></button>
+          <p  
+            id="tituloModal"
+            class="h5 modal-title animate__animated animate__headShake">
+            Titulo
+          </p>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"></button>
           {% endblock %}
         </div>
         <div class="modal-body">
-          {% block modal_body %}
-            <img
-              id="heladoImg"
-              class="animate__animated animate__headShake text-center" 
-              src="{% static 'img/helados.jpg' %}" 
-              alt="helado"
-              width="100%">
-            <div class="form-group">
-              <label for="nombreInput">¿Cuál es su nombre?</label>
-              <input
-              id="nombreInput"
-              onkeyup="actualizarNombreModal()"
-              type="text"
-              class="form-control"
-              placeholder="Juan"/>
-              <br>
-            </div>
-            <div class="form-group">
-              <label for="heladoSelect">
-                ¿Qué helado vota por servir al final?
-              </label>
-              <select class="form-select" id ="heladoSelect"></select>
-            </div>
-          {% endblock %}
+          <div id="modalBody">
+            {% block modal_body %}
+            
+            {% endblock %}
+          </div>
         </div>
         <div class="modal-footer">
-          {% block modal_footer %}
-            <button 
-              onclick="agregarParticipante()"
-              type="button" 
-              class="btn btn-outline-secondary">Agregar otro participante</button>
-            <button 
-              onclick="finalizarVotacion()"
-              type="button" 
-              class="btn btn-outline-primary"
-              data-bs-dismiss="modal">Finalizar votación</button>
-          {% endblock %}
+          <div id="modalFooter">
+            {% block modal_footer %}
+                <button
+                id="modalCancelar"
+                type="button" 
+                class="btn btn-outline-secondary"
+                data-bs-dismiss="modal">Volver</button>
+            {% endblock %}
+          </div>
         </div>
       </div>
     </div>
   </div>
+  
 
   {# Scripts globales #}
   <script src="{% static 'js/jquery-3.6.4.js' %}"></script>

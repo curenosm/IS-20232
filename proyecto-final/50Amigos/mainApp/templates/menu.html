@@ -1,6 +1,66 @@
 {% extends 'fragments/base.html' %}
 
 {% block title %}Menú{% endblock %}
+{%load static%}
+
+
+{# Usando modal de manera global, para que empate con AnimateCSS #}
+{% block modal_header %}
+  <h5 
+    class="modal-title animate__animated animate__headShake" 
+    id="tituloModal">
+    Persona 1
+  </h5>
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="modal"
+    aria-label="Close"></button>
+{% endblock %}
+
+{% block modal_body %}
+<div>
+  <img
+    id="platilloImagen"
+    class="animate__animated animate__headShake text-center" 
+    src="{% static 'img/helados.jpg' %}" 
+    alt="helado"
+    width="100%" />
+  
+  <br>
+  
+  <br>
+  <div class="float-end">
+    <span class="h5">Precio: </span>
+    <span
+      id="platilloPrecio" 
+      class="h3">
+      Precio
+    </span>
+  </div>
+
+  <hr>
+  <br>
+  <h5>Descripción:</h6>
+  <br>
+  <p id="platilloDescripcion"></p>
+  <br>
+  
+  <h5>Ingredientes:</h5><hr>
+  <ul id="platilloIngredientes">
+    <li class=""></li>
+  </ul>
+  <br>
+  
+  <h5>Alérgenos:</h5><hr>
+  <ul id="platilloAlergenos">
+    <li class=""></li>
+  </ul>
+  <br>
+
+</div>
+{% endblock %}
+
 
 
 
@@ -8,6 +68,7 @@
 
 
 {% block content %}
+
 <nav aria-label="breadcrumb">
 <ol class="breadcrumb">
   <li class="breadcrumb-item">
@@ -22,9 +83,20 @@
 <br>
 <h1>Menú</h1>
 <hr>
-<br>
+
 {% for categoria in categorias %}
-  <h2>{{categoria.nombre}}</h2>
+<a
+  href="#categoria-{{ categoria.id }}"
+  class="badge rounded-pill bg-secondary text-decoration-none">
+  {{ categoria.nombre }}
+</a>
+{% endfor %}
+<br>
+<br>
+<br>
+
+{% for categoria in categorias %}
+  <h2 id="categoria-{{ categoria.id }}" >{{categoria.nombre}}</h2>
   <hr>
   <br>
   {% for subcategoria in categoria.subcategorias.all %}
@@ -38,21 +110,36 @@
           class="card py-2" 
           style="width: 18rem;" >
           <div class="card-header">
-            <h5>{{ platillo.nombre }}</h5>
+            <h5 
+              id="platillo-{{ platillo.id }}-nombre">
+              {{ platillo.nombre }}
+            </h5>
           </div>
-          <img src="{{ platillo.imagen }}" class="card-img-top" alt="...">
+          <img 
+            id="platillo-{{ platillo.id }}-imagen"
+            onclick="loadModalDetails( {{ platillo.id }} )"
+            data-bs-toggle="modal"
+            data-bs-target="#globalModal"
+            src="{{ platillo.imagen }}" 
+            class="card-img-top" alt="{{ platillo.imagen }}">
           <div class="card-body">
-            <h5 class="card-title pricing-card-title text-muted">
+            <h5 
+              id="platillo-{{ platillo.id }}-precio"
+              class="card-title pricing-card-title text-muted">
               ${{ platillo.precio }}
             </h5>
             {% if platillo.descripcion %}
-              <p class="card-text">
+              <p
+                id="platillo-{{ platillo.id }}-descripcion"
+                class="card-text text-muted" hidden>
                 {{ platillo.descripcion }}
               </p>
             {% endif %}
           </div>
           {% if platillo.get_ingredientes_list %}
-          <ul class="list-group list-group-flush">
+          <ul 
+            id="platillo-{{ platillo.id }}-ingredientes"
+            class="list-group list-group-flush" >
             {% for ingrediente in platillo.get_ingredientes_list %}
               <li class="list-group-item text-muted">{{ ingrediente }}</li>
             {% endfor %}
@@ -124,6 +211,25 @@
 
 {% block scripts %}
 <script>
+
+function loadModalDetails(platilloId) {
+  let precio = $(`#platillo-${platilloId}-precio`).text().trim();
+  let nombre = $(`#platillo-${platilloId}-nombre`).text().trim();
+  let descripcion = $(`#platillo-${platilloId}-descripcion`).text().trim();
+  let imagen = $(`#platillo-${platilloId}-imagen`).attr('src');
+  let ingredientes = $(`#platillo-${platilloId}-ingredientes`).html();
+  let alergenos = $(`#platillo-${platilloId}-alergenos`).html();
+
+  console.log(precio, nombre, descripcion, imagen);
+
+  $('#platilloPrecio').text(precio ? precio : '');
+  $('#tituloModal').html(nombre ? nombre : '');
+  $('#platilloIngredientes').html(ingredientes ? ingredientes : '');
+  $('#platilloAlergenos').html(alergenos ? alergenos : '');
+  $('#platilloDescripcion').text(descripcion ? descripcion : '');
+  $('#platilloImagen').attr('src', imagen ? imagen : '');
+  
+}
 
 /**
  * Función que incrementa en uno la cantidad de elementos a agregar
