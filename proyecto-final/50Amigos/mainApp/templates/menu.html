@@ -69,7 +69,7 @@
 
 {% block content %}
 
-<nav aria-label="breadcrumb">
+<nav aria-label="breadcrumb" id="breadcrumb">
 <ol class="breadcrumb">
   <li class="breadcrumb-item">
     <a
@@ -84,13 +84,17 @@
 <h1>Menú</h1>
 <hr>
 
+<div id="categorias">
 {% for categoria in categorias %}
-<a
-  href="#categoria-{{ categoria.id }}"
-  class="badge rounded-pill bg-secondary text-decoration-none">
-  {{ categoria.nombre }}
-</a>
+  <a
+    href="#categoria-{{ categoria.id }}"
+    class="badge rounded-pill bg-secondary text-decoration-none mt-2">
+    <span class="fs-6">{{ categoria.nombre }}</span>
+  </a>
 {% endfor %}
+</div>
+
+<br>
 <br>
 <br>
 <br>
@@ -139,7 +143,7 @@
           {% if platillo.get_ingredientes_list %}
           <ul 
             id="platillo-{{ platillo.id }}-ingredientes"
-            class="list-group list-group-flush" >
+            class="list-group list-group-flush" hidden>
             {% for ingrediente in platillo.get_ingredientes_list %}
               <li class="list-group-item text-muted">{{ ingrediente }}</li>
             {% endfor %}
@@ -198,8 +202,11 @@
     <br>
   </div>
   <br>
-  <br>
   {% endfor %}
+  <a href="#breadcrumb" class="btn float-end">
+    <i class="bi bi-arrow-up"></i>
+  </a>
+  <br>
 {% endfor %}
 {% endblock %}
 
@@ -213,12 +220,19 @@
 <script>
 
 function loadModalDetails(platilloId) {
-  let precio = $(`#platillo-${platilloId}-precio`).text().trim();
-  let nombre = $(`#platillo-${platilloId}-nombre`).text().trim();
-  let descripcion = $(`#platillo-${platilloId}-descripcion`).text().trim();
+  let precio = $(`#platillo-${platilloId}-precio`)
+    .text()
+    .trim();
+  let nombre = $(`#platillo-${platilloId}-nombre`)
+    .text()
+    .trim();
+  let descripcion = $(`#platillo-${platilloId}-descripcion`)
+    .text()
+    .trim();
   let imagen = $(`#platillo-${platilloId}-imagen`).attr('src');
   let ingredientes = $(`#platillo-${platilloId}-ingredientes`).html();
-  let alergenos = $(`#platillo-${platilloId}-alergenos`).html();
+  let alergenos = $(`#platillo-${platilloId}-alergenos`)
+    .html();
 
   console.log(precio, nombre, descripcion, imagen);
 

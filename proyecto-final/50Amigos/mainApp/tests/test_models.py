@@ -1,5 +1,3 @@
-import pytest
-
 from django.test import TestCase
 
 
@@ -23,32 +21,33 @@ from .test_data import (
 )
 
 
-@pytest.mark.django_db
 class TestModels(TestCase):
     """
     Clase de prueba encargada de probar todos los modelos de nuestra aplicacion
     """
 
-    def setUp(self):
+    @classmethod
+    def setUpTestData(cls):
         """
-        Función que se ejecuta antes de cada prueba unitaria.
+        Función para configurar el estado del sistema antes de cualquier
+        prueba unitaria.
         """
 
         [
-            self.user,
-            self.categoria,
-            self.subcategoria,
-            self.platillo,
-            self.role,
-            self.orden,
-            self.pedido,
-            self.carrito,
-            self.promocion,
-            self.cupon,
-            self.anuncio
+            cls.users,
+            cls.categorias,
+            cls.subcategorias,
+            cls.platillos,
+            cls.roles,
+            cls.ordenes,
+            cls.pedidos,
+            cls.carritos,
+            cls.promociones,
+            cls.cupones,
+            cls.anuncios
         ] = create_test_data()
 
-        self.id_prueba = 9999
+        cls.id_prueba = 9999
 
     def test_encrypted_password(self):
         """
@@ -56,95 +55,104 @@ class TestModels(TestCase):
         se guarde cifrada correctamente en la base de datos.
         """
 
-        assert self.user.password != "password"
+        assert self.users[0].password != "password"
 
     def test_categoria_nombre(self):
         """
         Función para probar el modelo de las categorias.
         """
 
-        categoria = Categoria.objects.get(id=self.id_prueba)
-        self.assertEqual(categoria.nombre, self.categoria.nombre)
+        for c in self.categorias:
+            categoria = Categoria.objects.get(id=self.id_prueba)
+            self.assertEqual(categoria.nombre, c.nombre)
 
     def test_subcategoria_nombre(self):
         """
         Función para probar el modelo de las categorias.
         """
 
-        subcategoria = Subcategoria.objects.get(id=self.id_prueba)
-        self.assertEqual(subcategoria.nombre, self.subcategoria.nombre)
+        for s in self.subcategorias:
+            subcategoria = Subcategoria.objects.get(id=self.id_prueba)
+            self.assertEqual(subcategoria.nombre, s.nombre)
 
     def test_helado(self):
         """
         Función para probar el modelo de los helados.
         """
 
-        platillo = Platillo.objects.get(id=self.id_prueba)
-        self.assertEqual(platillo.nombre, self.platillo.nombre)
+        for p in self.platillos:
+            platillo = Platillo.objects.get(id=p.id)
+            self.assertEqual(platillo.nombre, p.nombre)
 
     def test_orden(self):
         """
         Función para probar el modelo de las ordenes.
         """
 
-        orden = Orden.objects.get(id=self.id_prueba)
-        self.assertEqual(orden.usuario.username, self.user.username)
+        for o in self.ordenes:
+            orden = Orden.objects.get(id=o.id)
+            self.assertEqual(orden.usuario.username, o.usuario.username)
 
     def test_pedido(self):
         """
         Función para probar el modelo de los pedidos.
         """
 
-        pedido = Pedido.objects.get(id=self.id_prueba)
-        self.assertEqual(pedido.carrito.orden, self.orden)
+        for p in self.pedidos:
+            pedido = Pedido.objects.get(id=p.id)
+            self.assertEqual(pedido.carrito.orden, self.ordenes[0])
 
     def test_anuncio(self):
         """
         Función para probar el modelo de los anuncios.
         """
-
-        anuncio = Anuncio.objects.get(id=self.id_prueba)
-        self.assertEqual(anuncio, self.anuncio)
+        for a in self.anuncios:
+            anuncio = Anuncio.objects.get(id=a.id)
+            self.assertEqual(anuncio, a)
 
     def test_user(self):
         """
         Función para probar el modelo de los usuarios.
         """
 
-        user = User.objects.get(id=self.id_prueba)
-        self.assertEqual(user, self.user)
+        for u in self.users:
+            user = User.objects.get(id=u.id)
+            self.assertEqual(user, u)
 
     def test_role(self):
         """
         Función para probar el modelo de los roles.
         """
 
-        role = Role.objects.get(id=self.id_prueba)
-        self.assertEqual(role, self.role)
+        for r in self.roles:
+            role = Role.objects.get(id=r.id)
+            self.assertEqual(role, r)
 
     def test_promocion(self):
         """
         Función para probar el modelo de las promociones.
         """
 
-        promocion = Promocion.objects.get(id=self.id_prueba)
-        self.assertEqual(promocion, self.promocion)
+        for p in self.promociones:
+            promocion = Promocion.objects.get(id=self.id_prueba)
+            self.assertEqual(promocion, p)
 
     def test_cupon(self):
         """
         Función para probar el modelo de los cupones de descuento.
         """
 
-        cupon = Cupon.objects.get(id=self.id_prueba)
-        self.assertEqual(cupon, self.cupon)
+        for c in self.cupones:
+            cupon = Cupon.objects.get(id=self.id_prueba)
+            self.assertEqual(cupon, c)
 
     def test_carrito(self):
         """
         Función para probar el modelo del carrito de compras.
         """
-
-        carrito = Carrito.objects.get(id=self.id_prueba)
-        self.assertEqual(carrito, self.carrito)
+        for c in self.carritos:
+            carrito = Carrito.objects.get(id=self.id_prueba)
+            self.assertEqual(carrito, c)
 
 
 class TestModelString(TestCase):
@@ -152,26 +160,28 @@ class TestModelString(TestCase):
     Clase para probar los metodos __str__ de los modelos
     """
 
-    def setUp(self):
+    @classmethod
+    def setUpTestData(cls):
         """
-        Función que se ejecuta antes de cada prueba unitaria.
+        Función para configurar el estado del sistema antes de cualquier
+        prueba unitaria.
         """
 
         [
-            self.user,
-            self.categoria,
-            self.subcategoria,
-            self.platillo,
-            self.role,
-            self.orden,
-            self.pedido,
-            self.carrito,
-            self.promocion,
-            self.cupon,
-            self.anuncio
+            cls.users,
+            cls.categorias,
+            cls.subcategorias,
+            cls.platillos,
+            cls.roles,
+            cls.ordenes,
+            cls.pedidos,
+            cls.carritos,
+            cls.promociones,
+            cls.cupones,
+            cls.anuncios
         ] = create_test_data()
 
-        self.id_prueba = 9999
+        cls.id_prueba = 9999
 
     def test_platillo_get_ingredientes_list_empty(self):
         """
@@ -216,102 +226,134 @@ class TestModelString(TestCase):
         Prueba unitaria para el subtotal de un pedido de cantidad n
         """
 
-        assert self.pedido.get_subtotal() == '100.00'
+        assert self.pedidos[0].get_subtotal() == '200.00'
+
+    def test_carrito_total(self):
+        """
+        Prueba unitaria para el subtotal de un carrito
+        """
+
+        assert str(self.carritos[0].get_total()) == '200.00'
+
+    def test_orden_total(self):
+        """
+        Prueba unitaria para el subtotal de un carrito
+        """
+
+        assert str(self.ordenes[0].get_total()) == '0'
 
     def test_user_str(self):
         """
         Prueba unitaria para el metodo __str__ del modelo User
         """
 
-        assert 'Username: ' in str(self.user)
-        assert 'First name: ' in str(self.user)
-        assert 'Last name: ' in str(self.user)
-        assert 'Email: ' in str(self.user)
+        for u in self.users:
+            assert 'Username: ' in str(u)
+            assert 'First name: ' in str(u)
+            assert 'Last name: ' in str(u)
+            assert 'Email: ' in str(u)
 
     def test_categoria_str(self):
         """
         Prueba unitaria para el metodo __str__ del modelo Categoria
         """
 
-        assert 'Id: ' in str(self.categoria)
-        assert 'Nombre: ' in str(self.categoria)
+        for c in self.categorias:
+            assert 'Id: ' in str(c)
+            assert 'Nombre: ' in str(c)
 
     def test_subcategoria_str(self):
         """
         Prueba unitaria para el metodo __str__ del modelo Subcategoria
         """
 
-        assert 'Id: ' in str(self.subcategoria)
-        assert 'Nombre: ' in str(self.subcategoria)
-        assert 'Categoria: ' in str(self.subcategoria)
+        for s in self.subcategorias:
+            assert 'Id: ' in str(s)
+            assert 'Nombre: ' in str(s)
+            assert 'Categoria: ' in str(s)
 
     def test_platillo_str(self):
         """
         Prueba unitaria para el metodo __str__ del modelo Platillo
         """
 
-        assert 'Id: ' in str(self.platillo)
-        assert 'Nombre: ' in str(self.platillo)
-        assert 'Categoria: ' in str(self.platillo)
+        for p in self.platillos:
+            assert 'Id: ' in str(p)
+            assert 'Nombre: ' in str(p)
+            assert 'Categoria: ' in str(p)
 
     def test_role_str(self):
         """
         Prueba unitaria para el metodo __str__ del modelo Role
         """
 
-        assert 'Id: ' in str(self.role)
-        assert 'Usuario: ' in str(self.role)
-        assert 'Grupo: ' in str(self.role)
+        for r in self.roles:
+            assert 'Id: ' in str(r)
+            assert 'Usuario: ' in str(r)
+            assert 'Grupo: ' in str(r)
 
     def test_orden_str(self):
         """
         Prueba unitaria para el metodo __str__ del modelo Orden
         """
 
-        assert 'Id: ' in str(self.orden)
-        assert 'Usuario: ' in str(self.orden)
-        assert 'Fecha: ' in str(self.orden)
+        for o in self.ordenes:
+            assert 'Id: ' in str(o)
+            assert 'Usuario: ' in str(o)
+            assert 'Fecha: ' in str(o)
+
+    def test_orden_get_pedidos(self):
+        """
+        Prueba unitaria para el metodo get_pedidos del modelo Orden
+        """
+
+        assert len(self.ordenes[0].get_pedidos()) == 0
 
     def test_carrito_str(self):
         """
         Prueba unitaria para el metodo __str__ del modelo Carrito
         """
 
-        assert 'Id: ' in str(self.carrito)
-        assert 'Orden: ' in str(self.carrito)
+        for c in self.carritos:
+            assert 'Id: ' in str(c)
+            assert 'Orden: ' in str(c)
 
     def test_pedido_str(self):
         """
         Prueba unitaria para el metodo __str__ del modelo Pedido
         """
 
-        assert 'Id: ' in str(self.pedido)
-        assert 'Orden: ' in str(self.pedido)
-        assert 'Platillo: ' in str(self.pedido)
+        for p in self.pedidos:
+            assert 'Id: ' in str(p)
+            assert 'Orden: ' in str(p)
+            assert 'Platillo: ' in str(p)
 
     def test_promocion_str(self):
         """
         Prueba unitaria para el metodo __str__ del modelo Promocion
         """
 
-        assert 'Id: ' in str(self.promocion)
-        assert 'Platillo: ' in str(self.promocion)
-        assert 'Expiracion: ' in str(self.promocion)
+        for p in self.promociones:
+            assert 'Id: ' in str(p)
+            assert 'Platillo: ' in str(p)
+            assert 'Expiracion: ' in str(p)
 
     def test_cupon_str(self):
         """
         Prueba unitaria para el metodo __str__ del modelo Cupon
         """
 
-        assert 'Id: ' in str(self.cupon)
-        assert 'Codigo: ' in str(self.cupon)
-        assert 'Promocion: ' in str(self.cupon)
+        for c in self.cupones:
+            assert 'Id: ' in str(c)
+            assert 'Codigo: ' in str(c)
+            assert 'Promocion: ' in str(c)
 
     def test_anuncio_str(self):
         """
         Prueba unitaria para el metodo __str__ del modelo Anuncio
         """
 
-        assert 'Id: ' in str(self.anuncio)
-        assert 'Anunciante: ' in str(self.anuncio)
-        assert 'Nombre: ' in str(self.anuncio)
+        for a in self.anuncios:
+            assert 'Id: ' in str(a)
+            assert 'Anunciante: ' in str(a)
+            assert 'Nombre: ' in str(a)

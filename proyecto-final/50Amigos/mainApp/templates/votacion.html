@@ -4,7 +4,11 @@
 {% block title %}Votación{% endblock %}
 
 
-
+{% block styles %}
+<style>
+{% include 'css/global.css' %}
+</style>
+{% endblock %}
 
 
 {# Usando modal de manera global, para que empate con AnimateCSS #}
@@ -22,12 +26,16 @@
 {% endblock %}
 
 {% block modal_body %}
-  <img
-    id="heladoImg"
-    class="animate__animated animate__headShake text-center" 
-    src="{% static 'img/helados.jpg' %}" 
-    alt="helado"
-    width="100%">
+  <center>
+    <img
+      id="heladoImg"
+      class="animate__animated animate__headShake float-center"
+      src="{% static 'img/helado_kawaii.png' %}" 
+      alt="helado"
+      width="50%">
+  </center>
+  <br>
+  <br>
   <div class="form-group">
     <label for="nombreInput">¿Cuál es su nombre?</label>
     <input
@@ -88,6 +96,9 @@
   Votar!
 </button>
 <br>
+<div class="specific-class">
+  <br>
+</div>
 <br>
 <div id="resultados" class="text-center" style="display: none;">
     <canvas id="myChart"></canvas>
@@ -116,6 +127,18 @@
 let helados = [];
 let votos = [];
 let curVotante = 1;
+let coloresFondo = [
+  'rgba(255, 99, 132, 0.2)',
+  'rgba(255, 159, 64, 0.2)',
+  'rgba(255, 205, 86, 0.2)',
+  'rgba(75, 192, 192, 0.2)',
+];
+let coloresBorde = [
+  'rgb(255, 99, 132)',
+  'rgb(255, 159, 64)',
+  'rgb(255, 205, 86)',
+  'rgb(75, 192, 192)'
+];
 
 $(document).ready(function () {
   $('#tituloModal').html('Persona ' + curVotante);
@@ -221,18 +244,8 @@ function finalizarVotacion() {
           datasets: [{
             label: '# de votos',
             data: data,
-            backgroundColor: [
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(255, 159, 64, 0.2)',
-              'rgba(255, 205, 86, 0.2)',
-              'rgba(75, 192, 192, 0.2)',
-            ],
-            borderColor: [
-              'rgb(255, 99, 132)',
-              'rgb(255, 159, 64)',
-              'rgb(255, 205, 86)',
-              'rgb(75, 192, 192)'
-            ],
+            backgroundColor: data.map((d, i) => coloresFondo[i % coloresFondo.length]),
+            borderColor: data.map((d, i) => coloresBorde[i % coloresBorde.length]),
             borderWidth: 3
           }]
         },

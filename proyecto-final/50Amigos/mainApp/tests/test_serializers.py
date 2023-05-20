@@ -1,5 +1,3 @@
-import pytest
-
 from django.contrib.auth import get_user_model
 
 from ..serializers import PlatilloSerializer
@@ -10,7 +8,6 @@ from .test_data import (
 User = get_user_model()
 
 
-@pytest.mark.django_db
 def test_valid_login_form():
     """
     Prueba unitaria para el formulario de registro.

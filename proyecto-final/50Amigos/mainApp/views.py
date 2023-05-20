@@ -7,7 +7,9 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.http import JsonResponse, HttpResponse, QueryDict
 from django.views import View
+from django.core.mail import EmailMultiAlternatives
 from rest_framework import status
+from django.conf import settings
 
 from .models import (
     Carrito,
@@ -112,9 +114,38 @@ def contacto(request):
     """
 
     if request.method == 'POST':
-        messages.info(
-            request,
-            'The has suscrito exitosamente a nuestras noticicas.')
+        data = QueryDict(request.body)
+        email = data.get('email')
+
+        if not email:
+            messages.error(
+                request,
+                'Verifica tu correo.')
+        else:
+            subject = "Suscriptor"
+            from_email = settings.EMAIL_HOST_USER
+            to = email
+            text_content = "This is an important message."
+            html_content = """
+            <b>Gracias por suscribirte a nuestras noticias.</b>
+            """
+            msg = EmailMultiAlternatives(
+                subject,
+                text_content,
+                from_email,
+                [to])
+            msg.attach_alternative(html_content, "text/html")
+
+            try:
+                msg.send()
+                messages.info(
+                    request,
+                    'The has suscrito exitosamente a nuestras noticicas.')
+            except Exception as e:
+                logger.error(e)
+                messages.error(
+                    request,
+                    'El servicio no está disponible en este momento.')
 
     return render(request, 'contacto.html')
 
@@ -127,11 +158,15 @@ def votacion(request):
     """
 
     if request.method == 'POST':
+
+        data = QueryDict(request.body)
+        id = data.get('platilloId')
+        print(id)
+
         # Obten el resultado de la votacion y asigna el sabor de helado de la
         # orden activa
-        orden = get_current_carrito(request.user)
-        orden.helado = Platillo.objects.filter(
-            id=request.POST.get('helado', 1))
+        orden = get_current_orden(request.user)
+        orden.helado_escogido = get_object_or_404(Platillo, id=id)
         orden.save()
 
         messages.success(request, 'La votación concluyó exitosamente!')

@@ -1,5 +1,3 @@
-import pytest
-
 from django.test import TestCase
 from django.contrib.auth import get_user_model
 from django.urls import (
@@ -14,6 +12,7 @@ from .test_data import (
     TEST_EMAIL,
     TEST_PASSWORD,
     TEST_USERNAME,
+    TEST_HELADO,
     TEMPLATES,
     create_test_data
 )
@@ -21,34 +20,34 @@ from .test_data import (
 User = get_user_model()
 
 
-@pytest.mark.django_db
 class TestAPIs_GET(TestCase):
     """
     Clase para probar las llamadas a vistas con metodo GET.
     """
 
-    def setUp(self):
+    @classmethod
+    def setUpTestData(cls):
         """
         Función para configurar el estado del sistema antes de cualquier
         prueba unitaria.
         """
-        self.client = Client()
+        cls.client = Client()
 
         [
-            self.user,
-            self.categoria,
-            self.subcategoria,
-            self.platillo,
-            self.role,
-            self.orden,
-            self.pedido,
-            self.carrito,
-            self.promocion,
-            self.cupon,
-            self.anuncio
+            cls.users,
+            cls.categorias,
+            cls.subcategorias,
+            cls.platillos,
+            cls.roles,
+            cls.ordenes,
+            cls.pedidos,
+            cls.carritos,
+            cls.promociones,
+            cls.cupones,
+            cls.anuncios
         ] = create_test_data()
 
-        self.client = Client()
+        cls.client = Client()
 
     def test_get_lista_helados_no_login(self):
         """
@@ -67,40 +66,40 @@ class TestAPIs_GET(TestCase):
         correctamente.
         """
 
-        self.client.force_login(user=self.user)
+        self.client.force_login(user=self.users[0])
         url = reverse('mainApp:lista_helados')
         res = self.client.get(url)
         assert res.status_code == status.HTTP_200_OK
 
 
-@pytest.mark.django_db
 class TestViews_GET(TestCase):
     """
     Clase para probar las llamadas a vistas con metodo GET.
     """
 
-    def setUp(self):
+    @classmethod
+    def setUpTestData(cls):
         """
         Función para configurar el estado del sistema antes de cualquier
         prueba unitaria.
         """
-        self.client = Client()
+        cls.client = Client()
 
         [
-            self.user,
-            self.categoria,
-            self.subcategoria,
-            self.platillo,
-            self.role,
-            self.orden,
-            self.pedido,
-            self.carrito,
-            self.promocion,
-            self.cupon,
-            self.anuncio
+            cls.users,
+            cls.categorias,
+            cls.subcategorias,
+            cls.platillos,
+            cls.roles,
+            cls.ordenes,
+            cls.pedidos,
+            cls.carritos,
+            cls.promociones,
+            cls.cupones,
+            cls.anuncios
         ] = create_test_data()
 
-        self.client = Client()
+        cls.client = Client()
 
     def test_login_not_valid_data(self):
         """
@@ -223,7 +222,7 @@ class TestViews_GET(TestCase):
         accesible en caso de que ya se haya iniciado sesión.
         """
 
-        self.client.force_login(user=self.user)
+        self.client.force_login(user=self.users[0])
 
         url = reverse('mainApp:registro')
         response = self.client.get(url)
@@ -235,7 +234,7 @@ class TestViews_GET(TestCase):
         accesible en caso de que ya se haya iniciado sesión.
         """
 
-        self.client.force_login(user=self.user)
+        self.client.force_login(user=self.users[0])
 
         url = reverse('mainApp:carrito')
         response = self.client.get(url)
@@ -248,7 +247,7 @@ class TestViews_GET(TestCase):
         accesible en caso de que ya se haya iniciado sesión.
         """
 
-        self.client.force_login(user=self.user)
+        self.client.force_login(user=self.users[0])
 
         url = reverse('mainApp:inicio')
         response = self.client.get(url)
@@ -261,7 +260,7 @@ class TestViews_GET(TestCase):
         accesible en caso de que ya se haya iniciado sesión.
         """
 
-        self.client.force_login(user=self.user)
+        self.client.force_login(user=self.users[0])
 
         url = reverse('mainApp:votacion')
         response = self.client.get(url)
@@ -274,7 +273,7 @@ class TestViews_GET(TestCase):
         accesible en caso de que ya se haya iniciado sesión.
         """
 
-        self.client.force_login(user=self.user)
+        self.client.force_login(user=self.users[0])
 
         url = reverse('mainApp:menu')
         response = self.client.get(url)
@@ -287,39 +286,41 @@ class TestViews_GET(TestCase):
         en caso de solicitar una petición a la vista de las ordenes.
         """
 
-        self.client.force_login(user=self.user)
+        self.client.force_login(user=self.users[0])
 
         url = reverse('mainApp:orden')
         response = self.client.get(url)
         assert response.status_code == status.HTTP_405_METHOD_NOT_ALLOWED
 
 
-@pytest.mark.django_db
 class TestViews_POST(TestCase):
     """
     Clase para probar las llamadas a vistas con metodo POST.
     """
 
-    def setUp(self):
+    @classmethod
+    def setUpTestData(cls):
         """
         Función para configurar el estado del sistema antes de cualquier
         prueba unitaria.
         """
-        self.client = Client()
+        cls.client = Client()
 
         [
-            self.user,
-            self.categoria,
-            self.subcategoria,
-            self.platillo,
-            self.role,
-            self.orden,
-            self.pedido,
-            self.carrito,
-            self.promocion,
-            self.cupon,
-            self.anuncio
+            cls.users,
+            cls.categorias,
+            cls.subcategorias,
+            cls.platillos,
+            cls.roles,
+            cls.ordenes,
+            cls.pedidos,
+            cls.carritos,
+            cls.promociones,
+            cls.cupones,
+            cls.anuncios
         ] = create_test_data()
+
+        cls.client = Client()
 
     def test_logout_no_login(self):
         """
@@ -419,7 +420,7 @@ class TestViews_POST(TestCase):
         a la orden en caso de que no hayamos iniciado sesión.
         """
 
-        self.client.force_login(user=self.user)
+        self.client.force_login(user=self.users[0])
         data = {}
         url = reverse('mainApp:carrito')
         response = self.client.post(url, data)
@@ -432,12 +433,29 @@ class TestViews_POST(TestCase):
         sesión.
         """
 
-        self.client.force_login(user=self.user)
-        data = {}
+        self.client.force_login(user=self.users[0])
+        data_str = f'platilloId={TEST_HELADO.get("id")}'
         url = reverse('mainApp:votacion')
-        response = self.client.post(url, data)
+        response = self.client.post(
+            url,
+            data_str,
+            content_type='application/x-www-form-urlencoded')
         assert response.status_code == status.HTTP_200_OK
         self.assertTemplateUsed(response, TEMPLATES['votacion'])
+
+    def test_votacion_login_404(self):
+        """
+        Función para probar que podamos votar correctamente si ya iniciamos
+        sesión.
+        """
+
+        self.client.force_login(user=self.users[0])
+        data = {
+            'platilloId': 7812736817
+        }
+        url = reverse('mainApp:votacion')
+        response = self.client.post(url, data)
+        assert response.status_code == status.HTTP_404_NOT_FOUND
 
     def test_registro_login(self):
         """
@@ -445,7 +463,7 @@ class TestViews_POST(TestCase):
         si hemos iniciado sesión.
         """
 
-        self.client.force_login(user=self.user)
+        self.client.force_login(user=self.users[0])
         data = {}
         url = reverse('mainApp:registro')
         response = self.client.post(url, data)
@@ -458,39 +476,41 @@ class TestViews_POST(TestCase):
         vez autenticados.
         """
 
-        self.client.force_login(user=self.user)
+        self.client.force_login(user=self.users[0])
 
         url = reverse('mainApp:orden')
         response = self.client.post(url)
         assert response.status_code == status.HTTP_204_NO_CONTENT
 
 
-@pytest.mark.django_db
 class TestViews_PUT(TestCase):
     """
     Clase para probar las llamadas a vistas con metodo PUT.
     """
 
-    def setUp(self):
+    @classmethod
+    def setUpTestData(cls):
         """
         Función para configurar el estado del sistema antes de cualquier
         prueba unitaria.
         """
-        self.client = Client()
+        cls.client = Client()
 
         [
-            self.user,
-            self.categoria,
-            self.subcategoria,
-            self.platillo,
-            self.role,
-            self.orden,
-            self.pedido,
-            self.carrito,
-            self.promocion,
-            self.cupon,
-            self.anuncio
+            cls.users,
+            cls.categorias,
+            cls.subcategoria,
+            cls.platillo,
+            cls.role,
+            cls.ordenes,
+            cls.pedido,
+            cls.carrito,
+            cls.promociones,
+            cls.cupones,
+            cls.anuncios
         ] = create_test_data()
+
+        cls.client = Client()
 
     def test_carrito_login(self):
         """
@@ -498,7 +518,7 @@ class TestViews_PUT(TestCase):
         correctamente una vez tengamos sesión iniciada.
         """
 
-        self.client.force_login(user=self.user)
+        self.client.force_login(user=self.users[0])
         data_str = "platillo=1&cantidad=1"
         url = reverse('mainApp:carrito')
         response = self.client.put(
@@ -514,7 +534,7 @@ class TestViews_PUT(TestCase):
         compras si no tenemos un platillo indicado.
         """
 
-        self.client.force_login(user=self.user)
+        self.client.force_login(user=self.users[0])
         data_str = "platillo=2&cantidad=1"
         url = reverse('mainApp:carrito')
         response = self.client.put(
@@ -530,7 +550,7 @@ class TestViews_PUT(TestCase):
         haberse autenticado.
         """
 
-        self.client.force_login(user=self.user)
+        self.client.force_login(user=self.users[0])
 
         url = reverse('mainApp:orden')
         response = self.client.put(url)
@@ -549,32 +569,34 @@ class TestViews_PUT(TestCase):
         self.assertRedirects(response, REDIRECT_LOGIN_URL + url)
 
 
-@pytest.mark.django_db
 class TestViews_DELETE(TestCase):
     """
     Clase para probar las llamadas a vistas con metodo DELETE.
     """
 
-    def setUp(self):
+    @classmethod
+    def setUpTestData(cls):
         """
         Función para configurar el estado del sistema antes de cualquier
         prueba unitaria.
         """
-        self.client = Client()
+        cls.client = Client()
 
         [
-            self.user,
-            self.categoria,
-            self.subcategoria,
-            self.platillo,
-            self.role,
-            self.orden,
-            self.pedido,
-            self.carrito,
-            self.promocion,
-            self.cupon,
-            self.anuncio
+            cls.users,
+            cls.categorias,
+            cls.subcategorias,
+            cls.platillos,
+            cls.roles,
+            cls.ordenes,
+            cls.pedidos,
+            cls.carritos,
+            cls.promociones,
+            cls.cupones,
+            cls.anuncios
         ] = create_test_data()
+
+        cls.client = Client()
 
     def test_carrito_login(self):
         """
@@ -582,7 +604,7 @@ class TestViews_DELETE(TestCase):
         de haberlo enviado a la orden.
         """
 
-        self.client.force_login(user=self.user)
+        self.client.force_login(user=self.users[0])
         data = {
             "platillo": 1
         }
@@ -597,7 +619,7 @@ class TestViews_DELETE(TestCase):
         haberse autenticado.
         """
 
-        self.client.force_login(user=self.user)
+        self.client.force_login(user=self.users[0])
 
         url = reverse('mainApp:orden')
         response = self.client.delete(url)

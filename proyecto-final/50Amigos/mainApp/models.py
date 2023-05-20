@@ -202,6 +202,16 @@ class Carrito(models.Model):
         Orden, on_delete=models.SET_NULL, null=True, related_name='carritos')
     active = models.BooleanField(default=True)
 
+    def get_total(self):
+        """
+        Metodo para obtener el total de todos los pedidos en la cuenta.
+        """
+        total = 0
+        for p in self.pedidos.all():
+            total += p.get_subtotal()
+
+        return total
+
     def __str__(self):
         return f"""
                 Id: {self.id}

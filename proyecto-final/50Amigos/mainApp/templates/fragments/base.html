@@ -11,26 +11,25 @@
   <meta name="viewport"
     content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
   <meta name="description" content=""/>
-  <meta name="author" content=""/>
+  <meta name="author" content="Orion"/>
 
   <link
     rel="icon"
     sizes="any"
     type="image/svg+xml"
     href="{% static 'assets/favicon.svg' %}"/>
-  
+
   <link
     href="{% static 'css/bootstrap.min.css' %}"
     rel="stylesheet"/>
-  
+
   <link
     rel="stylesheet"
     href="{% static 'css/bootstrap-icons.css' %}"/>
-  
-  <link
-  href="{% static 'css/animate.min.css' %}"
-  rel="stylesheet"/>
 
+  <link
+    href="{% static 'css/animate.min.css' %}"
+    rel="stylesheet"/>
 
   {% block styles %}{% endblock %}
 
@@ -92,19 +91,17 @@
         </div>
         <div class="modal-body">
           <div id="modalBody">
-            {% block modal_body %}
-            
-            {% endblock %}
+            {% block modal_body %}{% endblock %}
           </div>
         </div>
         <div class="modal-footer">
           <div id="modalFooter">
             {% block modal_footer %}
                 <button
-                id="modalCancelar"
-                type="button" 
-                class="btn btn-outline-secondary"
-                data-bs-dismiss="modal">Volver</button>
+                  id="modalCancelar"
+                  type="button" 
+                  class="btn btn-outline-secondary"
+                  data-bs-dismiss="modal">Volver</button>
             {% endblock %}
           </div>
         </div>

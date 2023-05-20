@@ -64,6 +64,13 @@ SUBCATEGORIAS = [{
     'id': 9999,
     'nombre': 'Prueba',
 }]
+TEST_HELADO = {
+    'id': 9999,
+    'nombre': 'Helado',
+    'imagen': 'noimagen.jpg',
+    'precio': '100.00',
+    'ingredientes': '',
+}
 
 PLATILLOS = [{
     'id': 1,
@@ -71,13 +78,7 @@ PLATILLOS = [{
     'imagen': 'noimagen.jpg',
     'precio': '200.00',
     'ingredientes': 'ingrediente1,ingrediente2',
-}, {
-    'id': 9999,
-    'nombre': 'Helado',
-    'imagen': 'noimagen.jpg',
-    'precio': '100.00',
-    'ingredientes': '',
-}]
+}, TEST_HELADO]
 
 ROLES = [{
     'id': 9999,
@@ -124,104 +125,104 @@ ANUNCIOS = [{
 
 def create_test_data():
 
-    user = None
+    users = []
     for usuario in USUARIOS:
-        user = User.objects.create(
+        users.append(User.objects.create(
             id=usuario.get('id'),
             username=usuario.get('username'),
             password=make_password(usuario.get('password')),
-            email=usuario.get('email'))
+            email=usuario.get('email')))
 
-    category = None
+    categorias = []
     for categoria in CATEGORIAS:
-        category = Categoria.objects.create(
+        categorias.append(Categoria.objects.create(
             id=categoria.get('id'),
-            nombre=categoria.get('nombre'))
+            nombre=categoria.get('nombre')))
 
-    subcategory = None
+    subcategorias = []
     for subcategoria in SUBCATEGORIAS:
-        subcategory = Subcategoria.objects.create(
+        subcategorias.append(Subcategoria.objects.create(
             id=subcategoria.get('id'),
-            nombre=subcategoria.get('nombre'))
+            nombre=subcategoria.get('nombre')))
 
-    platillo_ = None
+    platillos = []
     for platillo in PLATILLOS:
-        platillo_ = Platillo.objects.create(
+        platillos.append(Platillo.objects.create(
             id=platillo.get('id'),
             nombre=platillo.get('nombre'),
             descripcion=platillo.get('descripcion'),
             imagen=platillo.get('imagen'),
-            categoria=category,
-            subcategoria=subcategory,
+            categoria=categorias[0],
+            subcategoria=subcategorias[0],
             precio=platillo.get('precio'),
-            ingredientes=platillo.get('ingredientes'))
+            ingredientes=platillo.get('ingredientes')))
 
-    role_ = None
+    roles = []
     for role in ROLES:
-        role_ = Role.objects.create(
+        roles.append(Role.objects.create(
             id=role.get('id'),
-            usuario=user)
+            usuario=users[0]))
 
-    order = None
+    ordenes = []
     for orden in ORDENES:
-        order = Orden.objects.create(
+        ordenes.append(Orden.objects.create(
             id=orden.get('id'),
-            usuario=user,
+            usuario=users[0],
             total=orden.get('total'),
             comentarios=orden.get('comentarios'),
             active=orden.get('active'),
-            helado_escogido=platillo_)
+            helado_escogido=platillos[-1]))
 
-    cart = None
+    carritos = []
     for carrito in CARRITOS:
-        cart = Carrito.objects.create(
+        carritos.append(Carrito.objects.create(
             id=carrito.get('id'),
-            orden=order)
+            orden=ordenes[0]))
 
-    pedido_ = None
+    pedidos = []
     for pedido in PEDIDOS:
-        pedido_ = Pedido.objects.create(
+        pedidos.append(Pedido.objects.create(
             id=pedido.get('id'),
-            carrito=cart,
-            platillo=platillo_,
-            cantidad=pedido.get('cantidad'))
+            carrito=carritos[0],
+            platillo=platillos[0],
+            cantidad=pedido.get('cantidad')))
 
-    promocion_ = None
+    promociones = []
     for promocion in PROMOCIONES:
-        promocion_ = Promocion.objects.create(
+        promociones.append(Promocion.objects.create(
             id=promocion.get('id'),
             codigo=promocion.get('codigo'),
-            platillo=platillo_,
+            platillo=platillos[0],
             valido_hasta=promocion.get('valido_hasta'),
-            imagen=promocion.get('imagen'))
+            imagen=promocion.get('imagen')))
 
-    cupon_ = None
+    cupones = []
     for cupon in CUPONES:
-        cupon_ = Cupon.objects.create(
+        cupones.append(Cupon.objects.create(
             id=cupon.get('id'),
             codigo=cupon.get('codigo'),
-            promocion=promocion_)
+            promocion=promociones[0]))
 
-    ad = None
+    ads = []
     for ad in ANUNCIOS:
-        ad = Anuncio.objects.create(
+        ads.append(Anuncio.objects.create(
             id=ad.get('id'),
             nombre=ad.get('nombre'),
             anunciante=ad.get('anunciante'),
             valido_hasta=ad.get('valido_hasta'),
             imagen=ad.get('imagen'),
-            active=ad.get('active'))
+            active=ad.get('active')))
 
     return [
-        user,
-        category,
-        subcategory,
-        platillo_,
-        role_,
-        order,
-        pedido_,
-        cart,
-        promocion_,
-        cupon_,
-        ad
+        users,
+        categorias,
+        subcategorias,
+        platillos,
+        roles,
+        ordenes,
+        pedidos,
+        carritos,
+        promociones,
+        cupones,
+        ads
     ]
