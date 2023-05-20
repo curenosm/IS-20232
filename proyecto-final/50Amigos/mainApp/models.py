@@ -150,7 +150,7 @@ class Orden(models.Model):
     comentarios = models.TextField(blank=True, max_length=500)
     helado_escogido = models.ForeignKey(
         Platillo, on_delete=models.SET_NULL, null=True)
-    active = models.BooleanField(default=True);
+    active = models.BooleanField(default=True)
 
     class Meta:
         verbose_name = 'Orden'
@@ -163,7 +163,7 @@ class Orden(models.Model):
         total = 0
         for p in self.get_pedidos():
             total += p.get_subtotal()
-        
+
         return total
 
     def get_pedidos(self):
@@ -179,7 +179,6 @@ class Orden(models.Model):
                     res.append(p)
 
         return res
-
 
     def __str__(self):
         return f"""
@@ -201,7 +200,7 @@ class Carrito(models.Model):
         User, on_delete=models.SET_NULL, null=True, related_name='carritos')
     orden = models.ForeignKey(
         Orden, on_delete=models.SET_NULL, null=True, related_name='carritos')
-    active = models.BooleanField(default=True);
+    active = models.BooleanField(default=True)
 
     def __str__(self):
         return f"""
@@ -221,7 +220,8 @@ class Pedido(models.Model):
     platillo = models.ForeignKey(
         Platillo, on_delete=models.SET_NULL, null=True, related_name='pedidos')
     cantidad = models.IntegerField(default=1)
-    carrito = models.ForeignKey(Carrito,
+    carrito = models.ForeignKey(
+        Carrito,
         on_delete=models.SET_NULL,
         null=True,
         related_name='pedidos')
@@ -236,7 +236,7 @@ class Pedido(models.Model):
     def __str__(self):
         return f"""
                 Id: {self.id}
-                Carrito: 
+                Carrito:
                     {self.carrito}
                 Platillo: {self.platillo}
                 """

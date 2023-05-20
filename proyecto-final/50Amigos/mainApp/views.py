@@ -37,8 +37,8 @@ def get_current_orden(user):
         .first()
 
     if not orden:
-        orden = Orden.objects.create(usuario=user, active=True) \
-    
+        orden = Orden.objects.create(usuario=user, active=True)
+
     return orden
 
 
@@ -47,16 +47,14 @@ def get_current_carrito(user):
     Función que obtiene el carrito actual para el usuario indicado.
     """
     carrito = Carrito.objects.filter(
-            usuario=user,
-            active=True) \
-        .order_by('-fecha') \
-        .first()
+        usuario=user,
+        active=True).order_by('-fecha').first()
 
     if not carrito:
         carrito = Carrito.objects.create(
             usuario=user,
             active=True,
-            orden = get_current_orden(user))
+            orden=get_current_orden(user))
     else:
         carrito.orden = get_current_orden(user)
         carrito.save()
@@ -262,7 +260,7 @@ class CarritoView(View):
 
         carrito = get_current_carrito(request.user)
         orden = get_current_orden(request.user)
-        
+
         carrito.active = False
         carrito.save()
 

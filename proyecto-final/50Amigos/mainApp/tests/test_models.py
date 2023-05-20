@@ -96,7 +96,7 @@ class TestModels(TestCase):
         """
 
         pedido = Pedido.objects.get(id=self.id_prueba)
-        self.assertEqual(pedido.orden, self.orden)
+        self.assertEqual(pedido.carrito.orden, self.orden)
 
     def test_anuncio(self):
         """

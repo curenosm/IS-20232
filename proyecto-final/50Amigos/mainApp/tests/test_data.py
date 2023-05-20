@@ -172,19 +172,19 @@ def create_test_data():
             active=orden.get('active'),
             helado_escogido=platillo_)
 
-    pedido_ = None
-    for pedido in PEDIDOS:
-        pedido_ = Pedido.objects.create(
-            id=pedido.get('id'),
-            orden=order,
-            platillo=platillo_,
-            cantidad=pedido.get('cantidad'))
-
     cart = None
     for carrito in CARRITOS:
         cart = Carrito.objects.create(
             id=carrito.get('id'),
             orden=order)
+
+    pedido_ = None
+    for pedido in PEDIDOS:
+        pedido_ = Pedido.objects.create(
+            id=pedido.get('id'),
+            carrito=cart,
+            platillo=platillo_,
+            cantidad=pedido.get('cantidad'))
 
     promocion_ = None
     for promocion in PROMOCIONES:
