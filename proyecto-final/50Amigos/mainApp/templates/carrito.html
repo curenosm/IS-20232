@@ -59,11 +59,11 @@
         {{ pedido.platillo.nombre }}
       </td>
       <td class="text-center">
-        $ {{ pedido.platillo.precio }}
+        <b>$ {{ pedido.platillo.precio }}</b>
       </td>
       <td class="text-center">
         <b>
-          $ {{ pedido.get_subtotal }}
+          $ {{ pedido.get_subtotal }}</b>
         </b>
       </td>
       <td class="text-center">
@@ -75,7 +75,7 @@
         </button>
       </td>
       <td class="text-center" id="counter{{pedido.platillo.id}}">
-        {{ pedido.cantidad }}
+        <b> {{ pedido.cantidad }}</b>
       </td>
       <td class="text-center">
         <button 
@@ -121,45 +121,49 @@
 Estos son los pedidos que se han hecho durante su estadía en el restaurante,
 las tarifas con impuestos se muestran al final. Se agradece su propina.
 </p>
-{% for pedido in orden.pedidos.all %}
 <table class="table table-sm table-striped my-5">
   <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">Producto</th>
-      <th scope="col">Cantidad</th>
-      <th scope="col">Precio</th>
-      <th scope="col">Subtotal</th>
+      <th scope="col" class="text-center">#</th>
+      <th scope="col" class="text-center">Producto</th>
+      <th scope="col" class="text-center">Cantidad</th>
+      <th scope="col" class="text-center">Precio</th>
+      <th scope="col" class="text-center">Subtotal</th>
     </tr>
   </thead>
   <tbody>
-    {% for pedido in pedido.platillo.all %}
+    {% for pedido in orden.get_pedidos %}
     <tr>
-      <th scope="row">{{ pedido.platillo.id }}</th>
+      <th scope="row"class="text-center">{{ pedido.id }}</th>
       <td class="text-center">{{ pedido.platillo.nombre }}</td>
-      <td class="text-center">{{ pedido.cantidad }}</td>
-      <td class="text-center">${{ pedido.platillo.precio }}</td>
-      <td class="text-center">${{ pedido.get_subtotal }}</td>
+      <td class="text-center"><b>{{ pedido.cantidad }}</b></td>
+      <td class="text-center"><b>$</b> {{ pedido.platillo.precio }}</td>
+      <td class="text-center"><b>$</b> {{ pedido.get_subtotal }}</td>
     </tr>
     {% endfor %}
   </tbody>
 </table>
-<br>
-{% endfor %}
-<form method="POST" action="{% url 'mainApp:carrito' %}" >
-  <div style="display:none">
-    <input 
-      type="hidden" 
-      name="csrfmiddlewaretoken" 
-      value="{{ csrf_token }}" />
-  </div>
-  <button 
-    type="submit" 
-    onclick="cerrarCuenta()"
-    class="btn btn-outline-success float-end">
-    <i class="bi bi-currency-dollar"></i> Solicitar cuenta
-  </button>
-</form>
+<div class="float-end">
+  <span class="h5">
+    Total: &nbsp;&nbsp;${{ orden.get_total }}
+  </span>
+  <br>
+  <br>
+  <form method="POST" action="{% url 'mainApp:carrito' %}" >
+    <div style="display:none">
+      <input 
+        type="hidden" 
+        name="csrfmiddlewaretoken" 
+        value="{{ csrf_token }}" />
+    </div>
+    <button 
+      type="submit" 
+      onclick="cerrarCuenta()"
+      class="btn btn-outline-success">
+      <i class="bi bi-currency-dollar"></i> Solicitar cuenta
+    </button>
+  </form>
+</div>
 <br>
 <br>
 <br>
@@ -269,7 +273,7 @@ function hacerPedido() {
  * postre puede empezar a servirse.
 */
 function cerrarCuenta() {
-  $.ajax("{% url 'mainApp:carrito' %}", {
+  $.ajax("{% url 'mainApp:orden' %}", {
     type: 'POST',
     data: {},
     success: function (res) {

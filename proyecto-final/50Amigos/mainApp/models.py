@@ -148,13 +148,38 @@ class Orden(models.Model):
     fecha = models.DateTimeField(auto_now_add=True)
     total = models.DecimalField(decimal_places=2, max_digits=100, null=True)
     comentarios = models.TextField(blank=True, max_length=500)
-    active = models.BooleanField(default=True)
     helado_escogido = models.ForeignKey(
         Platillo, on_delete=models.SET_NULL, null=True)
+    active = models.BooleanField(default=True);
 
     class Meta:
         verbose_name = 'Orden'
         verbose_name_plural = 'Ordenes'
+
+    def get_total(self):
+        """
+        Metodo para obtener el total de todos los pedidos en la cuenta.
+        """
+        total = 0
+        for p in self.get_pedidos():
+            total += p.get_subtotal()
+        
+        return total
+
+    def get_pedidos(self):
+        """
+        Metodo auxiliar para obtener todos los pedidos asociados
+        a cada carrito de la orden.
+        """
+
+        res = []
+        for c in self.carritos.all():
+            if not c.active:
+                for p in c.pedidos.all():
+                    res.append(p)
+
+        return res
+
 
     def __str__(self):
         return f"""
@@ -171,13 +196,17 @@ class Carrito(models.Model):
     """
 
     id = models.AutoField(primary_key=True)
-    orden = models.OneToOneField(
-        Orden, on_delete=models.SET_NULL, null=True, related_name='carrito')
+    fecha = models.DateTimeField(auto_now_add=True)
+    usuario = models.ForeignKey(
+        User, on_delete=models.SET_NULL, null=True, related_name='carritos')
+    orden = models.ForeignKey(
+        Orden, on_delete=models.SET_NULL, null=True, related_name='carritos')
+    active = models.BooleanField(default=True);
 
     def __str__(self):
         return f"""
                 Id: {self.id}
-                Orden: {self.orden.id}
+                Orden: {self.orden}
                 """
 
 
@@ -189,16 +218,12 @@ class Pedido(models.Model):
     """
 
     id = models.AutoField(primary_key=True)
-    orden = models.ForeignKey(
-        Orden, on_delete=models.SET_NULL, null=True, related_name='pedidos')
     platillo = models.ForeignKey(
         Platillo, on_delete=models.SET_NULL, null=True, related_name='pedidos')
     cantidad = models.IntegerField(default=1)
-    carrito = models.ManyToOneRel(
-        to=Carrito,
-        field_name='carrito',
-        field="id",
+    carrito = models.ForeignKey(Carrito,
         on_delete=models.SET_NULL,
+        null=True,
         related_name='pedidos')
 
     def get_subtotal(self):
@@ -211,7 +236,8 @@ class Pedido(models.Model):
     def __str__(self):
         return f"""
                 Id: {self.id}
-                Orden: {self.orden}
+                Carrito: 
+                    {self.carrito}
                 Platillo: {self.platillo}
                 """
 

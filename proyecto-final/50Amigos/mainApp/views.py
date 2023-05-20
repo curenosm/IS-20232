@@ -10,6 +10,7 @@ from django.views import View
 from rest_framework import status
 
 from .models import (
+    Carrito,
     Categoria,
     Platillo,
     Pedido,
@@ -27,18 +28,40 @@ User = get_user_model()
 logger = logging.getLogger(__name__)
 
 
-def get_current_carrito(user):
+def get_current_orden(user):
     """
-    Función que obtiene la orden actual para el usuario indicado
+    Función que obtiene la orden actual para el usuario indicado.
     """
     orden = Orden.objects.filter(usuario=user, active=True) \
         .order_by('-fecha') \
         .first()
 
     if not orden:
-        orden = Orden.objects.create(usuario=user, active=True)
-
+        orden = Orden.objects.create(usuario=user, active=True) \
+    
     return orden
+
+
+def get_current_carrito(user):
+    """
+    Función que obtiene el carrito actual para el usuario indicado.
+    """
+    carrito = Carrito.objects.filter(
+            usuario=user,
+            active=True) \
+        .order_by('-fecha') \
+        .first()
+
+    if not carrito:
+        carrito = Carrito.objects.create(
+            usuario=user,
+            active=True,
+            orden = get_current_orden(user))
+    else:
+        carrito.orden = get_current_orden(user)
+        carrito.save()
+
+    return carrito
 
 
 def index(request):
@@ -225,25 +248,32 @@ class CarritoView(View):
         """
 
         carrito = get_current_carrito(request.user)
+        orden = get_current_orden(request.user)
         data = {
-            "orden": carrito,
+            "orden": orden,
             "carrito": carrito
         }
         return render(request, 'carrito.html', context=data)
 
     def post(self, request, *args, **kwargs):
         """
-        Cierra la cuenta actual, genera el ticket y muestra el resumen
-        de la cuenta, incluyendo IVA etc.
+        Pasa los pedidos del carrito a la orden (cuenta)
         """
 
         carrito = get_current_carrito(request.user)
+        orden = get_current_orden(request.user)
+        
         carrito.active = False
+        carrito.save()
 
+        data = {
+            "orden": orden,
+            "carrito": []
+        }
         messages.success(
             request,
             'La orden fue cerrada, la cuenta puede ser consultada')
-        return render(request, 'carrito.html', context={carrito: carrito})
+        return render(request, 'carrito.html', context=data)
 
     def put(self, request, *args, **kwargs):
         """
@@ -266,7 +296,7 @@ class CarritoView(View):
             pedido.platillo = get_object_or_404(
                 Platillo, id=data.get('platillo'))
             pedido.cantidad = data.get('cantidad')
-            pedido.orden = carrito
+            pedido.carrito = carrito
         else:
             pedido.cantidad = int(data.get('cantidad'))
 
@@ -286,7 +316,7 @@ class CarritoView(View):
         for p in carrito.pedidos.all():
             if int(data.get('platillo')) == int(p.platillo.id):
                 logger.debug('si entro')
-                p.orden = None
+                p.carrito = None
                 p.save()
 
         messages.warning(request, 'El elemento fue retirado de su carrito')
