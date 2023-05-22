@@ -1,7 +1,7 @@
 import re
-from django.db import models
 
 from django.contrib.auth.models import AbstractUser, Group
+from django.db import models
 
 
 class User(AbstractUser):
@@ -99,6 +99,28 @@ class Platillo(models.Model):
 
         return ingredientes
 
+    def hidden_if_helado(self):
+        """
+        Funcion para esconder los componentes de las tarjetas de helado en el
+        menú.
+        """
+
+        if re.search('helado', self.nombre, re.IGNORECASE):
+            return 'hidden'
+        return ''
+    
+    def line_through_if_helado(self):
+        """
+        Funcion para decidir si el precio va a aparecer tachado
+        o no dependiendo si se trata de un helado.
+        """
+
+        
+        if re.search('helado', self.nombre, re.IGNORECASE):
+            return 'text-decoration-line-through'
+        return ''
+
+
     def disabled_if_helado(self):
         """
         Funcion para deshabilitar los botones en el menu convenientemente
@@ -156,6 +178,39 @@ class Orden(models.Model):
         verbose_name = 'Orden'
         verbose_name_plural = 'Ordenes'
 
+    def desmarcar_carritos_como_activos(self):
+        """
+        Función auxiliar para cerrar los carritos al momento de cerrar
+        la cuenta.
+        """
+
+        for c in self.carritos.all():
+            c.active = False
+            c.save()
+
+    def votacion_concluida(self):
+        """
+        Función para determinar si la votación para el helado de la orden
+        ya tomó lugar.
+        """
+
+        return self.helado_escogido != None
+    
+    def hidden_if_votacion_concluida(self):
+        """
+        Metodo para elegir el estado inicial de la gráfica de resultados
+        """
+
+        return 'hidden' if self.votacion_concluida() else ''
+
+    def disabled_if_votacion_concluida(self):
+        """
+        Metodo para deshabilitar el voton de votación una vez se haya
+        concluido la misma para la orden actual.
+        """
+
+        return 'disabled' if self.votacion_concluida() else ''
+
     def get_total(self):
         """
         Metodo para obtener el total de todos los pedidos en la cuenta.
@@ -185,6 +240,8 @@ class Orden(models.Model):
                 Id: {self.id}
                 Usuario: {self.usuario}
                 Fecha: {self.fecha}
+                Active: {self.active}
+                Helado escogido: {self.helado_escogido}
                 """
 
 
@@ -241,7 +298,7 @@ class Pedido(models.Model):
         Metodo auxiliar para calcular el costo de todos los elementos del
         pedido.
         """
-        return self.platillo.precio * self.cantidad
+        return float(self.platillo.precio) * float(self.cantidad)
 
     def __str__(self):
         return f"""

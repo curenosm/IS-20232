@@ -12,8 +12,8 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item">
-      <a 
-        class="text-decoration-none" 
+      <a
+        class="text-decoration-none"
         href="{% url 'mainApp:inicio' %}">Inicio</a>
     </li>
     <li class="breadcrumb-item active" aria-current="page">
@@ -42,7 +42,7 @@
         <b>Equipo de desarrollo:</b> <i>Orion</i>
     </li>
     <li>
-      <b>Dirección:</b> <i>Investigación Científica, C.U., Coyoacán, 04510 
+      <b>Dirección:</b> <i>Investigación Científica, C.U., Coyoacán, 04510
       Ciudad de México, CDMX.</i>
     </li>
   </ul>
@@ -56,10 +56,10 @@
   <div class="card-body">
     <form method="post" class="mt-4">
       <div style="display:none">
-        <input 
-        type="hidden"
-        name="csrfmiddlewaretoken"
-        value="{{ csrf_token }}" />
+        <input
+          type="hidden"
+          name="csrfmiddlewaretoken"
+          value="{{ csrf_token }}" />
       </div>
       <div class="form-group">
         <label for="email">Email:</label>

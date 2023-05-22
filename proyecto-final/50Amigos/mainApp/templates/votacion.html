@@ -13,8 +13,8 @@
 
 {# Usando modal de manera global, para que empate con AnimateCSS #}
 {% block modal_header %}
-  <h5 
-    class="modal-title animate__animated animate__headShake" 
+  <h5
+    class="modal-title animate__animated animate__headShake"
     id="tituloModal">
     Persona 1
   </h5>
@@ -30,7 +30,7 @@
     <img
       id="heladoImg"
       class="animate__animated animate__headShake float-center"
-      src="{% static 'img/helado_kawaii.png' %}" 
+      src="{% static 'img/helado_kawaii.png' %}"
       alt="helado"
       width="50%">
   </center>
@@ -39,11 +39,11 @@
   <div class="form-group">
     <label for="nombreInput">¿Cuál es su nombre?</label>
     <input
-    id="nombreInput"
-    onkeyup="actualizarNombreModal()"
-    type="text"
-    class="form-control"
-    placeholder="Juan"/>
+      id="nombreInput"
+      onkeyup="actualizarNombreModal()"
+      type="text"
+      class="form-control"
+      placeholder="Juan"/>
     <br>
   </div>
   <div class="form-group">
@@ -55,13 +55,13 @@
 {% endblock %}
 
 {% block modal_footer %}
-  <button 
+  <button
     onclick="agregarParticipante()"
-    type="button" 
+    type="button"
     class="btn btn-outline-secondary">Agregar otro participante</button>
-  <button 
+  <button
     onclick="finalizarVotacion()"
-    type="button" 
+    type="button"
     class="btn btn-outline-primary"
     data-bs-dismiss="modal">Finalizar votación</button>
 {% endblock %}
@@ -87,22 +87,41 @@
 <br>
 <h1>Helado</h1>
 <hr>
-<p>Inicia la votación para el sabor de helado!</p>
-<br>
-<button
-  class="btn btn-outline-primary"
-  data-bs-toggle="modal"
-  data-bs-target="#globalModal">
-  Votar!
-</button>
-<br>
-<div class="specific-class">
+{% if not orden.votacion_concluida %}
+  <p>Inicia la votación para el sabor de helado!</p>
   <br>
-</div>
-<br>
-<div id="resultados" class="text-center" style="display: none;">
-    <canvas id="myChart"></canvas>
-</div>
+  <button
+    id="botonVotar"
+    {{ orden.disabled_if_votacion_concluida }}
+    class="btn btn-outline-primary"
+    data-bs-toggle="modal"
+    data-bs-target="#globalModal">
+    Votar!
+  </button>
+  <br>
+  <br>
+  <div
+    id="resultados"
+    style="display: none;"
+    class="text-center">
+      <canvas id="myChart"></canvas>
+  </div>
+{% else %}
+  <div class="text-black">
+    La votación ya concluyó, el ganador fue:
+    <b>{{ orden.helado_escogido.nombre }}</b>
+    <br>
+    <br>
+    <center class="mt-5">
+      <img
+        id="heladoImg"
+        class="animate__animated animate__tada float-center"
+        src="{% static 'img/helado_kawaii.png' %}"
+        alt="helado"
+        width="50%">
+    </center>
+  </div>
+{% endif %}
 <br>
 <br>
 <br>
@@ -187,7 +206,7 @@ function actualizarNombreModal() {
  * dada.
  */
 function agregarParticipante() {
-  
+
   let votoActual = $('#heladoSelect').val();
   $('#heladoSelect').toggleClass('animate__headShake');
   votos.push(parseInt(votoActual));
@@ -257,6 +276,8 @@ function finalizarVotacion() {
           }
         }
       });
+
+      $('#botonVotar').hide();
 
       // location.reload();
     },

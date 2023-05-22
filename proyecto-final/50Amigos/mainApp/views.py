@@ -1,40 +1,52 @@
 import logging
+from datetime import datetime
 
-from django.contrib import messages
-from django.contrib.auth import get_user_model, authenticate, login
-from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth.decorators import login_required
-from django.utils.decorators import method_decorator
-from django.http import JsonResponse, HttpResponse, QueryDict
-from django.views import View
-from django.core.mail import EmailMultiAlternatives
-from rest_framework import status
+import pytz
 from django.conf import settings
+from django.contrib import messages
+from django.contrib.auth import authenticate, get_user_model, login
+from django.contrib.auth.decorators import login_required
+from django.core.mail import EmailMultiAlternatives
+from django.http import HttpResponse, JsonResponse, QueryDict
+from django.shortcuts import get_object_or_404, redirect, render
+from django.utils import timezone
+from django.utils.decorators import method_decorator
+from django.utils.timezone import make_aware
+from django.views import View
+from rest_framework import status
 
-from .models import (
-    Carrito,
-    Categoria,
-    Platillo,
-    Pedido,
-    Orden,
-    Promocion,
-    Anuncio
-)
-
-from .forms import CustomUserCreationForm
-from .serializers import PlatilloSerializer
 from .decorators import anonymous_required
+from .forms import CustomUserCreationForm
+from .models import (Anuncio, Carrito, Categoria, Orden, Pedido, Platillo,
+                     Promocion)
+from .serializers import PlatilloSerializer
 
 User = get_user_model()
 
 logger = logging.getLogger(__name__)
 
 
+def get_today_range():
+    
+    today_min = datetime.combine(
+        timezone.now().date(),
+        datetime.today().time().min)
+    today_max = datetime.combine(
+        timezone.now().date(),
+        datetime.today().time().max)
+
+    return (make_aware(today_min), make_aware(today_max))
+
+
 def get_current_orden(user):
     """
     Función que obtiene la orden actual para el usuario indicado.
     """
-    orden = Orden.objects.filter(usuario=user, active=True) \
+    
+    orden = Orden.objects.filter(
+            usuario=user,
+            # fecha__range=get_today_range(),
+            active=True) \
         .order_by('-fecha') \
         .first()
 
@@ -48,8 +60,10 @@ def get_current_carrito(user):
     """
     Función que obtiene el carrito actual para el usuario indicado.
     """
+    
     carrito = Carrito.objects.filter(
         usuario=user,
+        # fecha__range=get_today_range(),
         active=True).order_by('-fecha').first()
 
     if not carrito:
@@ -69,42 +83,6 @@ def index(request):
     Pagina de inicio
     """
     return render(request, 'index.html')
-
-
-@anonymous_required
-def registro(request):
-    """
-    Vista encargada de manejar el registro de nuevos usuarios
-    """
-
-    data = {'form': CustomUserCreationForm()}
-
-    status_response = status.HTTP_200_OK
-    if request.method == 'POST':
-
-        form = CustomUserCreationForm(data=request.POST)
-
-        if form.is_valid():
-            usuario = form.save()
-            usuario.save()
-            user = authenticate(
-                username=form.cleaned_data['username'],
-                password=form.cleaned_data['password1'])
-
-            login(request, user)
-            messages.success(request, 'Registro exitoso, iniciar sesión')
-            return redirect(to="login")
-        else:
-            if form.errors.get('username', True):
-                status_response = status.HTTP_400_BAD_REQUEST
-
-        data['form'] = form
-
-    return render(
-        request,
-        'registration/registration.html',
-        data,
-        status=status_response)
 
 
 def contacto(request):
@@ -150,6 +128,42 @@ def contacto(request):
     return render(request, 'contacto.html')
 
 
+@anonymous_required
+def registro(request):
+    """
+    Vista encargada de manejar el registro de nuevos usuarios
+    """
+
+    data = {'form': CustomUserCreationForm()}
+
+    status_response = status.HTTP_200_OK
+    if request.method == 'POST':
+
+        form = CustomUserCreationForm(data=request.POST)
+
+        if form.is_valid():
+            usuario = form.save()
+            usuario.save()
+            user = authenticate(
+                username=form.cleaned_data['username'],
+                password=form.cleaned_data['password1'])
+
+            login(request, user)
+            messages.success(request, 'Registro exitoso, iniciar sesión')
+            return redirect(to="login")
+        else:
+            if form.errors.get('username', True):
+                status_response = status.HTTP_400_BAD_REQUEST
+
+        data['form'] = form
+
+    return render(
+        request,
+        'registration/registration.html',
+        data,
+        status=status_response)
+
+
 @login_required
 def votacion(request):
     """
@@ -160,8 +174,7 @@ def votacion(request):
     if request.method == 'POST':
 
         data = QueryDict(request.body)
-        id = data.get('platilloId')
-        print(id)
+        id = data.get('helado')
 
         # Obten el resultado de la votacion y asigna el sabor de helado de la
         # orden activa
@@ -170,14 +183,23 @@ def votacion(request):
         orden.save()
 
         messages.success(request, 'La votación concluyó exitosamente!')
-        return render(request, 'votacion.html', context={orden: orden})
+        return render(request, 'votacion.html', context={
+            'orden': orden
+        })
 
     elif request.method == 'GET':
 
-        messages.warning(
-            request,
-            'Recuerda que en caso de empate elegiremos nosotros.')
-        return render(request, 'votacion.html')
+        # Obten el resultado de la votacion y asigna el sabor de helado de la
+        # orden activa
+        orden = get_current_orden(request.user)
+        if not orden.votacion_concluida():
+            messages.warning(
+                request,
+                'Recuerda que en caso de empate elegiremos nosotros.')
+
+        return render(request, 'votacion.html', context={
+            'orden': orden,
+        })
 
 
 @login_required
@@ -207,20 +229,27 @@ def inicio_comensal(request):
     pagados por terceros para ser exhibidos en las tabletas.
     """
 
+    orden = get_current_orden(request.user)
+    carrito = get_current_carrito(request.user)
+
+
     data = {
         # Carga en el contexto las promociones actuales del restaurante
-        "promociones": Promocion.objects.filter(active=True),
+        'promociones': Promocion.objects.filter(active=True),
         # Carga los anuncios de terceros que quieran aparecer en el sitio web
-        "anuncios": Anuncio.objects.filter(active=True)
+        'anuncios': Anuncio.objects.filter(active=True),
+        'carrito': carrito,
+        'orden': orden,
     }
 
-    messages.info(
-        request,
-        """
-        Bienvenido a 50Amigos, no olvide hacer la votación por el
-        sabor de helado.
-        """
-    )
+    if not orden.votacion_concluida():
+        messages.info(
+            request,
+            """
+            Bienvenido a 50Amigos, no olvide hacer la votación por el
+            sabor de helado.
+            """
+        )
 
     return render(request, 'inicio.html', context=data)
 
@@ -249,8 +278,31 @@ class OrdenView(View):
         Metodo para cerrar la orden y generar la cuenta durante la
         estadía en el restaurante.
         """
+        carrito = get_current_carrito(request.user)
+        orden = get_current_orden(request.user)
 
-        return HttpResponse(status=status.HTTP_204_NO_CONTENT)
+        if (len(carrito.pedidos.all()) == 0):
+            orden.active = False
+            orden.save()
+            messages.info(
+                request,
+                'Tu orden fue cerrada exitosamente,'
+                + ' ya puedes entregar la tableta :)')
+        elif not orden.votacion_concluida():
+            messages.warning(
+                request,
+                'Al parecer aún no han votado por el helado que se servirá'
+            )
+        else:
+            messages.warning(
+                request,
+                'Tu carrito no está vacío, asegurate de que lo '
+                + 'esté antes de cerrar tu cuenta')
+            
+        return render(request, 'carrito.html', context={
+            'carrito': get_current_carrito(request.user),
+            'orden': get_current_orden(request.user)
+        })
 
     def put(self, request, *args, **kwargs):
         """
@@ -283,8 +335,8 @@ class CarritoView(View):
         carrito = get_current_carrito(request.user)
         orden = get_current_orden(request.user)
         data = {
-            "orden": orden,
-            "carrito": carrito
+            'orden': orden,
+            'carrito': carrito
         }
         return render(request, 'carrito.html', context=data)
 
@@ -294,19 +346,18 @@ class CarritoView(View):
         """
 
         carrito = get_current_carrito(request.user)
-        orden = get_current_orden(request.user)
 
         carrito.active = False
         carrito.save()
 
-        data = {
-            "orden": orden,
-            "carrito": []
-        }
         messages.success(
             request,
-            'La orden fue cerrada, la cuenta puede ser consultada')
-        return render(request, 'carrito.html', context=data)
+            'Tus pedidos fueron enviados a cocina,'
+            + ' ya puedes verlos en tu cuenta')
+        return render(request, 'carrito.html', context={
+            "orden": get_current_orden(request.user),
+            "carrito": get_current_carrito(request.user),
+        })
 
     def put(self, request, *args, **kwargs):
         """
@@ -340,7 +391,7 @@ class CarritoView(View):
 
     def delete(self, request, *args, **kwargs):
         """
-        El pedido indicado va a ser elininado del carrito de compras
+        El pedido indicado va a ser eliminado del carrito de compras
         """
 
         carrito = get_current_carrito(request.user)
@@ -351,6 +402,6 @@ class CarritoView(View):
                 logger.debug('si entro')
                 p.carrito = None
                 p.save()
+                messages.warning(request, 'El elemento fue retirado de su carrito')
 
-        messages.warning(request, 'El elemento fue retirado de su carrito')
         return HttpResponse('Deleted', status=status.HTTP_202_ACCEPTED)

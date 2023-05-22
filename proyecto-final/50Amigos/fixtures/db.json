@@ -793,6 +793,2242 @@
     }
 },
 {
+    "model": "admin.logentry",
+    "pk": 62,
+    "fields": {
+        "action_time": "2023-05-20T03:45:03.429Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "15",
+        "object_repr": "\n                Id: 15\n                Nombre: Helado de galleta\n                Categoria: \n                Id: 6\n                Nombre: Helados\n                \n                ",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 63,
+    "fields": {
+        "action_time": "2023-05-21T04:52:25.567Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "41",
+        "object_repr": "\n                Id: 41\n                Orden: \n                Id: 1\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n               ",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Active\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 64,
+    "fields": {
+        "action_time": "2023-05-21T04:52:29.843Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "40",
+        "object_repr": "\n                Id: 40\n                Orden: \n                Id: 1\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n               ",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 65,
+    "fields": {
+        "action_time": "2023-05-21T04:52:32.614Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "39",
+        "object_repr": "\n                Id: 39\n                Orden: \n                Id: 1\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n               ",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 66,
+    "fields": {
+        "action_time": "2023-05-21T04:52:35.792Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "16",
+        "object_repr": "\n                Id: 16\n                Orden: \n                Id: 1\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n               ",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 67,
+    "fields": {
+        "action_time": "2023-05-21T04:52:50.411Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "41",
+        "object_repr": "\n                Id: 41\n                Orden: \n                Id: 1\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n               ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 68,
+    "fields": {
+        "action_time": "2023-05-21T04:52:50.420Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "40",
+        "object_repr": "\n                Id: 40\n                Orden: \n                Id: 1\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n               ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 69,
+    "fields": {
+        "action_time": "2023-05-21T04:52:50.429Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "39",
+        "object_repr": "\n                Id: 39\n                Orden: \n                Id: 1\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n               ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 70,
+    "fields": {
+        "action_time": "2023-05-21T04:52:50.438Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "38",
+        "object_repr": "\n                Id: 38\n                Orden: \n                Id: 1\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n               ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 71,
+    "fields": {
+        "action_time": "2023-05-21T04:52:50.449Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "37",
+        "object_repr": "\n                Id: 37\n                Orden: \n                Id: 1\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n               ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 72,
+    "fields": {
+        "action_time": "2023-05-21T04:52:50.460Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "36",
+        "object_repr": "\n                Id: 36\n                Orden: \n                Id: 1\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n               ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 73,
+    "fields": {
+        "action_time": "2023-05-21T04:52:50.469Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "35",
+        "object_repr": "\n                Id: 35\n                Orden: \n                Id: 1\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n               ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 74,
+    "fields": {
+        "action_time": "2023-05-21T04:52:50.477Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "34",
+        "object_repr": "\n                Id: 34\n                Orden: \n                Id: 1\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n               ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 75,
+    "fields": {
+        "action_time": "2023-05-21T04:52:50.487Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "33",
+        "object_repr": "\n                Id: 33\n                Orden: \n                Id: 1\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n               ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 76,
+    "fields": {
+        "action_time": "2023-05-21T04:52:50.495Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "32",
+        "object_repr": "\n                Id: 32\n                Orden: \n                Id: 1\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n               ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 77,
+    "fields": {
+        "action_time": "2023-05-21T04:52:50.505Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "31",
+        "object_repr": "\n                Id: 31\n                Orden: \n                Id: 1\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n               ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 78,
+    "fields": {
+        "action_time": "2023-05-21T04:52:50.515Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "30",
+        "object_repr": "\n                Id: 30\n                Orden: \n                Id: 1\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n               ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 79,
+    "fields": {
+        "action_time": "2023-05-21T04:52:50.522Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "29",
+        "object_repr": "\n                Id: 29\n                Orden: \n                Id: 1\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n               ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 80,
+    "fields": {
+        "action_time": "2023-05-21T04:52:50.530Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "28",
+        "object_repr": "\n                Id: 28\n                Orden: \n                Id: 1\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n               ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 81,
+    "fields": {
+        "action_time": "2023-05-21T04:52:50.537Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "27",
+        "object_repr": "\n                Id: 27\n                Orden: \n                Id: 1\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n               ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 82,
+    "fields": {
+        "action_time": "2023-05-21T04:52:50.547Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "26",
+        "object_repr": "\n                Id: 26\n                Orden: \n                Id: 1\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n               ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 83,
+    "fields": {
+        "action_time": "2023-05-21T04:52:50.557Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "25",
+        "object_repr": "\n                Id: 25\n                Orden: \n                Id: 1\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n               ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 84,
+    "fields": {
+        "action_time": "2023-05-21T04:52:50.565Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "24",
+        "object_repr": "\n                Id: 24\n                Orden: \n                Id: 1\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n               ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 85,
+    "fields": {
+        "action_time": "2023-05-21T04:52:50.575Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "23",
+        "object_repr": "\n                Id: 23\n                Orden: \n                Id: 1\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n               ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 86,
+    "fields": {
+        "action_time": "2023-05-21T04:52:50.584Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "22",
+        "object_repr": "\n                Id: 22\n                Orden: \n                Id: 1\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n               ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 87,
+    "fields": {
+        "action_time": "2023-05-21T04:52:50.592Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "21",
+        "object_repr": "\n                Id: 21\n                Orden: \n                Id: 1\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n               ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 88,
+    "fields": {
+        "action_time": "2023-05-21T04:52:50.599Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "20",
+        "object_repr": "\n                Id: 20\n                Orden: \n                Id: 1\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n               ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 89,
+    "fields": {
+        "action_time": "2023-05-21T04:52:50.607Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "19",
+        "object_repr": "\n                Id: 19\n                Orden: \n                Id: 1\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n               ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 90,
+    "fields": {
+        "action_time": "2023-05-21T04:52:50.614Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "18",
+        "object_repr": "\n                Id: 18\n                Orden: \n                Id: 1\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n               ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 91,
+    "fields": {
+        "action_time": "2023-05-21T04:52:50.622Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "17",
+        "object_repr": "\n                Id: 17\n                Orden: \n                Id: 1\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n               ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 92,
+    "fields": {
+        "action_time": "2023-05-21T04:52:50.630Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "16",
+        "object_repr": "\n                Id: 16\n                Orden: \n                Id: 1\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n               ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 93,
+    "fields": {
+        "action_time": "2023-05-21T04:52:50.637Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "15",
+        "object_repr": "\n                Id: 15\n                Orden: \n                Id: 1\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n               ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 94,
+    "fields": {
+        "action_time": "2023-05-21T04:52:50.644Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "14",
+        "object_repr": "\n                Id: 14\n                Orden: \n                Id: 1\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n               ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 95,
+    "fields": {
+        "action_time": "2023-05-21T04:52:50.650Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "13",
+        "object_repr": "\n                Id: 13\n                Orden: \n                Id: 1\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n               ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 96,
+    "fields": {
+        "action_time": "2023-05-21T04:52:50.659Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "12",
+        "object_repr": "\n                Id: 12\n                Orden: \n                Id: 1\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n               ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 97,
+    "fields": {
+        "action_time": "2023-05-21T04:52:50.666Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "11",
+        "object_repr": "\n                Id: 11\n                Orden: \n                Id: 1\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n               ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 98,
+    "fields": {
+        "action_time": "2023-05-21T04:52:50.674Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "10",
+        "object_repr": "\n                Id: 10\n                Orden: \n                Id: 1\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n               ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 99,
+    "fields": {
+        "action_time": "2023-05-21T04:52:50.682Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "9",
+        "object_repr": "\n                Id: 9\n                Orden: \n                Id: 1\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 100,
+    "fields": {
+        "action_time": "2023-05-21T04:52:50.689Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "8",
+        "object_repr": "\n                Id: 8\n                Orden: \n                Id: 1\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 101,
+    "fields": {
+        "action_time": "2023-05-21T04:52:50.697Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "7",
+        "object_repr": "\n                Id: 7\n                Orden: \n                Id: 1\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 102,
+    "fields": {
+        "action_time": "2023-05-21T04:52:50.704Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "6",
+        "object_repr": "\n                Id: 6\n                Orden: \n                Id: 1\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 103,
+    "fields": {
+        "action_time": "2023-05-21T04:52:50.712Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "5",
+        "object_repr": "\n                Id: 5\n                Orden: \n                Id: 1\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 104,
+    "fields": {
+        "action_time": "2023-05-21T04:52:50.720Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "4",
+        "object_repr": "\n                Id: 4\n                Orden: \n                Id: 1\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 105,
+    "fields": {
+        "action_time": "2023-05-21T04:52:50.728Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "3",
+        "object_repr": "\n                Id: 3\n                Orden: \n                Id: 1\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 106,
+    "fields": {
+        "action_time": "2023-05-21T04:52:50.736Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "2",
+        "object_repr": "\n                Id: 2\n                Orden: \n                Id: 1\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 107,
+    "fields": {
+        "action_time": "2023-05-21T04:52:50.743Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "1",
+        "object_repr": "\n                Id: 1\n                Orden: \n                Id: 1\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 108,
+    "fields": {
+        "action_time": "2023-05-21T04:53:05.396Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "1",
+        "object_repr": "\n                Id: 1\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n                Email: admin@afmin.com\n                \n      ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 109,
+    "fields": {
+        "action_time": "2023-05-21T05:02:09.744Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "2",
+        "object_repr": "\n                Id: 2\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n                Email: admin@afmin.com\n                \n      ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 110,
+    "fields": {
+        "action_time": "2023-05-21T05:02:21.775Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "45",
+        "object_repr": "\n                Id: 45\n                Orden: None\n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 111,
+    "fields": {
+        "action_time": "2023-05-21T05:02:21.786Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "44",
+        "object_repr": "\n                Id: 44\n                Orden: None\n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 112,
+    "fields": {
+        "action_time": "2023-05-21T05:02:21.796Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "43",
+        "object_repr": "\n                Id: 43\n                Orden: None\n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 113,
+    "fields": {
+        "action_time": "2023-05-21T05:02:21.806Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "42",
+        "object_repr": "\n                Id: 42\n                Orden: None\n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 114,
+    "fields": {
+        "action_time": "2023-05-21T05:03:15.730Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "3",
+        "object_repr": "\n                Id: 3\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n                Email: admin@afmin.com\n                \n      ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 115,
+    "fields": {
+        "action_time": "2023-05-21T20:01:35.162Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "8",
+        "object_repr": "\n                Id: 8\n                Nombre: Pastel de chocolate\n                Categoria: \n                Id: 3\n                Nombre: Postres\n                \n                ",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Descripcion\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 116,
+    "fields": {
+        "action_time": "2023-05-21T20:09:01.723Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "15",
+        "object_repr": "\n                Id: 15\n                Nombre: Helado de galleta\n                Categoria: \n                Id: 6\n                Nombre: Helados\n                \n                ",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Imagen\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 117,
+    "fields": {
+        "action_time": "2023-05-21T20:12:14.154Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "15",
+        "object_repr": "\n                Id: 15\n                Nombre: Helado de galleta\n                Categoria: \n                Id: 6\n                Nombre: Helados\n                \n                ",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Imagen\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 118,
+    "fields": {
+        "action_time": "2023-05-21T20:12:24.304Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "14",
+        "object_repr": "\n                Id: 14\n                Nombre: Helado de limon\n                Categoria: \n                Id: 6\n                Nombre: Helados\n                \n                ",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Imagen\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 119,
+    "fields": {
+        "action_time": "2023-05-21T20:12:33.475Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "13",
+        "object_repr": "\n                Id: 13\n                Nombre: Helado de vainilla\n                Categoria: \n                Id: 6\n                Nombre: Helados\n                \n                ",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Imagen\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 120,
+    "fields": {
+        "action_time": "2023-05-21T20:12:49.011Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "12",
+        "object_repr": "\n                Id: 12\n                Nombre: Helado de fresa\n                Categoria: \n                Id: 6\n                Nombre: Helados\n                \n                ",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Imagen\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 121,
+    "fields": {
+        "action_time": "2023-05-21T20:13:02.497Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "11",
+        "object_repr": "\n                Id: 11\n                Nombre: Helado de chocolate\n                Categoria: \n                Id: 6\n                Nombre: Helados\n                \n                ",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Imagen\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 122,
+    "fields": {
+        "action_time": "2023-05-21T20:13:29.458Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "10",
+        "object_repr": "\n                Id: 10\n                Nombre: Sopa de letras\n                Categoria: \n                Id: 4\n                Nombre: Entradas\n                \n                ",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Imagen\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 123,
+    "fields": {
+        "action_time": "2023-05-21T20:13:45.674Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "9",
+        "object_repr": "\n                Id: 9\n                Nombre: Arroz blanco con verduras\n                Categoria: \n                Id: 4\n                Nombre: Entradas\n                \n                ",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Imagen\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 124,
+    "fields": {
+        "action_time": "2023-05-21T20:13:57.972Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "8",
+        "object_repr": "\n                Id: 8\n                Nombre: Pastel de chocolate\n                Categoria: \n                Id: 3\n                Nombre: Postres\n                \n                ",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Imagen\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 125,
+    "fields": {
+        "action_time": "2023-05-21T20:14:08.664Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "7",
+        "object_repr": "\n                Id: 7\n                Nombre: Flan napolitano\n                Categoria: \n                Id: 3\n                Nombre: Postres\n                \n                ",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Imagen\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 126,
+    "fields": {
+        "action_time": "2023-05-21T20:14:17.550Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "6",
+        "object_repr": "\n                Id: 6\n                Nombre: Boing mango\n                Categoria: \n                Id: 2\n                Nombre: Bebidas\n                \n                ",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Imagen\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 127,
+    "fields": {
+        "action_time": "2023-05-21T20:14:33.885Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "5",
+        "object_repr": "\n                Id: 5\n                Nombre: Sidral\n                Categoria: \n                Id: 2\n                Nombre: Bebidas\n                \n                ",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Imagen\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 128,
+    "fields": {
+        "action_time": "2023-05-21T20:15:21.615Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "4",
+        "object_repr": "\n                Id: 4\n                Nombre: Coca-cola\n                Categoria: \n                Id: 2\n                Nombre: Bebidas\n                \n                ",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Imagen\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 129,
+    "fields": {
+        "action_time": "2023-05-21T20:15:35.904Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "3",
+        "object_repr": "\n                Id: 3\n                Nombre: Botella de agua\n                Categoria: \n                Id: 2\n                Nombre: Bebidas\n                \n                ",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Imagen\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 130,
+    "fields": {
+        "action_time": "2023-05-21T20:15:44.624Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "2",
+        "object_repr": "\n                Id: 2\n                Nombre: Gordita de maciza\n                Categoria: \n                Id: 1\n                Nombre: Platos fuertes\n                \n                ",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Imagen\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 131,
+    "fields": {
+        "action_time": "2023-05-21T20:16:00.697Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "1",
+        "object_repr": "\n                Id: 1\n                Nombre: Flautas de pollo\n                Categoria: \n                Id: 1\n                Nombre: Platos fuertes\n                \n                ",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Imagen\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 132,
+    "fields": {
+        "action_time": "2023-05-21T20:16:56.915Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "2",
+        "object_repr": "\n                Id: 2\n                Nombre: Gordita de maciza\n                Categoria: \n                Id: 1\n                Nombre: Platos fuertes\n                \n                ",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Imagen\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 133,
+    "fields": {
+        "action_time": "2023-05-22T00:31:55.120Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "47",
+        "object_repr": "\n                Id: 47\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n                Email: admin@afmin.com\n                \n     ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 134,
+    "fields": {
+        "action_time": "2023-05-22T00:32:06.250Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "46",
+        "object_repr": "\n                Id: 46\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n                Email: admin@afmin.com\n                \n     ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 135,
+    "fields": {
+        "action_time": "2023-05-22T00:32:06.257Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "45",
+        "object_repr": "\n                Id: 45\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n                Email: admin@afmin.com\n                \n     ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 136,
+    "fields": {
+        "action_time": "2023-05-22T00:32:06.266Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "44",
+        "object_repr": "\n                Id: 44\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n                Email: admin@afmin.com\n                \n     ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 137,
+    "fields": {
+        "action_time": "2023-05-22T00:32:06.274Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "43",
+        "object_repr": "\n                Id: 43\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n                Email: admin@afmin.com\n                \n     ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 138,
+    "fields": {
+        "action_time": "2023-05-22T00:32:06.282Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "42",
+        "object_repr": "\n                Id: 42\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n                Email: admin@afmin.com\n                \n     ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 139,
+    "fields": {
+        "action_time": "2023-05-22T00:32:06.290Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "41",
+        "object_repr": "\n                Id: 41\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n                Email: admin@afmin.com\n                \n     ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 140,
+    "fields": {
+        "action_time": "2023-05-22T00:32:06.297Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "40",
+        "object_repr": "\n                Id: 40\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n                Email: admin@afmin.com\n                \n     ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 141,
+    "fields": {
+        "action_time": "2023-05-22T00:32:06.306Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "39",
+        "object_repr": "\n                Id: 39\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n                Email: admin@afmin.com\n                \n     ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 142,
+    "fields": {
+        "action_time": "2023-05-22T00:32:06.314Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "38",
+        "object_repr": "\n                Id: 38\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n                Email: admin@afmin.com\n                \n     ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 143,
+    "fields": {
+        "action_time": "2023-05-22T00:32:06.322Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "37",
+        "object_repr": "\n                Id: 37\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n                Email: admin@afmin.com\n                \n     ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 144,
+    "fields": {
+        "action_time": "2023-05-22T00:32:06.329Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "36",
+        "object_repr": "\n                Id: 36\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n                Email: admin@afmin.com\n                \n     ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 145,
+    "fields": {
+        "action_time": "2023-05-22T00:32:06.336Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "35",
+        "object_repr": "\n                Id: 35\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n                Email: admin@afmin.com\n                \n     ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 146,
+    "fields": {
+        "action_time": "2023-05-22T00:32:06.343Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "34",
+        "object_repr": "\n                Id: 34\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n                Email: admin@afmin.com\n                \n     ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 147,
+    "fields": {
+        "action_time": "2023-05-22T00:32:06.351Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "33",
+        "object_repr": "\n                Id: 33\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n                Email: admin@afmin.com\n                \n     ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 148,
+    "fields": {
+        "action_time": "2023-05-22T00:32:06.359Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "32",
+        "object_repr": "\n                Id: 32\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n                Email: admin@afmin.com\n                \n     ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 149,
+    "fields": {
+        "action_time": "2023-05-22T00:32:06.367Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "31",
+        "object_repr": "\n                Id: 31\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n                Email: admin@afmin.com\n                \n     ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 150,
+    "fields": {
+        "action_time": "2023-05-22T00:32:06.375Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "30",
+        "object_repr": "\n                Id: 30\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n                Email: admin@afmin.com\n                \n     ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 151,
+    "fields": {
+        "action_time": "2023-05-22T00:32:06.383Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "29",
+        "object_repr": "\n                Id: 29\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n                Email: admin@afmin.com\n                \n     ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 152,
+    "fields": {
+        "action_time": "2023-05-22T00:32:06.391Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "28",
+        "object_repr": "\n                Id: 28\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n                Email: admin@afmin.com\n                \n     ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 153,
+    "fields": {
+        "action_time": "2023-05-22T00:32:06.399Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "27",
+        "object_repr": "\n                Id: 27\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n                Email: admin@afmin.com\n                \n     ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 154,
+    "fields": {
+        "action_time": "2023-05-22T00:32:06.407Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "26",
+        "object_repr": "\n                Id: 26\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n                Email: admin@afmin.com\n                \n     ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 155,
+    "fields": {
+        "action_time": "2023-05-22T00:32:06.416Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "25",
+        "object_repr": "\n                Id: 25\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n                Email: admin@afmin.com\n                \n     ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 156,
+    "fields": {
+        "action_time": "2023-05-22T00:32:06.425Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "24",
+        "object_repr": "\n                Id: 24\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n                Email: admin@afmin.com\n                \n     ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 157,
+    "fields": {
+        "action_time": "2023-05-22T00:32:06.434Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "23",
+        "object_repr": "\n                Id: 23\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n                Email: admin@afmin.com\n                \n     ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 158,
+    "fields": {
+        "action_time": "2023-05-22T00:32:06.444Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "22",
+        "object_repr": "\n                Id: 22\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n                Email: admin@afmin.com\n                \n     ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 159,
+    "fields": {
+        "action_time": "2023-05-22T00:32:06.457Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "21",
+        "object_repr": "\n                Id: 21\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n                Email: admin@afmin.com\n                \n     ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 160,
+    "fields": {
+        "action_time": "2023-05-22T00:32:06.467Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "20",
+        "object_repr": "\n                Id: 20\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n                Email: admin@afmin.com\n                \n     ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 161,
+    "fields": {
+        "action_time": "2023-05-22T00:32:06.476Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "19",
+        "object_repr": "\n                Id: 19\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n                Email: admin@afmin.com\n                \n     ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 162,
+    "fields": {
+        "action_time": "2023-05-22T00:32:06.486Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "18",
+        "object_repr": "\n                Id: 18\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n                Email: admin@afmin.com\n                \n     ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 163,
+    "fields": {
+        "action_time": "2023-05-22T00:32:06.495Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "17",
+        "object_repr": "\n                Id: 17\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n                Email: admin@afmin.com\n                \n     ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 164,
+    "fields": {
+        "action_time": "2023-05-22T00:32:06.506Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "16",
+        "object_repr": "\n                Id: 16\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n                Email: admin@afmin.com\n                \n     ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 165,
+    "fields": {
+        "action_time": "2023-05-22T00:32:06.516Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "15",
+        "object_repr": "\n                Id: 15\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n                Email: admin@afmin.com\n                \n     ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 166,
+    "fields": {
+        "action_time": "2023-05-22T00:32:06.525Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "14",
+        "object_repr": "\n                Id: 14\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n                Email: admin@afmin.com\n                \n     ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 167,
+    "fields": {
+        "action_time": "2023-05-22T00:32:06.533Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "13",
+        "object_repr": "\n                Id: 13\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n                Email: admin@afmin.com\n                \n     ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 168,
+    "fields": {
+        "action_time": "2023-05-22T00:32:06.541Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "12",
+        "object_repr": "\n                Id: 12\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n                Email: admin@afmin.com\n                \n     ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 169,
+    "fields": {
+        "action_time": "2023-05-22T00:32:06.552Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "11",
+        "object_repr": "\n                Id: 11\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n                Email: admin@afmin.com\n                \n     ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 170,
+    "fields": {
+        "action_time": "2023-05-22T00:32:06.562Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "10",
+        "object_repr": "\n                Id: 10\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n                Email: admin@afmin.com\n                \n     ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 171,
+    "fields": {
+        "action_time": "2023-05-22T00:32:06.572Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "9",
+        "object_repr": "\n                Id: 9\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n                Email: admin@afmin.com\n                \n      ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 172,
+    "fields": {
+        "action_time": "2023-05-22T00:32:06.582Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "8",
+        "object_repr": "\n                Id: 8\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n                Email: admin@afmin.com\n                \n      ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 173,
+    "fields": {
+        "action_time": "2023-05-22T00:32:06.592Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "7",
+        "object_repr": "\n                Id: 7\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n                Email: admin@afmin.com\n                \n      ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 174,
+    "fields": {
+        "action_time": "2023-05-22T00:32:06.602Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "6",
+        "object_repr": "\n                Id: 6\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n                Email: admin@afmin.com\n                \n      ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 175,
+    "fields": {
+        "action_time": "2023-05-22T00:32:06.615Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "5",
+        "object_repr": "\n                Id: 5\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n                Email: admin@afmin.com\n                \n      ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 176,
+    "fields": {
+        "action_time": "2023-05-22T00:32:06.624Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "4",
+        "object_repr": "\n                Id: 4\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n                Email: admin@afmin.com\n                \n      ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 177,
+    "fields": {
+        "action_time": "2023-05-22T00:32:19.176Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "95",
+        "object_repr": "\n                Id: 95\n                Orden: None\n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 178,
+    "fields": {
+        "action_time": "2023-05-22T00:32:19.185Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "94",
+        "object_repr": "\n                Id: 94\n                Orden: None\n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 179,
+    "fields": {
+        "action_time": "2023-05-22T00:32:19.193Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "93",
+        "object_repr": "\n                Id: 93\n                Orden: None\n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 180,
+    "fields": {
+        "action_time": "2023-05-22T00:32:19.201Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "92",
+        "object_repr": "\n                Id: 92\n                Orden: None\n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 181,
+    "fields": {
+        "action_time": "2023-05-22T00:32:19.209Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "91",
+        "object_repr": "\n                Id: 91\n                Orden: None\n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 182,
+    "fields": {
+        "action_time": "2023-05-22T00:32:19.216Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "90",
+        "object_repr": "\n                Id: 90\n                Orden: None\n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 183,
+    "fields": {
+        "action_time": "2023-05-22T00:32:19.224Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "89",
+        "object_repr": "\n                Id: 89\n                Orden: None\n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 184,
+    "fields": {
+        "action_time": "2023-05-22T00:32:19.231Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "88",
+        "object_repr": "\n                Id: 88\n                Orden: None\n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 185,
+    "fields": {
+        "action_time": "2023-05-22T00:32:19.237Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "87",
+        "object_repr": "\n                Id: 87\n                Orden: None\n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 186,
+    "fields": {
+        "action_time": "2023-05-22T00:32:19.244Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "86",
+        "object_repr": "\n                Id: 86\n                Orden: None\n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 187,
+    "fields": {
+        "action_time": "2023-05-22T00:32:19.252Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "85",
+        "object_repr": "\n                Id: 85\n                Orden: None\n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 188,
+    "fields": {
+        "action_time": "2023-05-22T00:32:19.259Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "84",
+        "object_repr": "\n                Id: 84\n                Orden: None\n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 189,
+    "fields": {
+        "action_time": "2023-05-22T00:32:19.266Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "83",
+        "object_repr": "\n                Id: 83\n                Orden: None\n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 190,
+    "fields": {
+        "action_time": "2023-05-22T00:32:19.274Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "82",
+        "object_repr": "\n                Id: 82\n                Orden: None\n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 191,
+    "fields": {
+        "action_time": "2023-05-22T00:32:19.281Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "81",
+        "object_repr": "\n                Id: 81\n                Orden: None\n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 192,
+    "fields": {
+        "action_time": "2023-05-22T00:32:19.289Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "80",
+        "object_repr": "\n                Id: 80\n                Orden: None\n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 193,
+    "fields": {
+        "action_time": "2023-05-22T00:32:19.297Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "79",
+        "object_repr": "\n                Id: 79\n                Orden: None\n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 194,
+    "fields": {
+        "action_time": "2023-05-22T00:32:19.304Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "78",
+        "object_repr": "\n                Id: 78\n                Orden: None\n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 195,
+    "fields": {
+        "action_time": "2023-05-22T00:32:19.313Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "77",
+        "object_repr": "\n                Id: 77\n                Orden: None\n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 196,
+    "fields": {
+        "action_time": "2023-05-22T00:32:19.321Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "76",
+        "object_repr": "\n                Id: 76\n                Orden: None\n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 197,
+    "fields": {
+        "action_time": "2023-05-22T00:32:19.328Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "75",
+        "object_repr": "\n                Id: 75\n                Orden: None\n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 198,
+    "fields": {
+        "action_time": "2023-05-22T00:32:19.335Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "74",
+        "object_repr": "\n                Id: 74\n                Orden: None\n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 199,
+    "fields": {
+        "action_time": "2023-05-22T00:32:19.342Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "73",
+        "object_repr": "\n                Id: 73\n                Orden: None\n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 200,
+    "fields": {
+        "action_time": "2023-05-22T00:32:19.352Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "72",
+        "object_repr": "\n                Id: 72\n                Orden: None\n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 201,
+    "fields": {
+        "action_time": "2023-05-22T00:32:19.359Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "71",
+        "object_repr": "\n                Id: 71\n                Orden: None\n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 202,
+    "fields": {
+        "action_time": "2023-05-22T00:32:19.366Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "70",
+        "object_repr": "\n                Id: 70\n                Orden: None\n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 203,
+    "fields": {
+        "action_time": "2023-05-22T00:32:19.372Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "69",
+        "object_repr": "\n                Id: 69\n                Orden: None\n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 204,
+    "fields": {
+        "action_time": "2023-05-22T00:32:19.379Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "68",
+        "object_repr": "\n                Id: 68\n                Orden: None\n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 205,
+    "fields": {
+        "action_time": "2023-05-22T00:32:19.386Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "67",
+        "object_repr": "\n                Id: 67\n                Orden: None\n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 206,
+    "fields": {
+        "action_time": "2023-05-22T00:32:19.395Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "66",
+        "object_repr": "\n                Id: 66\n                Orden: None\n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 207,
+    "fields": {
+        "action_time": "2023-05-22T00:32:19.403Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "65",
+        "object_repr": "\n                Id: 65\n                Orden: None\n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 208,
+    "fields": {
+        "action_time": "2023-05-22T00:32:19.412Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "64",
+        "object_repr": "\n                Id: 64\n                Orden: None\n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 209,
+    "fields": {
+        "action_time": "2023-05-22T00:32:19.419Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "63",
+        "object_repr": "\n                Id: 63\n                Orden: None\n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 210,
+    "fields": {
+        "action_time": "2023-05-22T00:32:19.427Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "62",
+        "object_repr": "\n                Id: 62\n                Orden: None\n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 211,
+    "fields": {
+        "action_time": "2023-05-22T00:32:19.437Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "61",
+        "object_repr": "\n                Id: 61\n                Orden: None\n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 212,
+    "fields": {
+        "action_time": "2023-05-22T00:32:19.446Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "60",
+        "object_repr": "\n                Id: 60\n                Orden: None\n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 213,
+    "fields": {
+        "action_time": "2023-05-22T00:32:19.454Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "59",
+        "object_repr": "\n                Id: 59\n                Orden: None\n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 214,
+    "fields": {
+        "action_time": "2023-05-22T00:32:19.463Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "58",
+        "object_repr": "\n                Id: 58\n                Orden: None\n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 215,
+    "fields": {
+        "action_time": "2023-05-22T00:32:19.472Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "57",
+        "object_repr": "\n                Id: 57\n                Orden: None\n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 216,
+    "fields": {
+        "action_time": "2023-05-22T00:32:19.480Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "56",
+        "object_repr": "\n                Id: 56\n                Orden: None\n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 217,
+    "fields": {
+        "action_time": "2023-05-22T00:32:19.488Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "55",
+        "object_repr": "\n                Id: 55\n                Orden: None\n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 218,
+    "fields": {
+        "action_time": "2023-05-22T00:32:19.497Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "54",
+        "object_repr": "\n                Id: 54\n                Orden: None\n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 219,
+    "fields": {
+        "action_time": "2023-05-22T00:32:19.505Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "53",
+        "object_repr": "\n                Id: 53\n                Orden: None\n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 220,
+    "fields": {
+        "action_time": "2023-05-22T00:32:19.514Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "52",
+        "object_repr": "\n                Id: 52\n                Orden: None\n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 221,
+    "fields": {
+        "action_time": "2023-05-22T00:32:19.526Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "51",
+        "object_repr": "\n                Id: 51\n                Orden: None\n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 222,
+    "fields": {
+        "action_time": "2023-05-22T00:32:19.539Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "50",
+        "object_repr": "\n                Id: 50\n                Orden: None\n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 223,
+    "fields": {
+        "action_time": "2023-05-22T00:32:19.547Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "49",
+        "object_repr": "\n                Id: 49\n                Orden: None\n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 224,
+    "fields": {
+        "action_time": "2023-05-22T00:32:19.554Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "48",
+        "object_repr": "\n                Id: 48\n                Orden: None\n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 225,
+    "fields": {
+        "action_time": "2023-05-22T00:32:19.560Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "47",
+        "object_repr": "\n                Id: 47\n                Orden: None\n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 226,
+    "fields": {
+        "action_time": "2023-05-22T00:32:19.568Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "46",
+        "object_repr": "\n                Id: 46\n                Orden: None\n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 227,
+    "fields": {
+        "action_time": "2023-05-22T00:39:15.187Z",
+        "user": 1,
+        "content_type": 6,
+        "object_id": "9999",
+        "object_repr": "\n                Id: 9999\n                Nombre: Prueba\n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 228,
+    "fields": {
+        "action_time": "2023-05-22T01:00:32.966Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "98",
+        "object_repr": "\n                Id: 98\n                Orden: \n                Id: 49\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n              ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 229,
+    "fields": {
+        "action_time": "2023-05-22T01:00:32.978Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "97",
+        "object_repr": "\n                Id: 97\n                Orden: \n                Id: 48\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n              ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 230,
+    "fields": {
+        "action_time": "2023-05-22T01:00:32.991Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "96",
+        "object_repr": "\n                Id: 96\n                Orden: \n                Id: 48\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n              ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 231,
+    "fields": {
+        "action_time": "2023-05-22T01:00:39.024Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "49",
+        "object_repr": "\n                Id: 49\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n                Email: admin@afmin.com\n                \n     ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 232,
+    "fields": {
+        "action_time": "2023-05-22T01:00:39.034Z",
+        "user": 1,
+        "content_type": 9,
+        "object_id": "48",
+        "object_repr": "\n                Id: 48\n                Usuario: \n                Username: admin\n                First name: \n                Last name: \n                Email: admin@afmin.com\n                \n     ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 233,
+    "fields": {
+        "action_time": "2023-05-22T01:00:52.461Z",
+        "user": 1,
+        "content_type": 16,
+        "object_id": "99",
+        "object_repr": "\n                Id: 99\n                Orden: None\n                ",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
     "model": "auth.permission",
     "pk": 1,
     "fields": {
@@ -1574,18 +3810,18 @@
 },
 {
     "model": "sessions.session",
-    "pk": "4q8ol85fop45bsmdvynl9aw7sr0r7faq",
-    "fields": {
-        "session_data": ".eJxVjMEOwiAQBf-FsyFQYAGP3v0GsrAgVQNJaU_Gf9cmPej1zcx7sYDbWsM28hJmYmcm2el3i5geue2A7thunafe1mWOfFf4QQe_dsrPy-H-HVQc9Vsb4clasFpBkRCnJFFl4QiKU-hJGAIyVACyd05ENwlS2mqvpQDvErL3B8WzNv0:1q0Bid:7HoRVsvHnGt0yj0WFyYoRztulYeGv6c7kSUpD2jEiS4",
-        "expire_date": "2023-06-03T01:49:15.438Z"
-    }
-},
-{
-    "model": "sessions.session",
     "pk": "8fwechehbwc3lxoy3hgmy40rno6qmmg1",
     "fields": {
         "session_data": ".eJxVjMEOwiAQBf-FsyFQYAGP3v0GsrAgVQNJaU_Gf9cmPej1zcx7sYDbWsM28hJmYmcm2el3i5geue2A7thunafe1mWOfFf4QQe_dsrPy-H-HVQc9Vsb4clasFpBkRCnJFFl4QiKU-hJGAIyVACyd05ENwlS2mqvpQDvErL3B8WzNv0:1py2Lg:yQYIvlHg22dlV9ebQnwnXHjmLc-OE3j7QywN2ObUYm0",
         "expire_date": "2023-05-28T03:24:40.346Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "8i2hz16oioqxr9233zidmdhyvrts6lk1",
+    "fields": {
+        "session_data": ".eJxVjMEOwiAQBf-FsyFQYAGP3v0GsrAgVQNJaU_Gf9cmPej1zcx7sYDbWsM28hJmYmcm2el3i5geue2A7thunafe1mWOfFf4QQe_dsrPy-H-HVQc9Vsb4clasFpBkRCnJFFl4QiKU-hJGAIyVACyd05ENwlS2mqvpQDvErL3B8WzNv0:1q0DKQ:ubH7pk6cW5ewz_HzIhAeBoPmSZepQ1Vim82E7OHkawY",
+        "expire_date": "2023-06-03T03:32:22.222Z"
     }
 },
 {
@@ -1602,6 +3838,14 @@
     "fields": {
         "session_data": ".eJxVjMEOwiAQBf-FsyFQYAGP3v0GsrAgVQNJaU_Gf9cmPej1zcx7sYDbWsM28hJmYmcm2el3i5geue2A7thunafe1mWOfFf4QQe_dsrPy-H-HVQc9Vsb4clasFpBkRCnJFFl4QiKU-hJGAIyVACyd05ENwlS2mqvpQDvErL3B8WzNv0:1pzjSC:lfsPjKSFsK2S-GUpkiMc0Xe_bmWR_mtMktwHdos01qk",
         "expire_date": "2023-06-01T19:38:24.754Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "ex5fs70qmsoflpoyj02luysx4v4ws8a4",
+    "fields": {
+        "session_data": ".eJxVjMEOwiAQBf-FsyFQYAGP3v0GsrAgVQNJaU_Gf9cmPej1zcx7sYDbWsM28hJmYmcm2el3i5geue2A7thunafe1mWOfFf4QQe_dsrPy-H-HVQc9Vsb4clasFpBkRCnJFFl4QiKU-hJGAIyVACyd05ENwlS2mqvpQDvErL3B8WzNv0:1q0ZHw:i1bnSd7-O33rmBZcqSnw7l25LSbnzz1F5QPeYS3MdkE",
+        "expire_date": "2023-06-04T02:59:16.199Z"
     }
 },
 {
@@ -1625,7 +3869,7 @@
     "pk": 1,
     "fields": {
         "password": "pbkdf2_sha256$390000$p1PfuMeRiVgUO1v1OGucT6$Y+VKrRfrvKhWRrjK5reSd5kuXh3WnZhTWP0cnJral8g=",
-        "last_login": "2023-05-20T01:49:15.426Z",
+        "last_login": "2023-05-21T02:59:16.190Z",
         "is_superuser": true,
         "username": "admin",
         "first_name": "",
@@ -1779,6 +4023,42 @@
     }
 },
 {
+    "model": "mainApp.user",
+    "pk": 888,
+    "fields": {
+        "password": "pbkdf2_sha256$390000$igYuJIB6nftRsr1DkcCi8l$qTOEL1S2gDG9Ba0NqgL6sOte3kf+Nffw1EjD2azq0do=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "thisisatest",
+        "first_name": "",
+        "last_name": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2023-05-20T06:25:28.961Z",
+        "email": "thisisatest@example.com",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "mainApp.user",
+    "pk": 9999,
+    "fields": {
+        "password": "pbkdf2_sha256$390000$PNHepfCZqZBjwA1hN0XWJb$nlY413G9SdPqZqX2P335LAMBLgTUNBfk0nDv+SpfKeM=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "usuarioInexistente",
+        "first_name": "",
+        "last_name": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2023-05-20T06:21:06.658Z",
+        "email": "prueba@prueba.com",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
     "model": "mainApp.categoria",
     "pk": 1,
     "fields": {
@@ -1877,12 +4157,20 @@
     }
 },
 {
+    "model": "mainApp.subcategoria",
+    "pk": 9999,
+    "fields": {
+        "nombre": "Prueba",
+        "categoria": null
+    }
+},
+{
     "model": "mainApp.platillo",
     "pk": 1,
     "fields": {
         "nombre": "Flautas de pollo",
         "descripcion": "",
-        "imagen": "https://assets.unileversolutions.com/recipes-v2/239669.jpg",
+        "imagen": "/static/img/platillos/flautas.jpg",
         "categoria": 1,
         "subcategoria": 1,
         "precio": "100.00",
@@ -1894,12 +4182,12 @@
     "pk": 2,
     "fields": {
         "nombre": "Gordita de maciza",
-        "descripcion": null,
-        "imagen": "https://images.squarespace-cdn.com/content/v1/58eeae76ff7c50fa313c951e/1496937485850-STK2BOJM5PNQKR86560A/gorditas-zacazonapan",
+        "descripcion": "",
+        "imagen": "/static/img/platillos/gordita_maciza.png",
         "categoria": 1,
         "subcategoria": 1,
         "precio": "50.00",
-        "ingredientes": null
+        "ingredientes": ""
     }
 },
 {
@@ -1907,8 +4195,8 @@
     "pk": 3,
     "fields": {
         "nombre": "Botella de agua",
-        "descripcion": null,
-        "imagen": "https://d1zc67o3u1epb0.cloudfront.net/media/catalog/product/cache/23527bda4807566b561286b47d9060f4/1/5/15576.jpg",
+        "descripcion": "",
+        "imagen": "/static/img/platillos/bonafont_600.jpg",
         "categoria": 2,
         "subcategoria": 2,
         "precio": "20.00",
@@ -1920,8 +4208,8 @@
     "pk": 4,
     "fields": {
         "nombre": "Coca-cola",
-        "descripcion": null,
-        "imagen": "https://cdn.shopify.com/s/files/1/0279/8151/2798/products/RE0015_761x.jpg?v=1600970250",
+        "descripcion": "",
+        "imagen": "/static/img/platillos/coca_cola.jpg",
         "categoria": 2,
         "subcategoria": 2,
         "precio": "25.00",
@@ -1933,8 +4221,8 @@
     "pk": 5,
     "fields": {
         "nombre": "Sidral",
-        "descripcion": null,
-        "imagen": "https://www.super-deli.com.mx/161-thickbox_default/sidral-mundet-600-ml.jpg",
+        "descripcion": "",
+        "imagen": "/static/img/platillos/sidral.jpg",
         "categoria": 2,
         "subcategoria": 2,
         "precio": "25.00",
@@ -1946,12 +4234,12 @@
     "pk": 6,
     "fields": {
         "nombre": "Boing mango",
-        "descripcion": null,
-        "imagen": "https://mexgrocer.com.es/wp-content/uploads/2019/08/jugo-de-mango-237ml-boing-1.jpg",
+        "descripcion": "",
+        "imagen": "/static/img/platillos/boing_mango.jpg",
         "categoria": 2,
         "subcategoria": 4,
         "precio": "25.00",
-        "ingredientes": null
+        "ingredientes": ""
     }
 },
 {
@@ -1959,12 +4247,12 @@
     "pk": 7,
     "fields": {
         "nombre": "Flan napolitano",
-        "descripcion": null,
-        "imagen": "https://saboryestilo.com.mx/wp-content/uploads/2021/08/Receta-flan-napolitano.jpg",
+        "descripcion": "",
+        "imagen": "/static/img/platillos/flan_napolitano.jpg",
         "categoria": 3,
         "subcategoria": 5,
         "precio": "50.00",
-        "ingredientes": null
+        "ingredientes": ""
     }
 },
 {
@@ -1972,12 +4260,12 @@
     "pk": 8,
     "fields": {
         "nombre": "Pastel de chocolate",
-        "descripcion": null,
-        "imagen": "https://i.blogs.es/27bdbe/tarta-chocolate-vino1/840_560.jpg",
+        "descripcion": "Delicioso pastel con cubierta de chocolate semiamargo",
+        "imagen": "/static/img/platillos/pastel_chocolate.jpg",
         "categoria": 3,
         "subcategoria": 5,
         "precio": "50.00",
-        "ingredientes": null
+        "ingredientes": ""
     }
 },
 {
@@ -1985,12 +4273,12 @@
     "pk": 9,
     "fields": {
         "nombre": "Arroz blanco con verduras",
-        "descripcion": null,
-        "imagen": "https://cdn2.cocinadelirante.com/sites/default/files/styles/gallerie/public/images/2021/05/como-hacer-arroz-blanco-con-verduras-receta.jpg",
+        "descripcion": "",
+        "imagen": "/static/img/platillos/arroz_blanco.jpg",
         "categoria": 4,
         "subcategoria": 6,
         "precio": "50.00",
-        "ingredientes": null
+        "ingredientes": ""
     }
 },
 {
@@ -1998,12 +4286,12 @@
     "pk": 10,
     "fields": {
         "nombre": "Sopa de letras",
-        "descripcion": null,
-        "imagen": "https://www.gastrolabweb.com/u/fotografias/m/2021/10/8/f768x1-19902_20029_0.jpg",
+        "descripcion": "",
+        "imagen": "/static/img/platillos/sopa_letras.jpg",
         "categoria": 4,
         "subcategoria": 6,
         "precio": "50.00",
-        "ingredientes": null
+        "ingredientes": ""
     }
 },
 {
@@ -2011,12 +4299,12 @@
     "pk": 11,
     "fields": {
         "nombre": "Helado de chocolate",
-        "descripcion": null,
-        "imagen": "https://wayumix.com/wp-content/uploads/2021/10/helado-de-chocolate-6-1.jpg",
+        "descripcion": "",
+        "imagen": "/static/img/platillos/helado_chocolate.jpg",
         "categoria": 6,
         "subcategoria": 7,
         "precio": "0.00",
-        "ingredientes": null
+        "ingredientes": ""
     }
 },
 {
@@ -2024,12 +4312,12 @@
     "pk": 12,
     "fields": {
         "nombre": "Helado de fresa",
-        "descripcion": null,
-        "imagen": "https://editorialtelevisa.brightspotcdn.com/wp-content/uploads/2022/01/helado-de-fresa.jpg",
+        "descripcion": "",
+        "imagen": "/static/img/platillos/helado_fresa.jpg",
         "categoria": 6,
         "subcategoria": 7,
         "precio": "0.00",
-        "ingredientes": null
+        "ingredientes": ""
     }
 },
 {
@@ -2037,8 +4325,8 @@
     "pk": 13,
     "fields": {
         "nombre": "Helado de vainilla",
-        "descripcion": null,
-        "imagen": "https://www.comedera.com/wp-content/uploads/2022/05/Helado-de-vainilla-sin-azucar.jpg",
+        "descripcion": "",
+        "imagen": "/static/img/platillos/helado_vainilla.jpg",
         "categoria": 6,
         "subcategoria": 7,
         "precio": "0.00",
@@ -2051,7 +4339,7 @@
     "fields": {
         "nombre": "Helado de limon",
         "descripcion": "",
-        "imagen": "https://i.ytimg.com/vi/SjXhrY1gqxY/maxresdefault.jpg",
+        "imagen": "/static/img/platillos/helado_limon.jpg",
         "categoria": 6,
         "subcategoria": 7,
         "precio": "0.00",
@@ -2059,355 +4347,16 @@
     }
 },
 {
-    "model": "mainApp.orden",
-    "pk": 1,
-    "fields": {
-        "usuario": 1,
-        "fecha": "2023-05-10T19:46:15.039Z",
-        "total": null,
-        "comentarios": "",
-        "helado_escogido": null,
-        "active": true
-    }
-},
-{
-    "model": "mainApp.carrito",
-    "pk": 1,
-    "fields": {
-        "fecha": "2023-05-20T01:49:23.732Z",
-        "usuario": 1,
-        "orden": 1,
-        "active": false
-    }
-},
-{
-    "model": "mainApp.carrito",
-    "pk": 2,
-    "fields": {
-        "fecha": "2023-05-20T02:00:09.891Z",
-        "usuario": 1,
-        "orden": 1,
-        "active": false
-    }
-},
-{
-    "model": "mainApp.carrito",
-    "pk": 3,
-    "fields": {
-        "fecha": "2023-05-20T02:02:19.700Z",
-        "usuario": 1,
-        "orden": 1,
-        "active": false
-    }
-},
-{
-    "model": "mainApp.carrito",
-    "pk": 4,
-    "fields": {
-        "fecha": "2023-05-20T02:02:56.670Z",
-        "usuario": 1,
-        "orden": 1,
-        "active": false
-    }
-},
-{
-    "model": "mainApp.carrito",
-    "pk": 5,
-    "fields": {
-        "fecha": "2023-05-20T02:03:11.552Z",
-        "usuario": 1,
-        "orden": 1,
-        "active": false
-    }
-},
-{
-    "model": "mainApp.carrito",
-    "pk": 6,
-    "fields": {
-        "fecha": "2023-05-20T02:03:19.693Z",
-        "usuario": 1,
-        "orden": 1,
-        "active": false
-    }
-},
-{
-    "model": "mainApp.carrito",
-    "pk": 7,
-    "fields": {
-        "fecha": "2023-05-20T02:03:19.790Z",
-        "usuario": 1,
-        "orden": 1,
-        "active": false
-    }
-},
-{
-    "model": "mainApp.carrito",
-    "pk": 8,
-    "fields": {
-        "fecha": "2023-05-20T02:04:36.186Z",
-        "usuario": 1,
-        "orden": 1,
-        "active": false
-    }
-},
-{
-    "model": "mainApp.carrito",
-    "pk": 9,
-    "fields": {
-        "fecha": "2023-05-20T02:31:16.609Z",
-        "usuario": 1,
-        "orden": 1,
-        "active": false
-    }
-},
-{
-    "model": "mainApp.carrito",
-    "pk": 10,
-    "fields": {
-        "fecha": "2023-05-20T02:31:34.253Z",
-        "usuario": 1,
-        "orden": 1,
-        "active": false
-    }
-},
-{
-    "model": "mainApp.carrito",
-    "pk": 11,
-    "fields": {
-        "fecha": "2023-05-20T02:33:15.169Z",
-        "usuario": 1,
-        "orden": 1,
-        "active": false
-    }
-},
-{
-    "model": "mainApp.carrito",
-    "pk": 12,
-    "fields": {
-        "fecha": "2023-05-20T02:33:23.645Z",
-        "usuario": 1,
-        "orden": 1,
-        "active": false
-    }
-},
-{
-    "model": "mainApp.carrito",
-    "pk": 13,
-    "fields": {
-        "fecha": "2023-05-20T02:33:34.932Z",
-        "usuario": 1,
-        "orden": 1,
-        "active": false
-    }
-},
-{
-    "model": "mainApp.carrito",
-    "pk": 14,
-    "fields": {
-        "fecha": "2023-05-20T02:34:04.551Z",
-        "usuario": 1,
-        "orden": 1,
-        "active": false
-    }
-},
-{
-    "model": "mainApp.carrito",
+    "model": "mainApp.platillo",
     "pk": 15,
     "fields": {
-        "fecha": "2023-05-20T02:34:04.676Z",
-        "usuario": 1,
-        "orden": 1,
-        "active": false
-    }
-},
-{
-    "model": "mainApp.carrito",
-    "pk": 16,
-    "fields": {
-        "fecha": "2023-05-20T02:39:58.741Z",
-        "usuario": 1,
-        "orden": 1,
-        "active": false
-    }
-},
-{
-    "model": "mainApp.carrito",
-    "pk": 17,
-    "fields": {
-        "fecha": "2023-05-20T02:40:02.787Z",
-        "usuario": 1,
-        "orden": 1,
-        "active": false
-    }
-},
-{
-    "model": "mainApp.carrito",
-    "pk": 18,
-    "fields": {
-        "fecha": "2023-05-20T02:40:13.131Z",
-        "usuario": 1,
-        "orden": 1,
-        "active": false
-    }
-},
-{
-    "model": "mainApp.carrito",
-    "pk": 19,
-    "fields": {
-        "fecha": "2023-05-20T02:41:21.482Z",
-        "usuario": 1,
-        "orden": 1,
-        "active": false
-    }
-},
-{
-    "model": "mainApp.carrito",
-    "pk": 20,
-    "fields": {
-        "fecha": "2023-05-20T02:41:28.231Z",
-        "usuario": 1,
-        "orden": 1,
-        "active": false
-    }
-},
-{
-    "model": "mainApp.carrito",
-    "pk": 21,
-    "fields": {
-        "fecha": "2023-05-20T02:41:35.242Z",
-        "usuario": 1,
-        "orden": 1,
-        "active": false
-    }
-},
-{
-    "model": "mainApp.carrito",
-    "pk": 22,
-    "fields": {
-        "fecha": "2023-05-20T02:41:45.254Z",
-        "usuario": 1,
-        "orden": 1,
-        "active": false
-    }
-},
-{
-    "model": "mainApp.carrito",
-    "pk": 23,
-    "fields": {
-        "fecha": "2023-05-20T02:41:45.317Z",
-        "usuario": 1,
-        "orden": 1,
-        "active": false
-    }
-},
-{
-    "model": "mainApp.carrito",
-    "pk": 24,
-    "fields": {
-        "fecha": "2023-05-20T02:43:22.248Z",
-        "usuario": 1,
-        "orden": 1,
-        "active": false
-    }
-},
-{
-    "model": "mainApp.carrito",
-    "pk": 25,
-    "fields": {
-        "fecha": "2023-05-20T02:45:35.544Z",
-        "usuario": 1,
-        "orden": 1,
-        "active": false
-    }
-},
-{
-    "model": "mainApp.carrito",
-    "pk": 26,
-    "fields": {
-        "fecha": "2023-05-20T02:46:39.396Z",
-        "usuario": 1,
-        "orden": 1,
-        "active": false
-    }
-},
-{
-    "model": "mainApp.carrito",
-    "pk": 27,
-    "fields": {
-        "fecha": "2023-05-20T02:49:58.207Z",
-        "usuario": 1,
-        "orden": 1,
-        "active": false
-    }
-},
-{
-    "model": "mainApp.carrito",
-    "pk": 28,
-    "fields": {
-        "fecha": "2023-05-20T02:51:56.113Z",
-        "usuario": 1,
-        "orden": 1,
-        "active": false
-    }
-},
-{
-    "model": "mainApp.carrito",
-    "pk": 29,
-    "fields": {
-        "fecha": "2023-05-20T02:52:13.805Z",
-        "usuario": 1,
-        "orden": 1,
-        "active": false
-    }
-},
-{
-    "model": "mainApp.carrito",
-    "pk": 30,
-    "fields": {
-        "fecha": "2023-05-20T02:52:59.069Z",
-        "usuario": 1,
-        "orden": 1,
-        "active": false
-    }
-},
-{
-    "model": "mainApp.carrito",
-    "pk": 31,
-    "fields": {
-        "fecha": "2023-05-20T02:53:57.184Z",
-        "usuario": 1,
-        "orden": 1,
-        "active": false
-    }
-},
-{
-    "model": "mainApp.carrito",
-    "pk": 32,
-    "fields": {
-        "fecha": "2023-05-20T02:54:58.421Z",
-        "usuario": 1,
-        "orden": 1,
-        "active": false
-    }
-},
-{
-    "model": "mainApp.carrito",
-    "pk": 33,
-    "fields": {
-        "fecha": "2023-05-20T02:56:10.022Z",
-        "usuario": 1,
-        "orden": 1,
-        "active": false
-    }
-},
-{
-    "model": "mainApp.carrito",
-    "pk": 34,
-    "fields": {
-        "fecha": "2023-05-20T02:59:59.202Z",
-        "usuario": 1,
-        "orden": 1,
-        "active": true
+        "nombre": "Helado de galleta",
+        "descripcion": "",
+        "imagen": "/static/img/platillos/helado_galletas.jpg",
+        "categoria": 6,
+        "subcategoria": 7,
+        "precio": "0.00",
+        "ingredientes": ""
     }
 },
 {
@@ -2731,7 +4680,7 @@
     "fields": {
         "platillo": 2,
         "cantidad": 3,
-        "carrito": 8
+        "carrito": null
     }
 },
 {
@@ -2740,7 +4689,7 @@
     "fields": {
         "platillo": 1,
         "cantidad": 1,
-        "carrito": 8
+        "carrito": null
     }
 },
 {
@@ -2749,7 +4698,7 @@
     "fields": {
         "platillo": 3,
         "cantidad": 1,
-        "carrito": 8
+        "carrito": null
     }
 },
 {
@@ -2758,7 +4707,7 @@
     "fields": {
         "platillo": 3,
         "cantidad": 3,
-        "carrito": 9
+        "carrito": null
     }
 },
 {
@@ -2767,7 +4716,7 @@
     "fields": {
         "platillo": 1,
         "cantidad": 1,
-        "carrito": 12
+        "carrito": null
     }
 },
 {
@@ -2776,7 +4725,7 @@
     "fields": {
         "platillo": 1,
         "cantidad": 2,
-        "carrito": 17
+        "carrito": null
     }
 },
 {
@@ -2785,7 +4734,7 @@
     "fields": {
         "platillo": 2,
         "cantidad": 2,
-        "carrito": 20
+        "carrito": null
     }
 },
 {
@@ -2794,7 +4743,7 @@
     "fields": {
         "platillo": 3,
         "cantidad": 4,
-        "carrito": 24
+        "carrito": null
     }
 },
 {
@@ -2803,7 +4752,7 @@
     "fields": {
         "platillo": 8,
         "cantidad": 1,
-        "carrito": 24
+        "carrito": null
     }
 },
 {
@@ -2812,7 +4761,250 @@
     "fields": {
         "platillo": 7,
         "cantidad": 1,
-        "carrito": 24
+        "carrito": null
+    }
+},
+{
+    "model": "mainApp.pedido",
+    "pk": 46,
+    "fields": {
+        "platillo": 3,
+        "cantidad": 3,
+        "carrito": null
+    }
+},
+{
+    "model": "mainApp.pedido",
+    "pk": 47,
+    "fields": {
+        "platillo": 2,
+        "cantidad": 4,
+        "carrito": null
+    }
+},
+{
+    "model": "mainApp.pedido",
+    "pk": 48,
+    "fields": {
+        "platillo": 4,
+        "cantidad": 3,
+        "carrito": null
+    }
+},
+{
+    "model": "mainApp.pedido",
+    "pk": 49,
+    "fields": {
+        "platillo": 1,
+        "cantidad": 1,
+        "carrito": null
+    }
+},
+{
+    "model": "mainApp.pedido",
+    "pk": 50,
+    "fields": {
+        "platillo": 1,
+        "cantidad": 3,
+        "carrito": null
+    }
+},
+{
+    "model": "mainApp.pedido",
+    "pk": 51,
+    "fields": {
+        "platillo": 2,
+        "cantidad": 3,
+        "carrito": null
+    }
+},
+{
+    "model": "mainApp.pedido",
+    "pk": 52,
+    "fields": {
+        "platillo": 2,
+        "cantidad": 5,
+        "carrito": null
+    }
+},
+{
+    "model": "mainApp.pedido",
+    "pk": 53,
+    "fields": {
+        "platillo": 4,
+        "cantidad": 3,
+        "carrito": null
+    }
+},
+{
+    "model": "mainApp.pedido",
+    "pk": 54,
+    "fields": {
+        "platillo": 1,
+        "cantidad": 2,
+        "carrito": null
+    }
+},
+{
+    "model": "mainApp.pedido",
+    "pk": 55,
+    "fields": {
+        "platillo": 1,
+        "cantidad": 3,
+        "carrito": null
+    }
+},
+{
+    "model": "mainApp.pedido",
+    "pk": 56,
+    "fields": {
+        "platillo": 2,
+        "cantidad": 1,
+        "carrito": null
+    }
+},
+{
+    "model": "mainApp.pedido",
+    "pk": 57,
+    "fields": {
+        "platillo": 1,
+        "cantidad": 2,
+        "carrito": null
+    }
+},
+{
+    "model": "mainApp.pedido",
+    "pk": 58,
+    "fields": {
+        "platillo": 2,
+        "cantidad": 1,
+        "carrito": null
+    }
+},
+{
+    "model": "mainApp.pedido",
+    "pk": 59,
+    "fields": {
+        "platillo": 2,
+        "cantidad": 1,
+        "carrito": null
+    }
+},
+{
+    "model": "mainApp.pedido",
+    "pk": 60,
+    "fields": {
+        "platillo": 4,
+        "cantidad": 3,
+        "carrito": null
+    }
+},
+{
+    "model": "mainApp.pedido",
+    "pk": 61,
+    "fields": {
+        "platillo": 8,
+        "cantidad": 2,
+        "carrito": null
+    }
+},
+{
+    "model": "mainApp.pedido",
+    "pk": 62,
+    "fields": {
+        "platillo": 1,
+        "cantidad": 1,
+        "carrito": null
+    }
+},
+{
+    "model": "mainApp.pedido",
+    "pk": 63,
+    "fields": {
+        "platillo": 1,
+        "cantidad": 1,
+        "carrito": null
+    }
+},
+{
+    "model": "mainApp.pedido",
+    "pk": 64,
+    "fields": {
+        "platillo": 3,
+        "cantidad": 3,
+        "carrito": null
+    }
+},
+{
+    "model": "mainApp.pedido",
+    "pk": 65,
+    "fields": {
+        "platillo": 1,
+        "cantidad": 1,
+        "carrito": null
+    }
+},
+{
+    "model": "mainApp.pedido",
+    "pk": 66,
+    "fields": {
+        "platillo": 1,
+        "cantidad": 3,
+        "carrito": null
+    }
+},
+{
+    "model": "mainApp.pedido",
+    "pk": 67,
+    "fields": {
+        "platillo": 1,
+        "cantidad": 1,
+        "carrito": null
+    }
+},
+{
+    "model": "mainApp.pedido",
+    "pk": 68,
+    "fields": {
+        "platillo": 4,
+        "cantidad": 2,
+        "carrito": null
+    }
+},
+{
+    "model": "mainApp.pedido",
+    "pk": 69,
+    "fields": {
+        "platillo": 2,
+        "cantidad": 2,
+        "carrito": null
+    }
+},
+{
+    "model": "mainApp.pedido",
+    "pk": 70,
+    "fields": {
+        "platillo": 8,
+        "cantidad": 1,
+        "carrito": null
+    }
+},
+{
+    "model": "mainApp.pedido",
+    "pk": 71,
+    "fields": {
+        "platillo": 1,
+        "cantidad": 2,
+        "carrito": null
+    }
+},
+{
+    "model": "mainApp.pedido",
+    "pk": 72,
+    "fields": {
+        "platillo": 4,
+        "cantidad": 2,
+        "carrito": null
     }
 }
 ]

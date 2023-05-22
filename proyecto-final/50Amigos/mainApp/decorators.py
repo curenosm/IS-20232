@@ -2,9 +2,9 @@ import functools
 import time
 
 from django.conf import settings
-from django.http import HttpResponseBadRequest
 from django.contrib.auth.decorators import user_passes_test
 from django.core.exceptions import PermissionDenied
+from django.http import HttpResponseBadRequest
 from socks import method
 
 

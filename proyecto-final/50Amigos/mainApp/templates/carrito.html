@@ -12,14 +12,14 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item">
-      <a 
-        class="text-decoration-none" 
+      <a
+        class="text-decoration-none"
         href="{% url 'mainApp:inicio' %}">Inicio</a>
       </li>
     <li class="breadcrumb-item">
-      <a 
-        class="text-decoration-none" 
-        href="{% url 'mainApp:menu' %}">Menu</a>
+      <a
+        class="text-decoration-none"
+        href="{% url 'mainApp:menu' %}">Menú</a>
     </li>
     <li class="breadcrumb-item active" aria-current="page">Carrito</li>
   </ol>
@@ -28,7 +28,7 @@
 <h1>Carrito</h1>
 <hr>
 <p class="my-3">
-  Estos productos se encuentran actualmente en tu carrito, puedes 
+  Estos productos se encuentran actualmente en tu carrito, puedes
   editarlos aún o removerlos antes de hacer el pedido apretando el
   botón <b>Hacer pedido</b>.
 </p>
@@ -59,16 +59,14 @@
         {{ pedido.platillo.nombre }}
       </td>
       <td class="text-center">
-        <b>$ {{ pedido.platillo.precio }}</b>
+        $ {{ pedido.platillo.precio }}
       </td>
       <td class="text-center">
-        <b>
-          $ {{ pedido.get_subtotal }}</b>
-        </b>
+        $ {{ pedido.get_subtotal }}
       </td>
       <td class="text-center">
-        <button 
-          type="button" 
+        <button
+          type="button"
           onclick="disminuirCantidad({{ pedido.platillo.id }})"
           class="btn btn-link btn-sm text-primary">
           <i class="bi bi-dash"></i>
@@ -78,16 +76,16 @@
         <b> {{ pedido.cantidad }}</b>
       </td>
       <td class="text-center">
-        <button 
-          type="button" 
+        <button
+          type="button"
           onclick="aumentarCantidad({{ pedido.platillo.id }})"
           class="btn btn-link btn-sm text-primary">
           <i class="bi bi-plus"></i>
         </button>
       </td>
       <td class="text-center">
-        <button 
-          type="button" 
+        <button
+          type="button"
           onclick="eliminarPlatillo({{ pedido.platillo.id }})"
           class="btn btn-link btn-sm text-danger">
           <i class="bi bi-trash"></i>
@@ -99,20 +97,19 @@
 </table>
 <div class="float-end">
 <span class="h5">
-  Total: &nbsp;&nbsp;${{ carrito.get_total }}
+  Total: &nbsp;&nbsp;$ {{ carrito.get_total }}
 </span>
 <br>
 <br>
 <form method="POST" action="{% url 'mainApp:carrito' %}">
   <div style="display:none">
-    <input 
-      type="hidden" 
-      name="csrfmiddlewaretoken" 
+    <input
+      type="hidden"
+      name="csrfmiddlewaretoken"
       value="{{ csrf_token }}" />
   </div>
-  <button 
-    type="submit" 
-    onclick="hacerPedido()"
+  <button
+    type="submit"
     class="btn btn-outline-primary float-end">
     <i class="bi bi-cart"></i> Hacer pedido
   </button>
@@ -144,7 +141,7 @@ las tarifas con impuestos se muestran al final. Se agradece su propina.
   <tbody>
     {% for pedido in orden.get_pedidos %}
     <tr>
-      <th scope="row"class="text-center">{{ pedido.id }}</th>
+      <th scope="row" class="text-center">{{ pedido.id }}</th>
       <td class="text-center">{{ pedido.platillo.nombre }}</td>
       <td class="text-center"><b>{{ pedido.cantidad }}</b></td>
       <td class="text-center"><b>$</b> {{ pedido.platillo.precio }}</td>
@@ -155,20 +152,19 @@ las tarifas con impuestos se muestran al final. Se agradece su propina.
 </table>
 <div class="float-end">
   <span class="h5">
-    Total: &nbsp;&nbsp;${{ orden.get_total }}
+    Total: &nbsp;&nbsp;$ {{ orden.get_total }}
   </span>
   <br>
   <br>
-  <form method="POST" action="{% url 'mainApp:carrito' %}" >
+  <form method="POST" action="{% url 'mainApp:orden' %}" >
     <div style="display:none">
-      <input 
-        type="hidden" 
-        name="csrfmiddlewaretoken" 
+      <input
+        type="hidden"
+        name="csrfmiddlewaretoken"
         value="{{ csrf_token }}" />
     </div>
-    <button 
-      type="submit" 
-      onclick="cerrarCuenta()"
+    <button
+      type="submit"
       class="btn btn-outline-success">
       <i class="bi bi-currency-dollar"></i> Solicitar cuenta
     </button>
@@ -198,6 +194,7 @@ las tarifas con impuestos se muestran al final. Se agradece su propina.
  * @param {number} identificador del platillo.
 */
 function disminuirCantidad(platilloId) {
+  $('#global-spinner').show();
   let count = parseInt($('#counter' + platilloId).text());
   if (count > 1) {
     $.ajax("{% url 'mainApp:carrito' %}", {
@@ -210,6 +207,7 @@ function disminuirCantidad(platilloId) {
         location.reload();
       },
       error: function (err) {
+        $('#global-spinner').hide();
         console.error(err);
       }
     });
@@ -223,6 +221,7 @@ function disminuirCantidad(platilloId) {
  * @param {number} identificador del platillo.
 */
 function aumentarCantidad(platilloId) {
+  $('#global-spinner').show();
   let count = parseInt($('#counter' + platilloId).text());
   $.ajax("{% url 'mainApp:carrito' %}", {
     type: 'PUT',
@@ -234,6 +233,7 @@ function aumentarCantidad(platilloId) {
       location.reload();
     },
     error: function (err) {
+      $('#global-spinner').hide();
       console.error(err);
     }
   });
@@ -245,6 +245,7 @@ function aumentarCantidad(platilloId) {
  * @param {number} identificador del platillo.
 */
 function eliminarPlatillo(platilloId) {
+  $('#global-spinner').show();
   $.ajax("{% url 'mainApp:carrito' %}", {
     type: 'DELETE',
     data: {
@@ -254,42 +255,7 @@ function eliminarPlatillo(platilloId) {
       location.reload();
     },
     error: function (err) {
-      console.error(err);
-    }
-  });
-}
-
-/**
- * Función que manda el pedido actual a la orden para que los pedidos
- * sean preparados en la cocina.
-*/
-function hacerPedido() {
-  $.ajax("{% url 'mainApp:carrito' %}", {
-    type: 'POST',
-    data: {
-      platillo: parseInt(platilloId)
-    },
-    success: function (res) {
-      location.reload();
-    },
-    error: function (err) {
-      console.error(err);
-    }
-  });
-}
-
-/**
- * Función para indicar que la estadía en el restaurante ha terminado y el
- * postre puede empezar a servirse.
-*/
-function cerrarCuenta() {
-  $.ajax("{% url 'mainApp:orden' %}", {
-    type: 'POST',
-    data: {},
-    success: function (res) {
-      location.reload();
-    },
-    error: function (err) {
+      $('#global-spinner').hide();
       console.error(err);
     }
   });

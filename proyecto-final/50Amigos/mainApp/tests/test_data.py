@@ -1,22 +1,12 @@
-from datetime import datetime, timedelta
-import pytz
 import uuid
+from datetime import datetime, timedelta
 
+import pytz
 from django.contrib.auth import get_user_model
 from django.contrib.auth.hashers import make_password
 
-from ..models import (
-    Anuncio,
-    Carrito,
-    Categoria,
-    Cupon,
-    Orden,
-    Pedido,
-    Platillo,
-    Promocion,
-    Role,
-    Subcategoria,
-)
+from ..models import (Anuncio, Carrito, Categoria, Cupon, Orden, Pedido,
+                      Platillo, Promocion, Role, Subcategoria)
 
 User = get_user_model()
 
@@ -48,22 +38,101 @@ TEST_ADMIN_USERNAME = 'admin'
 TEST_ADMIN_PASSWORD = 'password'
 TEST_ADMIN_EMAIL = 'admin@admin.com'
 
-USUARIOS = [{
-    'id': 9999,
-    'username': TEST_USERNAME,
-    'password': TEST_PASSWORD,
-    'email': TEST_EMAIL,
-}]
+USUARIOS = [
+    {
+        'id': 827834768,
+        'username': 'administrador',
+        'password': 'administrador',
+        'email': 'administrador@50amigos.com',
+    },
+    {
+        'id': 1643623,
+        'username': 'mesa1',
+        'password': 'restaurante123321',
+        'email': 'mesa1@50amigos.com',
+    },
+    {
+        'id': 2234231,
+        'username': 'mesa2',
+        'password': 'restaurante123321',
+        'email': 'mesa2@50amigos.com',
+    },
+    {
+        'id': 3212345,
+        'username': 'mesa3',
+        'password': 'restaurante123321',
+        'email': 'mesa3@50amigos.com',
+    },
+    {
+        'id': 5234232,
+        'username': 'mesa4',
+        'password': 'restaurante123321',
+        'email': 'mesa4@50amigos.com',
+    },
+    {
+        'id': 9999,
+        'username': TEST_USERNAME,
+        'password': TEST_PASSWORD,
+        'email': TEST_EMAIL,
+    },
+]
 
-CATEGORIAS = [{
-    'id': 9999,
-    'nombre': 'Prueba',
-}]
+CATEGORIAS = [
+    {
+        'id': 9999,
+        'nombre': 'Prueba',
+    },
+    {
+        'id': 12213652,
+        'nombre': 'Entradas'
+    },
+    {
+        'id': 12213653,
+        'nombre': 'Bebidas'
+    },
+    {
+        'id': 1221364232,
+        'nombre': 'Postres'
+    },
+    {
+        'id': 1249878,
+        'nombre': 'Helados'
+    },
+]
 
-SUBCATEGORIAS = [{
-    'id': 9999,
-    'nombre': 'Prueba',
-}]
+SUBCATEGORIAS = [
+    {
+        'id': 9999,
+        'nombre': 'Prueba',
+        'categoria': 12213652
+    },
+    {
+        'id': 99123435,
+        'nombre': 'Clasicos',
+        'categoria': 12213652
+    },
+    {
+        'id': 923451359,
+        'nombre': 'Clasicos',
+        'categoria': 12213652
+    },
+    {
+        'id': 9973452,
+        'nombre': 'Bebidas embotelladas',
+        'categoria': 12213653
+    },
+    {
+        'id': 9123129,
+        'nombre': 'Clasicos',
+        'categoria': 1221364232
+    },
+    {
+        'id': 964644449,
+        'nombre': 'Clasicos',
+        'categoria': 1249878
+    },
+]
+
 TEST_HELADO = {
     'id': 9999,
     'nombre': 'Helado',
@@ -72,55 +141,111 @@ TEST_HELADO = {
     'ingredientes': '',
 }
 
-PLATILLOS = [{
-    'id': 1,
-    'nombre': 'Prueba',
-    'imagen': 'noimagen.jpg',
-    'precio': '200.00',
-    'ingredientes': 'ingrediente1,ingrediente2',
-}, TEST_HELADO]
+PLATILLOS = [
+    {
+        'id': 11,
+        'nombre': 'Prueba',
+        'imagen': 'noimagen.jpg',
+        'precio': '200.00',
+        'ingredientes': 'ingrediente1,ingrediente2',
+    },
+    {
+        'id': 2,
+        'nombre': 'Prueba',
+        'imagen': 'noimagen.jpg',
+        'precio': '200.00',
+        'ingredientes': 'ingrediente1,ingrediente2',
+    },
+    {
+        'id': 33,
+        'nombre': 'Prueba',
+        'imagen': 'noimagen.jpg',
+        'precio': '200.00',
+        'ingredientes': 'ingrediente1,ingrediente2',
+    },
+    {
+        'id': 44,
+        'nombre': 'Prueba',
+        'imagen': 'noimagen.jpg',
+        'precio': '200.00',
+        'ingredientes': 'ingrediente1,ingrediente2',
+    },
+    {
+        'id': 55,
+        'nombre': 'Prueba',
+        'imagen': 'noimagen.jpg',
+        'precio': '200.00',
+        'ingredientes': 'ingrediente1,ingrediente2',
+    },
+    TEST_HELADO
+]
 
-ROLES = [{
-    'id': 9999,
-}]
+ROLES = [
+    {
+        'id': 9999,
+        'nombre': 'Admin'
+    },
+    {
+        'id': 99,
+        'nombre': 'Responsable de tabletas'
+    },
+    {
+        'id': 9,
+        'nombre': 'Comensal'
+    },
+]
 
-ORDENES = [{
-    'id': 9999,
-    'total': '100.00',
-    'comentarios': 'Ninguno',
-    'active': False,
-}]
+ORDENES = [
+    {
+        'id': 9999,
+        'total': '100.00',
+        'comentarios': 'Ninguno',
+        'active': False,
+    },
+]
 
-PEDIDOS = [{
-    'id': 9999,
-    'cantidad': 1,
-}]
+PEDIDOS = [
+    {
+        'id': 9999,
+        'cantidad': 2,
+        'platillo': 1,
+    },
+]
 
-CARRITOS = [{
-    'id': 9999,
-}]
+CARRITOS = [
+    {
+        'id': 9999,
+        'active': True,
+    },
+]
 
-PROMOCIONES = [{
-    'id': 9999,
-    'imagen': IMAGE_URL,
-    'codigo': uuid.uuid4(),
-    'valido_hasta': datetime.now(tz=pytz.UTC) + timedelta(days=30),
-}]
+PROMOCIONES = [
+    {
+        'id': 9999,
+        'imagen': IMAGE_URL,
+        'codigo': uuid.uuid4(),
+        'valido_hasta': datetime.now(tz=pytz.UTC) + timedelta(days=30),
+    },
+]
 
-CUPONES = [{
-    'id': 9999,
-    'codigo': uuid.uuid4()
-}]
+CUPONES = [
+    {
+        'id': 9999,
+        'codigo': uuid.uuid4(),
+    },
+]
 
-ANUNCIOS = [{
-    'id': 9999,
-    'nombre': 'Tu anuncio aquí',
-    'imagen': IMAGE_URL,
-    'codigo': uuid.uuid4(),
-    'valido_hasta': datetime.now(tz=pytz.UTC) + timedelta(days=30),
-    'active': True,
-    'anunciante': '50Amigos'
-}]
+ANUNCIOS = [
+    {
+        'id': 9999,
+        'nombre': 'Tu anuncio aquí',
+        'imagen': IMAGE_URL,
+        'codigo': uuid.uuid4(),
+        'valido_hasta': datetime.now(tz=pytz.UTC) + timedelta(days=30),
+        'active': True,
+        'anunciante': '50Amigos'
+    },
+]
 
 
 def create_test_data():

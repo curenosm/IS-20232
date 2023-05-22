@@ -6,8 +6,8 @@
 
 {# Usando modal de manera global, para que empate con AnimateCSS #}
 {% block modal_header %}
-  <h5 
-    class="modal-title animate__animated animate__headShake" 
+  <h5
+    class="modal-title animate__animated animate__headShake"
     id="tituloModal">
     Persona 1
   </h5>
@@ -22,18 +22,18 @@
 <div>
   <img
     id="platilloImagen"
-    class="animate__animated animate__headShake text-center" 
-    src="{% static 'img/helados.jpg' %}" 
+    class="animate__animated animate__headShake text-center"
+    src="{% static 'img/helados.jpg' %}"
     alt="helado"
     width="100%" />
-  
+
   <br>
-  
+
   <br>
   <div class="float-end">
     <span class="h5">Precio: </span>
     <span
-      id="platilloPrecio" 
+      id="platilloPrecio"
       class="h3">
       Precio
     </span>
@@ -45,13 +45,13 @@
   <br>
   <p id="platilloDescripcion"></p>
   <br>
-  
+
   <h5>Ingredientes:</h5><hr>
   <ul id="platilloIngredientes">
     <li class=""></li>
   </ul>
   <br>
-  
+
   <h5>Alérgenos:</h5><hr>
   <ul id="platilloAlergenos">
     <li class=""></li>
@@ -111,26 +111,27 @@
       {% for platillo in subcategoria.platillos.all %}
       <div class="col text-center">
         <div
-          class="card py-2" 
+          class="card py-2 "
           style="width: 18rem;" >
           <div class="card-header">
-            <h5 
+            <h5
               id="platillo-{{ platillo.id }}-nombre">
               {{ platillo.nombre }}
             </h5>
           </div>
-          <img 
+          <img
             id="platillo-{{ platillo.id }}-imagen"
             onclick="loadModalDetails( {{ platillo.id }} )"
             data-bs-toggle="modal"
             data-bs-target="#globalModal"
-            src="{{ platillo.imagen }}" 
-            class="card-img-top" alt="{{ platillo.imagen }}">
+            src="{{ platillo.imagen }}"
+            class="card-img-top"
+            alt="{{ platillo.imagen }}">
           <div class="card-body">
-            <h5 
+            <h5
               id="platillo-{{ platillo.id }}-precio"
-              class="card-title pricing-card-title text-muted">
-              ${{ platillo.precio }}
+              class="card-title pricing-card-title text-muted {{ platillo.line_through_if_helado }}">
+              $ {{ platillo.precio }}
             </h5>
             {% if platillo.descripcion %}
               <p
@@ -141,7 +142,7 @@
             {% endif %}
           </div>
           {% if platillo.get_ingredientes_list %}
-          <ul 
+          <ul
             id="platillo-{{ platillo.id }}-ingredientes"
             class="list-group list-group-flush" hidden>
             {% for ingrediente in platillo.get_ingredientes_list %}
@@ -149,26 +150,28 @@
             {% endfor %}
           </ul>
           {% endif %}
-          <div class="card-body">
+          <div
+            {{ platillo.hidden_if_helado }}
+            class="card-body">
             <div class="d-grid gap-2">
-              <div 
-                class="btn-group" 
-                role="group" 
+              <div
+                class="btn-group"
+                role="group"
                 aria-label="Basic mixed styles example">
-                <button 
+                <button
                   {{ platillo.disabled_if_helado }}
                   onclick="decrementCount({{ platillo.id }})"
-                  type="button" 
+                  type="button"
                   class="btn btn-outline-secondary">
                   <i class="bi bi-dash"></i>
                 </button>
                 <button
                   id="counter{{platillo.id}}"
-                  type="button" 
+                  type="button"
                   class="btn btn-outline-secondary"
-                  disabled 
+                  disabled
                   />1</button>
-                <button 
+                <button
                   {{ platillo.disabled_if_helado }}
                   onclick="incrementCount({{ platillo.id }})"
                   type="button"
@@ -178,12 +181,14 @@
               </div>
             </div>
           </div>
-          <div class="card-footer text-muted">
+          <div
+            {{ platillo.hidden_if_helado }}
+            class="card-footer text-muted">
             <div class="d-grid gap-2">
-              <button 
+              <button
                 {{ platillo.disabled_if_helado }}
                 class="btn btn-outline-success"
-                onclick="agregarAlCarrito({{ platillo.id }})" 
+                onclick="agregarAlCarrito({{ platillo.id }})"
                 class="card-link">
                 <i class="bi bi-cart-plus"></i>&nbsp;
                 Agregar al carrito
@@ -195,15 +200,15 @@
       </div>
       <br>
       {% endfor %}
-      
+
       <br>
     </div>
-    
+
     <br>
   </div>
   <br>
   {% endfor %}
-  <a href="#breadcrumb" class="btn float-end">
+  <a href="#breadcrumb" class="btn float-end rounded-circle">
     <i class="bi bi-arrow-up"></i>
   </a>
   <br>
@@ -240,9 +245,9 @@ function loadModalDetails(platilloId) {
   $('#tituloModal').html(nombre ? nombre : '');
   $('#platilloIngredientes').html(ingredientes ? ingredientes : '');
   $('#platilloAlergenos').html(alergenos ? alergenos : '');
-  $('#platilloDescripcion').text(descripcion ? descripcion : '');
+  $('#platilloDescripcion').html(descripcion ? descripcion : '');
   $('#platilloImagen').attr('src', imagen ? imagen : '');
-  
+
 }
 
 /**

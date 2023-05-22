@@ -1,24 +1,10 @@
+from functools import reduce
+
 from django.test import TestCase
 
-
-from ..models import (
-    Anuncio,
-    Carrito,
-    Categoria,
-    Cupon,
-    Orden,
-    Pedido,
-    Platillo,
-    Promocion,
-    Role,
-    Subcategoria,
-    User,
-)
-
-from .test_data import (
-    PLATILLOS,
-    create_test_data
-)
+from ..models import (Anuncio, Carrito, Categoria, Cupon, Orden, Pedido,
+                      Platillo, Promocion, Role, Subcategoria, User)
+from .test_data import PEDIDOS, PLATILLOS, create_test_data
 
 
 class TestModels(TestCase):
@@ -63,7 +49,7 @@ class TestModels(TestCase):
         """
 
         for c in self.categorias:
-            categoria = Categoria.objects.get(id=self.id_prueba)
+            categoria = Categoria.objects.get(id=c.id)
             self.assertEqual(categoria.nombre, c.nombre)
 
     def test_subcategoria_nombre(self):
@@ -72,7 +58,7 @@ class TestModels(TestCase):
         """
 
         for s in self.subcategorias:
-            subcategoria = Subcategoria.objects.get(id=self.id_prueba)
+            subcategoria = Subcategoria.objects.get(id=s.id)
             self.assertEqual(subcategoria.nombre, s.nombre)
 
     def test_helado(self):
@@ -100,7 +86,7 @@ class TestModels(TestCase):
 
         for p in self.pedidos:
             pedido = Pedido.objects.get(id=p.id)
-            self.assertEqual(pedido.carrito.orden, self.ordenes[0])
+            self.assertEqual(pedido.carrito.orden, p.carrito.orden)
 
     def test_anuncio(self):
         """
@@ -134,7 +120,7 @@ class TestModels(TestCase):
         """
 
         for p in self.promociones:
-            promocion = Promocion.objects.get(id=self.id_prueba)
+            promocion = Promocion.objects.get(id=p.id)
             self.assertEqual(promocion, p)
 
     def test_cupon(self):
@@ -143,7 +129,7 @@ class TestModels(TestCase):
         """
 
         for c in self.cupones:
-            cupon = Cupon.objects.get(id=self.id_prueba)
+            cupon = Cupon.objects.get(id=c.id)
             self.assertEqual(cupon, c)
 
     def test_carrito(self):
@@ -151,7 +137,7 @@ class TestModels(TestCase):
         Función para probar el modelo del carrito de compras.
         """
         for c in self.carritos:
-            carrito = Carrito.objects.get(id=self.id_prueba)
+            carrito = Carrito.objects.get(id=c.id)
             self.assertEqual(carrito, c)
 
 
@@ -226,21 +212,57 @@ class TestModelString(TestCase):
         Prueba unitaria para el subtotal de un pedido de cantidad n
         """
 
-        assert self.pedidos[0].get_subtotal() == '200.00'
+        for p in self.pedidos:
+            assert p.get_subtotal() == float(p.cantidad) \
+                * float(p.platillo.precio)
 
     def test_carrito_total(self):
         """
         Prueba unitaria para el subtotal de un carrito
         """
 
-        assert str(self.carritos[0].get_total()) == '200.00'
+        for c in self.carritos:
+            total = 0
+            for p in self.pedidos:
+                total += p.get_subtotal()
+            
+            assert c.get_total() == total
 
     def test_orden_total(self):
         """
         Prueba unitaria para el subtotal de un carrito
         """
 
-        assert str(self.ordenes[0].get_total()) == '0'
+        for o in self.ordenes:
+            assert o.get_total() == reduce(
+                lambda p: p.get_subtotal(),
+                o.get_pedidos(),
+                0)
+    
+    def test_orden_desmarcar_carritos_como_activos(self):
+        """
+        Prueba para desmarcar los carritos de una orden.
+        """
+
+        for o in self.ordenes:
+            o.desmarcar_carritos_como_activos()
+            for c in o.carritos.all():
+                assert not c.active
+
+    def test_orden_hidden_if_votacion_concluida(self):
+        """
+        Prueba para verificar que el botón de votar se desactive
+        una vez que la votación del sabor de helado de la orden haya
+        tomado lugar.
+        """
+
+        for o in self.ordenes:
+            cond = o.hidden_if_votacion_concluida()
+
+            if o.votacion_concluida():
+                assert 'hidden' == cond
+            else:
+                self.assertEqual('', cond)
 
     def test_user_str(self):
         """

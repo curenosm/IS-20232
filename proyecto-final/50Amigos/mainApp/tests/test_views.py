@@ -1,21 +1,10 @@
-from django.test import TestCase
 from django.contrib.auth import get_user_model
-from django.urls import (
-    reverse,
-)
-
+from django.test import Client, TestCase
+from django.urls import reverse
 from rest_framework import status
-from django.test import Client
 
-from .test_data import (
-    REDIRECT_LOGIN_URL,
-    TEST_EMAIL,
-    TEST_PASSWORD,
-    TEST_USERNAME,
-    TEST_HELADO,
-    TEMPLATES,
-    create_test_data
-)
+from .test_data import (REDIRECT_LOGIN_URL, TEMPLATES, TEST_EMAIL, TEST_HELADO,
+                        TEST_PASSWORD, TEST_USERNAME, create_test_data)
 
 User = get_user_model()
 
@@ -434,7 +423,7 @@ class TestViews_POST(TestCase):
         """
 
         self.client.force_login(user=self.users[0])
-        data_str = f'platilloId={TEST_HELADO.get("id")}'
+        data_str = f'helado={TEST_HELADO.get("id")}'
         url = reverse('mainApp:votacion')
         response = self.client.post(
             url,
@@ -451,7 +440,7 @@ class TestViews_POST(TestCase):
 
         self.client.force_login(user=self.users[0])
         data = {
-            'platilloId': 7812736817
+            'helado': 7812736817
         }
         url = reverse('mainApp:votacion')
         response = self.client.post(url, data)
@@ -480,7 +469,7 @@ class TestViews_POST(TestCase):
 
         url = reverse('mainApp:orden')
         response = self.client.post(url)
-        assert response.status_code == status.HTTP_204_NO_CONTENT
+        assert response.status_code == status.HTTP_200_OK
 
 
 class TestViews_PUT(TestCase):
@@ -499,9 +488,9 @@ class TestViews_PUT(TestCase):
         [
             cls.users,
             cls.categorias,
-            cls.subcategoria,
-            cls.platillo,
-            cls.role,
+            cls.subcategorias,
+            cls.platillos,
+            cls.roles,
             cls.ordenes,
             cls.pedido,
             cls.carrito,
@@ -519,14 +508,15 @@ class TestViews_PUT(TestCase):
         """
 
         self.client.force_login(user=self.users[0])
-        data_str = "platillo=1&cantidad=1"
-        url = reverse('mainApp:carrito')
-        response = self.client.put(
-            url,
-            data_str,
-            content_type='application/x-www-form-urlencoded')
-        assert response.status_code == status.HTTP_200_OK
-        self.assertContains(response, 'Success')
+        for p in self.platillos:
+            data_str = f"platillo={p.id}&cantidad=1"
+            url = reverse('mainApp:carrito')
+            response = self.client.put(
+                url,
+                data_str,
+                content_type='application/x-www-form-urlencoded')
+            assert response.status_code == status.HTTP_200_OK
+            self.assertContains(response, 'Success')
 
     def test_carrito_login_404(self):
         """
@@ -535,7 +525,7 @@ class TestViews_PUT(TestCase):
         """
 
         self.client.force_login(user=self.users[0])
-        data_str = "platillo=2&cantidad=1"
+        data_str = "platillo=-2&cantidad=1"
         url = reverse('mainApp:carrito')
         response = self.client.put(
             url,
@@ -610,6 +600,32 @@ class TestViews_DELETE(TestCase):
         }
         url = reverse('mainApp:carrito')
         response = self.client.delete(url, data)
+        assert response.status_code == status.HTTP_202_ACCEPTED
+
+    def test_carrito_not_empty_login(self):
+        """
+        Función para probar que podamos eliminar un pedido del carrito antes
+        de haberlo enviado a la orden.
+        """
+
+        self.client.force_login(user=self.users[0])
+
+        # Nos aseguramos de agregar platillos al carrito
+        for p in self.platillos:
+            data_str = f"platillo={p.id}&cantidad=1"
+            url = reverse('mainApp:carrito')
+            response = self.client.put(
+                url,
+                data_str,
+                content_type='application/x-www-form-urlencoded')
+            assert response.status_code == status.HTTP_200_OK
+            self.assertContains(response, 'Success')
+
+        data_str = f"platillo={self.platillos[0].id}"
+        url = reverse('mainApp:carrito')
+        response = self.client.delete(url, 
+                data_str,
+                content_type='application/x-www-form-urlencoded')
         assert response.status_code == status.HTTP_202_ACCEPTED
 
     def test_orden_login_405(self):

@@ -1,19 +1,18 @@
 from django.contrib import admin
-from django.contrib.auth.admin import UserAdmin
-
-from mainApp.models import (
-    Categoria,
-    Subcategoria,
-    Platillo,
-    Orden,
-    Role,
-    Pedido,
-    Promocion,
-    Cupon,
-    Anuncio
-)
-
 from django.contrib.auth import get_user_model
+from django.contrib.auth.admin import UserAdmin
+from mainApp.models import (
+    Anuncio,
+    Carrito,
+    Categoria,
+    Cupon,
+    Orden,
+    Pedido,
+    Platillo,
+    Promocion,
+    Role,
+    Subcategoria)
+
 User = get_user_model()
 
 
@@ -33,6 +32,7 @@ class CustomUserAdmin(UserAdmin):
 # Register your models here.
 admin.site.register(User, CustomUserAdmin)
 admin.site.register(Categoria)
+admin.site.register(Carrito)
 admin.site.register(Subcategoria)
 admin.site.register(Platillo)
 admin.site.register(Role)

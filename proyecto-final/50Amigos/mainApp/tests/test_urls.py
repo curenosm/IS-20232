@@ -1,17 +1,16 @@
 from django.test import TestCase
-from django.urls import reverse, resolve
+from django.urls import resolve, reverse
 
 from ..views import (
     CarritoView,
     OrdenView,
+    contacto,
+    get_lista_helados,
     index,
     inicio_comensal,
-    get_lista_helados,
-    contacto,
     menu,
     registro,
-    votacion
-)
+    votacion)
 
 
 class TestUrls(TestCase):
