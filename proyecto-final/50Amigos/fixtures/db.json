@@ -3029,579 +3029,263 @@
     }
 },
 {
-    "model": "auth.permission",
-    "pk": 1,
+    "model": "admin.logentry",
+    "pk": 234,
     "fields": {
-        "name": "Can add log entry",
-        "content_type": 1,
-        "codename": "add_logentry"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 2,
-    "fields": {
-        "name": "Can change log entry",
-        "content_type": 1,
-        "codename": "change_logentry"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 3,
-    "fields": {
-        "name": "Can delete log entry",
-        "content_type": 1,
-        "codename": "delete_logentry"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 4,
-    "fields": {
-        "name": "Can view log entry",
-        "content_type": 1,
-        "codename": "view_logentry"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 5,
-    "fields": {
-        "name": "Can add permission",
-        "content_type": 2,
-        "codename": "add_permission"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 6,
-    "fields": {
-        "name": "Can change permission",
-        "content_type": 2,
-        "codename": "change_permission"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 7,
-    "fields": {
-        "name": "Can delete permission",
-        "content_type": 2,
-        "codename": "delete_permission"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 8,
-    "fields": {
-        "name": "Can view permission",
-        "content_type": 2,
-        "codename": "view_permission"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 9,
-    "fields": {
-        "name": "Can add group",
-        "content_type": 3,
-        "codename": "add_group"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 10,
-    "fields": {
-        "name": "Can change group",
-        "content_type": 3,
-        "codename": "change_group"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 11,
-    "fields": {
-        "name": "Can delete group",
-        "content_type": 3,
-        "codename": "delete_group"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 12,
-    "fields": {
-        "name": "Can view group",
-        "content_type": 3,
-        "codename": "view_group"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 13,
-    "fields": {
-        "name": "Can add content type",
-        "content_type": 4,
-        "codename": "add_contenttype"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 14,
-    "fields": {
-        "name": "Can change content type",
-        "content_type": 4,
-        "codename": "change_contenttype"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 15,
-    "fields": {
-        "name": "Can delete content type",
-        "content_type": 4,
-        "codename": "delete_contenttype"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 16,
-    "fields": {
-        "name": "Can view content type",
-        "content_type": 4,
-        "codename": "view_contenttype"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 17,
-    "fields": {
-        "name": "Can add session",
-        "content_type": 5,
-        "codename": "add_session"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 18,
-    "fields": {
-        "name": "Can change session",
-        "content_type": 5,
-        "codename": "change_session"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 19,
-    "fields": {
-        "name": "Can delete session",
-        "content_type": 5,
-        "codename": "delete_session"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 20,
-    "fields": {
-        "name": "Can view session",
-        "content_type": 5,
-        "codename": "view_session"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 21,
-    "fields": {
-        "name": "Can add categoria",
-        "content_type": 6,
-        "codename": "add_categoria"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 22,
-    "fields": {
-        "name": "Can change categoria",
-        "content_type": 6,
-        "codename": "change_categoria"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 23,
-    "fields": {
-        "name": "Can delete categoria",
-        "content_type": 6,
-        "codename": "delete_categoria"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 24,
-    "fields": {
-        "name": "Can view categoria",
-        "content_type": 6,
-        "codename": "view_categoria"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 25,
-    "fields": {
-        "name": "Can add platillo",
+        "action_time": "2023-05-23T08:51:47.610Z",
+        "user": 1,
         "content_type": 7,
-        "codename": "add_platillo"
+        "object_id": "16",
+        "object_repr": "\n                Id: 16\n                Nombre: Consom├® de pollo\n                Categoria: \n                Id: 4\n                Nombre: Entradas\n                \n                ",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
     }
 },
 {
-    "model": "auth.permission",
-    "pk": 26,
+    "model": "admin.logentry",
+    "pk": 235,
     "fields": {
-        "name": "Can change platillo",
+        "action_time": "2023-05-23T08:52:57.458Z",
+        "user": 1,
         "content_type": 7,
-        "codename": "change_platillo"
+        "object_id": "16",
+        "object_repr": "\n                Id: 16\n                Nombre: Consom├® de pollo\n                Categoria: \n                Id: 4\n                Nombre: Entradas\n                \n                ",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Imagen\"]}}]"
     }
 },
 {
-    "model": "auth.permission",
-    "pk": 27,
+    "model": "admin.logentry",
+    "pk": 236,
     "fields": {
-        "name": "Can delete platillo",
+        "action_time": "2023-05-23T08:53:56.504Z",
+        "user": 1,
         "content_type": 7,
-        "codename": "delete_platillo"
+        "object_id": "16",
+        "object_repr": "\n                Id: 16\n                Nombre: Consom├® de pollo\n                Categoria: \n                Id: 4\n                Nombre: Entradas\n                \n                ",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Imagen\"]}}]"
     }
 },
 {
-    "model": "auth.permission",
-    "pk": 28,
+    "model": "admin.logentry",
+    "pk": 237,
     "fields": {
-        "name": "Can view platillo",
+        "action_time": "2023-05-23T09:03:36.733Z",
+        "user": 1,
+        "content_type": 12,
+        "object_id": "10000",
+        "object_repr": "\n                Id: 10000\n                Nombre: Cremas\n                Categoria: \n                Id: 4\n                Nombre: Entradas\n                \n                ",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 238,
+    "fields": {
+        "action_time": "2023-05-23T09:07:05.230Z",
+        "user": 1,
         "content_type": 7,
-        "codename": "view_platillo"
+        "object_id": "17",
+        "object_repr": "\n                Id: 17\n                Nombre: Crema de elote\n                Categoria: \n                Id: 4\n                Nombre: Entradas\n                \n                ",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
     }
 },
 {
-    "model": "auth.permission",
-    "pk": 29,
+    "model": "admin.logentry",
+    "pk": 239,
     "fields": {
-        "name": "Can add User",
-        "content_type": 8,
-        "codename": "add_user"
+        "action_time": "2023-05-23T09:11:45.775Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "18",
+        "object_repr": "\n                Id: 18\n                Nombre: Crema de champi├▒ones\n                Categoria: \n                Id: 4\n                Nombre: Entradas\n                \n                ",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
     }
 },
 {
-    "model": "auth.permission",
-    "pk": 30,
+    "model": "admin.logentry",
+    "pk": 240,
     "fields": {
-        "name": "Can change User",
-        "content_type": 8,
-        "codename": "change_user"
+        "action_time": "2023-05-23T09:12:33.461Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "18",
+        "object_repr": "\n                Id: 18\n                Nombre: Crema de champi├▒ones\n                Categoria: \n                Id: 4\n                Nombre: Entradas\n                \n                ",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Imagen\"]}}]"
     }
 },
 {
-    "model": "auth.permission",
-    "pk": 31,
+    "model": "admin.logentry",
+    "pk": 241,
     "fields": {
-        "name": "Can delete User",
-        "content_type": 8,
-        "codename": "delete_user"
+        "action_time": "2023-05-23T09:17:57.324Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "19",
+        "object_repr": "\n                Id: 19\n                Nombre: Crema de zanahoria\n                Categoria: \n                Id: 4\n                Nombre: Entradas\n                \n                ",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
     }
 },
 {
-    "model": "auth.permission",
-    "pk": 32,
+    "model": "admin.logentry",
+    "pk": 242,
     "fields": {
-        "name": "Can view User",
-        "content_type": 8,
-        "codename": "view_user"
+        "action_time": "2023-05-23T09:31:51.266Z",
+        "user": 1,
+        "content_type": 7,
+        "object_id": "20",
+        "object_repr": "\n                Id: 20\n                Nombre: Mole poblano\n                Categoria: \n                Id: 5\n                Nombre: Especiales\n                \n                ",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
     }
 },
 {
-    "model": "auth.permission",
-    "pk": 33,
+    "model": "admin.logentry",
+    "pk": 243,
     "fields": {
-        "name": "Can add orden",
-        "content_type": 9,
-        "codename": "add_orden"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 34,
-    "fields": {
-        "name": "Can change orden",
-        "content_type": 9,
-        "codename": "change_orden"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 35,
-    "fields": {
-        "name": "Can delete orden",
-        "content_type": 9,
-        "codename": "delete_orden"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 36,
-    "fields": {
-        "name": "Can view orden",
-        "content_type": 9,
-        "codename": "view_orden"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 37,
-    "fields": {
-        "name": "Can add role",
-        "content_type": 10,
-        "codename": "add_role"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 38,
-    "fields": {
-        "name": "Can change role",
-        "content_type": 10,
-        "codename": "change_role"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 39,
-    "fields": {
-        "name": "Can delete role",
-        "content_type": 10,
-        "codename": "delete_role"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 40,
-    "fields": {
-        "name": "Can view role",
-        "content_type": 10,
-        "codename": "view_role"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 41,
-    "fields": {
-        "name": "Can add pedido",
-        "content_type": 11,
-        "codename": "add_pedido"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 42,
-    "fields": {
-        "name": "Can change pedido",
-        "content_type": 11,
-        "codename": "change_pedido"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 43,
-    "fields": {
-        "name": "Can delete pedido",
-        "content_type": 11,
-        "codename": "delete_pedido"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 44,
-    "fields": {
-        "name": "Can view pedido",
-        "content_type": 11,
-        "codename": "view_pedido"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 45,
-    "fields": {
-        "name": "Can add subcategoria",
-        "content_type": 12,
-        "codename": "add_subcategoria"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 46,
-    "fields": {
-        "name": "Can change subcategoria",
-        "content_type": 12,
-        "codename": "change_subcategoria"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 47,
-    "fields": {
-        "name": "Can delete subcategoria",
-        "content_type": 12,
-        "codename": "delete_subcategoria"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 48,
-    "fields": {
-        "name": "Can view subcategoria",
-        "content_type": 12,
-        "codename": "view_subcategoria"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 49,
-    "fields": {
-        "name": "Can add anuncio",
+        "action_time": "2023-05-23T09:41:44.567Z",
+        "user": 1,
         "content_type": 13,
-        "codename": "add_anuncio"
+        "object_id": "1",
+        "object_repr": "Id: 1, Anunciante: 1, Nombre: hola",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
     }
 },
 {
-    "model": "auth.permission",
-    "pk": 50,
+    "model": "admin.logentry",
+    "pk": 244,
     "fields": {
-        "name": "Can change anuncio",
+        "action_time": "2023-05-23T09:42:51.656Z",
+        "user": 1,
         "content_type": 13,
-        "codename": "change_anuncio"
+        "object_id": "1",
+        "object_repr": "Id: 1, Anunciante: 1, Nombre: hola",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Imagen\"]}}]"
     }
 },
 {
-    "model": "auth.permission",
-    "pk": 51,
+    "model": "admin.logentry",
+    "pk": 245,
     "fields": {
-        "name": "Can delete anuncio",
+        "action_time": "2023-05-23T09:43:12.539Z",
+        "user": 1,
         "content_type": 13,
-        "codename": "delete_anuncio"
+        "object_id": "1",
+        "object_repr": "Id: 1, Anunciante: 1, Nombre: hola",
+        "action_flag": 3,
+        "change_message": ""
     }
 },
 {
-    "model": "auth.permission",
-    "pk": 52,
+    "model": "admin.logentry",
+    "pk": 246,
     "fields": {
-        "name": "Can view anuncio",
-        "content_type": 13,
-        "codename": "view_anuncio"
+        "action_time": "2023-05-23T09:46:58.725Z",
+        "user": 1,
+        "content_type": 12,
+        "object_id": "10001",
+        "object_repr": "\n                Id: 10001\n                Nombre: Sopas\n                Categoria: \n                Id: 4\n                Nombre: Entradas\n                \n                ",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
     }
 },
 {
-    "model": "auth.permission",
-    "pk": 53,
+    "model": "admin.logentry",
+    "pk": 247,
     "fields": {
-        "name": "Can add Promocion",
-        "content_type": 14,
-        "codename": "add_promocion"
+        "action_time": "2023-05-23T09:47:13.094Z",
+        "user": 1,
+        "content_type": 12,
+        "object_id": "10002",
+        "object_repr": "\n                Id: 10002\n                Nombre: Dips\n                Categoria: \n                Id: 4\n                Nombre: Entradas\n                \n                ",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
     }
 },
 {
-    "model": "auth.permission",
-    "pk": 54,
+    "model": "admin.logentry",
+    "pk": 248,
     "fields": {
-        "name": "Can change Promocion",
-        "content_type": 14,
-        "codename": "change_promocion"
+        "action_time": "2023-05-23T09:49:48.574Z",
+        "user": 1,
+        "content_type": 12,
+        "object_id": "10003",
+        "object_repr": "\n                Id: 10003\n                Nombre: Pasteles\n                Categoria: \n                Id: 3\n                Nombre: Postres\n                \n                ",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
     }
 },
 {
-    "model": "auth.permission",
-    "pk": 55,
+    "model": "admin.logentry",
+    "pk": 249,
     "fields": {
-        "name": "Can delete Promocion",
-        "content_type": 14,
-        "codename": "delete_promocion"
+        "action_time": "2023-05-23T09:50:50.365Z",
+        "user": 1,
+        "content_type": 12,
+        "object_id": "10004",
+        "object_repr": "\n                Id: 10004\n                Nombre: Tartas\n                Categoria: \n                Id: 3\n                Nombre: Postres\n                \n                ",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
     }
 },
 {
-    "model": "auth.permission",
-    "pk": 56,
+    "model": "admin.logentry",
+    "pk": 250,
     "fields": {
-        "name": "Can view Promocion",
-        "content_type": 14,
-        "codename": "view_promocion"
+        "action_time": "2023-05-23T09:51:13.220Z",
+        "user": 1,
+        "content_type": 12,
+        "object_id": "10005",
+        "object_repr": "\n                Id: 10005\n                Nombre: Budines\n                Categoria: \n                Id: 3\n                Nombre: Postres\n                \n                ",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
     }
 },
 {
-    "model": "auth.permission",
-    "pk": 57,
+    "model": "admin.logentry",
+    "pk": 251,
     "fields": {
-        "name": "Can add Cupon",
-        "content_type": 15,
-        "codename": "add_cupon"
+        "action_time": "2023-05-23T09:52:29.508Z",
+        "user": 1,
+        "content_type": 12,
+        "object_id": "10006",
+        "object_repr": "\n                Id: 10006\n                Nombre: Preparados de fruta\n                Categoria: \n                Id: 3\n                Nombre: Postres\n                \n                ",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
     }
 },
 {
-    "model": "auth.permission",
-    "pk": 58,
+    "model": "admin.logentry",
+    "pk": 252,
     "fields": {
-        "name": "Can change Cupon",
-        "content_type": 15,
-        "codename": "change_cupon"
+        "action_time": "2023-05-23T09:53:48.076Z",
+        "user": 1,
+        "content_type": 12,
+        "object_id": "10007",
+        "object_repr": "\n                Id: 10007\n                Nombre: Licores\n                Categoria: \n                Id: 2\n                Nombre: Bebidas\n                \n                ",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
     }
 },
 {
-    "model": "auth.permission",
-    "pk": 59,
+    "model": "admin.logentry",
+    "pk": 253,
     "fields": {
-        "name": "Can delete Cupon",
-        "content_type": 15,
-        "codename": "delete_cupon"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 60,
-    "fields": {
-        "name": "Can view Cupon",
-        "content_type": 15,
-        "codename": "view_cupon"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 61,
-    "fields": {
-        "name": "Can add carrito",
-        "content_type": 16,
-        "codename": "add_carrito"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 62,
-    "fields": {
-        "name": "Can change carrito",
-        "content_type": 16,
-        "codename": "change_carrito"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 63,
-    "fields": {
-        "name": "Can delete carrito",
-        "content_type": 16,
-        "codename": "delete_carrito"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 64,
-    "fields": {
-        "name": "Can view carrito",
-        "content_type": 16,
-        "codename": "view_carrito"
+        "action_time": "2023-05-23T09:54:16.116Z",
+        "user": 1,
+        "content_type": 12,
+        "object_id": "10008",
+        "object_repr": "\n                Id: 10008\n                Nombre: Refrescos\n                Categoria: \n                Id: 2\n                Nombre: Bebidas\n                \n                ",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
     }
 },
 {
@@ -3681,134 +3365,6 @@
     }
 },
 {
-    "model": "contenttypes.contenttype",
-    "pk": 1,
-    "fields": {
-        "app_label": "admin",
-        "model": "logentry"
-    }
-},
-{
-    "model": "contenttypes.contenttype",
-    "pk": 2,
-    "fields": {
-        "app_label": "auth",
-        "model": "permission"
-    }
-},
-{
-    "model": "contenttypes.contenttype",
-    "pk": 3,
-    "fields": {
-        "app_label": "auth",
-        "model": "group"
-    }
-},
-{
-    "model": "contenttypes.contenttype",
-    "pk": 4,
-    "fields": {
-        "app_label": "contenttypes",
-        "model": "contenttype"
-    }
-},
-{
-    "model": "contenttypes.contenttype",
-    "pk": 5,
-    "fields": {
-        "app_label": "sessions",
-        "model": "session"
-    }
-},
-{
-    "model": "contenttypes.contenttype",
-    "pk": 6,
-    "fields": {
-        "app_label": "mainApp",
-        "model": "categoria"
-    }
-},
-{
-    "model": "contenttypes.contenttype",
-    "pk": 7,
-    "fields": {
-        "app_label": "mainApp",
-        "model": "platillo"
-    }
-},
-{
-    "model": "contenttypes.contenttype",
-    "pk": 8,
-    "fields": {
-        "app_label": "mainApp",
-        "model": "user"
-    }
-},
-{
-    "model": "contenttypes.contenttype",
-    "pk": 9,
-    "fields": {
-        "app_label": "mainApp",
-        "model": "orden"
-    }
-},
-{
-    "model": "contenttypes.contenttype",
-    "pk": 10,
-    "fields": {
-        "app_label": "mainApp",
-        "model": "role"
-    }
-},
-{
-    "model": "contenttypes.contenttype",
-    "pk": 11,
-    "fields": {
-        "app_label": "mainApp",
-        "model": "pedido"
-    }
-},
-{
-    "model": "contenttypes.contenttype",
-    "pk": 12,
-    "fields": {
-        "app_label": "mainApp",
-        "model": "subcategoria"
-    }
-},
-{
-    "model": "contenttypes.contenttype",
-    "pk": 13,
-    "fields": {
-        "app_label": "mainApp",
-        "model": "anuncio"
-    }
-},
-{
-    "model": "contenttypes.contenttype",
-    "pk": 14,
-    "fields": {
-        "app_label": "mainApp",
-        "model": "promocion"
-    }
-},
-{
-    "model": "contenttypes.contenttype",
-    "pk": 15,
-    "fields": {
-        "app_label": "mainApp",
-        "model": "cupon"
-    }
-},
-{
-    "model": "contenttypes.contenttype",
-    "pk": 16,
-    "fields": {
-        "app_label": "mainApp",
-        "model": "carrito"
-    }
-},
-{
     "model": "sessions.session",
     "pk": "8fwechehbwc3lxoy3hgmy40rno6qmmg1",
     "fields": {
@@ -3842,18 +3398,18 @@
 },
 {
     "model": "sessions.session",
-    "pk": "ex5fs70qmsoflpoyj02luysx4v4ws8a4",
-    "fields": {
-        "session_data": ".eJxVjMEOwiAQBf-FsyFQYAGP3v0GsrAgVQNJaU_Gf9cmPej1zcx7sYDbWsM28hJmYmcm2el3i5geue2A7thunafe1mWOfFf4QQe_dsrPy-H-HVQc9Vsb4clasFpBkRCnJFFl4QiKU-hJGAIyVACyd05ENwlS2mqvpQDvErL3B8WzNv0:1q0ZHw:i1bnSd7-O33rmBZcqSnw7l25LSbnzz1F5QPeYS3MdkE",
-        "expire_date": "2023-06-04T02:59:16.199Z"
-    }
-},
-{
-    "model": "sessions.session",
     "pk": "f9uhneyrpfkicl29ykdokt84vqaer3jp",
     "fields": {
         "session_data": ".eJxVjMEOwiAQBf-FsyFQYAGP3v0GsrAgVQNJaU_Gf9cmPej1zcx7sYDbWsM28hJmYmcm2el3i5geue2A7thunafe1mWOfFf4QQe_dsrPy-H-HVQc9Vsb4clasFpBkRCnJFFl4QiKU-hJGAIyVACyd05ENwlS2mqvpQDvErL3B8WzNv0:1pvQh8:U_ncTZFPcCRanjECKy1-voYIUnWmUJwT8r8G4fRBW0I",
         "expire_date": "2023-05-20T22:48:02.106Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "mz58tiflz2tq1bb4xtdubufm5agcm86s",
+    "fields": {
+        "session_data": ".eJxVjMEOwiAQBf-FsyFQYAGP3v0GsrAgVQNJaU_Gf9cmPej1zcx7sYDbWsM28hJmYmcm2el3i5geue2A7thunafe1mWOfFf4QQe_dsrPy-H-HVQc9Vsb4clasFpBkRCnJFFl4QiKU-hJGAIyVACyd05ENwlS2mqvpQDvErL3B8WzNv0:1q0uFg:00MnyXLBsLpVSUkS-gBjVPf1XiR-WlUhmoC4dgydKws",
+        "expire_date": "2023-06-05T01:22:20.943Z"
     }
 },
 {
@@ -3869,7 +3425,7 @@
     "pk": 1,
     "fields": {
         "password": "pbkdf2_sha256$390000$p1PfuMeRiVgUO1v1OGucT6$Y+VKrRfrvKhWRrjK5reSd5kuXh3WnZhTWP0cnJral8g=",
-        "last_login": "2023-05-21T02:59:16.190Z",
+        "last_login": "2023-05-23T09:45:47.166Z",
         "is_superuser": true,
         "username": "admin",
         "first_name": "",
@@ -4165,6 +3721,78 @@
     }
 },
 {
+    "model": "mainApp.subcategoria",
+    "pk": 10000,
+    "fields": {
+        "nombre": "Cremas",
+        "categoria": 4
+    }
+},
+{
+    "model": "mainApp.subcategoria",
+    "pk": 10001,
+    "fields": {
+        "nombre": "Sopas",
+        "categoria": 4
+    }
+},
+{
+    "model": "mainApp.subcategoria",
+    "pk": 10002,
+    "fields": {
+        "nombre": "Dips",
+        "categoria": 4
+    }
+},
+{
+    "model": "mainApp.subcategoria",
+    "pk": 10003,
+    "fields": {
+        "nombre": "Pasteles",
+        "categoria": 3
+    }
+},
+{
+    "model": "mainApp.subcategoria",
+    "pk": 10004,
+    "fields": {
+        "nombre": "Tartas",
+        "categoria": 3
+    }
+},
+{
+    "model": "mainApp.subcategoria",
+    "pk": 10005,
+    "fields": {
+        "nombre": "Budines",
+        "categoria": 3
+    }
+},
+{
+    "model": "mainApp.subcategoria",
+    "pk": 10006,
+    "fields": {
+        "nombre": "Preparados de fruta",
+        "categoria": 3
+    }
+},
+{
+    "model": "mainApp.subcategoria",
+    "pk": 10007,
+    "fields": {
+        "nombre": "Licores",
+        "categoria": 2
+    }
+},
+{
+    "model": "mainApp.subcategoria",
+    "pk": 10008,
+    "fields": {
+        "nombre": "Refrescos",
+        "categoria": 2
+    }
+},
+{
     "model": "mainApp.platillo",
     "pk": 1,
     "fields": {
@@ -4357,6 +3985,193 @@
         "subcategoria": 7,
         "precio": "0.00",
         "ingredientes": ""
+    }
+},
+{
+    "model": "mainApp.platillo",
+    "pk": 16,
+    "fields": {
+        "nombre": "Consom├® de pollo",
+        "descripcion": "Caldo de pollo con trozos de carne, con granos de arroz o cebada, pasta, zanahoria, papa amarilla y cebolla blanca",
+        "imagen": "/static/img/platillos/consome.jpg",
+        "categoria": 4,
+        "subcategoria": 6,
+        "precio": "50.00",
+        "ingredientes": "Trozos de carne de pollo, con granos de arroz o cebada, pasta, zanahoria, papa amarilla y cebolla blanca"
+    }
+},
+{
+    "model": "mainApp.platillo",
+    "pk": 17,
+    "fields": {
+        "nombre": "Crema de elote",
+        "descripcion": "Sopa preparada con ma├¡z como ingrediente principal.",
+        "imagen": "/static/img/platillos/crema_elote.jpg",
+        "categoria": 4,
+        "subcategoria": 10000,
+        "precio": "50.00",
+        "ingredientes": "- Ma├¡z\r\n- Cebolla\r\n- Apio \r\n- Leche \r\n- Crema \r\n- Mantequilla"
+    }
+},
+{
+    "model": "mainApp.platillo",
+    "pk": 18,
+    "fields": {
+        "nombre": "Crema de champi├▒ones",
+        "descripcion": "Crema preparada a base de champi├▒ones como ingrediente principal.",
+        "imagen": "/static/img/platillos/crema_champinones.jpg",
+        "categoria": 4,
+        "subcategoria": 10000,
+        "precio": "50.00",
+        "ingredientes": "- Champi├▒ones\r\n- Cebolla\r\n- Apio \r\n- Leche \r\n- Crema \r\n- Mantequilla"
+    }
+},
+{
+    "model": "mainApp.platillo",
+    "pk": 19,
+    "fields": {
+        "nombre": "Crema de zanahoria",
+        "descripcion": "Crema preparada con zanahoria como ingrediente principal.",
+        "imagen": "/static/img/platillos/crema_zanahoria.jpg",
+        "categoria": 4,
+        "subcategoria": 10000,
+        "precio": "50.00",
+        "ingredientes": "- Zanahoria\r\n- Cebolla\r\n- Apio \r\n- Leche \r\n- Crema \r\n- Mantequilla"
+    }
+},
+{
+    "model": "mainApp.platillo",
+    "pk": 20,
+    "fields": {
+        "nombre": "Mole poblano",
+        "descripcion": "Salsa mexicana hecha a base de una combinaci├│n de diversos ingredientes como: clases de chiles, chocolate y especias, entre otros ingredientes. Este platillo se acompa├▒a con una pieza de pollo y una porci├│n de arroz.",
+        "imagen": "/static/img/platillos/mole_poblano.jpg",
+        "categoria": 5,
+        "subcategoria": 8,
+        "precio": "100.00",
+        "ingredientes": "- Pollo\r\n- Chile mulato\r\n- Chile ancho\r\n- Chile pasilla\r\n- Ajonjol├¡\r\n- Cacahuate\r\n- Manteca\r\n- Chocolate\r\n- Chile chipotle\r\n- Jitomate\r\n- Cebolla\r\n- Ajo\r\n- Canela\r\n- Caldo de pollo\r\n- Pasas"
+    }
+},
+{
+    "model": "mainApp.orden",
+    "pk": 50,
+    "fields": {
+        "usuario": 1,
+        "fecha": "2023-05-22T01:19:31.844Z",
+        "total": null,
+        "comentarios": "",
+        "helado_escogido": null,
+        "active": true
+    }
+},
+{
+    "model": "mainApp.carrito",
+    "pk": 100,
+    "fields": {
+        "fecha": "2023-05-22T01:20:10.383Z",
+        "usuario": 1,
+        "orden": 50,
+        "active": false
+    }
+},
+{
+    "model": "mainApp.carrito",
+    "pk": 101,
+    "fields": {
+        "fecha": "2023-05-22T01:23:27.309Z",
+        "usuario": 1,
+        "orden": 50,
+        "active": false
+    }
+},
+{
+    "model": "mainApp.carrito",
+    "pk": 102,
+    "fields": {
+        "fecha": "2023-05-22T01:28:04.235Z",
+        "usuario": 1,
+        "orden": 50,
+        "active": false
+    }
+},
+{
+    "model": "mainApp.carrito",
+    "pk": 103,
+    "fields": {
+        "fecha": "2023-05-22T01:28:19.070Z",
+        "usuario": 1,
+        "orden": 50,
+        "active": false
+    }
+},
+{
+    "model": "mainApp.carrito",
+    "pk": 104,
+    "fields": {
+        "fecha": "2023-05-22T01:28:37.310Z",
+        "usuario": 1,
+        "orden": 50,
+        "active": false
+    }
+},
+{
+    "model": "mainApp.carrito",
+    "pk": 105,
+    "fields": {
+        "fecha": "2023-05-22T01:29:52.442Z",
+        "usuario": 1,
+        "orden": 50,
+        "active": false
+    }
+},
+{
+    "model": "mainApp.carrito",
+    "pk": 106,
+    "fields": {
+        "fecha": "2023-05-22T01:31:26.800Z",
+        "usuario": 1,
+        "orden": 50,
+        "active": false
+    }
+},
+{
+    "model": "mainApp.carrito",
+    "pk": 107,
+    "fields": {
+        "fecha": "2023-05-22T01:32:56.591Z",
+        "usuario": 1,
+        "orden": 50,
+        "active": false
+    }
+},
+{
+    "model": "mainApp.carrito",
+    "pk": 108,
+    "fields": {
+        "fecha": "2023-05-22T01:33:11.193Z",
+        "usuario": 1,
+        "orden": 50,
+        "active": false
+    }
+},
+{
+    "model": "mainApp.carrito",
+    "pk": 109,
+    "fields": {
+        "fecha": "2023-05-22T01:34:26.508Z",
+        "usuario": 1,
+        "orden": 50,
+        "active": false
+    }
+},
+{
+    "model": "mainApp.carrito",
+    "pk": 110,
+    "fields": {
+        "fecha": "2023-05-22T01:34:51.063Z",
+        "usuario": 1,
+        "orden": 50,
+        "active": true
     }
 },
 {
@@ -5005,6 +4820,42 @@
         "platillo": 4,
         "cantidad": 2,
         "carrito": null
+    }
+},
+{
+    "model": "mainApp.pedido",
+    "pk": 73,
+    "fields": {
+        "platillo": 1,
+        "cantidad": 3,
+        "carrito": 100
+    }
+},
+{
+    "model": "mainApp.pedido",
+    "pk": 74,
+    "fields": {
+        "platillo": 4,
+        "cantidad": 1,
+        "carrito": null
+    }
+},
+{
+    "model": "mainApp.pedido",
+    "pk": 75,
+    "fields": {
+        "platillo": 3,
+        "cantidad": 1,
+        "carrito": null
+    }
+},
+{
+    "model": "mainApp.pedido",
+    "pk": 76,
+    "fields": {
+        "platillo": 8,
+        "cantidad": 1,
+        "carrito": 100
     }
 }
 ]

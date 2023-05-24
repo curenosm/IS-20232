@@ -24,6 +24,6 @@ echo "ejecutando migrate..."
 python3 manage.py migrate
 
 echo "ejecutando loaddata..."
-python3 manage.py loaddata --exclude auth.permission --exclude contenttypes ./fixtures/db.xml
+python3 manage.py loaddata ./fixtures/db.json
 
 exec "$@"
