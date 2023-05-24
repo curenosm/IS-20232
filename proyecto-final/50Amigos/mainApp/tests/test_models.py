@@ -4,7 +4,7 @@ from django.test import TestCase
 
 from ..models import (Anuncio, Carrito, Categoria, Cupon, Orden, Pedido,
                       Platillo, Promocion, Role, Subcategoria, User)
-from .test_data import PEDIDOS, PLATILLOS, create_test_data
+from .test_data import PLATILLOS, create_test_data
 
 
 class TestModels(TestCase):
@@ -225,7 +225,6 @@ class TestModelString(TestCase):
             total = 0
             for p in self.pedidos:
                 total += p.get_subtotal()
-            
             assert c.get_total() == total
 
     def test_orden_total(self):
@@ -238,7 +237,7 @@ class TestModelString(TestCase):
                 lambda p: p.get_subtotal(),
                 o.get_pedidos(),
                 0)
-    
+
     def test_orden_desmarcar_carritos_como_activos(self):
         """
         Prueba para desmarcar los carritos de una orden.

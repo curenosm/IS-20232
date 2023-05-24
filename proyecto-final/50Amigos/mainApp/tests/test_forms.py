@@ -2,7 +2,7 @@ import uuid
 
 import pytest
 from django.contrib.auth import get_user_model
-from mixer.backend.django import mixer
+# from mixer.backend.django import mixer
 
 from ..forms import CustomUserCreationForm
 from .test_data import (TEST_EMAIL, TEST_FIRST_NAME, TEST_LAST_NAME,
