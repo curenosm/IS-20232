@@ -17,7 +17,11 @@ RUN apk update && apk upgrade \
 
 # copy entrypoint.sh
 COPY ./entrypoint.sh /usr/src/app/entrypoint.sh
-RUN chmod +x /usr/src/entrypoint.sh
+RUN chmod +x /usr/src/app/entrypoint.sh
+
+# To collect static properly
+RUN adduser -D user
+USER user
 
 # install dependencies
 RUN pip install --upgrade pip
@@ -26,10 +30,6 @@ RUN pip install -r requirements.txt
 
 # copy project
 COPY . /usr/src/app/
-
-# To collect static properly
-RUN adduser -D user
-USER user
 
 # run entrypoint.sh
 ENTRYPOINT ["/usr/src/app/entrypoint.sh"]
