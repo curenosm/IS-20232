@@ -13,7 +13,7 @@ ENV LIBRARY_PATH=/lib:/usr/lib
 # install psycopg2 dependencies
 RUN apk update && apk upgrade \
     && apk add postgresql-dev gcc python3-dev musl-dev bash \
-    jpeg-dev zlib-dev
+    jpeg-dev zlib-dev dos2unix
 
 # install dependencies
 RUN pip install --upgrade pip
@@ -23,6 +23,7 @@ RUN pip install -r requirements.txt
 # copy entrypoint.sh
 COPY ./entrypoint.sh /usr/src/app/entrypoint.sh
 RUN chmod +x /usr/src/app/entrypoint.sh
+RUN dos2unix entrypoint.sh
 
 # copy project
 COPY . /usr/src/app/
@@ -30,6 +31,3 @@ COPY . /usr/src/app/
 # To collect static properly
 RUN adduser -D user
 USER user
-
-# run entrypoint.sh
-ENTRYPOINT ["bash", "-c", "/usr/src/app/entrypoint.sh"]

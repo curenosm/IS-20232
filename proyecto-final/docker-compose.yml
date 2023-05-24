@@ -2,8 +2,10 @@ version: "3.9"
 
 services:
   web:
-    build: ./50Amigos
-    command: python manage.py runserver 0.0.0.0:8000
+    build: 
+      context: ./50Amigos
+      dockerfile: Dockerfile
+    command: python3 manage.py runserver 0.0.0.0:8000
     volumes:
       - ./50Amigos/:/usr/src/app/
     ports:
