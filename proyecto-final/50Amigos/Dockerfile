@@ -29,5 +29,5 @@ RUN dos2unix entrypoint.sh
 COPY . /usr/src/app/
 
 # To collect static properly
-RUN adduser -D user
-USER user
+# RUN adduser -D user
+# USER user

@@ -5,8 +5,7 @@ services:
     build: 
       context: ./50Amigos
       dockerfile: Dockerfile
-    command: python3 manage.py runserver 0.0.0.0:8000
-    entrypoint: /usr/src/app/entrypoint.sh
+    entrypoint: "/usr/src/app/entrypoint.sh"
     volumes:
       - ./50Amigos/:/usr/src/app/
     ports:
