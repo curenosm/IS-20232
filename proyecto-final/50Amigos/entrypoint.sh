@@ -29,4 +29,4 @@ python3 manage.py migrate
 echo "ejecutando loaddata..."
 python3 manage.py loaddata -v3 ./fixtures/db.json
 
-exec "$@"
+python3 manage.py runserver 0.0.0.0:8000
