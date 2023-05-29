@@ -1,6 +1,18 @@
+<style>
+    @font-face {
+        font-family: 'Norican Regular';
+        src: url('/static/fonts/Norican-Regular.ttf') format('truetype');
+    }
+
+    .my-navbar-brand {
+        font-family: 'Norican Regular', cursive !important;
+	font-size: 2em;
+    }
+</style>
+
 <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="{% url 'mainApp:inicio' %}">
+    <a class="navbar-brand my-navbar-brand" href="{% url 'mainApp:inicio' %}">
       50Amigos
     </a>
     <button
