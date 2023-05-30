@@ -1,0 +1,60 @@
+:root {
+    --blue: #00BECF;
+    --yellow: #FFB84C;
+    --purple: #A459D1;
+    --dark-purple: #952DD4;
+    --white: #FFFFFF;
+
+    --bs-border-width: 0px;
+}
+
+.custom-blue-bg {
+    background-color: var(--blue);
+}
+
+.custom-yellow-bg {
+    background-color: var(--yellow);
+}
+
+.custom-purple-bg {
+    background-color: var(--purple);
+}
+
+.custom-white-bg {
+    background-color: var(--white);
+}
+
+.custom-white {
+    color: var(--white);
+    font-weight: 550;
+}
+
+.text-muted {
+    --bs-text-opacity: 1;
+    color: var(--white)!important;
+}
+
+.custom-button {
+    background-color: var(--purple);
+    color: var(--white);
+}
+
+.custom-button:hover {
+    background-color: var(--dark-purple);
+    color: var(--white);
+}
+
+.custom-button:active {
+    background-color: var(--dark-purple);
+    color: var(--white);
+}
+
+.custom-decoration {
+    text-decoration: underline!important;
+}
+
+.custom-form input[type="text"],
+.custom-form input[type="password"],
+.custom-form input[type="email"] {
+    background-color: var(--yellow);
+}
