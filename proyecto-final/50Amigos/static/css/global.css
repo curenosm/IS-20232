@@ -1,23 +1,39 @@
+
+@font-face {
+    font-family: 'Norican Regular';
+    src: url("/static/fonts/Norican-Regular.ttf") format('truetype');
+}
+  
+.my-navbar-brand {
+    font-family: 'Norican Regular', cursive !important;
+    font-size: 2em;
+    color: black !important;
+}
+
+.specific-class {
+    position: absolute;
+    background-image: url("/static/img/helado_kawaii.png");
+}
+
 :root {
-    --blue: #00BECF;
-    --dark-blue: #05ACBB;
-    --yellow: #FFB84C;
-    --purple: #A459D1;
+    --blue: #89DAFF;
+    --dark-blue: #54C0FF;
+    --yellow: #ECE4B7; /* #fcc777; /* #fcc26a; */
+    --purple: #b17ad1;
     --dark-purple: #952DD4;
     --dark-purple-2: #7416AD;
-    --white: #FFFFFF;
-    --black: #000000;
+    --white: white;
+    --muted: rgb(227, 227, 227);
+    --black: black;
     --red: #D66874;
-    --dark-red: #9F544C;
+    --dark-red: darkred; /* #9F544C;*/
     --gray: #696767;
-
     --bs-border-width: 0px;
 }
 
 body {
     background-color: var(--blue);
     color: var(--white);
-    font-weight: 550;
 }
 
 a {
@@ -53,10 +69,6 @@ a {
     color: var(--gray);
 }
 
-.text-decoration-none {
-    text-decoration: underline !important;
-}
-
 .blockquote-footer {
     color: var(--white);
 }
@@ -66,16 +78,12 @@ a {
     color: var(--black);
 }
 
-.breadcrumb {
-    --bs-breadcrumb-divider-color: var(--white);
+hr {
+    border: var(--white) 2px solid !important;
 }
 
-.breadcrumb-item {
-    color: var(--white) !important;
-}
 
 .table {
-    color: var(--gray);
     background-color: var(--yellow);
 }
 
@@ -87,7 +95,7 @@ a {
 
 .text-muted {
     --bs-text-opacity: 1;
-    color: var(--white)!important;
+    color: var(--white) !important;
 }
 
 .invalid-feedback {

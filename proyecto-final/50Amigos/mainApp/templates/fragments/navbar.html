@@ -1,19 +1,8 @@
-<style>
-    @font-face {
-        font-family: 'Norican Regular';
-        src: url('/static/fonts/Norican-Regular.ttf') format('truetype');
-    }
-
-    .my-navbar-brand {
-        font-family: 'Norican Regular', cursive !important;
-	font-size: 2em;
-	color: #000000 !important;
-    }
-</style>
+{% load static %}
 
 <nav class="navbar navbar-expand-lg fixed-top navbar-light">
   <div class="container-fluid">
-    <img src="/static/img/Logo-50Amigos.png" width="65em" height="55em" alt="...">
+    <img src="{% static '/img/Logo-50Amigos.png' %}" width="65em" height="55em" alt="...">
     <a class="navbar-brand my-navbar-brand" href="{% url 'mainApp:inicio' %}">
       50Amigos
     </a>
