@@ -1,18 +1,6 @@
-
 @font-face {
     font-family: 'Norican Regular';
     src: url("/static/fonts/Norican-Regular.ttf") format('truetype');
-}
-  
-.my-navbar-brand {
-    font-family: 'Norican Regular', cursive !important;
-    font-size: 2em;
-    color: black !important;
-}
-
-.specific-class {
-    position: absolute;
-    background-image: url("/static/img/helado_kawaii.png");
 }
 
 :root {
@@ -31,93 +19,66 @@
     --bs-border-width: 0px;
 }
 
-body {
-    background-color: var(--blue);
-    color: var(--white);
-}
-
 a {
     color: var(--white);
 }
 
-.btn {
-    background-color: var(--purple);
-    color: var(--white) !important;
+body {
+    background-color: var(--blue);
+    color: var(--black);
 }
 
-.btn:hover {
-    background-color: var(--dark-purple);
-    color: var(--white);
+hr {
+    border: var(--black) 1px solid !important;
 }
 
-.btn:active {
-    background-color: var(--dark-purple);
-    color: var(--white);
-}
-
-.navbar {
-    background-color: var(--white);
-}
-
-.card {
-    background-color: var(--dark-blue);
-    color: var(--white);
-}
-
-.form-control {
-    background-color: var(--yellow) !important;
-    color: var(--gray);
-}
-
-.blockquote-footer {
-    color: var(--white);
-}
 
 .badge {
     background-color: var(--yellow);
     color: var(--black);
 }
 
-hr {
-    border: var(--white) 2px solid !important;
-}
-
-
-.table {
-    background-color: var(--yellow);
-}
-
-.bg-secondary {
-    --bs-bg-opacity: 1;
-    background-color: var(--dark-purple) !important;
+.btn, .btn:hover, .btn:active {
+    background-color: var(--dark-purple);
     color: var(--white) !important;
 }
 
-.text-muted {
-    --bs-text-opacity: 1;
-    color: var(--white) !important;
+.btn-outline-primary {
+    background-color: var(--white) !important;
+    color: var(--dark-purple) !important;
+    border: var(--dark-purple) 1px solid !important;
+}
+
+.card {
+    background-color: var(--dark-blue);
+    color: var(--white);
+    border: var(--black) 1px solid !important;
+}
+
+.form-control, select {
+    background-color: var(--yellow) !important;
 }
 
 .invalid-feedback {
     color: var(--dark-red);
 }
 
-.btn-outline-dark {
-    --bs-btn-active-bg: var(--dark-purple-2);
+.my-navbar-brand {
+    font-family: 'Norican Regular', cursive !important;
+    font-size: 2em;
+    color: black !important;
 }
 
-.btn-outline-success {
-    --bs-btn-active-bg: var(--dark-purple-2);
+.navbar {
+    background-color: var(--white);
 }
 
-.btn-outline-danger {
-    --bs-btn-active-bg: var(--dark-purple-2);
+.table {
+    background-color: var(--yellow);
+    border-radius: 5px;
 }
 
-.btn-outline-primary {
-    --bs-btn-active-bg: var(--dark-purple-2);
-}
-
-.btn-outline-secondary {
-    --bs-btn-active-bg: var(--dark-purple-2);
+.text-muted {
+    --bs-text-opacity: 1;
+    color: var(--white) !important;
 }

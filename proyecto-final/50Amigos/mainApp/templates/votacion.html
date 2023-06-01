@@ -51,11 +51,11 @@
   <button
     onclick="agregarParticipante()"
     type="button"
-    class="btn btn-outline-secondary">Agregar otro participante</button>
+    class="btn btn-outline-primary">Agregar otro participante</button>
   <button
     onclick="finalizarVotacion()"
     type="button"
-    class="btn btn-outline-primary"
+    class="btn btn-primary"
     data-bs-dismiss="modal">Finalizar votación</button>
 {% endblock %}
 
@@ -86,7 +86,7 @@
   <button
     id="botonVotar"
     {{ orden.disabled_if_votacion_concluida }}
-    class="btn btn-outline-primary"
+    class="btn btn-primary"
     data-bs-toggle="modal"
     data-bs-target="#globalModal">
     Votar!

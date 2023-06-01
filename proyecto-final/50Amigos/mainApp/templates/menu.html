@@ -88,7 +88,7 @@
 {% for categoria in categorias %}
   <a
     href="#categoria-{{ categoria.id }}"
-    class="badge rounded-pill bg-secondary mt-2 text-decoration-none">
+    class="badge badge-outline rounded-pill mt-2 text-decoration-none">
     <span class="fs-6">{{ categoria.nombre }}</span>
   </a>
 {% endfor %}
@@ -162,20 +162,20 @@
                   {{ platillo.disabled_if_helado }}
                   onclick="decrementCount({{ platillo.id }})"
                   type="button"
-                  class="btn btn-outline-secondary">
+                  class="btn btn-primary">
                   <i class="bi bi-dash"></i>
                 </button>
                 <button
                   id="counter{{platillo.id}}"
                   type="button"
-                  class="btn btn-outline-secondary"
+                  class="btn btn-outline-primary"
                   disabled
                   />1</button>
                 <button
                   {{ platillo.disabled_if_helado }}
                   onclick="incrementCount({{ platillo.id }})"
                   type="button"
-                  class="btn btn-outline-secondary">
+                  class="btn btn-primary">
                   <i class="bi bi-plus"></i>
                 </button>
               </div>
@@ -187,7 +187,7 @@
             <div class="d-grid gap-2">
               <button
                 {{ platillo.disabled_if_helado }}
-                class="btn btn-outline-success"
+                class="btn btn-primary"
                 onclick="agregarAlCarrito({{ platillo.id }})"
                 class="card-link">
                 <i class="bi bi-cart-plus"></i>&nbsp;
@@ -208,7 +208,7 @@
   </div>
   <br>
   {% endfor %}
-  <a href="#breadcrumb" class="btn btn-outline-primary float-end rounded-circle">
+  <a href="#breadcrumb" class="text-decoration-none float-end rounded-circle">
     <i class="bi bi-arrow-up"></i>
   </a>
   <br>
