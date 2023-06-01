@@ -239,8 +239,6 @@ function loadModalDetails(platilloId) {
   let alergenos = $(`#platillo-${platilloId}-alergenos`)
     .html();
 
-  console.log(precio, nombre, descripcion, imagen);
-
   $('#platilloPrecio').text(precio ? precio : '');
   $('#tituloModal').html(nombre ? nombre : '');
   $('#platilloIngredientes').html(ingredientes ? ingredientes : '');
