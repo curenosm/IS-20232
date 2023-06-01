@@ -4,13 +4,6 @@
 {% block title %}Votación{% endblock %}
 
 
-{% block styles %}
-<style>
-{% include 'css/global.css' %}
-</style>
-{% endblock %}
-
-
 {# Usando modal de manera global, para que empate con AnimateCSS #}
 {% block modal_header %}
   <h5
@@ -103,11 +96,11 @@
   <div
     id="resultados"
     style="display: none;"
-    class="text-center">
+    class="text-center graph-text">
       <canvas id="myChart"></canvas>
   </div>
 {% else %}
-  <div class="text-black">
+  <div>
     La votación ya concluyó, el ganador fue:
     <b>{{ orden.helado_escogido.nombre }}</b>
     <br>

@@ -1,0 +1,123 @@
+
+@font-face {
+    font-family: 'Norican Regular';
+    src: url("/static/fonts/Norican-Regular.ttf") format('truetype');
+}
+  
+.my-navbar-brand {
+    font-family: 'Norican Regular', cursive !important;
+    font-size: 2em;
+    color: black !important;
+}
+
+.specific-class {
+    position: absolute;
+    background-image: url("/static/img/helado_kawaii.png");
+}
+
+:root {
+    --blue: #89DAFF;
+    --dark-blue: #54C0FF;
+    --yellow: #ECE4B7; /* #fcc777; /* #fcc26a; */
+    --purple: #b17ad1;
+    --dark-purple: #952DD4;
+    --dark-purple-2: #7416AD;
+    --white: white;
+    --muted: rgb(227, 227, 227);
+    --black: black;
+    --red: #D66874;
+    --dark-red: darkred; /* #9F544C;*/
+    --gray: #696767;
+    --bs-border-width: 0px;
+}
+
+body {
+    background-color: var(--blue);
+    color: var(--white);
+}
+
+a {
+    color: var(--white);
+}
+
+.btn {
+    background-color: var(--purple);
+    color: var(--white) !important;
+}
+
+.btn:hover {
+    background-color: var(--dark-purple);
+    color: var(--white);
+}
+
+.btn:active {
+    background-color: var(--dark-purple);
+    color: var(--white);
+}
+
+.navbar {
+    background-color: var(--white);
+}
+
+.card {
+    background-color: var(--dark-blue);
+    color: var(--white);
+}
+
+.form-control {
+    background-color: var(--yellow) !important;
+    color: var(--gray);
+}
+
+.blockquote-footer {
+    color: var(--white);
+}
+
+.badge {
+    background-color: var(--yellow);
+    color: var(--black);
+}
+
+hr {
+    border: var(--white) 2px solid !important;
+}
+
+
+.table {
+    background-color: var(--yellow);
+}
+
+.bg-secondary {
+    --bs-bg-opacity: 1;
+    background-color: var(--dark-purple) !important;
+    color: var(--white) !important;
+}
+
+.text-muted {
+    --bs-text-opacity: 1;
+    color: var(--white) !important;
+}
+
+.invalid-feedback {
+    color: var(--dark-red);
+}
+
+.btn-outline-dark {
+    --bs-btn-active-bg: var(--dark-purple-2);
+}
+
+.btn-outline-success {
+    --bs-btn-active-bg: var(--dark-purple-2);
+}
+
+.btn-outline-danger {
+    --bs-btn-active-bg: var(--dark-purple-2);
+}
+
+.btn-outline-primary {
+    --bs-btn-active-bg: var(--dark-purple-2);
+}
+
+.btn-outline-secondary {
+    --bs-btn-active-bg: var(--dark-purple-2);
+}

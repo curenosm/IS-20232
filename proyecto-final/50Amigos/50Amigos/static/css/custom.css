@@ -1,0 +1,115 @@
+:root {
+    --blue: #00BECF;
+    --dark-blue: #05ACBB;
+    --yellow: #FFB84C;
+    --purple: #A459D1;
+    --dark-purple: #952DD4;
+    --dark-purple-2: #7416AD;
+    --white: #FFFFFF;
+    --black: #000000;
+    --red: #D66874;
+    --dark-red: #9F544C;
+    --gray: #696767;
+
+    --bs-border-width: 0px;
+}
+
+body {
+    background-color: var(--blue);
+    color: var(--white);
+    font-weight: 550;
+}
+
+a {
+    color: var(--white);
+}
+
+.btn {
+    background-color: var(--purple);
+    color: var(--white) !important;
+}
+
+.btn:hover {
+    background-color: var(--dark-purple);
+    color: var(--white);
+}
+
+.btn:active {
+    background-color: var(--dark-purple);
+    color: var(--white);
+}
+
+.navbar {
+    background-color: var(--white);
+}
+
+.card {
+    background-color: var(--dark-blue);
+    color: var(--white);
+}
+
+.form-control {
+    background-color: var(--yellow) !important;
+    color: var(--gray);
+}
+
+.text-decoration-none {
+    text-decoration: underline !important;
+}
+
+.blockquote-footer {
+    color: var(--white);
+}
+
+.badge {
+    background-color: var(--yellow);
+    color: var(--black);
+}
+
+.breadcrumb {
+    --bs-breadcrumb-divider-color: var(--white);
+}
+
+.breadcrumb-item {
+    color: var(--white) !important;
+}
+
+.table {
+    color: var(--gray);
+    background-color: var(--yellow);
+}
+
+.bg-secondary {
+    --bs-bg-opacity: 1;
+    background-color: var(--dark-purple) !important;
+    color: var(--white) !important;
+}
+
+.text-muted {
+    --bs-text-opacity: 1;
+    color: var(--white)!important;
+}
+
+.invalid-feedback {
+    color: var(--dark-red);
+}
+
+.btn-outline-dark {
+    --bs-btn-active-bg: var(--dark-purple-2);
+}
+
+.btn-outline-success {
+    --bs-btn-active-bg: var(--dark-purple-2);
+}
+
+.btn-outline-danger {
+    --bs-btn-active-bg: var(--dark-purple-2);
+}
+
+.btn-outline-primary {
+    --bs-btn-active-bg: var(--dark-purple-2);
+}
+
+.btn-outline-secondary {
+    --bs-btn-active-bg: var(--dark-purple-2);
+}

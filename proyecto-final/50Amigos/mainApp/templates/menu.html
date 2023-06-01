@@ -88,7 +88,7 @@
 {% for categoria in categorias %}
   <a
     href="#categoria-{{ categoria.id }}"
-    class="badge rounded-pill bg-secondary text-decoration-none mt-2">
+    class="badge rounded-pill bg-secondary mt-2 text-decoration-none">
     <span class="fs-6">{{ categoria.nombre }}</span>
   </a>
 {% endfor %}
@@ -208,7 +208,7 @@
   </div>
   <br>
   {% endfor %}
-  <a href="#breadcrumb" class="btn float-end rounded-circle">
+  <a href="#breadcrumb" class="btn btn-outline-primary float-end rounded-circle">
     <i class="bi bi-arrow-up"></i>
   </a>
   <br>

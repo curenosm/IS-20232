@@ -1,6 +1,9 @@
-<nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+{% load static %}
+
+<nav class="navbar navbar-expand-lg fixed-top navbar-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="{% url 'mainApp:inicio' %}">
+    <img src="{% static '/img/Logo-50Amigos.png' %}" width="65em" height="55em" alt="...">
+    <a class="navbar-brand my-navbar-brand" href="{% url 'mainApp:inicio' %}">
       50Amigos
     </a>
     <button
