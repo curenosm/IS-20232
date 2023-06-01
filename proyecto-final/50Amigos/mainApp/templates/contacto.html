@@ -13,21 +13,21 @@
   <ol class="breadcrumb">
     <li class="breadcrumb-item">
       <a
-        class="text-decoration-none custom-white"
+        class="text-decoration-none"
         href="{% url 'mainApp:inicio' %}">Inicio</a>
     </li>
     <li class="breadcrumb-item active" aria-current="page">
-      <a class="custom-white">Contacto</a>
+      <a>Contacto</a>
     </li>
   </ol>
 </nav>
 
 <br>
-<h1 class="custom-white">Contacto</h1>
+<h1>Contacto</h1>
 <hr>
 <br>
 
-<div class="jumbotron custom-white">
+<div class="jumbotron">
   <h1 class="display-4 my-3">¡Hola, 50Amigo!</h1>
   <p class="lead">
     Toda nuestra información empresarial y de contacto estará listada muy
@@ -52,8 +52,8 @@
 <hr>
 <br>
 <br>
-<div class="card custom-white">
-  <div class="card-body custom-blue-bg">
+<div class="card">
+  <div class="card-body">
     <form method="post" class="mt-4">
       <div style="display:none">
         <input
@@ -61,7 +61,7 @@
           name="csrfmiddlewaretoken"
           value="{{ csrf_token }}" />
       </div>
-      <div class="form-group custom-form">
+      <div class="form-group">
         <label for="email">Email:</label>
         <input
           class="form-control mt-3"
@@ -74,7 +74,7 @@
       <div class="d-grid gap-2">
         <button
           type="submit"
-          class="btn btn-outline-primary float-end custom-button"
+          class="btn btn-outline-primary float-end"
           role="button">Suscribirme</button>
       </div>
     </form>

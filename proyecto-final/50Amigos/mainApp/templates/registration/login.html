@@ -15,17 +15,17 @@
 <br>
 <div class="row">
   <div class="col-12 col-md-6 offset-md-3">
-    <div class="card custom-white">
-      <div class="card-body custom-blue-bg">
+    <div class="card">
+      <div class="card-body">
         <h3>Ingresa tus datos</h3>
         <hr>
-        <form action="" method="post" class="custom-form">
+        <form action="" method="post">
           {% csrf_token %}
           {{form | crispy}}
           <br>
           <small class="float-end">
             <a
-              class="text-decoration-none custom-white custom-decoration"
+              class="text-decoration-none"
               href="{% url 'mainApp:inicio' %}">
               ¿Olvidaste la contraseña?
             </a>
@@ -33,7 +33,7 @@
           <br>
           <small class="float-end">
             <a
-              class="text-decoration-none custom-white custom-decoration"
+              class="text-decoration-none"
               href="{% url 'admin:index' %}">
               ¿Eres un administrador?
             </a>
@@ -44,7 +44,7 @@
             <input
               type="submit"
               name="Ingresar"
-              class="btn btn-outline-success float-end custom-button"/>
+              class="btn btn-outline-success float-end"/>
           </div>
         </form>
       </div>
