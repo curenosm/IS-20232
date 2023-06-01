@@ -1,84 +1,94 @@
 @font-face {
-    font-family: 'Norican Regular';
-    src: url("/static/fonts/Norican-Regular.ttf") format('truetype');
+  font-family: "Norican Regular";
+  src: url("/static/fonts/Norican-Regular.ttf") format("truetype");
 }
 
 :root {
-    --blue: #89DAFF;
-    --dark-blue: #54C0FF;
-    --yellow: #ECE4B7; /* #fcc777; /* #fcc26a; */
-    --purple: #b17ad1;
-    --dark-purple: #952DD4;
-    --dark-purple-2: #7416AD;
-    --white: white;
-    --muted: rgb(227, 227, 227);
-    --black: black;
-    --red: #D66874;
-    --dark-red: darkred; /* #9F544C;*/
-    --gray: #696767;
-    --bs-border-width: 0px;
+  --blue: #89daff;
+  --dark-blue: #54c0ff;
+  --yellow: #ece4b7;
+  /* #fcc777; /* #fcc26a; */
+  --purple: #b17ad1;
+  --dark-purple: #952dd4;
+  --dark-purple-2: #7416ad;
+  --white: white;
+  --muted: rgb(227, 227, 227);
+  --black: black;
+  --red: #d66874;
+  --dark-red: darkred;
+  /* #9F544C;*/
+  --gray: #696767;
+  --bs-border-width: 0px;
 }
 
 a {
-    color: var(--white);
+  color: var(--white);
 }
 
 body {
-    background-color: var(--blue);
-    color: var(--black);
+  background-color: var(--blue);
+  color: var(--black);
 }
 
 hr {
-    border: var(--black) 1px solid !important;
+  border: var(--black) 1px solid !important;
 }
-
 
 .badge {
-    background-color: var(--yellow);
-    color: var(--black);
+  background-color: var(--yellow);
+  color: var(--black);
 }
 
-.btn, .btn:hover, .btn:active {
-    background-color: var(--dark-purple);
-    color: var(--white) !important;
+.btn-primary,
+.btn:hover,
+.btn:active {
+  background-color: var(--dark-purple);
+  color: var(--white) !important;
 }
 
-.btn-outline-primary {
-    background-color: var(--white) !important;
-    color: var(--dark-purple) !important;
-    border: var(--dark-purple) 1px solid !important;
+.btn-outline-primary,
+.btn-outline-primary:hover {
+  background-color: var(--white) !important;
+  color: var(--dark-purple) !important;
+  border: var(--dark-purple) 1px solid !important;
+}
+
+.btn-link {
+  background-color: none !important;
+  color: var(--dark-purple) !important;
 }
 
 .card {
-    background-color: var(--dark-blue);
-    color: var(--white);
-    border: var(--black) 1px solid !important;
+  background-color: var(--dark-blue);
+  color: var(--white);
+  border: var(--black) 1px solid !important;
 }
 
-.form-control, select {
-    background-color: var(--yellow) !important;
+.form-control,
+select {
+  background-color: var(--yellow) !important;
 }
 
 .invalid-feedback {
-    color: var(--dark-red);
+  color: var(--dark-red);
 }
 
 .my-navbar-brand {
-    font-family: 'Norican Regular', cursive !important;
-    font-size: 2em;
-    color: black !important;
+  font-family: "Norican Regular", cursive !important;
+  font-size: 2em;
+  color: black !important;
 }
 
 .navbar {
-    background-color: var(--white);
+  background-color: var(--white);
 }
 
 .table {
-    background-color: var(--yellow);
-    border-radius: 5px;
+  background-color: var(--yellow);
+  border-radius: 5px;
 }
 
 .text-muted {
-    --bs-text-opacity: 1;
-    color: var(--white) !important;
+  --bs-text-opacity: 1;
+  color: var(--white) !important;
 }

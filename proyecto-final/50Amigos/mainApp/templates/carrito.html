@@ -68,7 +68,7 @@
         <button
           type="button"
           onclick="disminuirCantidad({{ pedido.platillo.id }})"
-          class="btn btn-sm">
+          class="btn btn-link btn-sm">
           <i class="bi bi-dash"></i>
         </button>
       </td>
@@ -79,7 +79,7 @@
         <button
           type="button"
           onclick="aumentarCantidad({{ pedido.platillo.id }})"
-          class="btn btn-sm">
+          class="btn btn-sm btn-link ">
           <i class="bi bi-plus"></i>
         </button>
       </td>
@@ -87,7 +87,7 @@
         <button
           type="button"
           onclick="eliminarPlatillo({{ pedido.platillo.id }})"
-          class="btn btn-sm">
+          class="btn btn-sm btn-link">
           <i class="bi bi-trash"></i>
         </button>
       </td>
@@ -96,7 +96,7 @@
   </tbody>
 </table>
 <div class="float-end">
-<span class="h5">
+<span class="h5 float-end">
   Total: &nbsp;&nbsp;$ {{ carrito.get_total }}
 </span>
 <br>
@@ -151,7 +151,7 @@ las tarifas con impuestos se muestran al final. Se agradece su propina.
   </tbody>
 </table>
 <div class="float-end">
-  <span class="h5">
+  <span class="h5 float-end">
     Total: &nbsp;&nbsp;$ {{ orden.get_total }}
   </span>
   <br>
