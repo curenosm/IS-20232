@@ -92,3 +92,34 @@ select {
   --bs-text-opacity: 1;
   color: var(--white) !important;
 }
+
+.carousel-inner {
+  border-radius: 1em;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  border-radius: 0.5em;
+  background-color: var(--dark-purple);
+  opacity: 1 !important;
+  width: 10% !important;
+}
+
+.custom-carousel-ads img {
+  width: 100%;
+  height: 7em;
+  object-fit: cover;
+}
+
+.custom-carousel-promotions img {
+  width: 100%;
+  height: 25em;
+  object-fit: cover;
+}
+
+.carousel-caption {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-radius: 0.5em;
+}
