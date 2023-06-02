@@ -144,9 +144,18 @@
           {% if platillo.get_ingredientes_list %}
           <ul
             id="platillo-{{ platillo.id }}-ingredientes"
-            class="list-group list-group-flush" hidden>
+            class="list-group" hidden>
             {% for ingrediente in platillo.get_ingredientes_list %}
-              <li class="list-group-item text-muted">{{ ingrediente }}</li>
+              <li class="list-group-item">{{ ingrediente }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+          {% if platillo.get_alergenos_list %}
+          <ul
+            id="platillo-{{ platillo.id }}-alergenos"
+            class="list-group" hidden>
+            {% for alergeno in platillo.get_alergenos_list %}
+              <li class="list-group-item">{{ alergeno }}</li>
             {% endfor %}
           </ul>
           {% endif %}
@@ -225,19 +234,22 @@
 <script>
 
 function loadModalDetails(platilloId) {
-  let precio = $(`#platillo-${platilloId}-precio`)
-    .text()
-    .trim();
-  let nombre = $(`#platillo-${platilloId}-nombre`)
-    .text()
-    .trim();
-  let descripcion = $(`#platillo-${platilloId}-descripcion`)
-    .text()
-    .trim();
+
+  let precio = $(`#platillo-${platilloId}-precio`).text().trim();
+  let nombre = $(`#platillo-${platilloId}-nombre`).text().trim();
+  let descripcion = $(`#platillo-${platilloId}-descripcion`).text().trim();
   let imagen = $(`#platillo-${platilloId}-imagen`).attr('src');
-  let ingredientes = $(`#platillo-${platilloId}-ingredientes`).html();
-  let alergenos = $(`#platillo-${platilloId}-alergenos`)
-    .html();
+  let ingredientesId = `#platillo-${platilloId}-ingredientes`;
+  console.log(ingredientesId);
+  let ingredientes = $(ingredientesId).html();
+  console.log(ingredientes);
+  let alergenosId = `#platillo-${platilloId}-alergenos`;
+  console.log(alergenosId);
+  let alergenos = $(alergenosId).html();
+  console.log(alergenos);
+
+  console.log(alergenos);
+  console.log(ingredientes);
 
   $('#platilloPrecio').text(precio ? precio : '');
   $('#tituloModal').html(nombre ? nombre : '');

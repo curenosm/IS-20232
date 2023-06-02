@@ -215,6 +215,9 @@ function agregarParticipante() {
  * de helado a la orden actual del usuario.
  */
 function finalizarVotacion() {
+  
+  agregarParticipante();
+
   $('#resultados').toggle();
 
   let heladoEscogido = -1;
