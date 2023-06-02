@@ -3212,6 +3212,8 @@
     <object model="admin.logentry" pk="234">
         <field name="action_time" type="DateTimeField">2023-05-23T08:51:47.610769+00:00</field>
         <field name="user" rel="ManyToOneRel" to="mainApp.user">1</field>
+<<<<<<< HEAD
+=======
         <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">7</field>
         <field name="object_id" type="TextField">16</field>
         <field name="object_repr" type="CharField">
@@ -4179,203 +4181,302 @@
     </object>
     <object model="auth.permission" pk="25">
         <field name="name" type="CharField">Can add platillo</field>
+>>>>>>> main
         <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">7</field>
-        <field name="codename" type="CharField">add_platillo</field>
+        <field name="object_id" type="TextField">16</field>
+        <field name="object_repr" type="CharField">
+                Id: 16
+                Nombre: Consom├® de pollo
+                Categoria: 
+                Id: 4
+                Nombre: Entradas
+                
+                </field>
+        <field name="action_flag" type="PositiveSmallIntegerField">1</field>
+        <field name="change_message" type="TextField">[{"added": {}}]</field>
     </object>
-    <object model="auth.permission" pk="26">
-        <field name="name" type="CharField">Can change platillo</field>
+    <object model="admin.logentry" pk="235">
+        <field name="action_time" type="DateTimeField">2023-05-23T08:52:57.458269+00:00</field>
+        <field name="user" rel="ManyToOneRel" to="mainApp.user">1</field>
         <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">7</field>
-        <field name="codename" type="CharField">change_platillo</field>
+        <field name="object_id" type="TextField">16</field>
+        <field name="object_repr" type="CharField">
+                Id: 16
+                Nombre: Consom├® de pollo
+                Categoria: 
+                Id: 4
+                Nombre: Entradas
+                
+                </field>
+        <field name="action_flag" type="PositiveSmallIntegerField">2</field>
+        <field name="change_message" type="TextField">[{"changed": {"fields": ["Imagen"]}}]</field>
     </object>
-    <object model="auth.permission" pk="27">
-        <field name="name" type="CharField">Can delete platillo</field>
+    <object model="admin.logentry" pk="236">
+        <field name="action_time" type="DateTimeField">2023-05-23T08:53:56.504691+00:00</field>
+        <field name="user" rel="ManyToOneRel" to="mainApp.user">1</field>
         <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">7</field>
-        <field name="codename" type="CharField">delete_platillo</field>
+        <field name="object_id" type="TextField">16</field>
+        <field name="object_repr" type="CharField">
+                Id: 16
+                Nombre: Consom├® de pollo
+                Categoria: 
+                Id: 4
+                Nombre: Entradas
+                
+                </field>
+        <field name="action_flag" type="PositiveSmallIntegerField">2</field>
+        <field name="change_message" type="TextField">[{"changed": {"fields": ["Imagen"]}}]</field>
     </object>
-    <object model="auth.permission" pk="28">
-        <field name="name" type="CharField">Can view platillo</field>
+    <object model="admin.logentry" pk="237">
+        <field name="action_time" type="DateTimeField">2023-05-23T09:03:36.733927+00:00</field>
+        <field name="user" rel="ManyToOneRel" to="mainApp.user">1</field>
+        <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">12</field>
+        <field name="object_id" type="TextField">10000</field>
+        <field name="object_repr" type="CharField">
+                Id: 10000
+                Nombre: Cremas
+                Categoria: 
+                Id: 4
+                Nombre: Entradas
+                
+                </field>
+        <field name="action_flag" type="PositiveSmallIntegerField">1</field>
+        <field name="change_message" type="TextField">[{"added": {}}]</field>
+    </object>
+    <object model="admin.logentry" pk="238">
+        <field name="action_time" type="DateTimeField">2023-05-23T09:07:05.230434+00:00</field>
+        <field name="user" rel="ManyToOneRel" to="mainApp.user">1</field>
         <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">7</field>
-        <field name="codename" type="CharField">view_platillo</field>
+        <field name="object_id" type="TextField">17</field>
+        <field name="object_repr" type="CharField">
+                Id: 17
+                Nombre: Crema de elote
+                Categoria: 
+                Id: 4
+                Nombre: Entradas
+                
+                </field>
+        <field name="action_flag" type="PositiveSmallIntegerField">1</field>
+        <field name="change_message" type="TextField">[{"added": {}}]</field>
     </object>
-    <object model="auth.permission" pk="29">
-        <field name="name" type="CharField">Can add User</field>
-        <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">8</field>
-        <field name="codename" type="CharField">add_user</field>
+    <object model="admin.logentry" pk="239">
+        <field name="action_time" type="DateTimeField">2023-05-23T09:11:45.775567+00:00</field>
+        <field name="user" rel="ManyToOneRel" to="mainApp.user">1</field>
+        <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">7</field>
+        <field name="object_id" type="TextField">18</field>
+        <field name="object_repr" type="CharField">
+                Id: 18
+                Nombre: Crema de champi├▒ones
+                Categoria: 
+                Id: 4
+                Nombre: Entradas
+                
+                </field>
+        <field name="action_flag" type="PositiveSmallIntegerField">1</field>
+        <field name="change_message" type="TextField">[{"added": {}}]</field>
     </object>
-    <object model="auth.permission" pk="30">
-        <field name="name" type="CharField">Can change User</field>
-        <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">8</field>
-        <field name="codename" type="CharField">change_user</field>
+    <object model="admin.logentry" pk="240">
+        <field name="action_time" type="DateTimeField">2023-05-23T09:12:33.461347+00:00</field>
+        <field name="user" rel="ManyToOneRel" to="mainApp.user">1</field>
+        <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">7</field>
+        <field name="object_id" type="TextField">18</field>
+        <field name="object_repr" type="CharField">
+                Id: 18
+                Nombre: Crema de champi├▒ones
+                Categoria: 
+                Id: 4
+                Nombre: Entradas
+                
+                </field>
+        <field name="action_flag" type="PositiveSmallIntegerField">2</field>
+        <field name="change_message" type="TextField">[{"changed": {"fields": ["Imagen"]}}]</field>
     </object>
-    <object model="auth.permission" pk="31">
-        <field name="name" type="CharField">Can delete User</field>
-        <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">8</field>
-        <field name="codename" type="CharField">delete_user</field>
+    <object model="admin.logentry" pk="241">
+        <field name="action_time" type="DateTimeField">2023-05-23T09:17:57.324557+00:00</field>
+        <field name="user" rel="ManyToOneRel" to="mainApp.user">1</field>
+        <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">7</field>
+        <field name="object_id" type="TextField">19</field>
+        <field name="object_repr" type="CharField">
+                Id: 19
+                Nombre: Crema de zanahoria
+                Categoria: 
+                Id: 4
+                Nombre: Entradas
+                
+                </field>
+        <field name="action_flag" type="PositiveSmallIntegerField">1</field>
+        <field name="change_message" type="TextField">[{"added": {}}]</field>
     </object>
-    <object model="auth.permission" pk="32">
-        <field name="name" type="CharField">Can view User</field>
-        <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">8</field>
-        <field name="codename" type="CharField">view_user</field>
+    <object model="admin.logentry" pk="242">
+        <field name="action_time" type="DateTimeField">2023-05-23T09:31:51.266740+00:00</field>
+        <field name="user" rel="ManyToOneRel" to="mainApp.user">1</field>
+        <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">7</field>
+        <field name="object_id" type="TextField">20</field>
+        <field name="object_repr" type="CharField">
+                Id: 20
+                Nombre: Mole poblano
+                Categoria: 
+                Id: 5
+                Nombre: Especiales
+                
+                </field>
+        <field name="action_flag" type="PositiveSmallIntegerField">1</field>
+        <field name="change_message" type="TextField">[{"added": {}}]</field>
     </object>
-    <object model="auth.permission" pk="33">
-        <field name="name" type="CharField">Can add orden</field>
-        <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">9</field>
-        <field name="codename" type="CharField">add_orden</field>
-    </object>
-    <object model="auth.permission" pk="34">
-        <field name="name" type="CharField">Can change orden</field>
-        <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">9</field>
-        <field name="codename" type="CharField">change_orden</field>
-    </object>
-    <object model="auth.permission" pk="35">
-        <field name="name" type="CharField">Can delete orden</field>
-        <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">9</field>
-        <field name="codename" type="CharField">delete_orden</field>
-    </object>
-    <object model="auth.permission" pk="36">
-        <field name="name" type="CharField">Can view orden</field>
-        <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">9</field>
-        <field name="codename" type="CharField">view_orden</field>
-    </object>
-    <object model="auth.permission" pk="37">
-        <field name="name" type="CharField">Can add role</field>
-        <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">10</field>
-        <field name="codename" type="CharField">add_role</field>
-    </object>
-    <object model="auth.permission" pk="38">
-        <field name="name" type="CharField">Can change role</field>
-        <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">10</field>
-        <field name="codename" type="CharField">change_role</field>
-    </object>
-    <object model="auth.permission" pk="39">
-        <field name="name" type="CharField">Can delete role</field>
-        <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">10</field>
-        <field name="codename" type="CharField">delete_role</field>
-    </object>
-    <object model="auth.permission" pk="40">
-        <field name="name" type="CharField">Can view role</field>
-        <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">10</field>
-        <field name="codename" type="CharField">view_role</field>
-    </object>
-    <object model="auth.permission" pk="41">
-        <field name="name" type="CharField">Can add pedido</field>
-        <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">11</field>
-        <field name="codename" type="CharField">add_pedido</field>
-    </object>
-    <object model="auth.permission" pk="42">
-        <field name="name" type="CharField">Can change pedido</field>
-        <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">11</field>
-        <field name="codename" type="CharField">change_pedido</field>
-    </object>
-    <object model="auth.permission" pk="43">
-        <field name="name" type="CharField">Can delete pedido</field>
-        <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">11</field>
-        <field name="codename" type="CharField">delete_pedido</field>
-    </object>
-    <object model="auth.permission" pk="44">
-        <field name="name" type="CharField">Can view pedido</field>
-        <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">11</field>
-        <field name="codename" type="CharField">view_pedido</field>
-    </object>
-    <object model="auth.permission" pk="45">
-        <field name="name" type="CharField">Can add subcategoria</field>
-        <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">12</field>
-        <field name="codename" type="CharField">add_subcategoria</field>
-    </object>
-    <object model="auth.permission" pk="46">
-        <field name="name" type="CharField">Can change subcategoria</field>
-        <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">12</field>
-        <field name="codename" type="CharField">change_subcategoria</field>
-    </object>
-    <object model="auth.permission" pk="47">
-        <field name="name" type="CharField">Can delete subcategoria</field>
-        <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">12</field>
-        <field name="codename" type="CharField">delete_subcategoria</field>
-    </object>
-    <object model="auth.permission" pk="48">
-        <field name="name" type="CharField">Can view subcategoria</field>
-        <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">12</field>
-        <field name="codename" type="CharField">view_subcategoria</field>
-    </object>
-    <object model="auth.permission" pk="49">
-        <field name="name" type="CharField">Can add anuncio</field>
+    <object model="admin.logentry" pk="243">
+        <field name="action_time" type="DateTimeField">2023-05-23T09:41:44.567060+00:00</field>
+        <field name="user" rel="ManyToOneRel" to="mainApp.user">1</field>
         <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">13</field>
-        <field name="codename" type="CharField">add_anuncio</field>
+        <field name="object_id" type="TextField">1</field>
+        <field name="object_repr" type="CharField">Id: 1, Anunciante: 1, Nombre: hola</field>
+        <field name="action_flag" type="PositiveSmallIntegerField">1</field>
+        <field name="change_message" type="TextField">[{"added": {}}]</field>
     </object>
-    <object model="auth.permission" pk="50">
-        <field name="name" type="CharField">Can change anuncio</field>
+    <object model="admin.logentry" pk="244">
+        <field name="action_time" type="DateTimeField">2023-05-23T09:42:51.656992+00:00</field>
+        <field name="user" rel="ManyToOneRel" to="mainApp.user">1</field>
         <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">13</field>
-        <field name="codename" type="CharField">change_anuncio</field>
+        <field name="object_id" type="TextField">1</field>
+        <field name="object_repr" type="CharField">Id: 1, Anunciante: 1, Nombre: hola</field>
+        <field name="action_flag" type="PositiveSmallIntegerField">2</field>
+        <field name="change_message" type="TextField">[{"changed": {"fields": ["Imagen"]}}]</field>
     </object>
-    <object model="auth.permission" pk="51">
-        <field name="name" type="CharField">Can delete anuncio</field>
+    <object model="admin.logentry" pk="245">
+        <field name="action_time" type="DateTimeField">2023-05-23T09:43:12.539978+00:00</field>
+        <field name="user" rel="ManyToOneRel" to="mainApp.user">1</field>
         <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">13</field>
-        <field name="codename" type="CharField">delete_anuncio</field>
+        <field name="object_id" type="TextField">1</field>
+        <field name="object_repr" type="CharField">Id: 1, Anunciante: 1, Nombre: hola</field>
+        <field name="action_flag" type="PositiveSmallIntegerField">3</field>
+        <field name="change_message" type="TextField"></field>
     </object>
-    <object model="auth.permission" pk="52">
-        <field name="name" type="CharField">Can view anuncio</field>
-        <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">13</field>
-        <field name="codename" type="CharField">view_anuncio</field>
+    <object model="admin.logentry" pk="246">
+        <field name="action_time" type="DateTimeField">2023-05-23T09:46:58.725863+00:00</field>
+        <field name="user" rel="ManyToOneRel" to="mainApp.user">1</field>
+        <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">12</field>
+        <field name="object_id" type="TextField">10001</field>
+        <field name="object_repr" type="CharField">
+                Id: 10001
+                Nombre: Sopas
+                Categoria: 
+                Id: 4
+                Nombre: Entradas
+                
+                </field>
+        <field name="action_flag" type="PositiveSmallIntegerField">1</field>
+        <field name="change_message" type="TextField">[{"added": {}}]</field>
     </object>
-    <object model="auth.permission" pk="53">
-        <field name="name" type="CharField">Can add Promocion</field>
-        <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">14</field>
-        <field name="codename" type="CharField">add_promocion</field>
+    <object model="admin.logentry" pk="247">
+        <field name="action_time" type="DateTimeField">2023-05-23T09:47:13.094381+00:00</field>
+        <field name="user" rel="ManyToOneRel" to="mainApp.user">1</field>
+        <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">12</field>
+        <field name="object_id" type="TextField">10002</field>
+        <field name="object_repr" type="CharField">
+                Id: 10002
+                Nombre: Dips
+                Categoria: 
+                Id: 4
+                Nombre: Entradas
+                
+                </field>
+        <field name="action_flag" type="PositiveSmallIntegerField">1</field>
+        <field name="change_message" type="TextField">[{"added": {}}]</field>
     </object>
-    <object model="auth.permission" pk="54">
-        <field name="name" type="CharField">Can change Promocion</field>
-        <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">14</field>
-        <field name="codename" type="CharField">change_promocion</field>
+    <object model="admin.logentry" pk="248">
+        <field name="action_time" type="DateTimeField">2023-05-23T09:49:48.574120+00:00</field>
+        <field name="user" rel="ManyToOneRel" to="mainApp.user">1</field>
+        <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">12</field>
+        <field name="object_id" type="TextField">10003</field>
+        <field name="object_repr" type="CharField">
+                Id: 10003
+                Nombre: Pasteles
+                Categoria: 
+                Id: 3
+                Nombre: Postres
+                
+                </field>
+        <field name="action_flag" type="PositiveSmallIntegerField">1</field>
+        <field name="change_message" type="TextField">[{"added": {}}]</field>
     </object>
-    <object model="auth.permission" pk="55">
-        <field name="name" type="CharField">Can delete Promocion</field>
-        <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">14</field>
-        <field name="codename" type="CharField">delete_promocion</field>
+    <object model="admin.logentry" pk="249">
+        <field name="action_time" type="DateTimeField">2023-05-23T09:50:50.365773+00:00</field>
+        <field name="user" rel="ManyToOneRel" to="mainApp.user">1</field>
+        <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">12</field>
+        <field name="object_id" type="TextField">10004</field>
+        <field name="object_repr" type="CharField">
+                Id: 10004
+                Nombre: Tartas
+                Categoria: 
+                Id: 3
+                Nombre: Postres
+                
+                </field>
+        <field name="action_flag" type="PositiveSmallIntegerField">1</field>
+        <field name="change_message" type="TextField">[{"added": {}}]</field>
     </object>
-    <object model="auth.permission" pk="56">
-        <field name="name" type="CharField">Can view Promocion</field>
-        <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">14</field>
-        <field name="codename" type="CharField">view_promocion</field>
+    <object model="admin.logentry" pk="250">
+        <field name="action_time" type="DateTimeField">2023-05-23T09:51:13.220305+00:00</field>
+        <field name="user" rel="ManyToOneRel" to="mainApp.user">1</field>
+        <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">12</field>
+        <field name="object_id" type="TextField">10005</field>
+        <field name="object_repr" type="CharField">
+                Id: 10005
+                Nombre: Budines
+                Categoria: 
+                Id: 3
+                Nombre: Postres
+                
+                </field>
+        <field name="action_flag" type="PositiveSmallIntegerField">1</field>
+        <field name="change_message" type="TextField">[{"added": {}}]</field>
     </object>
-    <object model="auth.permission" pk="57">
-        <field name="name" type="CharField">Can add Cupon</field>
-        <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">15</field>
-        <field name="codename" type="CharField">add_cupon</field>
+    <object model="admin.logentry" pk="251">
+        <field name="action_time" type="DateTimeField">2023-05-23T09:52:29.508219+00:00</field>
+        <field name="user" rel="ManyToOneRel" to="mainApp.user">1</field>
+        <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">12</field>
+        <field name="object_id" type="TextField">10006</field>
+        <field name="object_repr" type="CharField">
+                Id: 10006
+                Nombre: Preparados de fruta
+                Categoria: 
+                Id: 3
+                Nombre: Postres
+                
+                </field>
+        <field name="action_flag" type="PositiveSmallIntegerField">1</field>
+        <field name="change_message" type="TextField">[{"added": {}}]</field>
     </object>
-    <object model="auth.permission" pk="58">
-        <field name="name" type="CharField">Can change Cupon</field>
-        <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">15</field>
-        <field name="codename" type="CharField">change_cupon</field>
+    <object model="admin.logentry" pk="252">
+        <field name="action_time" type="DateTimeField">2023-05-23T09:53:48.076447+00:00</field>
+        <field name="user" rel="ManyToOneRel" to="mainApp.user">1</field>
+        <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">12</field>
+        <field name="object_id" type="TextField">10007</field>
+        <field name="object_repr" type="CharField">
+                Id: 10007
+                Nombre: Licores
+                Categoria: 
+                Id: 2
+                Nombre: Bebidas
+                
+                </field>
+        <field name="action_flag" type="PositiveSmallIntegerField">1</field>
+        <field name="change_message" type="TextField">[{"added": {}}]</field>
     </object>
-    <object model="auth.permission" pk="59">
-        <field name="name" type="CharField">Can delete Cupon</field>
-        <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">15</field>
-        <field name="codename" type="CharField">delete_cupon</field>
-    </object>
-    <object model="auth.permission" pk="60">
-        <field name="name" type="CharField">Can view Cupon</field>
-        <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">15</field>
-        <field name="codename" type="CharField">view_cupon</field>
-    </object>
-    <object model="auth.permission" pk="61">
-        <field name="name" type="CharField">Can add carrito</field>
-        <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">16</field>
-        <field name="codename" type="CharField">add_carrito</field>
-    </object>
-    <object model="auth.permission" pk="62">
-        <field name="name" type="CharField">Can change carrito</field>
-        <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">16</field>
-        <field name="codename" type="CharField">change_carrito</field>
-    </object>
-    <object model="auth.permission" pk="63">
-        <field name="name" type="CharField">Can delete carrito</field>
-        <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">16</field>
-        <field name="codename" type="CharField">delete_carrito</field>
-    </object>
-    <object model="auth.permission" pk="64">
-        <field name="name" type="CharField">Can view carrito</field>
-        <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">16</field>
-        <field name="codename" type="CharField">view_carrito</field>
+    <object model="admin.logentry" pk="253">
+        <field name="action_time" type="DateTimeField">2023-05-23T09:54:16.116262+00:00</field>
+        <field name="user" rel="ManyToOneRel" to="mainApp.user">1</field>
+        <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">12</field>
+        <field name="object_id" type="TextField">10008</field>
+        <field name="object_repr" type="CharField">
+                Id: 10008
+                Nombre: Refrescos
+                Categoria: 
+                Id: 2
+                Nombre: Bebidas
+                
+                </field>
+        <field name="action_flag" type="PositiveSmallIntegerField">1</field>
+        <field name="change_message" type="TextField">[{"added": {}}]</field>
     </object>
     <object model="auth.group" pk="1">
         <field name="name" type="CharField">comensales</field>
@@ -4385,6 +4486,8 @@
         <field name="name" type="CharField">administradores</field>
         <field name="permissions" rel="ManyToManyRel" to="auth.permission"><object pk="1"></object><object pk="2"></object><object pk="3"></object><object pk="4"></object><object pk="9"></object><object pk="10"></object><object pk="11"></object><object pk="12"></object><object pk="5"></object><object pk="6"></object><object pk="7"></object><object pk="8"></object><object pk="13"></object><object pk="14"></object><object pk="15"></object><object pk="16"></object><object pk="21"></object><object pk="22"></object><object pk="23"></object><object pk="24"></object><object pk="33"></object><object pk="34"></object><object pk="35"></object><object pk="36"></object><object pk="41"></object><object pk="42"></object><object pk="43"></object><object pk="44"></object><object pk="25"></object><object pk="26"></object><object pk="27"></object><object pk="28"></object><object pk="37"></object><object pk="38"></object><object pk="39"></object><object pk="40"></object><object pk="45"></object><object pk="46"></object><object pk="47"></object><object pk="48"></object><object pk="29"></object><object pk="30"></object><object pk="31"></object><object pk="32"></object><object pk="17"></object><object pk="18"></object><object pk="19"></object><object pk="20"></object></field>
     </object>
+<<<<<<< HEAD
+=======
     <object model="contenttypes.contenttype" pk="1">
         <field name="app_label" type="CharField">admin</field>
         <field name="model" type="CharField">logentry</field>
@@ -4453,6 +4556,7 @@
         <field name="session_data" type="TextField">.eJxVjMEOwiAQBf-FsyFQYAGP3v0GsrAgVQNJaU_Gf9cmPej1zcx7sYDbWsM28hJmYmcm2el3i5geue2A7thunafe1mWOfFf4QQe_dsrPy-H-HVQc9Vsb4clasFpBkRCnJFFl4QiKU-hJGAIyVACyd05ENwlS2mqvpQDvErL3B8WzNv0:1q4wd3:UNZeSoDBdljKV-9ZzLSZMnSd7pzNtmS92BkNG3PiuwQ</field>
         <field name="expire_date" type="DateTimeField">2023-06-16T04:43:09.498490+00:00</field>
     </object>
+>>>>>>> main
     <object model="sessions.session" pk="8fwechehbwc3lxoy3hgmy40rno6qmmg1">
         <field name="session_data" type="TextField">.eJxVjMEOwiAQBf-FsyFQYAGP3v0GsrAgVQNJaU_Gf9cmPej1zcx7sYDbWsM28hJmYmcm2el3i5geue2A7thunafe1mWOfFf4QQe_dsrPy-H-HVQc9Vsb4clasFpBkRCnJFFl4QiKU-hJGAIyVACyd05ENwlS2mqvpQDvErL3B8WzNv0:1py2Lg:yQYIvlHg22dlV9ebQnwnXHjmLc-OE3j7QywN2ObUYm0</field>
         <field name="expire_date" type="DateTimeField">2023-05-28T03:24:40.346999+00:00</field>
@@ -4477,10 +4581,13 @@
         <field name="session_data" type="TextField">.eJxVjMEOwiAQBf-FsyFQYAGP3v0GsrAgVQNJaU_Gf9cmPej1zcx7sYDbWsM28hJmYmcm2el3i5geue2A7thunafe1mWOfFf4QQe_dsrPy-H-HVQc9Vsb4clasFpBkRCnJFFl4QiKU-hJGAIyVACyd05ENwlS2mqvpQDvErL3B8WzNv0:1q0uFg:00MnyXLBsLpVSUkS-gBjVPf1XiR-WlUhmoC4dgydKws</field>
         <field name="expire_date" type="DateTimeField">2023-06-05T01:22:20.943713+00:00</field>
     </object>
+<<<<<<< HEAD
+=======
     <object model="sessions.session" pk="ohn8nipf4opb39itcx7vjlr8tigqsj5e">
         <field name="session_data" type="TextField">.eJxVjMEOwiAQBf-FsyFQYAGP3v0GsrAgVQNJaU_Gf9cmPej1zcx7sYDbWsM28hJmYmcm2el3i5geue2A7thunafe1mWOfFf4QQe_dsrPy-H-HVQc9Vsb4clasFpBkRCnJFFl4QiKU-hJGAIyVACyd05ENwlS2mqvpQDvErL3B8WzNv0:1q4w4x:9XBX2dmKNdSZeq36x0dIGw1xVea1NQgyj4b_brw9WXc</field>
         <field name="expire_date" type="DateTimeField">2023-06-16T04:07:55.801031+00:00</field>
     </object>
+>>>>>>> main
     <object model="sessions.session" pk="pn346i7k0udwyyuj024739vbgcoko1gs">
         <field name="session_data" type="TextField">.eJxVjMEOwiAQBf-FsyFQYAGP3v0GsrAgVQNJaU_Gf9cmPej1zcx7sYDbWsM28hJmYmcm2el3i5geue2A7thunafe1mWOfFf4QQe_dsrPy-H-HVQc9Vsb4clasFpBkRCnJFFl4QiKU-hJGAIyVACyd05ENwlS2mqvpQDvErL3B8WzNv0:1py1aX:cU-9e_tula2dR2Vw9Ida_oNYsGDxXJPcv2EbmRjVmLk</field>
         <field name="expire_date" type="DateTimeField">2023-05-28T02:35:57.816330+00:00</field>
@@ -4491,7 +4598,11 @@
     </object>
     <object model="mainApp.user" pk="1">
         <field name="password" type="CharField">pbkdf2_sha256$390000$p1PfuMeRiVgUO1v1OGucT6$Y+VKrRfrvKhWRrjK5reSd5kuXh3WnZhTWP0cnJral8g=</field>
+<<<<<<< HEAD
+        <field name="last_login" type="DateTimeField">2023-05-23T09:45:47.166253+00:00</field>
+=======
         <field name="last_login" type="DateTimeField">2023-06-02T04:43:09.490819+00:00</field>
+>>>>>>> main
         <field name="is_superuser" type="BooleanField">True</field>
         <field name="username" type="CharField">admin</field>
         <field name="first_name" type="CharField"></field>
@@ -4959,6 +5070,183 @@
         <field name="orden" rel="ManyToOneRel" to="mainApp.orden">60</field>
         <field name="active" type="BooleanField">True</field>
     </object>
+    <object model="mainApp.platillo" pk="16">
+        <field name="nombre" type="CharField">Consom├® de pollo</field>
+        <field name="descripcion" type="TextField">Caldo de pollo con trozos de carne, con granos de arroz o cebada, pasta, zanahoria, papa amarilla y cebolla blanca</field>
+        <field name="imagen" type="CharField">/static/img/platillos/consome.jpg</field>
+        <field name="categoria" rel="ManyToOneRel" to="mainApp.categoria">4</field>
+        <field name="subcategoria" rel="ManyToOneRel" to="mainApp.subcategoria">6</field>
+        <field name="precio" type="DecimalField">50.00</field>
+        <field name="ingredientes" type="TextField">Trozos de carne de pollo, con granos de arroz o cebada, pasta, zanahoria, papa amarilla y cebolla blanca</field>
+    </object>
+    <object model="mainApp.platillo" pk="17">
+        <field name="nombre" type="CharField">Crema de elote</field>
+        <field name="descripcion" type="TextField">Sopa preparada con ma├¡z como ingrediente principal.</field>
+        <field name="imagen" type="CharField">/static/img/platillos/crema_elote.jpg</field>
+        <field name="categoria" rel="ManyToOneRel" to="mainApp.categoria">4</field>
+        <field name="subcategoria" rel="ManyToOneRel" to="mainApp.subcategoria">10000</field>
+        <field name="precio" type="DecimalField">50.00</field>
+        <field name="ingredientes" type="TextField">- Ma├¡z
+
+- Cebolla
+
+- Apio 
+
+- Leche 
+
+- Crema 
+
+- Mantequilla</field>
+    </object>
+    <object model="mainApp.platillo" pk="18">
+        <field name="nombre" type="CharField">Crema de champi├▒ones</field>
+        <field name="descripcion" type="TextField">Crema preparada a base de champi├▒ones como ingrediente principal.</field>
+        <field name="imagen" type="CharField">/static/img/platillos/crema_champinones.jpg</field>
+        <field name="categoria" rel="ManyToOneRel" to="mainApp.categoria">4</field>
+        <field name="subcategoria" rel="ManyToOneRel" to="mainApp.subcategoria">10000</field>
+        <field name="precio" type="DecimalField">50.00</field>
+        <field name="ingredientes" type="TextField">- Champi├▒ones
+
+- Cebolla
+
+- Apio 
+
+- Leche 
+
+- Crema 
+
+- Mantequilla</field>
+    </object>
+    <object model="mainApp.platillo" pk="19">
+        <field name="nombre" type="CharField">Crema de zanahoria</field>
+        <field name="descripcion" type="TextField">Crema preparada con zanahoria como ingrediente principal.</field>
+        <field name="imagen" type="CharField">/static/img/platillos/crema_zanahoria.jpg</field>
+        <field name="categoria" rel="ManyToOneRel" to="mainApp.categoria">4</field>
+        <field name="subcategoria" rel="ManyToOneRel" to="mainApp.subcategoria">10000</field>
+        <field name="precio" type="DecimalField">50.00</field>
+        <field name="ingredientes" type="TextField">- Zanahoria
+
+- Cebolla
+
+- Apio 
+
+- Leche 
+
+- Crema 
+
+- Mantequilla</field>
+    </object>
+    <object model="mainApp.platillo" pk="20">
+        <field name="nombre" type="CharField">Mole poblano</field>
+        <field name="descripcion" type="TextField">Salsa mexicana hecha a base de una combinaci├│n de diversos ingredientes como: clases de chiles, chocolate y especias, entre otros ingredientes. Este platillo se acompa├▒a con una pieza de pollo y una porci├│n de arroz.</field>
+        <field name="imagen" type="CharField">/static/img/platillos/mole_poblano.jpg</field>
+        <field name="categoria" rel="ManyToOneRel" to="mainApp.categoria">5</field>
+        <field name="subcategoria" rel="ManyToOneRel" to="mainApp.subcategoria">8</field>
+        <field name="precio" type="DecimalField">100.00</field>
+        <field name="ingredientes" type="TextField">- Pollo
+
+- Chile mulato
+
+- Chile ancho
+
+- Chile pasilla
+
+- Ajonjol├¡
+
+- Cacahuate
+
+- Manteca
+
+- Chocolate
+
+- Chile chipotle
+
+- Jitomate
+
+- Cebolla
+
+- Ajo
+
+- Canela
+
+- Caldo de pollo
+
+- Pasas</field>
+    </object>
+    <object model="mainApp.orden" pk="50">
+        <field name="usuario" rel="ManyToOneRel" to="mainApp.user">1</field>
+        <field name="fecha" type="DateTimeField">2023-05-22T01:19:31.844504+00:00</field>
+        <field name="total" type="DecimalField"><None></None></field>
+        <field name="comentarios" type="TextField"></field>
+        <field name="helado_escogido" rel="ManyToOneRel" to="mainApp.platillo"><None></None></field>
+        <field name="active" type="BooleanField">True</field>
+    </object>
+    <object model="mainApp.carrito" pk="100">
+        <field name="fecha" type="DateTimeField">2023-05-22T01:20:10.383700+00:00</field>
+        <field name="usuario" rel="ManyToOneRel" to="mainApp.user">1</field>
+        <field name="orden" rel="ManyToOneRel" to="mainApp.orden">50</field>
+        <field name="active" type="BooleanField">False</field>
+    </object>
+    <object model="mainApp.carrito" pk="101">
+        <field name="fecha" type="DateTimeField">2023-05-22T01:23:27.309562+00:00</field>
+        <field name="usuario" rel="ManyToOneRel" to="mainApp.user">1</field>
+        <field name="orden" rel="ManyToOneRel" to="mainApp.orden">50</field>
+        <field name="active" type="BooleanField">False</field>
+    </object>
+    <object model="mainApp.carrito" pk="102">
+        <field name="fecha" type="DateTimeField">2023-05-22T01:28:04.235694+00:00</field>
+        <field name="usuario" rel="ManyToOneRel" to="mainApp.user">1</field>
+        <field name="orden" rel="ManyToOneRel" to="mainApp.orden">50</field>
+        <field name="active" type="BooleanField">False</field>
+    </object>
+    <object model="mainApp.carrito" pk="103">
+        <field name="fecha" type="DateTimeField">2023-05-22T01:28:19.070030+00:00</field>
+        <field name="usuario" rel="ManyToOneRel" to="mainApp.user">1</field>
+        <field name="orden" rel="ManyToOneRel" to="mainApp.orden">50</field>
+        <field name="active" type="BooleanField">False</field>
+    </object>
+    <object model="mainApp.carrito" pk="104">
+        <field name="fecha" type="DateTimeField">2023-05-22T01:28:37.310465+00:00</field>
+        <field name="usuario" rel="ManyToOneRel" to="mainApp.user">1</field>
+        <field name="orden" rel="ManyToOneRel" to="mainApp.orden">50</field>
+        <field name="active" type="BooleanField">False</field>
+    </object>
+    <object model="mainApp.carrito" pk="105">
+        <field name="fecha" type="DateTimeField">2023-05-22T01:29:52.442544+00:00</field>
+        <field name="usuario" rel="ManyToOneRel" to="mainApp.user">1</field>
+        <field name="orden" rel="ManyToOneRel" to="mainApp.orden">50</field>
+        <field name="active" type="BooleanField">False</field>
+    </object>
+    <object model="mainApp.carrito" pk="106">
+        <field name="fecha" type="DateTimeField">2023-05-22T01:31:26.800343+00:00</field>
+        <field name="usuario" rel="ManyToOneRel" to="mainApp.user">1</field>
+        <field name="orden" rel="ManyToOneRel" to="mainApp.orden">50</field>
+        <field name="active" type="BooleanField">False</field>
+    </object>
+    <object model="mainApp.carrito" pk="107">
+        <field name="fecha" type="DateTimeField">2023-05-22T01:32:56.591904+00:00</field>
+        <field name="usuario" rel="ManyToOneRel" to="mainApp.user">1</field>
+        <field name="orden" rel="ManyToOneRel" to="mainApp.orden">50</field>
+        <field name="active" type="BooleanField">False</field>
+    </object>
+    <object model="mainApp.carrito" pk="108">
+        <field name="fecha" type="DateTimeField">2023-05-22T01:33:11.193068+00:00</field>
+        <field name="usuario" rel="ManyToOneRel" to="mainApp.user">1</field>
+        <field name="orden" rel="ManyToOneRel" to="mainApp.orden">50</field>
+        <field name="active" type="BooleanField">False</field>
+    </object>
+    <object model="mainApp.carrito" pk="109">
+        <field name="fecha" type="DateTimeField">2023-05-22T01:34:26.508114+00:00</field>
+        <field name="usuario" rel="ManyToOneRel" to="mainApp.user">1</field>
+        <field name="orden" rel="ManyToOneRel" to="mainApp.orden">50</field>
+        <field name="active" type="BooleanField">False</field>
+    </object>
+    <object model="mainApp.carrito" pk="110">
+        <field name="fecha" type="DateTimeField">2023-05-22T01:34:51.063036+00:00</field>
+        <field name="usuario" rel="ManyToOneRel" to="mainApp.user">1</field>
+        <field name="orden" rel="ManyToOneRel" to="mainApp.orden">50</field>
+        <field name="active" type="BooleanField">True</field>
+    </object>
     <object model="mainApp.pedido" pk="1">
         <field name="platillo" rel="ManyToOneRel" to="mainApp.platillo">2</field>
         <field name="cantidad" type="IntegerField">1</field>
@@ -5322,7 +5610,11 @@
     <object model="mainApp.pedido" pk="73">
         <field name="platillo" rel="ManyToOneRel" to="mainApp.platillo">1</field>
         <field name="cantidad" type="IntegerField">3</field>
+<<<<<<< HEAD
+        <field name="carrito" rel="ManyToOneRel" to="mainApp.carrito">100</field>
+=======
         <field name="carrito" rel="ManyToOneRel" to="mainApp.carrito"><None></None></field>
+>>>>>>> main
     </object>
     <object model="mainApp.pedido" pk="74">
         <field name="platillo" rel="ManyToOneRel" to="mainApp.platillo">4</field>
@@ -5337,6 +5629,9 @@
     <object model="mainApp.pedido" pk="76">
         <field name="platillo" rel="ManyToOneRel" to="mainApp.platillo">8</field>
         <field name="cantidad" type="IntegerField">1</field>
+<<<<<<< HEAD
+        <field name="carrito" rel="ManyToOneRel" to="mainApp.carrito">100</field>
+=======
         <field name="carrito" rel="ManyToOneRel" to="mainApp.carrito"><None></None></field>
     </object>
     <object model="mainApp.pedido" pk="77">
@@ -5408,5 +5703,6 @@
         <field name="platillo" rel="ManyToOneRel" to="mainApp.platillo">8</field>
         <field name="cantidad" type="IntegerField">2</field>
         <field name="carrito" rel="ManyToOneRel" to="mainApp.carrito">119</field>
+>>>>>>> main
     </object>
 </django-objects>

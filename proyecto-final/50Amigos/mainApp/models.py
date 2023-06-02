@@ -94,11 +94,14 @@ class Platillo(models.Model):
         if self.ingredientes is None or self.ingredientes.strip() == '':
             return []
 
-        ingredientes = []
-        for ingrediente in self.ingredientes.split(','):
-            ingredientes.append(ingrediente)
+        ingredientes = self.ingredientes.split(',')
+        ingredientes_con_comas = [f'{ingrediente},' for ingrediente in ingredientes]
+        
+        if len(ingredientes_con_comas) > 0:
+            ingredientes_con_comas[-1] = ingredientes_con_comas[-1].rstrip(',')
 
-        return ingredientes
+        return ingredientes_con_comas
+    
 
     def get_alergenos_list(self):
         """

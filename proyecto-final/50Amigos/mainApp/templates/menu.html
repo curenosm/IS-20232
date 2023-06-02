@@ -52,11 +52,13 @@
   </ul>
   <br>
 
+  <!--  
   <h5>Alérgenos:</h5><hr>
   <ul id="platilloAlergenos">
     <li class=""></li>
   </ul>
   <br>
+  -->
 
 </div>
 {% endblock %}
@@ -240,16 +242,9 @@ function loadModalDetails(platilloId) {
   let descripcion = $(`#platillo-${platilloId}-descripcion`).text().trim();
   let imagen = $(`#platillo-${platilloId}-imagen`).attr('src');
   let ingredientesId = `#platillo-${platilloId}-ingredientes`;
-  console.log(ingredientesId);
   let ingredientes = $(ingredientesId).html();
-  console.log(ingredientes);
   let alergenosId = `#platillo-${platilloId}-alergenos`;
-  console.log(alergenosId);
   let alergenos = $(alergenosId).html();
-  console.log(alergenos);
-
-  console.log(alergenos);
-  console.log(ingredientes);
 
   $('#platilloPrecio').text(precio ? precio : '');
   $('#tituloModal').html(nombre ? nombre : '');
