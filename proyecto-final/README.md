@@ -74,10 +74,19 @@ Facultad de Ciencias, UNAM.
   docker-compose logs
   ```
 
-  **Nota**:
+  **Notas**:
+  
+    - Para correr usando docker y docker-compose son necesarias las versiones:
 
-  *La documentación asociada a este proyecto se encuentra dentro
-  de la carpeta docs.*
+      ```
+      Docker version 20.10.21
+      Docker Compose version v2.13.0
+      ```
+
+    - La documentación asociada a este proyecto se encuentra dentro
+  de la carpeta `docs` y si por alguna razón se desea los archivos fuente de
+  los diagramas UML, este proceso puede realizarse sin problema instalando
+  *StarUML*.
 
 <br>
 

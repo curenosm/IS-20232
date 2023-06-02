@@ -95,13 +95,8 @@ class Platillo(models.Model):
             return []
 
         ingredientes = self.ingredientes.split(',')
-        ingredientes_con_comas = [f'{ingrediente},' for ingrediente in ingredientes]
-        
-        if len(ingredientes_con_comas) > 0:
-            ingredientes_con_comas[-1] = ingredientes_con_comas[-1].rstrip(',')
 
-        return ingredientes_con_comas
-    
+        return ingredientes
 
     def get_alergenos_list(self):
         """

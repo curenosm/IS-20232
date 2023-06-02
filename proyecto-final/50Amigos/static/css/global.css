@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Norican Regular";
-  src: url("/static/fonts/Norican-Regular.ttf") format("truetype");
+  src: url("/static/css/fonts/Norican-Regular.ttf") format("truetype");
 }
 
 :root {
