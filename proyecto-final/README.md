@@ -10,14 +10,51 @@ Facultad de Ciencias, UNAM.
 | *Almanza Torres José Luis*  |     318184140      | *Responsable de colaboración* |
 | *Bernal Núñez Raúl*         |     318224187      | *Responsable de calidad* |
 | *Cureño Sánchez Misael*     |     418002485      | *Responsable técnico* |
-| *Hernández Montoya Ricardo* |         -          | *Responsable del equipo* |
 
 
 ## Instrucciones de ejecución
 
 ---
 
-- Dentro de la carpeta base del proyecto ejecutar:
+- Crear y activar ambiente virtual con *conda*
+
+    ```bash
+    conda create --name orion-enviro python=3
+    conda activate orion-enviro
+    ```
+
+- Instalar dependencias.
+
+    ```bash
+    cd ./proyecto_final/50Amigos
+    pip install -f requirements.txt
+    ```
+
+- Para ejecutar las pruebas unitarias:
+
+  ```bash
+  cd 50Amigos
+  conda activate enviro
+  python manage.py test -v 2 --parallel auto
+
+  # o bien
+
+  py.test
+  ```
+
+- Para ejecutar el coverage report:
+
+  ```bash
+  cd 50Amigos
+  conda activate enviro
+  coverage run manage.py test -v 2 --parallel auto
+  coverage html
+
+  # Luego podremos consultar el index.html dentro de la
+  # carpeta htmlcov.
+  ```
+
+- Para ejecutar el proyecto ejecutar:
 
   ```bash
   cd 50Amigos
@@ -25,34 +62,46 @@ Facultad de Ciencias, UNAM.
   python manage.py runserver
   ```
 
+- O bien con `docker-compose` desde la raíz del proyecto:
 
+  ```bash
+  docker-compose up --build
 
-- Util instructions:
+  # o bien
 
+  docker-compose build --no-cache
+  docker-compose up
+  docker-compose logs
+  ```
 
-  For development
-  
-    You can execute tests by locating at the same level
-    than pytest.ini and executing:
-      
-      py.test
-    
-    You can mount the docker image using:
+  **Nota**:
 
-      docker-compose up --build
+  *La documentación asociada a este proyecto se encuentra dentro
+  de la carpeta docs.*
 
- For production:
-  
-    You can mount the docker image using:
-    
-      docker-compose -f docker-compose.prod.yml up --build
-      
+<br>
 
-  NOTE:
-    All documentation associated to this project can be found on the docs/ folder.
 
 ## Credenciales
 
 ---
 
-Password de los comensales (mesa1, mesa2, mesa3): **restaurante123**
+```bash
+# Usuario administrador
+Username: admin
+Password: admin
+
+
+# Usuarios comensales
+Username: mesa1
+Password: restaurante123
+
+Username: mesa2
+Password: restaurante123
+
+Username: mesa3
+Password: restaurante123
+
+Username: mesa4
+Password: restaurante123
+```
