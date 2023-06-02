@@ -24,11 +24,15 @@
     rel="stylesheet"/>
 
   <link
-    rel="stylesheet"
-    href="{% static 'css/bootstrap-icons.css' %}"/>
+    href="{% static 'css/bootstrap-icons.css' %}"
+    rel="stylesheet"/>
 
   <link
     href="{% static 'css/animate.min.css' %}"
+    rel="stylesheet"/>
+
+  <link
+    href="{% static 'css/global.css' %}"
     rel="stylesheet"/>
 
   {% block styles %}{% endblock %}
@@ -37,6 +41,7 @@
 <body>
   <main class="flex-shrink-0">
 
+    <br>
     <br>
 
     {# Django messages (Alertas de bootstrap) #}
@@ -89,7 +94,7 @@
   {# Modal global #}
   <div class="modal" tabindex="-1" id="globalModal">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content">
+      <div class="modal-content text-dark">
         <div class="modal-header">
           {% block modal_header %}
           <p
@@ -129,6 +134,10 @@
   <script src="{% static 'js/jquery-3.6.4.js' %}"></script>
   <script src="{% static 'js/csrf.js' %}" ></script>
   <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+
+  {# Close navbar on click outside #}
+  <script src="{% static 'js/toggle-navbar.js' %}"></script>
+
 
   {% block scripts %}{% endblock %}
 

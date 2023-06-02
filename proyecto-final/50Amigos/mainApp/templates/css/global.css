@@ -1,5 +1,0 @@
-{% load static %}
-.specific-class {
-    position: absolute;
-    background-image: url("{% static 'img/helado_kawaii.png' %}");
-}

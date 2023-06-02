@@ -2,12 +2,6 @@
 
 {% block title %}Contacto{% endblock %}
 
-
-
-
-
-
-
 {% block content %}
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
@@ -17,7 +11,7 @@
         href="{% url 'mainApp:inicio' %}">Inicio</a>
     </li>
     <li class="breadcrumb-item active" aria-current="page">
-      Contacto
+      <a>Contacto</a>
     </li>
   </ol>
 </nav>
@@ -28,24 +22,40 @@
 <br>
 
 <div class="jumbotron">
-  <h1 class="display-4 my-3">Hola, 50amigo!</h1>
+  <h1 class="display-4 my-3">¡Hola, 50Amigo!</h1>
   <p class="lead">
-    Toda nuestra información empresarial y de contacto estará listada muy
-    pronto aquí!
+    <div style="text-align: justify;">
+    <p><b>En Orion, somos un equipo apasionado de desarrolladores web especializados en la creación de soluciones digitales para la industria del comercio. 
+    Hemos tenido el privilegio de colaborar en la creación de la plataforma 50Amigos, ofreciendo a los comensales la posibilidad de realizar sus 
+    pedidos de manera fácil y conveniente. Esta página web es un ejemplo del trabajo que hemos hecho durante este tiempo, sin embargo, somos un equipo 
+    especializado en la creación de soluciones tecnológicas para cualquier tipo de comercio.</p>
+
+    <p>Nuestro enfoque se centra en combinar tecnología innovadora con una interfaz intuitiva y muy agradable para el usuario, permitiendo a tus clientes disfrutar de una experiencia de pedido en línea eficiente y personalizada. 
+    Además de la implementación de una base de datos robusta y segura que respalde todas las transacciones y facilite la gestión de pedidos, así como la información del comercio.</p>
+
+    <p>Nuestro equipo está compuesto por expertos en desarrollo web, diseño de interfaces de usuario y administración de bases de datos. 
+    Trabajamos de cerca con cada cliente para entender sus necesidades y adaptar nuestras soluciones a sus objetivos específicos. 
+    Nos enorgullece ofrecer un servicio de calidad, confiable y a medida para asegurar que tu página web cumpla con las expectativas de tu negocio y de tus clientes.</p>
+
+    <p>Si tienes alguna pregunta, inquietud o necesitas soporte técnico, no dudes en contactarnos. Estamos aquí para ayudarte en cualquier aspecto relacionado con la implementación y funcionamiento de la plataforma.</p></b>
+    </div>
   </p>
   <br>
   <ul>
     <li>
-      <b>Numero de teléfono:</b> <i>(+52) 55 1122 3344</i>
+      <b>Equipo de desarrollo:</b> <i>Orion</i>
     </li>
     <li>
-        <b>Equipo de desarrollo:</b> <i>Orion</i>
+      <b>Número de teléfono:</b> <i>(+52) 55 1122 3344</i>
     </li>
     <li>
       <b>Dirección:</b> <i>Investigación Científica, C.U., Coyoacán, 04510
       Ciudad de México, CDMX.</i>
     </li>
   </ul>
+  <center>
+  <img src="static/img/platillos/orion_logo.png" alt="Logo de Orion">
+  </center>
 </div>
 <br>
 <br>
@@ -74,7 +84,7 @@
       <div class="d-grid gap-2">
         <button
           type="submit"
-          class="btn btn-outline-primary float-end"
+          class="btn btn-primary float-end"
           role="button">Suscribirme</button>
       </div>
     </form>

@@ -93,11 +93,14 @@ class Platillo(models.Model):
         if self.ingredientes is None or self.ingredientes.strip() == '':
             return []
 
-        ingredientes = []
-        for ingrediente in self.ingredientes.split(','):
-            ingredientes.append(ingrediente)
+        ingredientes = self.ingredientes.split(',')
+        ingredientes_con_comas = [f'{ingrediente},' for ingrediente in ingredientes]
+        
+        if len(ingredientes_con_comas) > 0:
+            ingredientes_con_comas[-1] = ingredientes_con_comas[-1].rstrip(',')
 
-        return ingredientes
+        return ingredientes_con_comas
+    
 
     def hidden_if_helado(self):
         """
@@ -108,18 +111,16 @@ class Platillo(models.Model):
         if re.search('helado', self.nombre, re.IGNORECASE):
             return 'hidden'
         return ''
-    
+
     def line_through_if_helado(self):
         """
         Funcion para decidir si el precio va a aparecer tachado
         o no dependiendo si se trata de un helado.
         """
 
-        
         if re.search('helado', self.nombre, re.IGNORECASE):
             return 'text-decoration-line-through'
         return ''
-
 
     def disabled_if_helado(self):
         """
@@ -193,9 +194,8 @@ class Orden(models.Model):
         Función para determinar si la votación para el helado de la orden
         ya tomó lugar.
         """
+        return self.helado_escogido is not None
 
-        return self.helado_escogido != None
-    
     def hidden_if_votacion_concluida(self):
         """
         Metodo para elegir el estado inicial de la gráfica de resultados
@@ -218,7 +218,6 @@ class Orden(models.Model):
         total = 0
         for p in self.get_pedidos():
             total += p.get_subtotal()
-
         return total
 
     def get_pedidos(self):
@@ -232,7 +231,6 @@ class Orden(models.Model):
             if not c.active:
                 for p in c.pedidos.all():
                     res.append(p)
-
         return res
 
     def __str__(self):

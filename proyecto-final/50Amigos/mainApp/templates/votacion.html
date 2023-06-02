@@ -4,13 +4,6 @@
 {% block title %}Votación{% endblock %}
 
 
-{% block styles %}
-<style>
-{% include 'css/global.css' %}
-</style>
-{% endblock %}
-
-
 {# Usando modal de manera global, para que empate con AnimateCSS #}
 {% block modal_header %}
   <h5
@@ -58,11 +51,11 @@
   <button
     onclick="agregarParticipante()"
     type="button"
-    class="btn btn-outline-secondary">Agregar otro participante</button>
+    class="btn btn-outline-primary">Agregar otro participante</button>
   <button
     onclick="finalizarVotacion()"
     type="button"
-    class="btn btn-outline-primary"
+    class="btn btn-primary"
     data-bs-dismiss="modal">Finalizar votación</button>
 {% endblock %}
 
@@ -93,7 +86,7 @@
   <button
     id="botonVotar"
     {{ orden.disabled_if_votacion_concluida }}
-    class="btn btn-outline-primary"
+    class="btn btn-primary"
     data-bs-toggle="modal"
     data-bs-target="#globalModal">
     Votar!
@@ -103,11 +96,11 @@
   <div
     id="resultados"
     style="display: none;"
-    class="text-center">
+    class="text-center graph-text">
       <canvas id="myChart"></canvas>
   </div>
 {% else %}
-  <div class="text-black">
+  <div>
     La votación ya concluyó, el ganador fue:
     <b>{{ orden.helado_escogido.nombre }}</b>
     <br>

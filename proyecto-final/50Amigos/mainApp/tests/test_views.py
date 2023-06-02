@@ -623,9 +623,10 @@ class TestViews_DELETE(TestCase):
 
         data_str = f"platillo={self.platillos[0].id}"
         url = reverse('mainApp:carrito')
-        response = self.client.delete(url, 
-                data_str,
-                content_type='application/x-www-form-urlencoded')
+        response = self.client.delete(
+            url,
+            data_str,
+            content_type='application/x-www-form-urlencoded')
         assert response.status_code == status.HTTP_202_ACCEPTED
 
     def test_orden_login_405(self):

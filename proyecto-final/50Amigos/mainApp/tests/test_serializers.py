@@ -16,6 +16,7 @@ def test_valid_platillo_serializer():
     platillo_serializer = PlatilloSerializer(data=data)
     assert platillo_serializer.is_valid()
 
+
 def test_platillo_serializer_invalid_no_data():
     """
     Prueba unitaria para verificar que le formulario de login falle en caso
@@ -25,6 +26,7 @@ def test_platillo_serializer_invalid_no_data():
     data = {}
     platillo_serializer = PlatilloSerializer(data=data)
     assert not platillo_serializer.is_valid()
+
 
 def test_platillo_serializer_invalid():
     """

@@ -52,7 +52,7 @@
   <tbody>
     {% for pedido in carrito.pedidos.all %}
     <tr>
-      <th scope="row" class="text-center">
+      <th scope="row" class="text-center px-3">
         {{ pedido.platillo.id }}
       </th>
       <td class="text-center">
@@ -68,7 +68,7 @@
         <button
           type="button"
           onclick="disminuirCantidad({{ pedido.platillo.id }})"
-          class="btn btn-link btn-sm text-primary">
+          class="btn btn-link btn-sm">
           <i class="bi bi-dash"></i>
         </button>
       </td>
@@ -79,7 +79,7 @@
         <button
           type="button"
           onclick="aumentarCantidad({{ pedido.platillo.id }})"
-          class="btn btn-link btn-sm text-primary">
+          class="btn btn-sm btn-link ">
           <i class="bi bi-plus"></i>
         </button>
       </td>
@@ -87,7 +87,7 @@
         <button
           type="button"
           onclick="eliminarPlatillo({{ pedido.platillo.id }})"
-          class="btn btn-link btn-sm text-danger">
+          class="btn btn-sm btn-link">
           <i class="bi bi-trash"></i>
         </button>
       </td>
@@ -96,7 +96,7 @@
   </tbody>
 </table>
 <div class="float-end">
-<span class="h5">
+<span class="h5 float-end">
   Total: &nbsp;&nbsp;$ {{ carrito.get_total }}
 </span>
 <br>
@@ -110,7 +110,7 @@
   </div>
   <button
     type="submit"
-    class="btn btn-outline-primary float-end">
+    class="btn btn-primary float-end">
     <i class="bi bi-cart"></i> Hacer pedido
   </button>
 </form>
@@ -122,7 +122,7 @@
 <br>
 <br>
 <br>
-<h1 class="animate__animated animate__fadeInLeft">Historial de pedidos</h1>
+<h1>Historial de pedidos</h1>
 <hr>
 <p class="my-3">
 Estos son los pedidos que se han hecho durante su estadía en el restaurante,
@@ -151,7 +151,7 @@ las tarifas con impuestos se muestran al final. Se agradece su propina.
   </tbody>
 </table>
 <div class="float-end">
-  <span class="h5">
+  <span class="h5 float-end">
     Total: &nbsp;&nbsp;$ {{ orden.get_total }}
   </span>
   <br>
@@ -165,7 +165,7 @@ las tarifas con impuestos se muestran al final. Se agradece su propina.
     </div>
     <button
       type="submit"
-      class="btn btn-outline-success">
+      class="btn btn-primary">
       <i class="bi bi-currency-dollar"></i> Solicitar cuenta
     </button>
   </form>
@@ -194,9 +194,9 @@ las tarifas con impuestos se muestran al final. Se agradece su propina.
  * @param {number} identificador del platillo.
 */
 function disminuirCantidad(platilloId) {
-  $('#global-spinner').show();
   let count = parseInt($('#counter' + platilloId).text());
   if (count > 1) {
+    $('#global-spinner').show();
     $.ajax("{% url 'mainApp:carrito' %}", {
       type: 'PUT',
       data: {

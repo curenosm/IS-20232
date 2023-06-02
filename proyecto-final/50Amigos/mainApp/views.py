@@ -1,7 +1,6 @@
 import logging
 from datetime import datetime
 
-import pytz
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import authenticate, get_user_model, login
@@ -27,7 +26,10 @@ logger = logging.getLogger(__name__)
 
 
 def get_today_range():
-    
+    """
+    Function to get te range in datetime of today
+    """
+
     today_min = datetime.combine(
         timezone.now().date(),
         datetime.today().time().min)
@@ -42,13 +44,12 @@ def get_current_orden(user):
     """
     Función que obtiene la orden actual para el usuario indicado.
     """
-    
+
     orden = Orden.objects.filter(
-            usuario=user,
-            # fecha__range=get_today_range(),
-            active=True) \
-        .order_by('-fecha') \
-        .first()
+        # fecha__range=get_today_range(),
+        usuario=user,
+        active=True
+    ).order_by('-fecha').first()
 
     if not orden:
         orden = Orden.objects.create(usuario=user, active=True)
@@ -60,10 +61,10 @@ def get_current_carrito(user):
     """
     Función que obtiene el carrito actual para el usuario indicado.
     """
-    
+
     carrito = Carrito.objects.filter(
-        usuario=user,
         # fecha__range=get_today_range(),
+        usuario=user,
         active=True).order_by('-fecha').first()
 
     if not carrito:
@@ -231,12 +232,10 @@ def inicio_comensal(request):
 
     orden = get_current_orden(request.user)
     carrito = get_current_carrito(request.user)
-
-
+    # Carga en el contexto las promociones actuales del restaurante
+    # Carga los anuncios de terceros que quieran aparecer en el sitio web
     data = {
-        # Carga en el contexto las promociones actuales del restaurante
         'promociones': Promocion.objects.filter(active=True),
-        # Carga los anuncios de terceros que quieran aparecer en el sitio web
         'anuncios': Anuncio.objects.filter(active=True),
         'carrito': carrito,
         'orden': orden,
@@ -286,8 +285,11 @@ class OrdenView(View):
             orden.save()
             messages.info(
                 request,
-                'Tu orden fue cerrada exitosamente,'
-                + ' ya puedes entregar la tableta :)')
+                """
+                Tu orden fue cerrada exitosamente, ya puedes entregar la
+                tableta :)
+                """
+            )
         elif not orden.votacion_concluida():
             messages.warning(
                 request,
@@ -296,9 +298,12 @@ class OrdenView(View):
         else:
             messages.warning(
                 request,
-                'Tu carrito no está vacío, asegurate de que lo '
-                + 'esté antes de cerrar tu cuenta')
-            
+                """
+                Tu carrito no está vacío, asegurate de que lo
+                esté antes de cerrar tu cuenta
+                """
+            )
+
         return render(request, 'carrito.html', context={
             'carrito': get_current_carrito(request.user),
             'orden': get_current_orden(request.user)
@@ -352,8 +357,11 @@ class CarritoView(View):
 
         messages.success(
             request,
-            'Tus pedidos fueron enviados a cocina,'
-            + ' ya puedes verlos en tu cuenta')
+            """
+            Tus pedidos fueron enviados a cocina, ya puedes verlos en tu
+            cuenta
+            """
+        )
         return render(request, 'carrito.html', context={
             "orden": get_current_orden(request.user),
             "carrito": get_current_carrito(request.user),
@@ -402,6 +410,8 @@ class CarritoView(View):
                 logger.debug('si entro')
                 p.carrito = None
                 p.save()
-                messages.warning(request, 'El elemento fue retirado de su carrito')
+                messages.warning(
+                    request,
+                    'El elemento fue retirado de su carrito')
 
         return HttpResponse('Deleted', status=status.HTTP_202_ACCEPTED)
