@@ -146,9 +146,18 @@
           {% if platillo.get_ingredientes_list %}
           <ul
             id="platillo-{{ platillo.id }}-ingredientes"
-            class="list-group list-group-flush" hidden>
+            class="list-group" hidden>
             {% for ingrediente in platillo.get_ingredientes_list %}
-              <li class="list-group-item text-muted">{{ ingrediente }}</li>
+              <li class="list-group-item">{{ ingrediente }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+          {% if platillo.get_alergenos_list %}
+          <ul
+            id="platillo-{{ platillo.id }}-alergenos"
+            class="list-group" hidden>
+            {% for alergeno in platillo.get_alergenos_list %}
+              <li class="list-group-item">{{ alergeno }}</li>
             {% endfor %}
           </ul>
           {% endif %}
@@ -227,26 +236,20 @@
 <script>
 
 function loadModalDetails(platilloId) {
-  let precio = $(`#platillo-${platilloId}-precio`)
-    .text()
-    .trim();
-  let nombre = $(`#platillo-${platilloId}-nombre`)
-    .text()
-    .trim();
-  let descripcion = $(`#platillo-${platilloId}-descripcion`)
-    .text()
-    .trim();
+
+  let precio = $(`#platillo-${platilloId}-precio`).text().trim();
+  let nombre = $(`#platillo-${platilloId}-nombre`).text().trim();
+  let descripcion = $(`#platillo-${platilloId}-descripcion`).text().trim();
   let imagen = $(`#platillo-${platilloId}-imagen`).attr('src');
-  let ingredientes = $(`#platillo-${platilloId}-ingredientes`)
-    .text()
-    .trim();
-  // let alergenos = $(`#platillo-${platilloId}-alergenos`)
-    // .html();
+  let ingredientesId = `#platillo-${platilloId}-ingredientes`;
+  let ingredientes = $(ingredientesId).html();
+  let alergenosId = `#platillo-${platilloId}-alergenos`;
+  let alergenos = $(alergenosId).html();
 
   $('#platilloPrecio').text(precio ? precio : '');
   $('#tituloModal').html(nombre ? nombre : '');
   $('#platilloIngredientes').html(ingredientes ? ingredientes : '');
-  //$('#platilloAlergenos').html(alergenos ? alergenos : '');
+  $('#platilloAlergenos').html(alergenos ? alergenos : '');
   $('#platilloDescripcion').html(descripcion ? descripcion : '');
   $('#platilloImagen').attr('src', imagen ? imagen : '');
 

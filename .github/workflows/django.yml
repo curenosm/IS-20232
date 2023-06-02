@@ -28,11 +28,6 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         pip list
-    - name: Code style 
-      run: |
-        cd proyecto-final
-        cd 50Amigos
-        flake8 --config flake8.ini
     - name: Run Tests
       run: |
         cd proyecto-final
@@ -45,3 +40,8 @@ jobs:
         cd 50Amigos
         coverage run manage.py test -v 2 --parallel auto
         coverage html
+    - name: Code style 
+      run: |
+        cd proyecto-final
+        cd 50Amigos
+        flake8 --config flake8.ini

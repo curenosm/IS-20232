@@ -82,6 +82,7 @@ class Platillo(models.Model):
         related_name='platillos')
     precio = models.DecimalField(max_digits=10, decimal_places=2)
     ingredientes = models.TextField(max_length=1000, null=True, blank=True)
+    alergenos = models.TextField(max_length=1000, null=True, blank=True)
 
     def get_ingredientes_list(self):
         """
@@ -101,6 +102,22 @@ class Platillo(models.Model):
 
         return ingredientes_con_comas
     
+
+    def get_alergenos_list(self):
+        """
+        Metodo auxiliar para convertir los alergenos del platillo
+        de una representación en string separados por comas, en una
+        lista de strings.
+        """
+
+        if self.alergenos is None or self.alergenos.strip() == '':
+            return []
+
+        alergenos = []
+        for alergeno in self.alergenos.split(','):
+            alergenos.append(alergeno)
+
+        return alergenos
 
     def hidden_if_helado(self):
         """
