@@ -11,8 +11,9 @@ Facultad de Ciencias, UNAM.
 | *Bernal Núñez Raúl*         |     318224187      | *Responsable de calidad* |
 | *Cureño Sánchez Misael*     |     418002485      | *Responsable técnico* |
 
+<br/>
 
-## Instrucciones de ejecución
+## Instrucciones de ejecución (Conda)
 
 ---
 
@@ -26,7 +27,7 @@ Facultad de Ciencias, UNAM.
 - Instalar dependencias.
 
     ```bash
-    cd ./proyecto_final/50Amigos
+    cd 50Amigos
     pip install -f requirements.txt
     ```
 
@@ -34,7 +35,6 @@ Facultad de Ciencias, UNAM.
 
   ```bash
   cd 50Amigos
-  conda activate enviro
   python manage.py test -v 2 --parallel auto
 
   # o bien
@@ -46,7 +46,6 @@ Facultad de Ciencias, UNAM.
 
   ```bash
   cd 50Amigos
-  conda activate enviro
   coverage run manage.py test -v 2 --parallel auto
   coverage html
 
@@ -58,11 +57,17 @@ Facultad de Ciencias, UNAM.
 
   ```bash
   cd 50Amigos
-  conda activate enviro
   python manage.py runserver
   ```
 
-- O bien con `docker-compose` desde la raíz del proyecto:
+<br/>
+
+## Instrucciones de ejecución (docker-compose)
+
+---
+
+
+- También podemos ejecutar el proyecto con `docker-compose` desde la raíz del proyecto:
 
   ```bash
   docker-compose up --build
@@ -84,9 +89,9 @@ Facultad de Ciencias, UNAM.
       ```
 
     - La documentación asociada a este proyecto se encuentra dentro
-  de la carpeta `docs` y si por alguna razón se desea los archivos fuente de
+  de la carpeta `docs` y si por alguna razón se desea consultar el archivo fuente de
   los diagramas UML, este proceso puede realizarse sin problema instalando
-  *StarUML*.
+  *StarUML* y abriendo el archivo `diagramas.mdj`.
 
 <br>
 
