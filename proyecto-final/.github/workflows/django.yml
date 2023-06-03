@@ -1,0 +1,47 @@
+name: Django CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 4
+      matrix:
+        python-version: [3.8, 3.9]
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v3
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install Dependencies
+      run: |
+        cd proyecto-final
+        cd 50Amigos
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip list
+    - name: Run Tests
+      run: |
+        cd proyecto-final
+        cd 50Amigos
+        python manage.py test -v 2 --parallel auto
+        py.test
+    - name: Run Coverage Report
+      run: |
+        cd proyecto-final
+        cd 50Amigos
+        coverage run manage.py test -v 2 --parallel auto
+        coverage html
+    - name: Code style 
+      run: |
+        cd proyecto-final
+        cd 50Amigos
+        flake8 --config flake8.ini
