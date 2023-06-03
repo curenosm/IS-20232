@@ -81,7 +81,7 @@
 <h1>Helado</h1>
 <hr>
 {% if not orden.votacion_concluida %}
-  <p>Inicia la votación para el sabor de helado!</p>
+  <p id="mensajeVotacion">Inicia la votación para el sabor de helado!</p>
   <br>
   <button
     id="botonVotar"
@@ -221,6 +221,7 @@ function finalizarVotacion() {
   $('#resultados').toggle();
 
   let heladoEscogido = -1;
+  let heladoEscogidoIndex = -1;
   let max = -1;
   let freq = {};
   let data = [];
@@ -239,6 +240,7 @@ function finalizarVotacion() {
     if (freq[helados[i].id] > max) {
       max = freq[helados[i].id];
       heladoEscogido = helados[i].id;
+      heladoEscogidoIndex = i;
     }
     data.push(freq[helados[i].id]);
   }
@@ -273,7 +275,11 @@ function finalizarVotacion() {
         }
       });
 
+      $('#boton')
       $('#botonVotar').hide();
+      $('#mensajeVotacion').html(
+        `El sabor ganador fue: <b>${helados[heladoEscogidoIndex].nombre}</b>`
+      );
 
       // location.reload();
     },
