@@ -292,7 +292,7 @@ function agregarAlCarrito(platilloId) {
       cantidad: parseInt($('#counter' + platilloId).text())
     },
     success: function(res) {
-      window.location.href = '{% url 'mainApp:carrito' %}'
+      window.location.href = '{% url 'mainApp:menu' %}'
     },
     error: function(err) {
       console.error(err);
